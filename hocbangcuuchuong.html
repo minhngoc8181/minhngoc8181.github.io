@@ -170,7 +170,7 @@
           jq.prop('disabled', false);
         }
         jq.each(function () {
-          levels.push($(this).val());
+          levels.push(+$(this).val());
         });
         totalCorrect = 0;
         totalWrong = 0;
@@ -190,10 +190,12 @@
       function submitResult() {
         let a = +$('#operand1').text();
         let b = +$('#operand2').text();
-        let answer = +$('#result').val();
-        update(a, b, answer);
-        updateUI();
-        nextQuestion();
+        let answer = $('#result').val();
+        if (answer.trim()) {
+          update(a, b, +answer);
+          updateUI();
+          nextQuestion();
+        }
       }
 
       function updateUI() {
