@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+  <title>Kiểm tra bảng cửu chương</title>
+  <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <div class="py-5 text-center">
+      <!-- <img class="d-block mx-auto mb-4" src="assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+      <h2><span id="fullname">Bé</span> hãy làm bài thật tốt nhé</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Điểm</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Số câu đúng</h6>
+            </div>
+            <span id="totalCorrect" class="text-muted">0</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Số câu sai</h6>
+            </div>
+            <span id="totalWrong" class="text-muted">0</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between text-success">
+            <span>Điểm</span>
+            <strong id="point"></strong>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8 order-md-1">
+
+        <div id="levelgroup">
+          <h4>Chọn bảng cửu chương bé muốn kiểm tra</h4>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level2" value="2">
+            <label class="form-check-label" for="level2">2</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level3" value="3" checked>
+            <label class="form-check-label" for="level3">3</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level4" value="4" checked>
+            <label class="form-check-label" for="level4">4</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level5" value="5" checked>
+            <label class="form-check-label" for="level5">5</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level6" value="6" checked>
+            <label class="form-check-label" for="level6">6</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level7" value="7" checked>
+            <label class="form-check-label" for="level7">7</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level8" value="8">
+            <label class="form-check-label" for="level8">8</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="level9" value="9">
+            <label class="form-check-label" for="level9">9</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Kết quả của&nbsp;<span id="operand1">9</span>&nbsp;*&nbsp;<span
+                  id="operand2">7</span>&nbsp;=&nbsp;</span>
+            </div>
+            <input type="number" class="form-control" id="result" placeholder="Kết quả" required>
+            <div class="input-group-append">
+              <button id="answerbutton" class="btn btn-outline-secondary" type="button">Trả lời</button>
+            </div>
+            <div class="invalid-feedback" style="width: 100%;">
+              Hãy nhập kết quả.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modalLongTitle">Hãy nhập tên để bắt đầu làm bài</h3>
+        </div>
+        <div class="modal-body">
+          <div class="input-field">
+            <input type="text" name="fullname" class="form-control" placeholder="Họ và Tên">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="start" type="button" class="btn btn-primary">BẮT ĐẦU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="assets/js/vendor/popper.min.js"></script>
+  <script src="dist/js/bootstrap.min.js"></script>
+  <script src="assets/js/vendor/holder.min.js"></script>
+  <script>
+
+    let levels = [3, 4, 5, 6, 7];
+    let items = [];
+    let totalCorrect = 0;
+    let totalWrong = 0;
+    let initialDifficulties = [
+      [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]        // 0
+      , [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]      // 1
+      , [100, 100, 12, 11, 11, 12, 11, 11, 11, 11]              // 2
+      , [100, 100, 11, 11, 11, 12, 11, 11, 11, 11]              // 3
+      , [100, 100, 10, 10, 10, 12, 10, 10, 10, 10]              // 4
+      , [100, 100, 12, 12, 12, 12, 12, 12, 12, 12]              // 5
+      , [100, 100, 9, 9, 9, 12, 9, 9, 9, 9]                     // 6
+      , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 7
+      , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 8
+      , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 9
+    ];
+
+    (function () {
+      'use strict';
+      //$('#modalCenter').modal({ show: true, keyboard: false, backdrop: 'static' });
+
+      $('#start').click(() => {
+        let value = $('input[name="fullname"]').val();
+        if (value && value.length > 0) {
+          $('#modalCenter').modal('hide');
+          $('#fullname').text(value);
+        }
+      });
+
+      $('#levelgroup input[type="checkbox"]').click(() => {
+        levels = [];
+        let jq = $('#levelgroup input[type="checkbox"]:checked');
+        if (jq.length == 1) {
+          jq.prop('disabled', true);
+        } else if (jq.length == 0) {
+          setTimeout(() => $('#levelgroup input[type="checkbox"]:eq(1)').click(), 500);
+        } else {
+          jq.prop('disabled', false);
+        }
+        jq.each(function () {
+          levels.push($(this).val());
+        });
+        totalCorrect = 0;
+        totalWrong = 0;
+        generateItems();
+        updateUI();
+        nextQuestion();
+      });
+
+      $("#result").keydown(function (event) {
+        if (event.which == 13) {
+          submitResult();
+          event.preventDefault();
+        }
+      });
+      $('#answerbutton').click(submitResult);
+
+      function submitResult() {
+        let a = +$('#operand1').text();
+        let b = +$('#operand2').text();
+        let answer = +$('#result').val();
+        update(a, b, answer);
+        updateUI();
+        nextQuestion();
+      }
+
+      function updateUI() {
+        $('#totalCorrect').text(totalCorrect);
+        $('#totalWrong').text(totalWrong);
+        $('#point').text(totalCorrect + totalWrong >= 10 ? Math.round(100 * totalCorrect / (totalCorrect + totalWrong)) : '');
+      }
+
+      function rand(low, high) {
+        return low + (high - low) * Math.random();
+      }
+
+      function generateItems() {
+        items = [];
+        if (levels.length == 0) {
+          levels = [1];
+        }
+        for (let i of levels) {
+          for (let j = 2; j <= 9; j++) {
+            items.push({
+              a: i,
+              b: j,
+              totalCorrect: 0,
+              totalWrong: 0,
+              priority: initialDifficulties[i][j] / 20 + rand(0, 0.2)
+            })
+          }
+        }
+        items.sort((i1, i2) => i1.priority - i2.priority);
+      }
+
+      generateItems();
+
+      function nextQuestion() {
+        let item0 = items[0];
+        if (item0 && item0.a && item0.b) {
+          $('#operand1').text(item0.a);
+          $('#operand2').text(item0.b);
+          $('#result').val('');
+        }
+      }
+
+      updateUI();
+
+      nextQuestion();
+
+      function update(a, b, result) {
+        let item = items.find(i => i.a == a && i.b == b);
+        if (item != null) {
+          let isCorrect = (a * b == result);
+          if (isCorrect) {
+            item.totalCorrect++;
+            totalCorrect++;
+          } else {
+            item.totalWrong++;
+            totalWrong++;
+          }
+          item.priority += isCorrect ? rand(.8, 1) : rand(0.1, 0.3);
+          items.sort((i1, i2) => i1.priority - i2.priority);
+        }
+      }
+
+    })();
+  </script>
+</body>
+
+</html>
