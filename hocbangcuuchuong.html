@@ -130,23 +130,80 @@
   <script src="assets/js/vendor/holder.min.js"></script>
   <script>
 
-    let levels = [3, 4, 5, 6, 7];
-    let items = [];
-    let totalCorrect = 0;
-    let totalWrong = 0;
-    let startTime = (new Date()).getTime();
-    let initialDifficulties = [
-      [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]        // 0
-      , [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]      // 1
-      , [100, 100, 12, 11, 11, 12, 11, 11, 11, 11]              // 2
-      , [100, 100, 11, 11, 11, 12, 11, 11, 11, 11]              // 3
-      , [100, 100, 10, 10, 10, 12, 10, 10, 10, 10]              // 4
-      , [100, 100, 12, 12, 12, 12, 12, 12, 12, 12]              // 5
-      , [100, 100, 9, 9, 9, 12, 9, 9, 9, 9]                     // 6
-      , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 7
-      , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 8
-      , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 9
-    ];
+    function rand(low, high) {
+      return low + (high - low) * Math.random();
+    }
+
+    let bangcuuchuong = {
+      levels: [3, 4, 5],
+      items: [],
+      totalCorrect: 0,
+      totalWrong: 0,
+      startTime: (new Date()).getTime(),
+      initialDifficulties: [
+        [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]        // 0
+        , [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]      // 1
+        , [100, 100, 12, 11, 11, 12, 11, 11, 11, 11]              // 2
+        , [100, 100, 11, 11, 11, 12, 11, 11, 11, 11]              // 3
+        , [100, 100, 10, 10, 10, 12, 10, 10, 10, 10]              // 4
+        , [100, 100, 12, 12, 12, 12, 12, 12, 12, 12]              // 5
+        , [100, 100, 9, 9, 9, 12, 9, 9, 9, 9]                     // 6
+        , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 7
+        , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 8
+        , [100, 100, 8, 8, 8, 12, 8, 8, 8, 8]                     // 9
+      ],
+
+      reset: function (levels) {
+        this.totalCorrect = 0;
+        this.totalWrong = 0;
+        this.startTime = (new Date()).getTime();
+        if (Array.isArray(levels)) {
+          this.levels = levels;
+        } else {
+          this.levels = [3, 4, 5];
+        }
+        this.generateItems();
+      },
+
+      getNextQuestion: function () {
+        return this.items[0];
+      },
+
+      generateItems: function () {
+        this.items = [];
+        if (this.levels.length == 0) {
+          this.levels = [1];
+        }
+        for (let i of this.levels) {
+          for (let j = 2; j <= 9; j++) {
+            this.items.push({
+              a: i,
+              b: j,
+              totalCorrect: 0,
+              totalWrong: 0,
+              priority: this.initialDifficulties[i][j] / 20 + rand(0, 0.2)
+            })
+          }
+        }
+        this.items.sort((i1, i2) => i1.priority - i2.priority);
+      },
+
+      update: function (a, b, result) {
+        let item = this.items.find(i => i.a == a && i.b == b);
+        if (item != null) {
+          let isCorrect = (a * b == result);
+          if (isCorrect) {
+            item.totalCorrect++;
+            this.totalCorrect++;
+          } else {
+            item.totalWrong++;
+            this.totalWrong++;
+          }
+          item.priority += isCorrect ? rand(.8, 1) : rand(0.1, 0.3);
+          this.items.sort((i1, i2) => i1.priority - i2.priority);
+        }
+      }
+    };
 
     (function () {
       'use strict';
@@ -157,17 +214,13 @@
         if (value && value.length > 0) {
           $('#modalCenter').modal('hide');
           $('#fullname').text(value);
-          totalCorrect = 0;
-          totalWrong = 0;
-          startTime = (new Date()).getTime();
-          generateItems();
-          updateUI();
-          nextQuestion();
+          bangcuuchuong.reset(getLevels());
+          updateSummary();
+          showNextQuestion();
         }
       });
 
       $('#levelgroup input[type="checkbox"]').click(() => {
-        levels = [];
         let jq = $('#levelgroup input[type="checkbox"]:checked');
         if (jq.length == 1) {
           jq.prop('disabled', true);
@@ -176,15 +229,9 @@
         } else {
           jq.prop('disabled', false);
         }
-        jq.each(function () {
-          levels.push(+$(this).val());
-        });
-        totalCorrect = 0;
-        totalWrong = 0;
-        startTime = (new Date()).getTime();
-        generateItems();
-        updateUI();
-        nextQuestion();
+        bangcuuchuong.reset(getLevels());
+        updateSummary();
+        showNextQuestion();
       });
 
       $("#result").keydown(function (event) {
@@ -193,16 +240,28 @@
           event.preventDefault();
         }
       });
+      
       $('#answerbutton').click(submitResult);
+
+      function getLevels() {
+        let levels = [];
+        $('#levelgroup input[type="checkbox"]:checked').each(function () {
+          levels.push(+$(this).val());
+        });
+        if (levels.length == 0) {
+          levels = [2];
+        }
+        return levels;
+      }
 
       function submitResult() {
         let a = +$('#operand1').text();
         let b = +$('#operand2').text();
         let answer = $('#result').val();
         if (answer.trim()) {
-          update(a, b, +answer);
-          updateUI();
-          nextQuestion();
+          bangcuuchuong.update(a, b, +answer);
+          updateSummary();
+          showNextQuestion();
         }
       }
 
@@ -213,72 +272,26 @@
       }, 500);
 
       function updateTimer() {
-        let time = (new Date()).getTime() - startTime;
+        let time = (new Date()).getTime() - bangcuuchuong.startTime;
         time = Math.floor(time / 1000);
         $('#timer').text(`${Math.floor(time / 60)}:${time % 60}`);
       }
 
-      function updateUI() {
-        $('#totalCorrect').text(totalCorrect);
-        $('#totalWrong').text(totalWrong);
-        $('#point').text(totalCorrect + totalWrong >= 10 ? Math.round(100 * totalCorrect / (totalCorrect + totalWrong)) : '');
+      function updateSummary() {
+        $('#totalCorrect').text(bangcuuchuong.totalCorrect);
+        $('#totalWrong').text(bangcuuchuong.totalWrong);
+        $('#point').text(bangcuuchuong.totalCorrect + bangcuuchuong.totalWrong >= 10 ? Math.round(100 * bangcuuchuong.totalCorrect / (bangcuuchuong.totalCorrect + bangcuuchuong.totalWrong)) : '');
         updateTimer();
       }
 
-      function rand(low, high) {
-        return low + (high - low) * Math.random();
-      }
-
-      function generateItems() {
-        items = [];
-        if (levels.length == 0) {
-          levels = [1];
-        }
-        for (let i of levels) {
-          for (let j = 2; j <= 9; j++) {
-            items.push({
-              a: i,
-              b: j,
-              totalCorrect: 0,
-              totalWrong: 0,
-              priority: initialDifficulties[i][j] / 20 + rand(0, 0.2)
-            })
-          }
-        }
-        items.sort((i1, i2) => i1.priority - i2.priority);
-      }
-
-      generateItems();
-
-      function nextQuestion() {
-        let item0 = items[0];
+      function showNextQuestion() {
+        let item0 = bangcuuchuong.getNextQuestion();
         if (item0 && item0.a && item0.b) {
           $('#operand1').text(item0.a);
           $('#operand2').text(item0.b);
           $('#result').val('');
         }
       }
-
-      updateUI();
-
-      nextQuestion();
-
-      function update(a, b, result) {
-        let item = items.find(i => i.a == a && i.b == b);
-        if (item != null) {
-          let isCorrect = (a * b == result);
-          if (isCorrect) {
-            item.totalCorrect++;
-            totalCorrect++;
-          } else {
-            item.totalWrong++;
-            totalWrong++;
-          }
-          item.priority += isCorrect ? rand(.8, 1) : rand(0.1, 0.3);
-          items.sort((i1, i2) => i1.priority - i2.priority);
-        }
-      }
-
     })();
   </script>
 </body>
