@@ -82,11 +82,22 @@
           </div>
         </div>
 
+        <div id="type">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="multiply" value="multiply" checked disabled>
+            <label class="form-check-label" for="multiply">Phép nhân</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="devide" value="devide">
+            <label class="form-check-label" for="devide">Phép chia</label>
+          </div>
+        </div>
+
         <div class="mb-3">
           <div class="input-group input-group-lg">
             <div class="input-group-prepend">
-              <span class="input-group-text">Kết quả của&nbsp;<span id="operand1">9</span>&nbsp;*&nbsp;<span
-                  id="operand2">7</span>&nbsp;=&nbsp;</span>
+              <span class="input-group-text">Kết quả của&nbsp;<span id="operand1">9</span>&nbsp;<span
+                  id="operator">*</span>&nbsp;<span id="operand2">7</span>&nbsp;=&nbsp;</span>
             </div>
             <input type="number" class="form-control" id="result" placeholder="Kết quả" required>
             <div class="input-group-append">
@@ -98,6 +109,9 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div id="history" class="row" style="color: gray;">
     </div>
   </div>
 
@@ -208,14 +222,28 @@
     (function () {
       'use strict';
       $('#modalCenter').modal({ show: true, keyboard: false, backdrop: 'static' });
+      $('input[name="fullname"]').val(localStorage.getItem('fullname') || '');
+
+      $('input[name = "fullname"]').keydown(function (event) {
+        if (event.which == 13) {
+          $('#start').click();
+          event.preventDefault();
+        }
+      });
+
+      $('#modalCenter').on('shown.bs.modal', function () {
+        $('input[name = "fullname"]').focus().select();
+      })
 
       $('#start').click(() => {
         let value = $('input[name="fullname"]').val();
         if (value && value.length > 0) {
           $('#modalCenter').modal('hide');
           $('#fullname').text(value);
+          localStorage.setItem('fullname', value);
           bangcuuchuong.reset(getLevels());
           updateSummary();
+          $('#history').empty();
           showNextQuestion();
         }
       });
@@ -231,6 +259,22 @@
         }
         bangcuuchuong.reset(getLevels());
         updateSummary();
+        $('#history').empty();
+        showNextQuestion();
+      });
+
+      $('#type input[type="checkbox"]').click(() => {
+        let jq = $('#type input[type="checkbox"]:checked');
+        if (jq.length == 1) {
+          jq.prop('disabled', true);
+        } else if (jq.length == 0) {
+          setTimeout(() => $('#type input[type="checkbox"]:eq(1)').click(), 500);
+        } else {
+          jq.prop('disabled', false);
+        }
+        bangcuuchuong.reset(getLevels());
+        updateSummary();
+        $('#history').empty();
         showNextQuestion();
       });
 
@@ -240,7 +284,7 @@
           event.preventDefault();
         }
       });
-      
+
       $('#answerbutton').click(submitResult);
 
       function getLevels() {
@@ -257,9 +301,16 @@
       function submitResult() {
         let a = +$('#operand1').text();
         let b = +$('#operand2').text();
+        let operator = $('#operator').text();
         let answer = $('#result').val();
         if (answer.trim()) {
-          bangcuuchuong.update(a, b, +answer);
+          $('#history').prepend(`<div class="col-md-12"><span class="text-muted">${a} ${operator} ${b} = ${answer}</span></div>`);
+          answer = +answer.trim();
+          if (operator == '/') {
+            a = a / b;
+            answer = answer * b;
+          }
+          bangcuuchuong.update(a, b, answer);
           updateSummary();
           showNextQuestion();
         }
@@ -287,8 +338,20 @@
       function showNextQuestion() {
         let item0 = bangcuuchuong.getNextQuestion();
         if (item0 && item0.a && item0.b) {
+          let operators = [];
+          if ($('#multiply').prop('checked')) {
+            operators.push('*');
+          }
+          if ($('#devide').prop('checked')) {
+            operators.push('/');
+          }
+          let operator = operators[Math.floor(Math.random() * operators.length)];
+          $('#operator').text(operator);
           $('#operand1').text(item0.a);
           $('#operand2').text(item0.b);
+          if (operator == '/') {
+            $('#operand1').text(item0.a * item0.b);
+          }
           $('#result').val('');
         }
       }
