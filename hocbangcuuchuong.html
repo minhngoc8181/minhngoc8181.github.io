@@ -307,8 +307,10 @@
           $('#history').prepend(`<div class="col-md-12"><span class="text-muted">${a} ${operator} ${b} = ${answer}</span></div>`);
           answer = +answer.trim();
           if (operator == '/') {
-            a = a / b;
-            answer = answer * b;
+            let temp = a;
+            a = b;
+            b = temp / a;
+            answer = answer * a;
           }
           bangcuuchuong.update(a, b, answer);
           updateSummary();
@@ -351,6 +353,7 @@
           $('#operand2').text(item0.b);
           if (operator == '/') {
             $('#operand1').text(item0.a * item0.b);
+            $('#operand2').text(item0.a);
           }
           $('#result').val('');
         }
