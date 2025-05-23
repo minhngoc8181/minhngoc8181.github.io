@@ -1,0 +1,2580 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám Phá Python Cùng Em</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4;
+            /* stone-100 */
+            color: #292524;
+            /* stone-800 */
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            color: white;
+        }
+
+        .nav-link:hover {
+            background-color: #0284c7;
+            /* sky-600 */
+        }
+
+        .nav-link.active {
+            background-color: #0369a1;
+            /* sky-800 */
+            font-weight: 600;
+        }
+
+        .lesson-content h2 {
+            font-size: 1.875rem;
+            /* text-3xl */
+            font-weight: 700;
+            color: #0369a1;
+            /* sky-700 */
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            border-bottom: 2px solid #0ea5e9;
+            /* sky-500 */
+            padding-bottom: 0.5rem;
+        }
+
+        .lesson-content h3 {
+            font-size: 1.5rem;
+            /* text-2xl */
+            font-weight: 600;
+            color: #075985;
+            /* sky-800 */
+            margin-top: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .lesson-content h4 {
+            font-size: 1.25rem;
+            /* text-xl */
+            font-weight: 600;
+            color: #075985;
+            /* sky-800 */
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-content p,
+        .lesson-content li {
+            line-height: 1.75;
+            margin-bottom: 0.75rem;
+        }
+
+        .lesson-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        .lesson-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+        }
+
+        .lesson-content pre {
+            background-color: #1f2937;
+            /* gray-800 */
+            color: #f3f4f6;
+            /* gray-100 */
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .lesson-content pre  code {
+            font-size: 1em;
+        }
+
+        .lesson-content code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+        }
+
+        .lesson-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-content th,
+        .lesson-content td {
+            border: 1px solid #d4d4d8;
+            /* stone-300 */
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .lesson-content th {
+            background-color: #e7e5e4;
+            /* stone-200 */
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #0ea5e9;
+            /* sky-500 */
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .lesson-content pre:hover .copy-button {
+            opacity: 1;
+        }
+
+        .copy-button:hover {
+            background-color: #0284c7;
+            /* sky-600 */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .active-content {
+            display: block;
+        }
+
+        .placeholder-comment {
+            display: none !important;
+        }
+    </style>
+    <!-- Visualization & Content Choices:
+        - Report Info: Lesson text, code examples, exercises, mathematical formulas.
+        - Goal: Present educational content clearly and allow easy navigation between lessons, with proper math rendering.
+        - Viz/Presentation Method:
+            - Lesson Navigation: HTML list with JS for tab-like switching of content sections.
+            - Lesson Content (Text): HTML headings (h1, h2, h3), paragraphs (p), lists (ul, ol).
+            - Mathematical Formulas: LaTeX embedded in HTML (e.g., $...$, $$...$$), rendered by MathJax.
+            - Code Examples: HTML <pre><code> blocks, styled for readability, with a copy-to-clipboard button.
+            - Exercises/Summaries: HTML lists and paragraphs.
+        - Interaction: Clicking lesson titles in the navigation updates the main content view.
+        - Justification: This approach is straightforward for presenting structured textual, code-based, and mathematical educational content. It prioritizes readability and ease of navigation.
+        - Library/Method: Vanilla JS for navigation and copy-to-clipboard. HTML/Tailwind for structure and styling. MathJax for LaTeX rendering.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. NO Chart.js/Plotly.js needed as content is not data-driven in a visual sense. -->
+</head>
+
+<body class="bg-stone-100 text-stone-800">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <nav
+            class="md:w-64 bg-sky-700 text-white p-4 space-y-2 md:sticky md:top-0 md:self-start md:h-screen overflow-y-auto">
+            <h1 class="text-2xl font-bold mb-6 text-center">Khám Phá Python</h1>
+            <a href="#" data-lesson="lesson-1-content" class="nav-link active">Bài 1: Làm quen</a>
+            <a href="#" data-lesson="lesson-2-content" class="nav-link">Bài 2: Biến & Kiểu dữ liệu</a>
+            <a href="#" data-lesson="lesson-3-content" class="nav-link">Bài 3: Editor & Hàm Toán</a>
+            <a href="#" data-lesson="lesson-4-content" class="nav-link">Bài 4: Nhập & Xuất</a>
+            <a href="#" data-lesson="lesson-5-content" class="nav-link">Bài 5: Ra Quyết Định</a>
+            <a href="#" data-lesson="lesson-6-content" class="nav-link">Bài 6: Vòng Lặp</a>
+            <a href="#" data-lesson="lesson-7-content" class="nav-link">Bài 7: Danh sách & Range</a>
+            <a href="#" data-lesson="lesson-8-content" class="nav-link">Bài 8: Ôn tập</a>
+        </nav>
+
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+            <div class="max-w-4xl mx-auto">
+                <div id="lesson-1-content" class="lesson-content active-content">
+                    <h2>Bài 1: Làm quen lập trình Python</h2>
+                    <p>Bài học này giúp bạn làm quen với những khái niệm đầu tiên về lập trình và ngôn ngữ Python, cũng
+                        như thực hiện các lệnh cơ bản nhất.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Hiểu khái niệm "lập trình" là "ra lệnh" cho máy tính.</li>
+                        <li>Biết Python là một "ngôn ngữ lập trình".</li>
+                        <li>Làm quen với môi trường lập trình trực tuyến Trinket.io.</li>
+                        <li>Thực hiện được lệnh <code>print()</code> để hiển thị chữ và số.</li>
+                        <li>Thực hiện được các phép tính cơ bản.</li>
+                        <li>Bắt đầu làm quen với việc đọc và hiểu thông báo lỗi đơn giản.</li>
+                    </ul>
+                    <h3>Giới thiệu:</h3>
+                    <p>Lập trình là cách "ra lệnh" cho máy tính làm một việc gì đó mong muốn, ví dụ như hiển thị một lời
+                        chào, làm một phép toán, hay thậm chí là vẽ một bức tranh. Để "nói chuyện" và "ra lệnh" cho máy
+                        tính, cần một ngôn ngữ chung mà cả người và máy tính đều hiểu. Ngôn ngữ đó được gọi là "ngôn ngữ
+                        lập trình". Trong khóa học này, chúng ta sẽ khám phá Python, một ngôn ngữ lập trình rất phổ
+                        biến, mạnh mẽ nhưng cũng rất dễ học, đặc biệt cho những người mới bắt đầu.</p>
+
+                    <h3>Bắt đầu</h3>
+                    <p>Để bắt đầu viết những dòng lệnh Python đầu tiên, sẽ sử dụng một công cụ trực tuyến rất tiện lợi
+                        tên là Trinket. Không cần cài đặt gì cả, chỉ cần một trình duyệt web. Việc sử dụng một môi
+                        trường trực tuyến như Trinket.io giúp loại bỏ rào cản cài đặt phần mềm, cho phép truy cập và bắt
+                        đầu lập trình ngay lập tức từ bất kỳ máy tính nào có kết nối internet.</p>
+                    <ol>
+                        <li><strong>Mở Web Browser và truy cập:</strong> <a href="https://trinket.io/console"
+                                target="_blank" class="text-sky-600 hover:underline">https://trinket.io/console</a>
+                            <ul>
+                                <li>Khung bên trái là nơi gõ lệnh, khung bên phải sẽ hiển thị kết quả.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Làm quen với lệnh <code>print()</code></h4>
+                    <p>Lệnh đầu tiên và quan trọng là lệnh <code>print()</code>. Lệnh này dùng để yêu cầu máy tính hiển
+                        thị một cái gì đó ra màn hình.</p>
+
+                    <p><strong>Hoạt động Thực hành 1: Lời chào đầu tiên!</strong></p>
+                    <p>Gõ dòng lệnh sau vào khung bên trái, sau đó nhấn nút Run (hình tam giác) để xem kết quả:</p>
+                    <pre><code class="language-python">print("Hello")
+print('Hello Quang') # Có thể thay "Quang" bằng tên của mình</code></pre>
+                    <p><strong>Giải thích:</strong></p>
+                    <ul>
+                        <li>Dòng chữ <code>Hello</code> và <code>Hello Quang</code> sẽ xuất hiện ở khung bên phải.</li>
+                        <li>Khi muốn máy tính in ra một dòng chữ (còn gọi là 'chuỗi' ký tự), dòng chữ đó được đặt bên
+                            trong cặp dấu ngoặc kép <code>""</code> hoặc cặp dấu ngoặc đơn <code>''</code>. Dùng loại
+                            nào cũng được, nhưng phải nhất quán.</li>
+                    </ul>
+                    <p><strong>Kết quả mong đợi:</strong></p>
+                    <pre><code>Hello
+Hello Quang</code></pre>
+
+                    <p><strong>In ra số và Tính toán (Printing Numbers and Calculating)</strong></p>
+                    <p>Python không chỉ hiển thị chữ mà còn rất giỏi làm toán. Lệnh <code>print()</code> có thể dùng để
+                        hiển thị các con số và kết quả của các phép tính.</p>
+                    <p><strong>Hoạt động Thực hành 2: Python làm Toán!</strong></p>
+                    <p>Gõ lần lượt các lệnh sau:</p>
+                    <pre><code class="language-python">print(10)
+print(100)
+print(10 + 2)
+print(10 - 3)
+print(10 * 4)
+print(10 / 80) # Kết quả sẽ là số thập phân, ví dụ: 0.125
+print(10 / 2)  # Ví dụ phép chia cho ra số thập phân 5.0</code></pre>
+                    <p><strong>Giải thích:</strong></p>
+                    <ul>
+                        <li>Khi muốn in ra một con số, không cần đặt nó trong dấu <code>""</code> hay <code>''</code>.
+                        </li>
+                        <li>Các 'phép toán' trong Python: <code>+</code> là cộng, <code>-</code> là trừ, <code>*</code>
+                            là nhân, và <code>/</code> là chia.</li>
+                        <li>Thảo luận về kết quả:
+                            <ul>
+                                <li><code>10 / 80</code> cho ra <code>0.125</code>. Đây là một số thập phân.</li>
+                                <li><code>10 / 2</code> cho ra <code>5.0</code>. Mặc dù 10 chia hết cho 2, Python coi
+                                    phép chia <code>/</code> luôn tạo ra kết quả là số thập phân.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><strong>Kết quả mong đợi:</strong></p>
+                    <pre><code>10
+100
+12
+7
+40
+0.125
+5.0</code></pre>
+
+                    <h3>Thử nghiệm và giải thích các trường hợp sau</h3>
+                    <p>Khi mới học lập trình, việc gõ sai là điều thường gặp. Máy tính rất 'nghiêm khắc' và sẽ báo lỗi
+                        nếu viết không đúng 'ngữ pháp' của nó. Những thông báo lỗi này giúp việc học tốt hơn. Dưới đây
+                        là một vài trường hợp cố ý gõ sai hoặc gõ khác đi một chút để xem Python phản ứng thế nào và học
+                        cách 'đọc' lỗi. Việc chủ động giới thiệu các lỗi thường gặp và giải thích chúng giúp không cảm
+                        thấy sợ hãi hay thất vọng khi gặp lỗi. Thay vào đó, lỗi trở thành một phần tự nhiên của quá
+                        trình học.</p>
+                    <p>Thử gõ từng dòng sau, quan sát lỗi (nếu có) ở khung bên phải, sau đó xem phần giải thích:</p>
+                    <ol>
+                        <li>
+                            <pre><code class="language-python">Print("Hello")</code></pre>
+                            <ul>
+                                <li><strong>Lỗi có thể gặp:</strong>
+                                    <code>NameError: name 'Print' is not defined</code>.</li>
+                                <li><strong>Giải thích:</strong> Lỗi này báo rằng Python không tìm thấy lệnh nào tên là
+                                    <code>Print</code>. Đó là vì Python phân biệt chữ hoa và chữ thường. Lệnh đúng phải
+                                    là <code>print</code> với chữ 'p' viết thường.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <pre><code class="language-python">print("Hello Quang"</code></pre>
+                            <ul>
+                                <li><strong>Lỗi có thể gặp:</strong>
+                                    <code>SyntaxError: unexpected EOF while parsing</code> (hoặc một lỗi tương tự báo
+                                    thiếu dấu đóng). EOF là viết tắt của "End Of File" - kết thúc tệp.</li>
+                                <li><strong>Giải thích:</strong> Lỗi cú pháp! Đã mở một dấu ngoặc kép <code>"</code>
+                                    (hoặc dấu ngoặc đơn <code>'</code>) hoặc dấu ngoặc tròn <code>(</code> nhưng lại
+                                    quên đóng nó lại ở cuối.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <pre><code class="language-python">print("Hello Quang')</code></pre>
+                            <ul>
+                                <li><strong>Lỗi có thể gặp:</strong>
+                                    <code>SyntaxError: EOL while scanning string literal</code>. EOL là viết tắt của
+                                    "End Of Line" - kết thúc dòng.</li>
+                                <li><strong>Giải thích:</strong> Lỗi cú pháp! Lần này là do mở đầu chuỗi bằng dấu ngoặc
+                                    kép <code>"</code> nhưng lại kết thúc bằng dấu ngoặc đơn <code>'</code>. Phải dùng
+                                    cùng một loại dấu ngoặc để mở và đóng một chuỗi.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <pre><code class="language-python">print("Hello" + "Quang")</code></pre>
+                            <ul>
+                                <li><strong>Kết quả:</strong> <code>HelloQuang</code></li>
+                                <li><strong>Giải thích:</strong> Không có lỗi! Dấu <code>+</code> khi dùng với hai chuỗi
+                                    ký tự sẽ có tác dụng 'nối' chúng lại với nhau. Chữ 'Hello' và 'Quang' bị dính liền
+                                    vào nhau vì chưa có khoảng trắng vào giữa.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <pre><code class="language-python">print("Hello " + 'Quang')</code></pre>
+                            <ul>
+                                <li><strong>Kết quả:</strong> <code>Hello Quang</code></li>
+                                <li><strong>Giải thích:</strong> Lần này thì đẹp hơn. Đã thêm một khoảng trắng vào cuối
+                                    chuỗi 'Hello ' nên khi nối lại, hai từ đã được tách ra rõ ràng.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <pre><code class="language-python">10*10 + 10/2</code></pre>
+                            <ul>
+                                <li><strong>Kết quả:</strong> (Không có gì được in ra màn hình)</li>
+                                <li><strong>Giải thích:</strong> Không có gì xuất hiện ở khung kết quả. Mặc dù Python đã
+                                    thực hiện phép tính này ($100 + 5.0 = 105.0$), nhưng đã không 'ra lệnh' cho nó
+                                    <code>print()</code> kết quả ra màn hình.</li>
+                                <li>Sửa lại bằng cách thêm lệnh <code>print()</code>:
+                                    <pre><code class="language-python">print(10*10 + 10/2)</code></pre>
+                                </li>
+                                <li><strong>Kết quả sau khi sửa:</strong> <code>105.0</code></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <pre><code class="language-python">print(2 + " Quang")</code></pre>
+                            <ul>
+                                <li><strong>Lỗi có thể gặp:</strong>
+                                    <code>TypeError: unsupported operand type(s) for +: 'int' and 'str'</code>.</li>
+                                <li><strong>Giải thích:</strong> Lỗi này có tên là <code>TypeError</code> (Lỗi kiểu dữ
+                                    liệu). Nó báo rằng Python không thể thực hiện phép cộng <code>+</code> giữa một số
+                                    nguyên (<code>int</code> - số <code>2</code>) và một chuỗi ký tự (<code>str</code> -
+                                    <code>' Quang'</code>). Chúng là hai 'kiểu' dữ liệu khác nhau.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><strong>~Lưu ý quan trọng~</strong>: Qua những thử nghiệm này, có thể thấy việc mắc lỗi khi lập
+                        trình, nhất là khi mới bắt đầu, là điều hết sức tự nhiên. Điều quan trọng là không sợ sai, mà
+                        hãy đọc kỹ thông báo lỗi. Thông báo lỗi chính là gợi ý của máy tính để giúp tìm ra lỗi ở đâu và
+                        sửa nó như thế nào.</p>
+
+                    <h3>Tóm tắt Bài 1 và Từ khóa</h3>
+                    <p>Trong bài học đầu tiên, những điều cơ bản nhất của lập trình đã được khám phá:</p>
+                    <ul>
+                        <li>Lập trình là cách 'ra lệnh' cho máy tính.</li>
+                        <li>Python là một ngôn ngữ lập trình giúp 'nói chuyện' với máy tính.</li>
+                        <li>Trinket.io được sử dụng để thực hành viết code.</li>
+                        <li>Lệnh <code>print()</code> là công cụ để yêu cầu máy tính hiển thị thông tin.</li>
+                        <li>Đã biết cách in ra chữ (chuỗi ký tự) và số.</li>
+                        <li>Đã thực hiện các phép toán cơ bản: cộng <code>+</code>, trừ <code>-</code>, nhân
+                            <code>*</code>, chia <code>/</code>.</li>
+                        <li>Lỗi sai là một phần của việc học lập trình, và chúng ta học được nhiều điều từ việc sửa lỗi.
+                        </li>
+                    </ul>
+                    <h4>Bảng 1: Thuật ngữ và Lệnh Cơ bản Bài 1</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thuật ngữ/Lệnh (Term/Command)</th>
+                                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lập trình (Programming)</td>
+                                <td>Việc viết ra các chỉ dẫn (lệnh) để máy tính thực hiện một công việc.</td>
+                            </tr>
+                            <tr>
+                                <td>Ngôn ngữ lập trình (Programming Language)</td>
+                                <td>Một ngôn ngữ đặc biệt dùng để viết các chương trình máy tính (ví dụ: Python).</td>
+                            </tr>
+                            <tr>
+                                <td>Python</td>
+                                <td>Tên của một ngôn ngữ lập trình phổ biến, dễ học.</td>
+                            </tr>
+                            <tr>
+                                <td><code>print()</code></td>
+                                <td>Lệnh trong Python dùng để hiển thị thông tin (chữ, số, kết quả tính toán) ra màn
+                                    hình.</td>
+                            </tr>
+                            <tr>
+                                <td>Chuỗi (String)</td>
+                                <td>Một dãy các ký tự (văn bản), thường được đặt trong dấu <code>""</code> hoặc
+                                    <code>''</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>Số (Number)</td>
+                                <td>Các giá trị số học (ví dụ: <code>10</code>, <code>3.14</code>).</td>
+                            </tr>
+                            <tr>
+                                <td>Phép toán (Arithmetic Operators)</td>
+                                <td>Các ký hiệu dùng để thực hiện tính toán (ví dụ: <code>+</code>, <code>-</code>,
+                                    <code>*</code>, <code>/</code>).</td>
+                            </tr>
+                            <tr>
+                                <td>Lỗi (Error)</td>
+                                <td>Một vấn đề trong chương trình khiến nó không chạy đúng hoặc dừng lại.</td>
+                            </tr>
+                            <tr>
+                                <td>Thông báo lỗi (Error Message)</td>
+                                <td>Thông tin do Python cung cấp để giải thích lỗi là gì và ở đâu.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Bài tập luyện tập thêm cho Bài 1</h3>
+                    <ol>
+                        <li><strong>In thông tin cá nhân:</strong>
+                            <ul>
+                                <li>In ra tên đầy đủ của bạn.</li>
+                                <li>In ra tên lớp học của bạn.</li>
+                                <li>In ra tên trường của bạn.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tính toán đơn giản:</strong>
+                            <ul>
+                                <li>Tính và in ra kết quả của: <code>25 + 75</code></li>
+                                <li>Tính và in ra kết quả của: <code>100 - 33</code></li>
+                                <li>Tính và in ra kết quả của: <code>12 * 6</code></li>
+                                <li>Tính và in ra kết quả của: <code>200 / 8</code></li>
+                            </ul>
+                        </li>
+                        <li><strong>Kết hợp phép tính:</strong>
+                            <ul>
+                                <li>Tính và in ra kết quả của: <code>(15 + 5) * 3</code></li>
+                                <li>Tính và in ra kết quả của: <code>100 / (10 - 5)</code></li>
+                            </ul>
+                        </li>
+                        <li><strong>In chuỗi và số:</strong>
+                            <ul>
+                                <li>In ra câu: "Tôi năm nay 10 tuổi." (thay 10 bằng số tuổi thật của bạn, nhưng vẫn in
+                                    dưới dạng chuỗi).</li>
+                                <li>In ra kết quả của phép tính <code>5 * 5</code> kèm theo lời giải thích:
+                                    <code>print("5 nhân 5 bằng:", 5 * 5)</code></li>
+                            </ul>
+                        </li>
+                        <li><strong>Thử nghiệm với lỗi (tự sửa):</strong>
+                            <ul>
+                                <li>Thử gõ <code>print(Hello)</code> (không có dấu ngoặc kép cho "Hello") và xem lỗi.
+                                    Sửa lại cho đúng.</li>
+                                <li>Thử gõ <code>print("Kết quả là: " + 10)</code> và xem lỗi. (Lỗi này sẽ được giải
+                                    thích kỹ hơn ở bài sau, nhưng hãy thử quan sát).</li>
+                            </ul>
+                        </li>
+                        <li><strong>In nhiều dòng:</strong>
+                            <ul>
+                                <li>Sử dụng nhiều lệnh <code>print()</code> để in ra một bài thơ ngắn yêu thích (2-3
+                                    dòng).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Vẽ hình đơn giản bằng ký tự:</strong>
+                            <ul>
+                                <li>Sử dụng lệnh <code>print()</code> để in ra một hình mặt cười đơn giản, ví dụ:
+                                    <pre><code class="language-python">print("  ^_^  ")
+print(" (o o) ")
+print("-------")</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div id="lesson-2-content" class="lesson-content hidden">
+                    <h2>Bài 2: Biến, kiểu dữ liệu, và phép toán cơ bản</h2>
+                    <p>Bài học này giới thiệu về biến - một khái niệm cốt lõi trong lập trình, các kiểu dữ liệu cơ bản
+                        mà Python hỗ trợ, và cách sử dụng chúng trong các phép toán.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Hiểu khái niệm "biến" (variable) là gì và tại sao cần sử dụng biến trong lập trình.</li>
+                        <li>Có thể tạo (khai báo) và sử dụng biến để lưu trữ các giá trị số và chuỗi ký tự.</li>
+                        <li>Có thể sử dụng biến trong các phép tính toán học và để nối các chuỗi ký tự.</li>
+                        <li>Được giới thiệu và phân biệt được các kiểu dữ liệu cơ bản: số nguyên (integer), số thực
+                            (float), chuỗi (string). Kiểu logic (Boolean) sẽ được nhắc đến một cách nhẹ nhàng.</li>
+                        <li>Thực hành giải các bài toán đơn giản có sử dụng biến và các phép toán.</li>
+                    </ul>
+
+                    <h3>1. Giới thiệu về Biến (Introducing Variables)</h3>
+                    <h4>Tại sao cần Biến? (Why Use Variables?)</h4>
+                    <p>Ở bài trước, chúng ta đã biết cách dùng Python để tính toán. Bây giờ, hãy xem xét một vài ví dụ
+                        sau:</p>
+                    <pre><code class="language-python"># Ví dụ 1: Tính giá trị biểu thức: $4x^3 + 3x^2 + 2x + 1$ với $x = 10$
+print(4*10*10*10 + 3*10*10 + 2*10 + 1)
+
+# Ví dụ 2: Tính $10^5$ và $10^6$
+print(10*10*10*10*10)
+print(10*10*10*10*10*10)</code></pre>
+                    <p><strong>Nhận xét:</strong> Số <code>10</code> xuất hiện lặp đi lặp lại rất nhiều lần trong các
+                        phép tính trên. Nếu muốn thay đổi giá trị này, ví dụ, muốn tính với <code>x = 5</code> thay vì
+                        <code>x = 10</code>, sẽ phải tìm và sửa lại tất cả những chỗ có số <code>10</code> đó. Nếu phép
+                        tính phức tạp và dài hơn, việc này sẽ rất mất thời gian và dễ gây ra sai sót.</p>
+                    <p><strong>Giải pháp:</strong> Trong lập trình, để giải quyết vấn đề này, có một công cụ rất hữu
+                        ích. Có thể đặt một 'tên' cho một giá trị nào đó (ví dụ, số <code>10</code>) và sau đó, mỗi khi
+                        cần dùng đến giá trị đó, chỉ cần gọi cái 'tên' đã đặt. Cái 'tên' đó được gọi là
+                        <strong>biến</strong> (variable).</p>
+
+                    <h4>Biến là gì? (What is a Variable?)</h4>
+                    <p><strong>Biến</strong> có thể hình dung giống như một cái hộp có dán nhãn tên. Bên trong hộp đó,
+                        có thể cất giữ một giá trị, ví dụ như một con số (như <code>10</code>), một dòng chữ (như
+                        <code>'Xin chào'</code>). Sau này, khi cần dùng đến giá trị đó, chỉ cần gọi tên cái nhãn dán
+                        trên hộp là có thể lấy được giá trị bên trong để sử dụng.</p>
+                    <p>Sử dụng biến có nhiều lợi ích:</p>
+                    <ul>
+                        <li><strong>Chương trình dễ đọc hơn:</strong> Thay vì nhìn thấy các con số trơ trọi, chúng ta
+                            thấy những cái tên có ý nghĩa.</li>
+                        <li><strong>Chương trình dễ thay đổi hơn:</strong> Khi muốn thay đổi một giá trị, chỉ cần thay
+                            đổi ở nơi 'cất' giá trị đó vào 'hộp' (tức là nơi gán giá trị cho biến), tất cả những chỗ
+                            khác dùng 'tên hộp' đó sẽ tự động được cập nhật.</li>
+                        <li><strong>Sử dụng lại giá trị:</strong> Một giá trị có thể được dùng đi dùng lại nhiều lần
+                            thông qua tên biến.</li>
+                    </ul>
+
+                    <h3>2. Sử dụng Biến (Using Variables)</h3>
+                    <h4>Hoạt động Thực hành 3: Dùng biến cho số</h4>
+                    <p>Các ví dụ ở trên có thể được viết lại bằng cách sử dụng biến.</p>
+                    <pre><code class="language-python"># Đặt tên 'n' cho giá trị 10. Dấu = ở đây gọi là phép "gán".
+n = 10 
+print("Giá trị của n là:", n)
+
+# Sử dụng biến n trong biểu thức
+# Biểu thức: $4n^3 + 3n^2 + 2n + 1$
+ket_qua_bieu_thuc = 4*n*n*n + 3*n*n + 2*n + 1
+print("Với n =", n, "thì $4n^3 + 3n^2 + 2n + 1$ =", ket_qua_bieu_thuc)
+
+# Đặt tên 'p' cho kết quả của n*n*n*n (tức là $n^4$)
+p = n*n*n*n 
+print("$n^4$ (p) =", p)
+print("p nhân n (tức là $n^5$) =", p * n) 
+print("p nhân p (tức là $n^8$) =", p * p)</code></pre>
+                    <p><strong>Giải thích:</strong></p>
+                    <ul>
+                        <li>Dòng lệnh <code>n = 10</code> có nghĩa là: 'Lấy giá trị <code>10</code> và cất vào chiếc hộp
+                            có nhãn tên là <code>n</code>'. Dấu <code>=</code> trong lập trình Python được gọi là
+                            <strong>phép gán</strong>. Nó không giống dấu bằng trong toán học thông thường. Nó có nghĩa
+                            là 'gán giá trị bên phải cho biến ở bên trái'.</li>
+                        <li>Sau khi đã gán <code>n = 10</code>, thì ở bất cứ đâu trong chương trình mà Python thấy chữ
+                            <code>n</code> (không nằm trong dấu nháy kép hay nháy đơn), nó sẽ hiểu đó chính là số
+                            <code>10</code>.</li>
+                        <li>Tương tự, <code>p = n*n*n*n</code> nghĩa là: tính giá trị của <code>n*n*n*n</code> rồi gán
+                            kết quả đó cho biến <code>p</code>.</li>
+                    </ul>
+                    <p><strong>Thử nghiệm thay đổi:</strong> Nếu thay đổi giá trị của <code>n</code> ở dòng đầu tiên, ví
+                        dụ <code>n = 5</code>, rồi chạy lại toàn bộ đoạn code, tất cả các kết quả đều thay đổi theo giá
+                        trị mới của <code>n</code> mà chỉ cần sửa đúng một chỗ.</p>
+                    <p>Như vậy, <em>n, p</em> trong ví dụ trên được gọi là <strong>biến</strong>. Biến là một tên gọi mà
+                        chúng ta đặt cho một giá trị để có thể tham chiếu hoặc sử dụng lại giá trị đó trong chương
+                        trình.</p>
+
+                    <h4>Biến và Chuỗi (Variables and Strings)</h4>
+                    <p>Biến không chỉ dùng để lưu trữ số mà còn có thể dùng để lưu trữ cả các chuỗi ký tự.</p>
+                    <p><strong>Vấn đề:</strong> Xét trường hợp cần in ra lời chào đến nhiều bạn trong lớp:</p>
+                    <pre><code class="language-python"># print("Welcome Quang to the programming class")
+# print("Welcome Minh to the programming class")
+#... (và nhiều bạn khác)</code></pre>
+                    <p>Nếu chỉ có vài bạn thì không sao, nhưng nếu lớp có 30 bạn thì việc gõ đi gõ lại cả câu chào sẽ
+                        rất nhàm chán và dễ sai sót. Phím mũi tên lên/xuống trong Trinket để gọi lại lệnh cũ có thể giúp
+                        một chút, nhưng vẫn chưa phải là cách hay nhất.</p>
+                    <p><strong>Hoạt động Thực hành 4: Lời chào thân thiện với Biến!</strong></p>
+                    <p>Có thể dùng biến để lưu các phần lặp lại của câu chào:</p>
+                    <pre><code class="language-python">loi_chao_dau = "Welcome " 
+loi_chao_cuoi = " to the programming class"
+
+ten_ban1 = "Quang"
+print(loi_chao_dau + ten_ban1 + loi_chao_cuoi)
+
+ten_ban2 = "Minh"
+print(loi_chao_dau + ten_ban2 + loi_chao_cuoi)
+
+ten_ban_khoi = "Khôi"
+print(loi_chao_dau + ten_ban_khoi + loi_chao_cuoi)
+
+# Có thể tự thêm tên các bạn khác và in ra lời chào tương tự
+ten_ban_tien = "Tiến"
+print(loi_chao_dau + ten_ban_tien + loi_chao_cuoi)
+
+ten_ban_hung = "Hùng"
+print(loi_chao_dau + ten_ban_hung + loi_chao_cuoi)</code></pre>
+                    <p><strong>Giải thích:</strong></p>
+                    <ul>
+                        <li>Ở đây, biến <code>loi_chao_dau</code> lưu giữ phần đầu của câu chào, biến
+                            <code>loi_chao_cuoi</code> lưu giữ phần cuối. Biến <code>ten_ban1</code>,
+                            <code>ten_ban2</code>... lưu tên của từng bạn.</li>
+                        <li>Dấu <code>+</code> lại được sử dụng để 'nối' các chuỗi này lại với nhau thành một câu chào
+                            hoàn chỉnh.</li>
+                    </ul>
+
+                    <h3>3. Tìm hiểu về Kiểu dữ liệu (Exploring Data Types)</h3>
+                    <p>Trong các ví dụ vừa rồi, chúng ta đã làm việc với số (như <code>10</code>, <code>5</code>) và chữ
+                        (như <code>'Welcome '</code>). Máy tính Python cần biết nó đang làm việc với loại dữ liệu gì để
+                        xử lý cho đúng. Ví dụ, nó biết rằng có thể cộng hai số với nhau, nhưng không thể cộng một số với
+                        một dòng chữ (như lỗi <code>TypeError</code> đã thấy ở Bài 1). Mỗi loại dữ liệu này được gọi là
+                        một <strong>kiểu dữ liệu</strong> (data type).</p>
+                    <p>Dưới đây là một số kiểu dữ liệu cơ bản và quan trọng trong Python:</p>
+                    <ol>
+                        <li><strong>Số nguyên (Integer - viết tắt là <code>int</code>):</strong>
+                            <ul>
+                                <li>Là các số đếm thông thường, không có phần thập phân.</li>
+                                <li>Ví dụ: <code>0</code>, <code>1</code>, <code>2</code>, <code>100</code>,
+                                    <code>-5</code>.</li>
+                                <li>Khi viết <code>tuoi = 10</code>, thì biến <code>tuoi</code> đang lưu một giá trị có
+                                    kiểu số nguyên.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Số thực (Float - nghĩa là số "dấu phẩy động"):</strong>
+                            <ul>
+                                <li>Là các số có phần thập phân (dùng dấu chấm <code>.</code> để ngăn cách phần nguyên
+                                    và phần thập phân).</li>
+                                <li>Ví dụ: <code>1.23</code>, <code>4.56</code>, <code>0.5</code>, <code>-2.7</code>.
+                                </li>
+                                <li>Khi viết <code>chieu_cao = 1.35</code>, thì biến <code>chieu_cao</code> đang lưu một
+                                    giá trị có kiểu số thực.</li>
+                                <li><strong>Lưu ý:</strong> Kết quả của phép chia <code>/</code> trong Python thường là
+                                    một số thực, ngay cả khi phép chia đó là chia hết. Ví dụ, <code>10 / 4</code> sẽ cho
+                                    kết quả là <code>2.5</code>, và <code>10 / 2</code> sẽ cho kết quả là
+                                    <code>5.0</code>.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Chuỗi ký tự (String - viết tắt là <code>str</code>):</strong>
+                            <ul>
+                                <li>Là một dãy các ký tự, dùng để biểu diễn văn bản.</li>
+                                <li>Chuỗi phải được đặt trong cặp dấu ngoặc kép <code>""</code> hoặc cặp dấu ngoặc đơn
+                                    <code>''</code>.</li>
+                                <li>Ví dụ: <code>'Welcome'</code>, <code>"Hello Quang"</code>, <code>"123"</code>.</li>
+                                <li><strong>Lưu ý quan trọng:</strong> Ngay cả khi một chuỗi chứa toàn chữ số (như
+                                    <code>"123"</code>), nếu nó được đặt trong dấu nháy, Python vẫn coi đó là một chuỗi
+                                    ký tự chứ không phải là số. Không thể dùng chuỗi <code>"123"</code> để tính toán
+                                    trực tiếp như số <code>123</code>.</li>
+                                <li>Khi viết <code>ten = "Python"</code>, biến <code>ten</code> đang lưu một giá trị có
+                                    kiểu chuỗi.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Kiểu Logic (Boolean - đọc là "bu-li-ần"):</strong>
+                            <ul>
+                                <li>Đây là một kiểu dữ liệu đặc biệt, chỉ có thể nhận một trong hai giá trị:
+                                    <code>True</code> (có nghĩa là Đúng) hoặc <code>False</code> (có nghĩa là Sai). (Lưu
+                                    ý: <code>True</code> và <code>False</code> trong Python phải viết hoa chữ cái đầu).
+                                </li>
+                                <li>Ví dụ, có thể có một biến <code>troi_dep = True</code> hoặc
+                                    <code>da_an_toi = False</code>.</li>
+                                <li>Kiểu dữ liệu Boolean này rất quan trọng khi muốn máy tính đưa ra quyết định. Sẽ tìm
+                                    hiểu kỹ hơn về Boolean trong các bài học sau.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h3>4. Bài tập</h3>
+                    <p>Dưới đây là các bài tập để luyện tập kiến thức về biến, các phép toán và các kiểu dữ liệu vừa
+                        học. Với mỗi bài, hãy:</p>
+                    <ol>
+                        <li>Xác định các giá trị cho trước và đặt tên biến cho chúng.</li>
+                        <li>Viết biểu thức Python để tính toán theo yêu cầu.</li>
+                        <li>Dùng lệnh <code>print()</code> để hiển thị kết quả một cách rõ ràng.</li>
+                    </ol>
+                    <ol>
+                        <li><strong>Bài 1:</strong> Tính giá trị của biểu thức $P(x) = (x-5)(x-4)(x-3)(x-2)(x-1)x$ với
+                            hai trường hợp: a) $x = 10$; b) $x = 12$.
+                            <pre><code class="language-python"># Trường hợp a: x = 10
+x = 10
+ket_qua_P_x = (x-5)*(x-4)*(x-3)*(x-2)*(x-1)*x
+print("Với x =", x, "thì P(x) =", ket_qua_P_x) 
+
+# Trường hợp b: x = 12 (Tự làm tương tự)
+x = 12
+ket_qua_P_x = (x-5)*(x-4)*(x-3)*(x-2)*(x-1)*x
+print("Với x =", x, "thì P(x) =", ket_qua_P_x)</code></pre>
+                        </li>
+                        <li><strong>Bài 2:</strong> Tính giá trị của biểu thức $Q(x) = \cfrac{5x - 4}{3x - 2}$ với các
+                            trường hợp: a) $x = 5$; b) $x = 6.1$; c) $x = 7.2$.
+                            <pre><code class="language-python"># Trường hợp a: x = 5
+x = 5
+ket_qua_Q_x = (5*x - 4) / (3*x - 2)
+print("Với x =", x, "thì Q(x) =", ket_qua_Q_x)
+# ... (Tự làm cho các trường hợp còn lại)</code></pre>
+                        </li>
+                        <li><strong>Bài 3:</strong> Một cửa hàng bán kẹo, mỗi cái kẹo giá <code>gia_mot_keo</code> đồng.
+                            Gán <code>gia_mot_keo = 500</code>. a) Viết chương trình tính xem mua 10 cái kẹo hết bao
+                            nhiêu tiền. Lưu số lượng kẹo mua vào biến <code>so_luong_keo</code>. b) Nếu bạn An có
+                            <code>so_tien_An</code> đồng (ví dụ, <code>so_tien_An = 20000</code>), bạn An mua được tối
+                            đa bao nhiêu cái kẹo? (Sử dụng phép chia lấy phần nguyên <code>//</code>).
+                            <pre><code class="language-python">gia_mot_keo = 500
+# Câu a
+so_luong_keo = 10
+tong_tien = gia_mot_keo * so_luong_keo
+print("Mua", so_luong_keo, "cái kẹo hết:", tong_tien, "đồng")
+# Câu b
+so_tien_An = 20000
+so_keo_toi_da = so_tien_An // gia_mot_keo
+print("Với", so_tien_An, "đồng, An mua được tối đa:", so_keo_toi_da, "cái kẹo")</code></pre>
+                        </li>
+                        <li><strong>Bài 4:</strong> Một hình chữ nhật có chiều dài là <code>a</code> và chiều rộng là
+                            <code>b</code>. Cho <code>a = 15</code> (cm) và <code>b = 7</code> (cm). Viết chương trình
+                            Python để tính và in ra chu vi và diện tích của hình chữ nhật đó.
+                            <pre><code class="language-python">a = 15
+b = 7
+chu_vi = (a + b) * 2
+dien_tich = a * b
+print("Hình chữ nhật có chiều dài", a, "cm và chiều rộng", b, "cm thì:")
+print("Chu vi là:", chu_vi, "cm")
+print("Diện tích là:", dien_tich, "cm²")</code></pre>
+                        </li>
+                        <li><strong>Bài 5:</strong> Tính giá trị của biểu thức $R(a,b) = \cfrac{a^2 + ab + b^2}{a+b}$
+                            với các cặp giá trị: a) $a = 5, b = 6$; b) $a = 4.5, b = 3.5$.
+                            <pre><code class="language-python"># Trường hợp a: a = 5, b = 6
+a1 = 5
+b1 = 6
+ket_qua_R_ab1 = (a1*a1 + a1*b1 + b1*b1) / (a1 + b1)
+print("Với a =", a1, "và b =", b1, "thì R(a,b) =", ket_qua_R_ab1)
+# ... (Tự làm cho trường hợp còn lại)</code></pre>
+                        </li>
+                        <li><strong>Bài 6:</strong> Bạn Bình đọc một quyển truyện. Ngày đầu Bình đọc được
+                            <code>d1</code> trang. Ngày thứ hai Bình đọc được <code>d2</code> trang. Cho
+                            <code>d1 = 25</code> trang, <code>d2 = 30</code> trang. a) Hỏi sau hai ngày Bình đọc được
+                            tổng cộng bao nhiêu trang? b) Nếu quyển truyện đó dày <code>tong_trang_truyen</code> trang
+                            (ví dụ, <code>tong_trang_truyen = 100</code>), sau hai ngày Bình còn phải đọc bao nhiêu
+                            trang nữa thì hết truyện?
+                            <pre><code class="language-python">d1 = 25
+d2 = 30
+# Câu a
+tong_so_trang_da_doc = d1 + d2
+print("Sau hai ngày, Bình đọc được tổng cộng:", tong_so_trang_da_doc, "trang")
+# Câu b
+tong_trang_truyen = 100
+so_trang_con_lai = tong_trang_truyen - tong_so_trang_da_doc
+print("Bình còn phải đọc:", so_trang_con_lai, "trang nữa thì hết truyện")</code></pre>
+                        </li>
+                        <li><strong>Bài 7:</strong> Tính giá trị của biểu thức phức tạp sau: $S(a,b,c) = \cfrac{ab + bc
+                            - ca}{a+b-c} + \cfrac{bc + ca - ab}{b+c-a} + \cfrac{ca + ab - bc}{c+a-b}$ với $a=2, b=3.4,
+                            c=5.67$.
+                            <pre><code class="language-python">a = 2
+b = 3.4
+c = 5.67
+tu_so_1 = a*b + b*c - c*a
+mau_so_1 = a + b - c
+phan_so_1 = tu_so_1 / mau_so_1
+tu_so_2 = b*c + c*a - a*b
+mau_so_2 = b + c - a
+phan_so_2 = tu_so_2 / mau_so_2
+tu_so_3 = c*a + a*b - b*c
+mau_so_3 = c + a - b
+phan_so_3 = tu_so_3 / mau_so_3
+ket_qua_S_abc = phan_so_1 + phan_so_2 + phan_so_3
+print("Với a =", a, ", b =", b, ", c =", c, "thì S(a,b,c) =", ket_qua_S_abc)</code></pre>
+                        </li>
+                        <li><strong>Bài 8:</strong> Chuyển đổi nhiệt độ. Cho nhiệt độ ở đơn vị Celsius (độ C). Hãy tính
+                            và in ra nhiệt độ tương ứng ở đơn vị Fahrenheit (độ F) theo công thức: $F = C \times
+                            \cfrac{9}{5} + 32$. Thử với các giá trị: $C = 0^\circ C$, $C = 25^\circ C$, $C = 37^\circ
+                            C$.
+                            <pre><code class="language-python"># Với C = 0
+C1 = 0
+F1 = C1 * (9/5) + 32
+print(C1, "độ C tương ứng với", F1, "độ F")
+# ... (Tự làm cho các trường hợp còn lại)</code></pre>
+                        </li>
+                        <li><strong>Bài 9:</strong> Viết chương trình Python để xuất ra 10 dòng, mỗi dòng hiển thị một
+                            số theo thứ tự từ 1 đến 10.
+                            <pre><code class="language-python">print(1)
+print(2)
+#... (tiếp tục đến 10)...
+print(10)</code></pre>
+                        </li>
+                        <li><strong>Bài 10:</strong> Viết chương trình Python để xuất ra 10 dòng chữ, theo mẫu sau: "Số
+                            thứ 1", "Số thứ 2", ..., "Số thứ 10".
+                            <pre><code class="language-python">print("Số thứ 1")
+print("Số thứ 2")
+#... (tiếp tục đến "Số thứ 10")...
+print("Số thứ 10")</code></pre>
+                        </li>
+                    </ol>
+
+                    <h3>Bài tập luyện tập thêm cho Bài 2</h3>
+                    <ol start="11">
+                        <li><strong>Thông tin thú cưng:</strong> Tạo biến <code>ten_thu_cung</code>,
+                            <code>loai_thu_cung</code>, <code>tuoi_thu_cung</code>. In ra một câu giới thiệu về thú
+                            cưng.</li>
+                        <li><strong>Tính điểm trung bình:</strong> Cho điểm 3 môn, tính điểm trung bình.</li>
+                        <li><strong>Công thức nấu ăn đơn giản:</strong> Tính lượng nguyên liệu cần cho 3 cái bánh.</li>
+                        <li><strong>Quản lý chi tiêu nhỏ:</strong> Tính số tiền còn lại sau khi mua sắm.</li>
+                        <li><strong>Chuỗi và thông điệp:</strong> Nối hai lời nhắn thành một thông điệp hoàn chỉnh.</li>
+                        <li><strong>Tính tuổi chính xác hơn:</strong> Tính tuổi hiện tại và tuổi vào một năm trong tương
+                            lai.</li>
+                        <li><strong>Đổi đơn vị tiền tệ đơn giản:</strong> Đổi USD sang VND.</li>
+                        <li><strong>Tính diện tích hình tam giác:</strong> (đáy * chiều cao) / 2.</li>
+                    </ol>
+
+                    <h3>5. Tóm tắt Bài 2 và Từ khóa</h3>
+                    <p>Bài học này giới thiệu khái niệm <strong>biến</strong>, một công cụ quan trọng trong lập trình
+                        giúp đặt tên cho các giá trị để sử dụng lại một cách linh hoạt và làm cho chương trình dễ hiểu
+                        hơn. Các <strong>kiểu dữ liệu</strong> khác nhau mà Python sử dụng, như số nguyên, số thực và
+                        chuỗi ký tự, cũng đã được tìm hiểu. Quan trọng nhất, những kiến thức này đã được áp dụng vào
+                        việc giải quyết nhiều bài tập tính toán.</p>
+                    <h4>Bảng 2: Khái niệm, Kiểu dữ liệu và Phép toán Bài 2</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thuật ngữ/Khái niệm (Term/Concept)</th>
+                                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Biến (Variable)</td>
+                                <td>Một tên gọi được đặt cho một giá trị (được lưu trữ trong bộ nhớ máy tính) để có thể
+                                    sử dụng lại giá trị đó trong chương trình.</td>
+                            </tr>
+                            <tr>
+                                <td>Phép gán (Assignment <code>=</code>)</td>
+                                <td>Ký hiệu <code>=</code> dùng để đưa một giá trị vào một biến. Ví dụ:
+                                    <code>tuoi = 10</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>Số nguyên (Integer / <code>int</code>)</td>
+                                <td>Kiểu dữ liệu cho các số nguyên (không có phần thập phân), ví dụ: <code>0</code>,
+                                    <code>25</code>, <code>-100</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>Số thực (Float)</td>
+                                <td>Kiểu dữ liệu cho các số có phần thập phân, ví dụ: <code>3.14</code>,
+                                    <code>0.5</code>, <code>-2.75</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>Chuỗi (String / <code>str</code>)</td>
+                                <td>Kiểu dữ liệu cho một dãy các ký tự (văn bản), được đặt trong <code>""</code> hoặc
+                                    <code>''</code>. Ví dụ: <code>"Xin chào"</code>, <code>'Python'</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>Kiểu Logic (Boolean / <code>bool</code>)</td>
+                                <td>Kiểu dữ liệu chỉ có hai giá trị: <code>True</code> (Đúng) hoặc <code>False</code>
+                                    (Sai).</td>
+                            </tr>
+                            <tr>
+                                <td>Nối chuỗi (String Concatenation <code>+</code>)</td>
+                                <td>Phép toán <code>+</code> khi dùng với hai chuỗi sẽ ghép chúng lại thành một chuỗi
+                                    dài hơn.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>6. Thử thách sáng tạo (Creative End-of-Lesson Challenge)</h3>
+                    <p>Thử thách cuối bài: Tạo một chương trình Python để 'Giới thiệu bản thân'.</p>
+                    <ol>
+                        <li>Tạo các biến để lưu trữ các thông tin sau: Tên, Tuổi, Tên lớp, Tên trường, Một sở thích.
+                        </li>
+                        <li>Sử dụng lệnh <code>print()</code> và các biến này để in ra một đoạn văn giới thiệu bản thân.
+                        </li>
+                    </ol>
+                    <p><em>Ví dụ về kết quả mong muốn:</em></p>
+                    <pre><code>Xin chào các bạn,
+Tớ tên là Nguyễn Văn An.
+Năm nay tớ 10 tuổi.
+Tớ học lớp 5A, trường Tiểu học Kim Đồng.
+Sở thích của tớ là đá bóng.
+Rất vui được làm quen với tất cả các bạn!</code></pre>
+                    <p><em>Gợi ý cách in kết hợp chuỗi và số:</em></p>
+                    <pre><code class="language-python">ten_cua_em = "Nguyễn Văn An"
+tuoi_cua_em = 10 # Đây là một số
+
+# Cách 1: Dùng dấu phẩy trong lệnh print, Python sẽ tự thêm khoảng trắng
+print("Tớ tên là", ten_cua_em, "và tớ", tuoi_cua_em, "tuổi.")
+
+# Cách 2 (Nâng cao hơn một chút): Chuyển số thành chuỗi để nối bằng dấu +
+# Dùng str(tuoi_cua_em) để biến số tuổi thành chữ "10"
+print("Tớ tên là " + ten_cua_em + " và tớ " + str(tuoi_cua_em) + " tuổi.")</code></pre>
+                    <p>Cách thứ hai sử dụng <code>str()</code> để 'biến' một số thành một chuỗi. Điều này là cần thiết
+                        vì Python không thể dùng dấu <code>+</code> để cộng trực tiếp một số với một chuỗi.</p>
+                </div>
+
+                <div id="lesson-3-content" class="lesson-content hidden">
+                    <h2>Bài 3: Sử dụng trình soạn thảo Python (Editor), và Hàm Toán học</h2>
+                    <p>Bài học này sẽ hướng dẫn bạn cách sử dụng trình soạn thảo mã nguồn, viết chú thích để giải thích
+                        code, và làm quen với các hàm toán học có sẵn trong Python.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Làm quen và sử dụng một trình soạn thảo Python trực tuyến (Online IDE).</li>
+                        <li>Hiểu và biết cách viết chú thích (comments) trong chương trình Python.</li>
+                        <li>Ôn lại và hiểu rõ hơn về các thành phần cơ bản của một chương trình: câu lệnh, biến, phép
+                            toán, phép gán.</li>
+                        <li>Bước đầu làm quen và sử dụng một số hàm toán học cơ bản từ thư viện <code>math</code>.</li>
+                        <li>Thực hành viết các chương trình nhỏ trong trình soạn thảo.</li>
+                    </ul>
+                    <h3>Giới thiệu:</h3>
+                    <p>Ở các bài trước, chúng ta đã thử nghiệm các lệnh Python đơn lẻ trên Trinket.io. Khi viết các
+                        chương trình lớn hơn, gồm nhiều dòng lệnh, chúng ta cần một công cụ mạnh mẽ hơn gọi là
+                        <strong>trình soạn thảo mã nguồn (code editor)</strong> hoặc <strong>Môi trường Phát triển Tích
+                            hợp (Integrated Development Environment - IDE)</strong>. Các công cụ này giúp chúng ta viết,
+                        lưu trữ, quản lý và chạy các chương trình Python một cách dễ dàng.</p>
+                    <p>Khi viết code, việc giải thích các đoạn mã cho người khác (hoặc cho chính mình trong tương lai)
+                        hiểu là rất quan trọng. Đó là lúc <strong>chú thích (comment)</strong> phát huy tác dụng. Ngoài
+                        ra, Python còn cung cấp nhiều hàm toán học có sẵn giúp chúng ta thực hiện các phép tính phức tạp
+                        một cách nhanh chóng.</p>
+                    <p>Trong bài này, chúng ta sẽ sử dụng một trình soạn thảo trực tuyến và khám phá cách viết chú thích
+                        cũng như sử dụng một số hàm toán học.</p>
+
+                    <h3>1. Sử dụng Trình soạn thảo Python Trực tuyến (Online Python IDE)</h3>
+                    <p>Có nhiều trình soạn thảo Python có thể cài đặt trên máy tính, nhưng để bắt đầu một cách nhanh
+                        chóng, chúng ta sẽ sử dụng một công cụ trực tuyến. Một ví dụ là: <a
+                            href="https://www.onlineide.pro/playground/python" target="_blank"
+                            class="text-sky-600 hover:underline">https://www.onlineide.pro/playground/python</a> (Hoặc
+                        có thể sử dụng các công cụ tương tự như Replit, Programiz Online Python Compiler, v.v.)</p>
+                    <p><strong>Cách hoạt động cơ bản của một Online IDE:</strong></p>
+                    <ol>
+                        <li><strong>Cửa sổ soạn thảo (Editor Pane):</strong> Đây là nơi bạn sẽ gõ (viết) các dòng lệnh
+                            Python của mình. Nó giống như một trang giấy trắng để bạn viết chương trình.</li>
+                        <li><strong>Nút Thực thi/Chạy (Run/Execute Button):</strong> Sau khi viết xong chương trình, bạn
+                            nhấn nút này (thường có biểu tượng hình tam giác ▶️ hoặc chữ "Run").</li>
+                        <li><strong>Cửa sổ Kết quả/Đầu ra (Output/Console Pane):</strong> Kết quả của chương trình (ví
+                            dụ, những gì lệnh <code>print()</code> hiển thị) sẽ xuất hiện ở đây. Nếu chương trình có
+                            lỗi, thông báo lỗi cũng sẽ được hiển thị tại đây.</li>
+                    </ol>
+                    <p><strong>Quy trình làm việc:</strong></p>
+                    <ul>
+                        <li><strong>Viết mã (Write Code):</strong> Gõ các lệnh Python vào cửa sổ soạn thảo.</li>
+                        <li><strong>Chạy mã (Run Code):</strong> Nhấn nút "Run". Trình duyệt sẽ gửi mã của bạn đến một
+                            máy chủ, máy chủ này sẽ "thông dịch" (interpret) và thực thi mã Python đó.</li>
+                        <li><strong>Xem kết quả (View Output):</strong> Quan sát kết quả hoặc thông báo lỗi trong cửa sổ
+                            đầu ra.</li>
+                        <li><strong>Sửa lỗi (Debug) và Cải thiện (Refine):</strong> Nếu có lỗi, đọc thông báo lỗi, quay
+                            lại cửa sổ soạn thảo để sửa mã, rồi chạy lại. Lặp lại quá trình này cho đến khi chương trình
+                            hoạt động đúng như mong muốn.</li>
+                    </ul>
+                    <p><strong>Lưu ý:</strong> Khi sử dụng các IDE trực tuyến, hãy tìm hiểu xem có tùy chọn để lưu lại
+                        mã của bạn (ví dụ: tạo tài khoản, tải xuống tệp <code>.py</code>) hoặc đơn giản là sao chép mã
+                        của bạn vào một tệp văn bản trên máy tính để lưu trữ.</p>
+
+                    <h3>2. Các thành phần cơ bản của một chương trình Python</h3>
+                    <h4>a. Chú thích (Comments)</h4>
+                    <p>Chú thích là những dòng văn bản trong chương trình mà Python sẽ bỏ qua khi chạy. Chúng không ảnh
+                        hưởng đến hoạt động của chương trình.</p>
+                    <p><strong>Tại sao cần chú thích?</strong></p>
+                    <ul>
+                        <li><strong>Giải thích mã:</strong> Giúp người đọc (bao gồm cả bạn sau này) hiểu rõ hơn về mục
+                            đích hoặc cách hoạt động của một đoạn mã phức tạp.</li>
+                        <li><strong>Ghi chú:</strong> Để lại lời nhắc, ý tưởng hoặc những việc cần làm.</li>
+                        <li><strong>Tạm thời vô hiệu hóa mã:</strong> Thay vì xóa một đoạn mã, bạn có thể "chú thích
+                            hóa" nó để Python không chạy đoạn đó khi thử nghiệm.</li>
+                    </ul>
+                    <p><strong>Cách viết chú thích:</strong></p>
+                    <ul>
+                        <li><strong>Chú thích một dòng (Single-line comment):</strong> Bắt đầu bằng dấu thăng
+                            <code>#</code>. Tất cả nội dung từ dấu <code>#</code> đến cuối dòng đó sẽ được coi là chú
+                            thích.
+                            <pre><code class="language-python"># Đây là một chú thích một dòng
+x = 10  # Đây cũng là một chú thích, giải thích cho biến x</code></pre>
+                        </li>
+                        <li><strong>Chú thích nhiều dòng (Multi-line comment):</strong>
+                            <ul>
+                                <li><strong>Cách 1: Dùng nhiều dấu <code>#</code>:</strong> Mỗi dòng chú thích bắt đầu
+                                    bằng một dấu <code>#</code>.
+                                    <pre><code class="language-python"># Đây là dòng chú thích thứ nhất
+# Đây là dòng chú thích thứ hai
+# Và đây là dòng thứ ba</code></pre>
+                                </li>
+                                <li><strong>Cách 2: Dùng cặp ba dấu nháy kép <code>""" """</code> hoặc ba dấu nháy đơn
+                                        <code>''' '''</code>:</strong>
+                                    Mặc dù thường được dùng cho "docstrings" (chuỗi tài liệu cho hàm/lớp), chúng cũng có
+                                    thể được sử dụng cho chú thích nhiều dòng.
+                                    <pre><code class="language-python">"""
+Đây là một khối chú thích
+bao gồm nhiều dòng.
+Python sẽ bỏ qua khối này.
+"""
+y = 20 
+'''
+Một khối chú thích khác
+sử dụng dấu nháy đơn.
+'''
+print(y)</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h4>b. Câu lệnh (Statements)</h4>
+                    <p>Một <strong>câu lệnh</strong> là một đơn vị chỉ dẫn mà trình thông dịch Python có thể thực thi.
+                        Một chương trình Python thường bao gồm nhiều câu lệnh.</p>
+                    <p>Ví dụ về các câu lệnh đã học:</p>
+                    <pre><code class="language-python">print("Hello")       # Một câu lệnh print
+tuoi = 10            # Một câu lệnh gán
+ket_qua = 5 + 3      # Một câu lệnh gán với biểu thức tính toán</code></pre>
+                    <p>Thông thường, mỗi câu lệnh được viết trên một dòng riêng biệt.</p>
+
+                    <h4>c. Biến (Variables) - Ôn tập</h4>
+                    <p>Như đã học ở Bài 2, <strong>biến</strong> là tên gọi được đặt cho một vùng nhớ trong máy tính,
+                        dùng để lưu trữ một giá trị (số, chuỗi ký tự, v.v.). Chúng ta có thể thay đổi giá trị của biến
+                        trong quá trình chạy chương trình.</p>
+                    <pre><code class="language-python">ten_sach = "Lập trình Python" # Biến ten_sach lưu trữ một chuỗi
+so_luong = 5                 # Biến so_luong lưu trữ một số nguyên
+gia_ban = 75.5               # Biến gia_ban lưu trữ một số thực</code></pre>
+
+                    <h4>d. Phép toán (Operators) - Ôn tập</h4>
+                    <p>Python hỗ trợ nhiều loại phép toán:</p>
+                    <ul>
+                        <li><strong>Phép toán số học:</strong> <code>+</code> (cộng), <code>-</code> (trừ),
+                            <code>*</code> (nhân), <code>/</code> (chia), <code>//</code> (chia lấy phần nguyên),
+                            <code>%</code> (chia lấy số dư), <code>**</code> (lũy thừa).
+                            <pre><code class="language-python">tong = 10 + 5
+hieu = 10 - 5
+tich = 10 * 5
+thuong = 10 / 5         # Kết quả là 2.0 (số thực)
+thuong_nguyen = 10 // 3 # Kết quả là 3
+so_du = 10 % 3          # Kết quả là 1
+luy_thua = 2 ** 3       # Kết quả là 8 (2 mũ 3)</code></pre>
+                        </li>
+                        <li><strong>Phép toán so sánh:</strong> <code>==</code>, <code>!=</code>, <code>&gt;</code>,
+                            <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> (sẽ tìm hiểu kỹ hơn ở Bài 5).</li>
+                        <li><strong>Phép toán logic:</strong> <code>and</code>, <code>or</code>, <code>not</code> (sẽ
+                            tìm hiểu kỹ hơn ở Bài 5).</li>
+                    </ul>
+
+                    <h4>e. Phép gán (Assignment) - Ôn tập</h4>
+                    <p>Dấu <code>=</code> được sử dụng làm <strong>phép gán</strong>. Nó gán giá trị của biểu thức bên
+                        phải cho biến ở bên trái.</p>
+                    <pre><code class="language-python">x = 100
+y = x / 2  # y sẽ được gán giá trị 50.0
+ten = "An"</code></pre>
+
+                    <h3>3. Hàm Toán học (Math functions)</h3>
+                    <p>Python có một thư viện (module) tích hợp sẵn tên là <code>math</code> cung cấp nhiều hàm toán học
+                        hữu ích. Để sử dụng các hàm này, trước tiên chúng ta cần "nhập" (import) thư viện
+                        <code>math</code> vào chương trình.</p>
+                    <p><strong>Cách nhập thư viện <code>math</code>:</strong></p>
+                    <pre><code class="language-python">import math</code></pre>
+                    <p>Câu lệnh này nên được đặt ở đầu chương trình.</p>
+                    <p><strong>Một số hàm toán học phổ biến trong thư viện <code>math</code>:</strong></p>
+                    <ul>
+                        <li><code>math.sqrt(x)</code>: Tính căn bậc hai của <code>x</code>. <code>x</code> phải là số
+                            không âm.
+                            <pre><code class="language-python">import math
+can_bac_hai_cua_16 = math.sqrt(16)  # Kết quả: 4.0
+print(can_bac_hai_cua_16)</code></pre>
+                        </li>
+                        <li><code>math.pow(x, y)</code>: Tính $x^y$. Tương tự như toán tử <code>**</code>.
+                            <pre><code class="language-python">import math
+luy_thua = math.pow(3, 4)  # Kết quả: 81.0 (3 mũ 4)
+print(luy_thua)</code></pre>
+                        </li>
+                        <li><code>math.pi</code>: Hằng số Pi ($\pi \approx 3.14159...$)
+                            <pre><code class="language-python">import math
+so_pi = math.pi
+print(so_pi)  # Kết quả: 3.141592653589793</code></pre>
+                        </li>
+                        <li><code>math.floor(x)</code>: Làm tròn xuống số nguyên gần nhất của <code>x</code>.
+                            <pre><code class="language-python">import math
+lam_tron_xuong = math.floor(5.7)  # Kết quả: 5
+print(lam_tron_xuong)</code></pre>
+                        </li>
+                        <li><code>math.ceil(x)</code>: Làm tròn lên số nguyên gần nhất của <code>x</code>.
+                            <pre><code class="language-python">import math
+lam_tron_len = math.ceil(5.1)  # Kết quả: 6
+print(lam_tron_len)</code></pre>
+                        </li>
+                        <li><code>math.fabs(x)</code>: Tính giá trị tuyệt đối của <code>x</code> (kết quả luôn là số
+                            dương). Tương tự hàm <code>abs()</code> có sẵn.
+                            <pre><code class="language-python">import math
+gia_tri_tuyet_doi = math.fabs(-10) # Kết quả: 10.0
+print(gia_tri_tuyet_doi)</code></pre>
+                        </li>
+                    </ul>
+                    <p><strong>Lưu ý:</strong> Ngoài thư viện <code>math</code>, Python cũng có một số hàm toán học tích
+                        hợp sẵn không cần <code>import</code>, ví dụ:</p>
+                    <ul>
+                        <li><code>abs(x)</code>: Tính giá trị tuyệt đối của <code>x</code>.
+                            <pre><code class="language-python">print(abs(-5)) # Kết quả: 5</code></pre>
+                        </li>
+                        <li><code>round(x)</code>: Làm tròn số <code>x</code> đến số nguyên gần nhất.</li>
+                        <li><code>round(x, n)</code>: Làm tròn số <code>x</code> đến <code>n</code> chữ số thập phân.
+                            <pre><code class="language-python">print(round(5.7))    # Kết quả: 6
+print(round(5.3))    # Kết quả: 5
+print(round(3.14159, 2)) # Kết quả: 3.14</code></pre>
+                        </li>
+                    </ul>
+
+                    <h3>4. Thử nghiệm</h3>
+                    <p>Bây giờ, hãy sử dụng trình soạn thảo trực tuyến (ví dụ: <a
+                            href="https://www.onlineide.pro/playground/python" target="_blank"
+                            class="text-sky-600 hover:underline">https://www.onlineide.pro/playground/python</a>) để
+                        viết một chương trình hoàn chỉnh.</p>
+                    <p><strong>Ví dụ:</strong> Viết chương trình tính diện tích và chu vi của hình tròn khi biết bán
+                        kính.</p>
+                    <pre><code class="language-python"># Nhập thư viện math để sử dụng hằng số pi
+import math
+
+# Gán giá trị cho bán kính
+ban_kinh = 5.0  # Có thể thay đổi giá trị này
+
+# Tính diện tích hình tròn
+# Công thức: dien_tich = pi * ban_kinh^2
+dien_tich = math.pi * math.pow(ban_kinh, 2)
+# Hoặc có thể viết: dien_tich = math.pi * (ban_kinh ** 2)
+
+# Tính chu vi hình tròn
+# Công thức: chu_vi = 2 * pi * ban_kinh
+chu_vi = 2 * math.pi * ban_kinh
+
+# In kết quả ra màn hình
+print("Bán kính hình tròn là:", ban_kinh)
+print("Diện tích hình tròn là:", dien_tich)
+print("Chu vi hình tròn là:", chu_vi)
+
+# Thử làm tròn kết quả đến 2 chữ số thập phân
+print("Diện tích (làm tròn):", round(dien_tich, 2))
+print("Chu vi (làm tròn):", round(chu_vi, 2))</code></pre>
+                    <p>Hãy sao chép đoạn mã trên vào trình soạn thảo trực tuyến, chạy thử và xem kết quả. Thử thay đổi
+                        giá trị của <code>ban_kinh</code> và chạy lại.</p>
+
+                    <h3>5. Bài tập</h3>
+                    <p>Sử dụng trình soạn thảo Python trực tuyến để hoàn thành các bài tập sau. Hãy nhớ sử dụng chú
+                        thích để giải thích các phần quan trọng trong mã của bạn.</p>
+                    <ol>
+                        <li><strong>Tính cạnh huyền tam giác vuông:</strong> Cho hai cạnh góc vuông <code>a</code> và
+                            <code>b</code>. Tính độ dài cạnh huyền <code>c</code> theo định lý Pythagoras ($c^2 = a^2 +
+                            b^2$).</li>
+                        <li><strong>Chuyển đổi đơn vị nhiệt độ:</strong> Chuyển độ F sang độ C. Công thức: $C = (F - 32)
+                            \times \cfrac{5}{9}$.</li>
+                        <li><strong>Lãi suất đơn giản:</strong> Tính tiền lãi <code>L</code> và tổng tiền <code>T</code>
+                            sau <code>n</code> năm với lãi đơn. $L = P \times r \times n$; $T = P + L$.</li>
+                        <li><strong>Tính toán với số lớn:</strong> Tính $17^5$.</li>
+                        <li><strong>Làm tròn số:</strong> Cho <code>x = 123.456789</code>. Làm tròn đến số nguyên, 1 chữ
+                            số thập phân, 3 chữ số thập phân.</li>
+                    </ol>
+
+                    <h3>6. Tóm tắt Bài 3 và Từ khóa</h3>
+                    <p>Trong bài học này, chúng ta đã tìm hiểu về:</p>
+                    <ul>
+                        <li><strong>Trình soạn thảo Python trực tuyến (Online IDE):</strong> Công cụ để viết, chạy và
+                            kiểm tra các chương trình Python.</li>
+                        <li><strong>Chú thích (Comments):</strong> Dùng <code>#</code> cho chú thích một dòng hoặc
+                            <code>""" """</code> (hoặc <code>''' '''</code>) cho chú thích nhiều dòng để giải thích mã.
+                        </li>
+                        <li><strong>Các thành phần cơ bản:</strong> Ôn lại về câu lệnh, biến, phép toán, phép gán.</li>
+                        <li><strong>Thư viện <code>math</code>:</strong> Cách <code>import math</code> và sử dụng các
+                            hàm toán học như <code>math.sqrt()</code>, <code>math.pow()</code>, <code>math.pi</code>,
+                            <code>math.floor()</code>, <code>math.ceil()</code>.</li>
+                        <li><strong>Hàm tích hợp:</strong> <code>abs()</code>, <code>round()</code>.</li>
+                    </ul>
+                    <h4>Bảng 3: Thuật ngữ và Hàm mới Bài 3</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thuật ngữ/Hàm (Term/Function)</th>
+                                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Trình soạn thảo (Editor) / IDE</td>
+                                <td>Công cụ dùng để viết và chạy mã chương trình.</td>
+                            </tr>
+                            <tr>
+                                <td>Chú thích (Comment)</td>
+                                <td>Văn bản trong mã bị Python bỏ qua, dùng để giải thích hoặc ghi chú. Ký hiệu:
+                                    <code>#</code>, <code>""" """</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>import math</code></td>
+                                <td>Câu lệnh để nạp thư viện <code>math</code> vào chương trình.</td>
+                            </tr>
+                            <tr>
+                                <td><code>math.sqrt(x)</code></td>
+                                <td>Tính căn bậc hai của <code>x</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>math.pow(x, y)</code></td>
+                                <td>Tính $x$ lũy thừa $y$.</td>
+                            </tr>
+                            <tr>
+                                <td><code>math.pi</code></td>
+                                <td>Hằng số Pi ($\pi$).</td>
+                            </tr>
+                            <tr>
+                                <td><code>math.floor(x)</code></td>
+                                <td>Làm tròn <code>x</code> xuống số nguyên gần nhất.</td>
+                            </tr>
+                            <tr>
+                                <td><code>math.ceil(x)</code></td>
+                                <td>Làm tròn <code>x</code> lên số nguyên gần nhất.</td>
+                            </tr>
+                            <tr>
+                                <td><code>abs(x)</code></td>
+                                <td>Tính giá trị tuyệt đối của <code>x</code> (hàm tích hợp).</td>
+                            </tr>
+                            <tr>
+                                <td><code>round(x, n)</code></td>
+                                <td>Làm tròn <code>x</code> đến <code>n</code> chữ số thập phân (hàm tích hợp).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="lesson-4-content" class="lesson-content hidden">
+                    <h2>Bài 4: Nhập dữ liệu, Chuyển đổi kiểu và Xuất dữ liệu</h2>
+                    <p>Bài học này tập trung vào cách chương trình Python tương tác với người dùng: nhận dữ liệu đầu
+                        vào, xử lý (bao gồm chuyển đổi kiểu), và hiển thị kết quả đầu ra.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Biết cách sử dụng lệnh <code>input()</code> để nhận dữ liệu từ người dùng.</li>
+                        <li>Hiểu rằng dữ liệu nhập từ <code>input()</code> mặc định là kiểu chuỗi (string).</li>
+                        <li>Biết cách chuyển đổi dữ liệu nhập vào sang kiểu số nguyên (<code>int</code>) và số thực
+                            (<code>float</code>).</li>
+                        <li>Ôn tập và sử dụng lệnh <code>print()</code> để xuất dữ liệu ra màn hình.</li>
+                        <li>Học cách định dạng chuỗi xuất bằng f-strings để hiển thị thông tin một cách rõ ràng và đẹp
+                            mắt.</li>
+                        <li>Làm quen với việc nhập nhiều giá trị trên cùng một dòng và xử lý chúng bằng các phương pháp
+                            khác nhau, bao gồm <code>split()</code>, <code>map()</code>, và list comprehension.</li>
+                    </ul>
+                    <h3>Giới thiệu:</h3>
+                    <p>Trong các bài học trước, chúng ta đã gán giá trị trực tiếp cho các biến trong mã chương trình (ví
+                        dụ: <code>ban_kinh = 5.0</code>). Tuy nhiên, trong thực tế, nhiều chương trình cần tương tác với
+                        người dùng, nhận dữ liệu từ họ để xử lý.</p>
+                    <p>Sau khi xử lý, chương trình cũng cần hiển thị kết quả hoặc thông tin cho người dùng. Bài học này
+                        sẽ tập trung vào hai quá trình quan trọng này: <strong>nhập dữ liệu (input)</strong> và
+                        <strong>xuất dữ liệu (output)</strong>, cùng với việc chuyển đổi kiểu dữ liệu đầu vào cho phù
+                        hợp và các kỹ thuật nhập dữ liệu nâng cao.</p>
+
+                    <h3>1. Nhập dữ liệu từ người dùng (Inputting Data from the User)</h3>
+                    <h4>a. Lệnh <code>input()</code> cơ bản</h4>
+                    <p>Để chương trình Python có thể nhận dữ liệu do người dùng gõ từ bàn phím, chúng ta sử dụng hàm
+                        tích hợp sẵn <code>input()</code>.</p>
+                    <p>Khi lệnh <code>input()</code> được thực thi, chương trình sẽ tạm dừng và đợi người dùng nhập một
+                        dòng văn bản rồi nhấn phím Enter. Sau khi người dùng nhấn Enter, toàn bộ những gì họ đã gõ sẽ
+                        được trả về dưới dạng một <strong>chuỗi ký tự (string)</strong>.</p>
+                    <p><strong>Ví dụ 1: Nhập tên và chào hỏi</strong></p>
+                    <pre><code class="language-python">print("Chào bạn, mình là máy tính.")
+ten_nguoi_dung = input() # Chương trình dừng ở đây, đợi người dùng nhập
+print("Rất vui được làm quen với bạn,", ten_nguoi_dung, "!")</code></pre>
+
+                    <h4>b. Lời nhắc (Prompt) trong <code>input()</code></h4>
+                    <p>Để người dùng biết chương trình đang mong đợi họ nhập gì, chúng ta có thể cung cấp một "lời nhắc"
+                        (prompt message) bên trong dấu ngoặc của hàm <code>input()</code>.</p>
+                    <p><strong>Ví dụ 2: Sử dụng lời nhắc</strong></p>
+                    <pre><code class="language-python">ten = input("Bạn tên là gì? ")
+nam_sinh_str = input("Bạn sinh năm bao nhiêu? ")
+
+print("Xin chào", ten)
+print("Bạn sinh năm", nam_sinh_str)</code></pre>
+                    <p><strong>Quan trọng:</strong> Hàm <code>input()</code> <strong>luôn luôn</strong> trả về một chuỗi
+                        ký tự (string).</p>
+
+                    <h3>2. Chuyển đổi kiểu dữ liệu đầu vào (Converting Input Data Types)</h3>
+                    <h4>a. Tại sao cần chuyển đổi?</h4>
+                    <p>Vì <code>input()</code> trả về chuỗi, nếu cố gắng thực hiện các phép toán số học trực tiếp trên
+                        kết quả của <code>input()</code> (khi người dùng nhập số), sẽ gặp lỗi hoặc kết quả không như
+                        mong đợi.</p>
+                    <p><strong>Ví dụ về vấn đề:</strong></p>
+                    <pre><code class="language-python">so_thu_nhat_str = input("Nhập số thứ nhất: ") # Người dùng nhập "10"
+so_thu_hai_str = input("Nhập số thứ hai: ")   # Người dùng nhập "5"
+
+tong_str = so_thu_nhat_str + so_thu_hai_str
+print("Tổng (dưới dạng chuỗi):", tong_str) # Kết quả sẽ là "105"</code></pre>
+
+                    <h4>b. Chuyển đổi sang số nguyên: <code>int()</code></h4>
+                    <p>Hàm <code>int()</code> được sử dụng để chuyển đổi một chuỗi thành một số nguyên.</p>
+                    <p><strong>Ví dụ 3: Nhập tuổi và tính tuổi trong tương lai</strong></p>
+                    <pre><code class="language-python">ten = input("Bạn tên là gì? ")
+tuoi_hien_tai_str = input("Năm nay bạn bao nhiêu tuổi? ")
+
+tuoi_hien_tai_int = int(tuoi_hien_tai_str)
+tuoi_sau_5_nam = tuoi_hien_tai_int + 5
+
+print("Chào", ten)
+print("Năm nay bạn", tuoi_hien_tai_int, "tuổi.")
+print("Sau 5 năm nữa, bạn sẽ", tuoi_sau_5_nam, "tuổi.")</code></pre>
+
+                    <h4>c. Chuyển đổi sang số thực: <code>float()</code></h4>
+                    <p>Hàm <code>float()</code> được sử dụng để chuyển đổi một chuỗi thành một số thực.</p>
+                    <p><strong>Ví dụ 4: Nhập chiều cao và cân nặng</strong></p>
+                    <pre><code class="language-python">chieu_cao_str = input("Nhập chiều cao của bạn (mét, ví dụ: 1.65): ")
+can_nang_str = input("Nhập cân nặng của bạn (kg, ví dụ: 50.5): ")
+
+chieu_cao_float = float(chieu_cao_str)
+can_nang_float = float(can_nang_str)
+
+print("Chiều cao của bạn là:", chieu_cao_float, "m")
+print("Cân nặng của bạn là:", can_nang_float, "kg")</code></pre>
+                    <p>Nếu người dùng nhập giá trị không hợp lệ cho <code>int()</code> hoặc <code>float()</code>, chương
+                        trình sẽ báo lỗi <code>ValueError</code>.</p>
+
+                    <h3>3. Xuất dữ liệu ra màn hình (Outputting Data to the Screen) - Ôn tập và Mở rộng</h3>
+                    <h4>a. Lệnh <code>print()</code> với nhiều đối số</h4>
+                    <p>Hàm <code>print()</code> có thể nhận nhiều đối số, cách nhau bởi dấu phẩy. Các đối số sẽ được in
+                        ra trên cùng một dòng, cách nhau bởi một khoảng trắng mặc định.</p>
+                    <p><strong>Ví dụ 5:</strong></p>
+                    <pre><code class="language-python">ten = "An"
+tuoi = 10
+lop = "5A"
+print("Học sinh:", ten, "- Tuổi:", tuoi, "- Lớp:", lop)</code></pre>
+
+                    <h4>b. Nối chuỗi để xuất dữ liệu (String concatenation)</h4>
+                    <p>Có thể tạo một chuỗi lớn bằng cách nối các chuỗi nhỏ hơn (và các biến đã được chuyển thành chuỗi)
+                        bằng toán tử <code>+</code>.</p>
+                    <p><strong>Ví dụ 6:</strong></p>
+                    <pre><code class="language-python">ten = "Bình"
+diem = 8.5
+thong_bao = "Bạn " + ten + " đạt được " + str(diem) + " điểm."
+print(thong_bao)</code></pre>
+
+                    <h3>4. Định dạng chuỗi xuất (Formatted String Output)</h3>
+                    <h4>a. f-strings (Formatted String Literals)</h4>
+                    <p>f-strings cho phép nhúng trực tiếp các biểu thức vào bên trong một chuỗi bằng cách đặt chữ
+                        <code>f</code> hoặc <code>F</code> ngay trước dấu ngoặc kép mở đầu của chuỗi, và đặt các biểu
+                        thức cần nhúng vào trong cặp dấu ngoặc nhọn <code>{}</code>.</p>
+                    <p><strong>Ví dụ 7: Sử dụng f-strings</strong></p>
+                    <pre><code class="language-python">ten = "Mai"
+tuoi = 9
+mon_hoc = "Toán"
+diem_so = 10
+
+print(f"Học sinh {ten}, {tuoi} tuổi, đã đạt {diem_so} điểm môn {mon_hoc}.")
+
+a = 5
+b = 7
+print(f"Tổng của {a} và {b} là {a + b}.")</code></pre>
+                    <p><strong>Định dạng số trong f-strings:</strong> Cú pháp:
+                        <code>{ten_bien:.<so_chu_so_thap_phan>f}</code></p>
+                    <p><strong>Ví dụ 8: Định dạng số thập phân</strong></p>
+                    <pre><code class="language-python">import math
+
+gia_tri_pi = math.pi
+print(f"Số Pi là: {gia_tri_pi}")
+print(f"Số Pi làm tròn đến 2 chữ số thập phân: {gia_tri_pi:.2f}")
+print(f"Số Pi làm tròn đến 4 chữ số thập phân: {gia_tri_pi:.4f}")</code></pre>
+
+                    <h4>b. Phương thức <code>str.format()</code> (Giới thiệu ngắn gọn)</h4>
+                    <p>Cú pháp: <code>"Nội dung chuỗi {}...".format(gia_tri_1, gia_tri_2,...)</code></p>
+                    <p><strong>Ví dụ 9:</strong></p>
+                    <pre><code class="language-python">ten = "Lam"
+tuoi = 11
+print("Xin chào {}, bạn năm nay {} tuổi.".format(ten, tuoi))</code></pre>
+
+                    <h3>5. Nhập nhiều giá trị cùng lúc và Chuyển đổi kiểu Nâng cao</h3>
+                    <p>Đôi khi, chúng ta muốn người dùng nhập nhiều mẩu thông tin trên cùng một dòng, thường được cách
+                        nhau bởi khoảng trắng.</p>
+                    <h4>a. Sử dụng <code>split()</code> và gán vào các biến</h4>
+                    <p>Hàm <code>input()</code> đọc toàn bộ dòng thành một chuỗi. Phương thức <code>split()</code> của
+                        chuỗi tách chuỗi này thành một danh sách các chuỗi con.</p>
+                    <p><strong>Ví dụ 10: Nhập 2 số (cách cơ bản sau khi split)</strong></p>
+                    <pre><code class="language-python">print("Nhập vào hai số nguyên a và b, cách nhau bởi một khoảng trắng:")
+du_lieu_nhap_str = input() # Ví dụ người dùng nhập: "15 25"
+danh_sach_chuoi_so = du_lieu_nhap_str.split() # Kết quả: ['15', '25']
+
+so_a_str = danh_sach_chuoi_so[0]
+so_b_str = danh_sach_chuoi_so[1]
+
+so_a_int = int(so_a_str)
+so_b_int = int(so_b_str)
+
+print(f"Số thứ nhất là: {so_a_int}, Số thứ hai là: {so_b_int}")
+print(f"Tổng của hai số là: {so_a_int + so_b_int}")</code></pre>
+                    <p><strong>Cách viết gọn hơn để gán trực tiếp (unpacking):</strong></p>
+                    <pre><code class="language-python">print("Nhập vào hai chuỗi str1 và str2, cách nhau bởi một khoảng trắng:")
+# Ví dụ người dùng nhập: "hello world"
+str1, str2 = input().split()
+print(f"Chuỗi 1: {str1}, Chuỗi 2: {str2}")
+
+# Sau đó, nếu cần, chuyển đổi kiểu cho từng biến:
+# diem_toan_str, diem_van_str = input("Nhập điểm Toán và Văn: ").split()
+# diem_toan = float(diem_toan_str)
+# diem_van = float(diem_van_str)</code></pre>
+
+                    <h4>b. Sử dụng <code>map()</code> để chuyển đổi kiểu hàng loạt</h4>
+                    <p>Hàm <code>map(ham_chuyen_doi, danh_sach_can_chuyen)</code> sẽ áp dụng <code>ham_chuyen_doi</code>
+                        (ví dụ <code>int</code> hoặc <code>float</code>) lên từng phần tử của
+                        <code>danh_sach_can_chuyen</code>.</p>
+                    <p><strong>Ví dụ 11: Nhập 2 số nguyên dùng <code>map()</code></strong></p>
+                    <pre><code class="language-python">print("Nhập vào hai số nguyên a và b, cách nhau bởi một khoảng trắng:")
+# Ví dụ người dùng nhập: "100 200"
+a, b = map(int, input().split())
+
+print(f"Số a = {a}, số b = {b}")
+print(f"Tổng a + b = {a + b}")</code></pre>
+
+                    <h4>c. Sử dụng List Comprehension để chuyển đổi kiểu</h4>
+                    <p><strong>Nhập và chuyển đổi thành các biến riêng lẻ:</strong></p>
+                    <p><strong>Ví dụ 12: Nhập 2 số thực dùng List Comprehension</strong></p>
+                    <pre><code class="language-python">print("Nhập vào hai số thực x và y, cách nhau bởi một khoảng trắng:")
+# Ví dụ người dùng nhập: "3.5 7.2"
+x, y = [float(giatri_str) for giatri_str in input().split()]
+
+print(f"Số x = {x}, số y = {y}")
+print(f"Tích x * y = {x * y:.2f}")</code></pre>
+                    <p><strong>Nhập và lưu vào một danh sách các số:</strong></p>
+                    <p><strong>Ví dụ 13: Nhập một danh sách các số nguyên</strong></p>
+                    <pre><code class="language-python">print("Nhập vào một dãy các số nguyên, cách nhau bởi khoảng trắng (ví dụ: 1 2 3 4 5):")
+# Ví dụ người dùng nhập: "10 20 30 5 15"
+danh_sach_so_nguyen = [int(so_str) for so_str in input().split()]
+
+print("Danh sách các số bạn đã nhập là:", danh_sach_so_nguyen)
+
+if danh_sach_so_nguyen:
+    tong_danh_sach = sum(danh_sach_so_nguyen)
+    print(f"Tổng các số trong danh sách là: {tong_danh_sach}")</code></pre>
+
+                    <h3>6. Bài tập</h3>
+                    <ol>
+                        <li><strong>Thông tin cá nhân:</strong> Yêu cầu người dùng nhập họ tên, năm sinh, quê quán. Tính
+                            tuổi và in thông điệp chào mừng.</li>
+                        <li><strong>Máy tính đơn giản:</strong> Yêu cầu nhập 2 số thực (cùng dòng). Tính tổng, hiệu,
+                            tích, thương (thương 2 chữ số thập phân).</li>
+                        <li><strong>Tính diện tích hình chữ nhật:</strong> Yêu cầu nhập chiều dài, rộng (cùng dòng).
+                            Tính diện tích, chu vi.</li>
+                        <li><strong>Nhập 3 điểm số:</strong> Yêu cầu nhập điểm 3 môn (Toán, Văn, Anh) cùng dòng. Tính
+                            điểm trung bình (1 chữ số thập phân).</li>
+                        <li><strong>Câu chuyện nhỏ:</strong> Yêu cầu nhập tên riêng, địa điểm, hành động, đồ vật. Tạo
+                            câu chuyện.</li>
+                        <li><strong>Đổi tiền:</strong> Nhập USD, đổi sang VND (1 USD = 25000 VND). Định dạng VND có dấu
+                            phẩy hàng nghìn.</li>
+                        <li><strong>Nhập danh sách điểm và tính tổng:</strong> Nhập dãy điểm số nguyên (cùng dòng). In
+                            danh sách và tổng.</li>
+                    </ol>
+
+                    <h3>7. Tóm tắt Bài 4 và Từ khóa</h3>
+                    <p>Bài học này đã trang bị các công cụ để chương trình giao tiếp với người dùng:</p>
+                    <ul>
+                        <li><strong>Nhập dữ liệu:</strong> <code>input()</code> để lấy thông tin.</li>
+                        <li><strong>Chuyển đổi kiểu:</strong> <code>int()</code>, <code>float()</code> để biến chuỗi
+                            thành số.</li>
+                        <li><strong>Xuất dữ liệu:</strong> <code>print()</code> và <strong>f-strings</strong> để hiển
+                            thị linh hoạt.</li>
+                        <li><strong>Xử lý nhiều đầu vào:</strong> <code>input().split()</code>, <code>map()</code>, và
+                            <strong>list comprehension</strong> <code>[type(x) for x in input().split()]</code> để nhận
+                            và xử lý nhiều giá trị trên một dòng.</li>
+                    </ul>
+                    <h4>Bảng 4: Thuật ngữ và Hàm mới Bài 4</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thuật ngữ/Hàm (Term/Function)</th>
+                                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>input("Lời nhắc: ")</code></td>
+                                <td>Nhận một dòng văn bản (chuỗi) từ người dùng, có hiển thị lời nhắc.</td>
+                            </tr>
+                            <tr>
+                                <td><code>int(chuoi)</code></td>
+                                <td>Chuyển đổi chuỗi thành số nguyên.</td>
+                            </tr>
+                            <tr>
+                                <td><code>float(chuoi)</code></td>
+                                <td>Chuyển đổi chuỗi thành số thực.</td>
+                            </tr>
+                            <tr>
+                                <td><code>str(so)</code></td>
+                                <td>Chuyển đổi số thành chuỗi.</td>
+                            </tr>
+                            <tr>
+                                <td>f-string (ví dụ: <code>f"{bien}"</code>)</td>
+                                <td>Cách định dạng chuỗi, cho phép nhúng biến/biểu thức vào chuỗi.</td>
+                            </tr>
+                            <tr>
+                                <td><code>{bien:.Nf}</code> (trong f-string)</td>
+                                <td>Định dạng biến <code>bien</code> thành số thực với <code>N</code> chữ số thập phân.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>chuoi.split()</code></td>
+                                <td>Tách chuỗi thành danh sách các chuỗi con.</td>
+                            </tr>
+                            <tr>
+                                <td><code>map(ham, iterable)</code></td>
+                                <td>Áp dụng <code>ham</code> cho từng phần tử của <code>iterable</code>. Ví dụ:
+                                    <code>map(int, input().split())</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>List Comprehension (ví dụ: <code>[int(x) for x in input().split()]</code>)</td>
+                                <td>Cách tạo danh sách mới một cách ngắn gọn từ một iterable.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="lesson-5-content" class="lesson-content hidden">
+                    <h2>Bài 5: Ra Quyết Định (Making Decisions)</h2>
+                    <p>Bài học này giới thiệu cách chương trình Python có thể "ra quyết định" dựa trên các điều kiện,
+                        giúp chương trình trở nên thông minh và linh hoạt hơn.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Hiểu khái niệm về giá trị Chân lý (Boolean): <code>True</code> (Đúng) và <code>False</code>
+                            (Sai).</li>
+                        <li>Sử dụng các phép toán so sánh (<code>==</code>, <code>!=</code>, <code>&gt;</code>,
+                            <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>) để tạo ra các biểu thức điều
+                            kiện.</li>
+                        <li>Học và sử dụng câu lệnh <code>if</code> để thực thi mã dựa trên một điều kiện.</li>
+                        <li>Sử dụng câu lệnh <code>else</code> để cung cấp một hành động thay thế khi điều kiện
+                            <code>if</code> không đúng.</li>
+                        <li>Sử dụng câu lệnh <code>elif</code> (else if) để kiểm tra nhiều điều kiện một cách tuần tự.
+                        </li>
+                        <li>Sử dụng các phép toán logic (<code>and</code>, <code>or</code>, <code>not</code>) để kết hợp
+                            nhiều điều kiện.</li>
+                        <li>Hiểu và viết các câu lệnh <code>if</code> lồng nhau (nested <code>if</code>).</li>
+                        <li>Áp dụng kiến thức để giải các bài toán yêu cầu ra quyết định.</li>
+                    </ul>
+                    <h3>Giới thiệu:</h3>
+                    <p>Trong cuộc sống hàng ngày, chúng ta liên tục phải đưa ra quyết định. Ví dụ: "Nếu trời mưa, tôi sẽ
+                        mang ô. Ngược lại, nếu trời nắng, tôi sẽ đội mũ." Máy tính cũng cần khả năng "ra quyết định"
+                        tương tự để thực hiện các công việc một cách thông minh và linh hoạt.</p>
+                    <p>Trong Python, chúng ta sử dụng các <strong>câu lệnh điều kiện</strong> (conditional statements)
+                        để cho phép chương trình lựa chọn thực hiện những khối lệnh khác nhau dựa trên việc một điều
+                        kiện nào đó là Đúng (<code>True</code>) hay Sai (<code>False</code>). Bài học này sẽ hướng dẫn
+                        cách sử dụng các câu lệnh này.</p>
+
+                    <h3>1. Giá trị Chân lý (Boolean Values) và Biểu thức Điều kiện</h3>
+                    <h4>a. Giá trị Chân lý: <code>True</code> và <code>False</code></h4>
+                    <p>Như đã giới thiệu ở Bài 2, kiểu dữ liệu Boolean chỉ có hai giá trị:</p>
+                    <ul>
+                        <li><code>True</code>: Đại diện cho sự thật, điều đúng đắn.</li>
+                        <li><code>False</code>: Đại diện cho sự giả dối, điều sai trái.</li>
+                    </ul>
+                    <p>(Lưu ý: <code>True</code> và <code>False</code> trong Python phải viết hoa chữ cái đầu).</p>
+
+                    <h4>b. Phép toán So sánh (Comparison Operators)</h4>
+                    <p>Các phép toán so sánh được sử dụng để so sánh hai giá trị và kết quả của phép so sánh luôn là một
+                        giá trị Boolean (<code>True</code> hoặc <code>False</code>).</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Phép toán</th>
+                                <th>Ý nghĩa</th>
+                                <th>Ví dụ (Giả sử <code>a = 5</code>, <code>b = 10</code>)</th>
+                                <th>Kết quả</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>==</code></td>
+                                <td>Bằng nhau</td>
+                                <td><code>a == 5</code><br><code>a == b</code></td>
+                                <td><code>True</code><br><code>False</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>!=</code></td>
+                                <td>Không bằng nhau (khác)</td>
+                                <td><code>a != 10</code><br><code>a != 5</code></td>
+                                <td><code>True</code><br><code>False</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&gt;</code></td>
+                                <td>Lớn hơn</td>
+                                <td><code>b &gt; a</code><br><code>a &gt; b</code></td>
+                                <td><code>True</code><br><code>False</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;</code></td>
+                                <td>Nhỏ hơn</td>
+                                <td><code>a &lt; b</code><br><code>b &lt; 5</code></td>
+                                <td><code>True</code><br><code>False</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&gt;=</code></td>
+                                <td>Lớn hơn hoặc bằng</td>
+                                <td><code>a &gt;= 5</code><br><code>b &gt;= 10</code><br><code>a &gt;= b</code></td>
+                                <td><code>True</code><br><code>True</code><br><code>False</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;=</code></td>
+                                <td>Nhỏ hơn hoặc bằng</td>
+                                <td><code>b &lt;= 10</code><br><code>a &lt;= 10</code><br><code>b &lt;= a</code></td>
+                                <td><code>True</code><br><code>True</code><br><code>False</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Ví dụ sử dụng phép toán so sánh:</strong></p>
+                    <pre><code class="language-python">x = 10
+y = 20
+
+ket_qua_1 = (x == 10)       # x có bằng 10 không?
+ket_qua_2 = (y < x)         # y có nhỏ hơn x không?
+ket_qua_3 = (x != y)        # x có khác y không?
+
+print(f"x == 10 là: {ket_qua_1}")   # Kết quả: True
+print(f"y < x là: {ket_qua_2}")     # Kết quả: False
+print(f"x != y là: {ket_qua_3}")   # Kết quả: True</code></pre>
+                    <p>Những biểu thức như <code>x == 10</code> hay <code>y < x</code> được gọi là <strong>biểu thức
+                            điều kiện</strong> vì chúng trả về một giá trị <code>True</code> hoặc <code>False</code>
+                        dùng để kiểm soát luồng của chương trình.</p>
+
+                    <h3>2. Câu lệnh <code>if</code> (The <code>if</code> Statement)</h3>
+                    <p>Câu lệnh <code>if</code> cho phép thực thi một khối lệnh nếu một điều kiện cụ thể là
+                        <code>True</code>.</p>
+                    <p><strong>Cú pháp:</strong></p>
+                    <pre><code class="language-python">if dieu_kien:
+    # Khối lệnh sẽ được thực thi nếu dieu_kien là True
+    # Các lệnh trong khối này phải được thụt vào đầu dòng (indentation)
+    lenh_1
+    lenh_2
+    ...
+# Các lệnh bên ngoài khối if (không thụt vào) sẽ luôn được thực thi
+lenh_tiep_theo</code></pre>
+                    <ul>
+                        <li><code>dieu_kien</code>: Là một biểu thức trả về <code>True</code> hoặc <code>False</code>.
+                        </li>
+                        <li>Dấu hai chấm (<code>:</code>) là bắt buộc sau <code>dieu_kien</code>.</li>
+                        <li><strong>Thụt lề (Indentation):</strong> Các dòng lệnh thuộc khối <code>if</code> phải được
+                            thụt vào so với dòng <code>if</code> (thường là 4 dấu cách hoặc một phím Tab). Đây là cách
+                            Python xác định khối lệnh nào thuộc về <code>if</code>.</li>
+                    </ul>
+                    <p><strong>Luồng hoạt động:</strong></p>
+                    <ol>
+                        <li>Python kiểm tra <code>dieu_kien</code>.</li>
+                        <li>Nếu <code>dieu_kien</code> là <code>True</code>, các lệnh bên trong khối <code>if</code> (đã
+                            thụt lề) sẽ được thực thi.</li>
+                        <li>Nếu <code>dieu_kien</code> là <code>False</code>, các lệnh bên trong khối <code>if</code> sẽ
+                            bị bỏ qua, và chương trình sẽ tiếp tục với <code>lenh_tiep_theo</code> (nếu có).</li>
+                    </ol>
+                    <p><strong>Ví dụ 1: Kiểm tra tuổi để xem phim</strong></p>
+                    <pre><code class="language-python">tuoi = int(input("Nhập tuổi của bạn: "))
+
+if tuoi >= 18:
+    print("Bạn đủ tuổi để xem phim này.")
+    print("Chúc bạn xem phim vui vẻ!")
+
+print("Cảm ơn bạn đã sử dụng dịch vụ.") # Lệnh này luôn được thực thi</code></pre>
+
+                    <h3>3. Câu lệnh <code>else</code> (The <code>else</code> Statement)</h3>
+                    <p>Câu lệnh <code>else</code> được sử dụng cùng với <code>if</code> để cung cấp một khối lệnh thay
+                        thế sẽ được thực thi nếu điều kiện của <code>if</code> là <code>False</code>.</p>
+                    <p><strong>Cú pháp:</strong></p>
+                    <pre><code class="language-python">if dieu_kien:
+    # Khối lệnh thực thi nếu dieu_kien là True
+    lenh_A1
+    lenh_A2
+else:
+    # Khối lệnh thực thi nếu dieu_kien là False
+    lenh_B1
+    lenh_B2
+# Các lệnh tiếp theo</code></pre>
+                    <p><strong>Luồng hoạt động:</strong></p>
+                    <ol>
+                        <li>Python kiểm tra <code>dieu_kien</code> của <code>if</code>.</li>
+                        <li>Nếu <code>dieu_kien</code> là <code>True</code>, khối lệnh của <code>if</code> được thực
+                            thi, và khối lệnh của <code>else</code> bị bỏ qua.</li>
+                        <li>Nếu <code>dieu_kien</code> là <code>False</code>, khối lệnh của <code>if</code> bị bỏ qua,
+                            và khối lệnh của <code>else</code> được thực thi.</li>
+                    </ol>
+                    <p><strong>Ví dụ 2: Kiểm tra số chẵn lẻ</strong></p>
+                    <pre><code class="language-python">so = int(input("Nhập một số nguyên: "))
+
+if so % 2 == 0:  # Nếu số dư khi chia cho 2 là 0
+    print(f"Số {so} là số chẵn.")
+else:
+    print(f"Số {so} là số lẻ.")</code></pre>
+
+                    <h3>4. Câu lệnh <code>elif</code> (The <code>elif</code> Statement)</h3>
+                    <p><code>elif</code> là viết tắt của "else if". Nó cho phép kiểm tra nhiều điều kiện một cách tuần
+                        tự. Nếu điều kiện <code>if</code> đầu tiên sai, Python sẽ kiểm tra điều kiện của
+                        <code>elif</code> tiếp theo, và cứ thế.</p>
+                    <p><strong>Cú pháp:</strong></p>
+                    <pre><code class="language-python">if dieu_kien_1:
+    # Khối lệnh cho dieu_kien_1
+    ...
+elif dieu_kien_2:
+    # Khối lệnh cho dieu_kien_2 (chỉ thực thi nếu dieu_kien_1 False và dieu_kien_2 True)
+    ...
+elif dieu_kien_3:
+    # Khối lệnh cho dieu_kien_3 (chỉ thực thi nếu dieu_kien_1, dieu_kien_2 False và dieu_kien_3 True)
+    ...
+else: # Tùy chọn, có thể có hoặc không
+    # Khối lệnh thực thi nếu tất cả các điều kiện trên đều False
+    ...</code></pre>
+                    <p><strong>Ví dụ 3: Xếp loại học lực dựa trên điểm số</strong></p>
+                    <pre><code class="language-python">diem_trung_binh = float(input("Nhập điểm trung bình của bạn: "))
+
+if diem_trung_binh >= 8.0:
+    print("Xếp loại: Giỏi")
+elif diem_trung_binh >= 6.5:
+    print("Xếp loại: Khá")
+elif diem_trung_binh >= 5.0:
+    print("Xếp loại: Trung bình")
+else:
+    print("Xếp loại: Yếu")</code></pre>
+
+                    <h3>5. Phép toán Logic (<code>and</code>, <code>or</code>, <code>not</code>)</h3>
+                    <p>Các phép toán logic được sử dụng để kết hợp nhiều biểu thức điều kiện lại với nhau.</p>
+                    <h4>a. <code>and</code> (Và)</h4>
+                    <p>Trả về <code>True</code> nếu <strong>cả hai</strong> biểu thức đều <code>True</code>.</p>
+                    <p><strong>Ví dụ 4: Kiểm tra điều kiện đi học</strong></p>
+                    <pre><code class="language-python">khoe_manh = True
+lam_bai_tap = False
+
+if khoe_manh and lam_bai_tap:
+    print("Bạn đủ điều kiện đi học.")
+else:
+    print("Bạn chưa đủ điều kiện đi học.")</code></pre>
+
+                    <h4>b. <code>or</code> (Hoặc)</h4>
+                    <p>Trả về <code>True</code> nếu <strong>ít nhất một trong hai</strong> biểu thức là
+                        <code>True</code>.</p>
+                    <p><strong>Ví dụ 5: Kiểm tra điều kiện giảm giá</strong></p>
+                    <pre><code class="language-python">la_cuoi_tuan = False
+co_the_thanh_vien = True
+
+if la_cuoi_tuan or co_the_thanh_vien:
+    print("Bạn được giảm giá!")
+else:
+    print("Bạn không được giảm giá.")</code></pre>
+
+                    <h4>c. <code>not</code> (Phủ định)</h4>
+                    <p>Đảo ngược giá trị Boolean của một biểu thức.</p>
+                    <p><strong>Ví dụ 6: Kiểm tra nếu không phải cuối tuần</strong></p>
+                    <pre><code class="language-python">la_cuoi_tuan = False
+
+if not la_cuoi_tuan:
+    print("Hôm nay là ngày thường, đi làm thôi!")
+else:
+    print("Hôm nay là cuối tuần, nghỉ ngơi nào!")</code></pre>
+
+                    <h3>6. Câu lệnh <code>if</code> lồng nhau (Nested <code>if</code> Statements)</h3>
+                    <p>Một câu lệnh <code>if</code> có thể chứa một câu lệnh <code>if</code> khác bên trong nó.</p>
+                    <p><strong>Ví dụ 7: Kiểm tra đăng nhập và quyền truy cập</strong></p>
+                    <pre><code class="language-python">ten_dang_nhap = input("Nhập tên đăng nhập: ")
+mat_khau = input("Nhập mật khẩu: ")
+
+if ten_dang_nhap == "admin":
+    if mat_khau == "12345":
+        print("Đăng nhập thành công với quyền quản trị!")
+    else:
+        print("Sai mật khẩu.")
+elif ten_dang_nhap == "user":
+    if mat_khau == "user123":
+        print("Đăng nhập thành công với quyền người dùng.")
+    else:
+        print("Sai mật khẩu.")
+else:
+    print("Tên đăng nhập không tồn tại.")</code></pre>
+
+                    <h3>7. Bài tập</h3>
+                    <ol>
+                        <li><strong>Kiểm tra số dương, số âm, hay số không:</strong> Nhập số nguyên, in ra là dương, âm
+                            hay không.</li>
+                        <li><strong>Giải phương trình bậc nhất $ax + b = 0$:</strong> Nhập a, b. Biện luận và giải
+                            (nghiệm $x = -b/a$).</li>
+                        <li><strong>Tính tiền điện:</strong> Nhập số kWh. Tính tiền theo bậc thang.</li>
+                        <li><strong>Kiểm tra năm nhuận:</strong> Nhập năm. Kiểm tra có phải năm nhuận không.</li>
+                        <li><strong>Đoán số (đơn giản):</strong> Đặt số bí mật. Người dùng đoán. So sánh và thông báo.
+                        </li>
+                        <li><strong>Phân loại tam giác:</strong> Nhập 3 cạnh a, b, c. Phân loại đều, cân, vuông ($a^2 +
+                            b^2 = c^2$), thường.</li>
+                        <li><strong>Kiểm tra điều kiện tham gia câu lạc bộ:</strong> Dựa trên tuổi và điểm năng khiếu.
+                        </li>
+                    </ol>
+
+                    <h3>8. Tóm tắt Bài 5 và Từ khóa</h3>
+                    <p>Bài học này đã giới thiệu cách để chương trình Python đưa ra quyết định dựa trên các điều kiện.
+                    </p>
+                    <h4>Bảng 5: Thuật ngữ và Câu lệnh mới Bài 5</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thuật ngữ/Câu lệnh (Term/Statement)</th>
+                                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>True</code>, <code>False</code></td>
+                                <td>Các giá trị Chân lý (Boolean).</td>
+                            </tr>
+                            <tr>
+                                <td>Phép toán so sánh (<code>==</code>, <code>!=</code>, <code>&gt;</code>,
+                                    <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>)</td>
+                                <td>Dùng để so sánh hai giá trị, trả về <code>True</code> hoặc <code>False</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>if dieu_kien:</code></td>
+                                <td>Bắt đầu một khối lệnh điều kiện, thực thi nếu <code>dieu_kien</code> là
+                                    <code>True</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>else:</code></td>
+                                <td>Bắt đầu một khối lệnh thực thi nếu điều kiện <code>if</code> (hoặc <code>elif</code>
+                                    trước đó) là <code>False</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>elif dieu_kien:</code></td>
+                                <td>"Else if", kiểm tra một điều kiện mới nếu các điều kiện
+                                    <code>if</code>/<code>elif</code> trước đó là <code>False</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>and</code></td>
+                                <td>Phép toán logic "VÀ". Trả về <code>True</code> nếu cả hai vế đều <code>True</code>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>or</code></td>
+                                <td>Phép toán logic "HOẶC". Trả về <code>True</code> nếu ít nhất một vế là
+                                    <code>True</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>not</code></td>
+                                <td>Phép toán logic "PHỦ ĐỊNH". Đảo ngược giá trị Boolean.</td>
+                            </tr>
+                            <tr>
+                                <td>Thụt lề (Indentation)</td>
+                                <td>Khoảng trắng ở đầu dòng, rất quan trọng để xác định các khối lệnh trong Python.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="lesson-6-content" class="lesson-content hidden">
+                    <h2>Bài 6: Vòng Lặp (Loops)</h2>
+                    <p>Bài học này sẽ giới thiệu về vòng lặp, một công cụ mạnh mẽ cho phép thực hiện các công việc lặp
+                        đi lặp lại một cách tự động và hiệu quả.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Hiểu tại sao cần vòng lặp trong lập trình: để thực hiện các công việc lặp đi lặp lại một
+                            cách hiệu quả.</li>
+                        <li>Học và sử dụng vòng lặp <code>for</code> để duyệt qua các phần tử trong một dãy (ví dụ: dãy
+                            số tạo bởi <code>range()</code>, chuỗi ký tự, danh sách).</li>
+                        <li>Sử dụng hàm <code>range()</code> với các tham số khác nhau (<code>stop</code>,
+                            <code>start, stop</code>, <code>start, stop, step</code>).</li>
+                        <li>Học và sử dụng vòng lặp <code>while</code> để thực hiện lặp khi một điều kiện còn đúng.</li>
+                        <li>Hiểu tầm quan trọng của việc cập nhật biến điều kiện trong vòng lặp <code>while</code> để
+                            tránh vòng lặp vô tận.</li>
+                        <li>Làm quen với các câu lệnh điều khiển vòng lặp: <code>break</code> (thoát vòng lặp) và
+                            <code>continue</code> (bỏ qua lần lặp hiện tại).</li>
+                        <li>Áp dụng vòng lặp để giải quyết các bài toán thực tế.</li>
+                    </ul>
+                    <h3>Giới thiệu:</h3>
+                    <p>Trong các bài tập trước (ví dụ, Bài 2 yêu cầu in ra 10 dòng "Số thứ 1", "Số thứ 2",...), bạn có
+                        thể đã cảm thấy việc gõ đi gõ lại các lệnh tương tự nhau khá nhàm chán và tốn thời gian. Nếu cần
+                        in ra 1000 dòng thì sao? Rõ ràng, chúng ta cần một cách tốt hơn.</p>
+                    <p><strong>Vòng lặp</strong> chính là giải pháp. Vòng lặp cho phép chúng ta thực thi một khối lệnh
+                        nhiều lần mà không cần phải viết lại khối lệnh đó. Python cung cấp hai loại vòng lặp chính:
+                        <code>for</code> và <code>while</code>.</p>
+
+                    <h3>1. Vòng lặp <code>for</code> (The <code>for</code> Loop)</h3>
+                    <p>Vòng lặp <code>for</code> được sử dụng để duyệt qua các phần tử của một <strong>dãy lặp được
+                            (iterable)</strong> như chuỗi ký tự, danh sách (list), hoặc một dãy số được tạo bởi hàm
+                        <code>range()</code>.</p>
+                    <p><strong>Cú pháp cơ bản:</strong></p>
+                    <pre><code class="language-python">for bien_lap in day_lap_duoc:
+    # Khối lệnh sẽ được thực thi cho mỗi phần tử trong day_lap_duoc
+    # bien_lap sẽ nhận giá trị của từng phần tử trong mỗi lần lặp
+    lenh_1
+    lenh_2
+    ...
+# Lệnh tiếp theo sau khi vòng lặp kết thúc</code></pre>
+
+                    <h4>a. Sử dụng <code>range()</code> với vòng lặp <code>for</code></h4>
+                    <ul>
+                        <li><strong><code>range(stop)</code>:</strong> Tạo một dãy số từ <code>0</code> đến
+                            <code>stop - 1</code>.
+                            <p><strong>Ví dụ 1: In các số từ 0 đến 4</strong></p>
+                            <pre><code class="language-python">print("Các số từ 0 đến 4:")
+for i in range(5):  # range(5) tạo ra dãy 0, 1, 2, 3, 4
+    print(i)</code></pre>
+                        </li>
+                        <li><strong><code>range(start, stop)</code>:</strong> Tạo một dãy số từ <code>start</code> đến
+                            <code>stop - 1</code>.
+                            <p><strong>Ví dụ 2: In các số từ 1 đến 5</strong></p>
+                            <pre><code class="language-python">print("Các số từ 1 đến 5:")
+for num in range(1, 6): # range(1, 6) tạo ra dãy 1, 2, 3, 4, 5
+    print(num)</code></pre>
+                            <p>Giải quyết bài toán in "Số thứ 1" đến "Số thứ 10":</p>
+                            <pre><code class="language-python">for i in range(1, 11):
+    print(f"Số thứ {i}")</code></pre>
+                        </li>
+                        <li><strong><code>range(start, stop, step)</code>:</strong> Tạo một dãy số từ <code>start</code>
+                            đến <code>stop - 1</code>, với mỗi bước nhảy là <code>step</code>.
+                            <p><strong>Ví dụ 3: In các số chẵn từ 2 đến 10</strong></p>
+                            <pre><code class="language-python">print("Các số chẵn từ 2 đến 10:")
+for k in range(2, 11, 2): # Dãy: 2, 4, 6, 8, 10
+    print(k)</code></pre>
+                            <p><strong>Ví dụ 4: Đếm ngược từ 5 về 1</strong></p>
+                            <pre><code class="language-python">print("Đếm ngược từ 5 về 1:")
+for count in range(5, 0, -1): # Dãy: 5, 4, 3, 2, 1
+    print(count)</code></pre>
+                        </li>
+                    </ul>
+
+                    <h4>b. Duyệt qua chuỗi ký tự</h4>
+                    <p><strong>Ví dụ 5: In từng ký tự của một chuỗi</strong></p>
+                    <pre><code class="language-python">ten = "Python"
+print(f"Các ký tự trong chuỗi '{ten}':")
+for ky_tu in ten:
+    print(ky_tu)</code></pre>
+
+                    <h4>c. Duyệt qua danh sách (List)</h4>
+                    <p><strong>Ví dụ 6: Duyệt qua một danh sách các số</strong></p>
+                    <pre><code class="language-python">danh_sach_diem = [7, 8, 5, 9, 10]
+tong_diem = 0
+print("Các điểm số:")
+for diem in danh_sach_diem:
+    print(diem)
+    tong_diem = tong_diem + diem # Hoặc tong_diem += diem
+
+print(f"Tổng các điểm số là: {tong_diem}")</code></pre>
+
+                    <h3>2. Vòng lặp <code>while</code> (The <code>while</code> Loop)</h3>
+                    <p>Vòng lặp <code>while</code> thực thi một khối lệnh lặp đi lặp lại chừng nào một <strong>điều
+                            kiện</strong> cho trước còn là <code>True</code>.</p>
+                    <p><strong>Cú pháp cơ bản:</strong></p>
+                    <pre><code class="language-python">while dieu_kien:
+    # Khối lệnh sẽ được thực thi lặp đi lặp lại
+    # chừng nào dieu_kien còn là True
+    lenh_1
+    lenh_2
+    ...
+    # Quan trọng: Cần có sự thay đổi nào đó trong khối lệnh
+    # để dieu_kien cuối cùng trở thành False, nếu không sẽ gây ra vòng lặp vô tận.
+# Lệnh tiếp theo sau khi vòng lặp kết thúc (khi dieu_kien trở thành False)</code></pre>
+                    <p><strong>Quan trọng: Tránh vòng lặp vô tận (Infinite Loops)</strong></p>
+                    <p><strong>Ví dụ 7: Sử dụng <code>while</code> để đếm từ 1 đến 5</strong></p>
+                    <pre><code class="language-python">dem = 1 # 1. Khởi tạo biến điều kiện
+print("Đếm từ 1 đến 5 dùng while:")
+while dem <= 5: # 2. Điều kiện lặp
+    print(dem)
+    dem = dem + 1 # 3. Cập nhật biến điều kiện (rất quan trọng!)
+
+print("Kết thúc đếm.")</code></pre>
+                    <p><strong>Ví dụ 8: Yêu cầu người dùng nhập số dương</strong></p>
+                    <pre><code class="language-python">so_nhap = -1
+while so_nhap <= 0:
+    so_nhap_str = input("Vui lòng nhập một số dương: ")
+    if so_nhap_str.isdigit():
+        so_nhap = int(so_nhap_str)
+        if so_nhap <= 0:
+            print("Số bạn nhập không phải là số dương. Vui lòng thử lại.")
+    else:
+        print("Dữ liệu nhập không hợp lệ. Vui lòng nhập một số.")
+
+print(f"Bạn đã nhập số dương: {so_nhap}")</code></pre>
+
+                    <h3>3. Câu lệnh điều khiển vòng lặp: <code>break</code> và <code>continue</code></h3>
+                    <h4>a. <code>break</code> (Thoát vòng lặp)</h4>
+                    <p>Thoát ngay lập tức khỏi vòng lặp hiện tại.</p>
+                    <p><strong>Ví dụ 9: Tìm số đầu tiên chia hết cho 7 trong một khoảng</strong></p>
+                    <pre><code class="language-python">print("Tìm số đầu tiên chia hết cho 7 từ 1 đến 20:")
+for i in range(1, 21):
+    print(f"Đang kiểm tra số: {i}")
+    if i % 7 == 0:
+        print(f"Tìm thấy! Số {i} chia hết cho 7.")
+        break 
+print("Kết thúc tìm kiếm.")</code></pre>
+
+                    <h4>b. <code>continue</code> (Bỏ qua lần lặp hiện tại)</h4>
+                    <p>Bỏ qua phần còn lại của khối lệnh trong lần lặp hiện tại và chuyển ngay sang lần lặp tiếp theo.
+                    </p>
+                    <p><strong>Ví dụ 10: In các số từ 1 đến 10, bỏ qua số 5</strong></p>
+                    <pre><code class="language-python">print("In các số từ 1 đến 10, bỏ qua số 5:")
+for i in range(1, 11):
+    if i == 5:
+        continue 
+    print(i)
+print("Hoàn thành.")</code></pre>
+
+                    <h3>4. Khi nào dùng <code>for</code>, khi nào dùng <code>while</code>?</h3>
+                    <ul>
+                        <li><strong>Dùng <code>for</code> khi:</strong> Biết trước số lần lặp hoặc muốn duyệt qua từng
+                            phần tử của một dãy.</li>
+                        <li><strong>Dùng <code>while</code> khi:</strong> Muốn lặp dựa trên một điều kiện mà không biết
+                            trước số lần lặp.</li>
+                    </ul>
+
+                    <h3>5. Vòng lặp lồng nhau (Nested Loops) - Giới thiệu</h3>
+                    <p>Một vòng lặp có thể chứa một vòng lặp khác bên trong nó.</p>
+                    <p><strong>Ví dụ 11: In bảng cửu chương nhỏ (từ 1 đến 3)</strong></p>
+                    <pre><code class="language-python">print("Bảng cửu chương (1-3):")
+for i in range(1, 4):
+    print(f"--- Bảng cửu chương {i} ---")
+    for j in range(1, 11):
+        print(f"{i} x {j} = {i*j}")
+    print("-" * 20)</code></pre>
+
+                    <h3>6. Bài tập</h3>
+                    <ol>
+                        <li><strong>Tổng các số:</strong> Tính tổng các số từ 1 đến 100.</li>
+                        <li><strong>Giai thừa:</strong> Nhập <code>n</code>, tính $n!$ (với $0! = 1$).</li>
+                        <li><strong>Đếm số chẵn và lẻ:</strong> Nhập <code>N</code>. Đếm số chẵn, lẻ từ 1 đến
+                            <code>N</code>.</li>
+                        <li><strong>Đoán số (cải tiến):</strong> Máy tính nghĩ số. Người dùng đoán đến khi đúng, có gợi
+                            ý.</li>
+                        <li><strong>In các số chia hết cho 3 nhưng không chia hết cho 5:</strong> Từ 1 đến 50.</li>
+                        <li><strong>Nhập mật khẩu:</strong> Đặt mật khẩu. Yêu cầu nhập đến khi đúng.</li>
+                        <li><strong>Vẽ hình chữ nhật bằng dấu <code>*</code>:</strong> Nhập chiều cao <code>h</code>,
+                            rộng <code>w</code>. Vẽ hình.</li>
+                        <li><strong>Tìm ước số chung lớn nhất (ƯCLN) đơn giản:</strong> Nhập <code>a</code>,
+                            <code>b</code>. Tìm ƯCLN.</li>
+                    </ol>
+
+                    <h3>7. Tóm tắt Bài 6 và Từ khóa</h3>
+                    <p>Vòng lặp là một công cụ cực kỳ mạnh mẽ trong lập trình, giúp tự động hóa các tác vụ lặp đi lặp
+                        lại.</p>
+                    <h4>Bảng 6: Thuật ngữ và Câu lệnh mới Bài 6</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thuật ngữ/Câu lệnh (Term/Statement)</th>
+                                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vòng lặp (Loop)</td>
+                                <td>Cấu trúc cho phép thực thi một khối lệnh nhiều lần.</td>
+                            </tr>
+                            <tr>
+                                <td><code>for bien in day_lap_duoc:</code></td>
+                                <td>Vòng lặp duyệt qua từng phần tử của <code>day_lap_duoc</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>range(stop)</code> / <code>range(start, stop)</code> /
+                                    <code>range(start, stop, step)</code></td>
+                                <td>Hàm tạo ra một dãy số.</td>
+                            </tr>
+                            <tr>
+                                <td><code>while dieu_kien:</code></td>
+                                <td>Vòng lặp thực thi khối lệnh chừng nào <code>dieu_kien</code> còn <code>True</code>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vòng lặp vô tận (Infinite Loop)</td>
+                                <td>Vòng lặp không bao giờ kết thúc do điều kiện luôn đúng.</td>
+                            </tr>
+                            <tr>
+                                <td><code>break</code></td>
+                                <td>Câu lệnh thoát ngay lập tức khỏi vòng lặp hiện tại.</td>
+                            </tr>
+                            <tr>
+                                <td><code>continue</code></td>
+                                <td>Câu lệnh bỏ qua phần còn lại của lần lặp hiện tại và chuyển sang lần lặp tiếp theo.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vòng lặp lồng nhau (Nested Loops)</td>
+                                <td>Một vòng lặp nằm bên trong một vòng lặp khác.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="lesson-7-content" class="lesson-content hidden">
+                    <h2>Bài 7: Mảng (Khái niệm), Danh sách (Lists) và <code>range</code></h2>
+                    <p>Bài học này sẽ đi sâu vào Danh sách (List) - một cấu trúc dữ liệu cực kỳ quan trọng trong Python,
+                        cùng với việc ôn lại và mở rộng kiến thức về `range`.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Hiểu khái niệm cơ bản về cấu trúc dữ liệu để lưu trữ nhiều mục.</li>
+                        <li>Học chi tiết về <strong>Danh sách (List)</strong> trong Python: cách tạo, truy cập phần tử,
+                            thay đổi, và các thao tác phổ biến.</li>
+                        <li>Ôn lại và hiểu sâu hơn về đối tượng <code>range</code> và cách chuyển đổi nó thành danh
+                            sách.</li>
+                        <li>Kết hợp danh sách với vòng lặp (<code>for</code>, <code>while</code>) và câu lệnh điều kiện
+                            (<code>if-elif-else</code>) để xử lý dữ liệu.</li>
+                        <li>Sử dụng các kỹ thuật nhập và xuất dữ liệu liên quan đến danh sách.</li>
+                        <li>Làm quen với khái niệm "Mảng" (Array) và sự khác biệt/tương đồng với Danh sách trong Python.
+                        </li>
+                        <li>Áp dụng kiến thức tổng hợp để giải các bài toán lập trình.</li>
+                    </ul>
+                    <h3>Giới thiệu:</h3>
+                    <p>Đến nay, chúng ta chủ yếu làm việc với các biến lưu trữ một giá trị duy nhất (ví dụ:
+                        <code>tuoi = 10</code>, <code>ten = "An"</code>). Nhưng nếu chúng ta muốn lưu trữ tên của tất cả
+                        học sinh trong một lớp, hoặc điểm số của nhiều môn học, việc tạo ra hàng chục biến riêng lẻ sẽ
+                        rất bất tiện.</p>
+                    <p>Đây là lúc các <strong>cấu trúc dữ liệu</strong> phát huy tác dụng. Chúng cho phép chúng ta tổ
+                        chức và lưu trữ một tập hợp các mục dữ liệu một cách có trật tự. Trong Python, <strong>Danh sách
+                            (List)</strong> là một cấu trúc dữ liệu cực kỳ linh hoạt và được sử dụng rộng rãi. "Mảng"
+                        (Array) là một khái niệm tương tự trong nhiều ngôn ngữ khác, và chúng ta cũng sẽ tìm hiểu sơ qua
+                        về nó.</p>
+
+                    <h3>1. Danh sách (Lists) trong Python</h3>
+                    <h4>a. Danh sách là gì?</h4>
+                    <p>Một <strong>Danh sách (List)</strong> trong Python là một tập hợp các mục được sắp xếp theo một
+                        thứ tự nhất định.</p>
+                    <ul>
+                        <li><strong>Có thứ tự (Ordered):</strong> Các mục được lưu trữ theo một trình tự cụ thể.</li>
+                        <li><strong>Có thể chứa các kiểu dữ liệu khác nhau.</strong></li>
+                        <li><strong>Khả biến (Mutable):</strong> Bạn có thể thay đổi nội dung của danh sách sau khi nó
+                            được tạo.</li>
+                        <li>Được bao quanh bởi dấu ngoặc vuông <code>[]</code>, và các mục được phân tách bởi dấu phẩy
+                            <code>,</code>.</li>
+                    </ul>
+
+                    <h4>b. Tạo Danh sách</h4>
+                    <ul>
+                        <li><strong>Tạo danh sách rỗng:</strong>
+                            <pre><code class="language-python">danh_sach_rong_1 = []
+danh_sach_rong_2 = list()
+print(f"Danh sách rỗng 1: {danh_sach_rong_1}")
+print(f"Danh sách rỗng 2: {danh_sach_rong_2}")</code></pre>
+                        </li>
+                        <li><strong>Tạo danh sách với các giá trị ban đầu:</strong>
+                            <pre><code class="language-python">so_nguyen = [1, 2, 3, 4, 5]
+ten_hoc_sinh = ["An", "Bình", "Cúc"]
+hon_hop = [1, "Hai", 3.0, True]
+
+print(f"Danh sách số nguyên: {so_nguyen}")
+print(f"Danh sách tên học sinh: {ten_hoc_sinh}")
+print(f"Danh sách hỗn hợp: {hon_hop}")</code></pre>
+                        </li>
+                    </ul>
+
+                    <h4>c. Truy cập các phần tử trong Danh sách (Indexing)</h4>
+                    <p>Mỗi mục trong danh sách có một vị trí (chỉ số - index) duy nhất, bắt đầu từ <code>0</code>.</p>
+                    <ul>
+                        <li><strong>Chỉ số dương:</strong>
+                            <pre><code class="language-python">trai_cay = ["táo", "chuối", "cam", "xoài"]
+#             0        1       2       3
+phan_tu_dau_tien = trai_cay[0] # "táo"
+phan_tu_thu_ba = trai_cay[2]   # "cam"
+print(f"Phần tử đầu tiên: {phan_tu_dau_tien}")
+print(f"Phần tử thứ ba: {phan_tu_thu_ba}")</code></pre>
+                        </li>
+                        <li><strong>Chỉ số âm:</strong> <code>-1</code> là phần tử cuối cùng.
+                            <pre><code class="language-python">trai_cay = ["táo", "chuối", "cam", "xoài"]
+#            -4       -3      -2      -1
+phan_tu_cuoi_cung = trai_cay[-1] # "xoài"
+phan_tu_ke_cuoi = trai_cay[-2]  # "cam"
+print(f"Phần tử cuối cùng: {phan_tu_cuoi_cung}")
+print(f"Phần tử kế cuối: {phan_tu_ke_cuoi}")</code></pre>
+                        </li>
+                    </ul>
+
+                    <h4>d. Cắt lát Danh sách (Slicing)</h4>
+                    <p>Cú pháp: <code>ten_danh_sach[start:stop:step]</code></p>
+                    <pre><code class="language-python">numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(f"Từ index 2 đến 4: {numbers[2:5]}") # [2, 3, 4]
+print(f"Từ đầu đến index 3: {numbers[:4]}")  # [0, 1, 2, 3]
+print(f"Từ index 5 đến cuối: {numbers[5:]}") # [5, 6, 7, 8, 9]
+print(f"Đảo ngược danh sách: {numbers[::-1]}")</code></pre>
+
+                    <h4>e. Thay đổi phần tử trong Danh sách</h4>
+                    <pre><code class="language-python">mau_sac = ["đỏ", "xanh", "vàng"]
+print(f"Danh sách ban đầu: {mau_sac}")
+mau_sac[1] = "tím" # Thay đổi "xanh" thành "tím"
+print(f"Danh sách sau khi thay đổi: {mau_sac}")</code></pre>
+
+                    <h4>f. Các thao tác và phương thức phổ biến của Danh sách</h4>
+                    <ul>
+                        <li><strong>Lấy độ dài:</strong> <code>len(danh_sach)</code></li>
+                        <li><strong>Thêm phần tử:</strong> <code>append(item)</code>, <code>insert(index, item)</code>
+                        </li>
+                        <li><strong>Xóa phần tử:</strong> <code>remove(item)</code>, <code>pop()</code>,
+                            <code>pop(index)</code>, <code>del danh_sach[index]</code>, <code>clear()</code></li>
+                        <li><strong>Tìm kiếm và đếm:</strong> <code>index(item)</code>, <code>count(item)</code></li>
+                        <li><strong>Sắp xếp và Đảo ngược:</strong> <code>sort()</code>, <code>sort(reverse=True)</code>,
+                            <code>reverse()</code>, <code>sorted(danh_sach)</code></li>
+                        <li><strong>Nối danh sách:</strong> <code>+</code></li>
+                        <li><strong>Lặp lại danh sách:</strong> <code>*</code></li>
+                        <li><strong>Kiểm tra sự tồn tại:</strong> <code>in</code>, <code>not in</code></li>
+                    </ul>
+                    <p><em>(Xem chi tiết các ví dụ về phương thức trong phần "Source Report" gốc của Bài 7)</em></p>
+
+                    <h3>2. Ôn tập về <code>range</code> và Danh sách</h3>
+                    <p><code>range()</code> tạo ra một đối tượng dãy số, cần dùng <code>list()</code> để chuyển thành
+                        danh sách.</p>
+                    <pre><code class="language-python">danh_sach_tu_range = list(range(5)) # [0, 1, 2, 3, 4]
+print(f"Danh sách từ range: {danh_sach_tu_range}")
+danh_sach_le = list(range(1, 10, 2)) # [1, 3, 5, 7, 9]
+print(f"Danh sách các số lẻ: {danh_sach_le}")</code></pre>
+
+                    <h3>3. Kết hợp Danh sách với Vòng lặp và Câu lệnh Điều kiện</h3>
+                    <h4>a. Duyệt qua Danh sách bằng vòng lặp <code>for</code></h4>
+                    <pre><code class="language-python">hoc_sinh = ["An", "Bình", "Cúc"]
+print("Danh sách học sinh:")
+for ten in hoc_sinh:
+    print(f"- {ten}")
+
+print("\nHọc sinh và số thứ tự:")
+for i in range(len(hoc_sinh)):
+    print(f"{i+1}. {hoc_sinh[i]}")</code></pre>
+
+                    <h4>b. Xây dựng Danh sách bằng Vòng lặp</h4>
+                    <p><strong>Ví dụ: Tạo danh sách các số bình phương từ 1 đến 5</strong></p>
+                    <pre><code class="language-python">danh_sach_binh_phuong = []
+for i in range(1, 6):
+    binh_phuong = i * i
+    danh_sach_binh_phuong.append(binh_phuong)
+print(f"Danh sách các số bình phương: {danh_sach_binh_phuong}")
+
+# List Comprehension
+binh_phuong_comprehension = [x**2 for x in range(1, 6)]
+print(f"Bình phương (list comprehension): {binh_phuong_comprehension}")</code></pre>
+
+                    <h4>c. Xử lý các phần tử trong Danh sách với Câu lệnh Điều kiện</h4>
+                    <p><strong>Ví dụ: Đếm số chẵn trong một danh sách</strong></p>
+                    <pre><code class="language-python">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+so_luong_chan = 0
+danh_sach_chan = []
+for num in numbers:
+    if num % 2 == 0:
+        so_luong_chan += 1
+        danh_sach_chan.append(num)
+print(f"Trong danh sách {numbers}:")
+print(f"- Có {so_luong_chan} số chẵn.")
+print(f"- Các số chẵn là: {danh_sach_chan}")</code></pre>
+
+                    <h3>4. Khái niệm "Mảng" (Array) - Một lưu ý nhỏ</h3>
+                    <p>Trong nhiều ngôn ngữ khác, "Mảng" có kích thước cố định và thường chứa các phần tử cùng kiểu.
+                        Danh sách (List) của Python linh hoạt hơn. Python có module <code>array</code> và thư viện
+                        <code>NumPy</code> cho các mảng hiệu suất cao, nhưng List là đủ cho khóa học này.</p>
+
+                    <h3>5. Nhập và Xuất dữ liệu với Danh sách</h3>
+                    <h4>a. Nhập một danh sách các mục từ người dùng</h4>
+                    <pre><code class="language-python"># Nhập một dòng các số và chuyển thành danh sách số nguyên:
+# danh_sach_so_lc = [int(x) for x in input("Nhập các số (LC): ").split()]
+# print(f"Danh sách số (LC): {danh_sach_so_lc}")
+
+# Nhập một số lượng cố định các mục, mỗi mục trên một dòng:
+# so_luong_sv = int(input("Nhập số lượng sinh viên: "))
+# danh_sach_ten_sv = []
+# for i in range(so_luong_sv):
+#     ten = input(f"Nhập tên sinh viên thứ {i+1}: ")
+#     danh_sach_ten_sv.append(ten)
+# print(f"Danh sách tên sinh viên: {danh_sach_ten_sv}")</code></pre>
+
+                    <h4>b. Xuất Danh sách</h4>
+                    <pre><code class="language-python">ten_hoc_sinh = ["An", "Bình", "Cúc"]
+print(ten_hoc_sinh) # ['An', 'Bình', 'Cúc']
+
+print("Danh sách tên (mỗi tên một dòng):")
+for ten in ten_hoc_sinh:
+    print(ten)
+
+# In các phần tử có định dạng (cách nhau bởi dấu phẩy và cách):
+# so_nguyen = [1, 2, 3, 4, 5]
+# danh_sach_so_str = [str(x) for x in so_nguyen]
+# chuoi_ket_qua = ", ".join(danh_sach_so_str)
+# print(f"Các số cách nhau bởi dấu phẩy: {chuoi_ket_qua}")</code></pre>
+
+                    <h3>6. Bài tập</h3>
+                    <ol>
+                        <li><strong>Quản lý danh sách công việc (To-Do List):</strong> Cho phép thêm, xem, đánh dấu hoàn
+                            thành (xóa), thoát.</li>
+                        <li><strong>Nhập và Tính toán trên Danh sách Số:</strong> Nhập dãy số. Tính tổng, trung bình,
+                            min/max (tự viết logic min/max).</li>
+                        <li><strong>Lọc Danh sách:</strong> Cho danh sách số, tạo danh sách mới chỉ chứa số dương.</li>
+                        <li><strong>Đảo ngược Chuỗi bằng Danh sách:</strong> Nhập chuỗi, chuyển thành list, đảo ngược
+                            list, nối lại thành chuỗi.</li>
+                        <li><strong>Tìm các phần tử chung:</strong> Cho 2 danh sách, tìm các phần tử chung.</li>
+                        <li><strong>Loại bỏ các phần tử trùng lặp:</strong> Cho danh sách, tạo danh sách mới không có
+                            phần tử trùng.</li>
+                        <li><strong>Mật độ dân số:</strong> Cho danh sách tên thành phố, diện tích, dân số. Tính mật độ,
+                            in ra.</li>
+                    </ol>
+
+                    <h3>7. Tóm tắt Bài 7 và Từ khóa</h3>
+                    <p>Danh sách là một trong những cấu trúc dữ liệu mạnh mẽ và linh hoạt nhất trong Python.</p>
+                    <h4>Bảng 7: Thuật ngữ và Thao tác mới/ôn tập với Danh sách Bài 7</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thuật ngữ/Thao tác (Term/Operation)</th>
+                                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Danh sách (List) <code>[]</code></td>
+                                <td>Cấu trúc dữ liệu lưu trữ tập hợp các mục có thứ tự, khả biến.</td>
+                            </tr>
+                            <tr>
+                                <td>Chỉ số (Index)</td>
+                                <td>Vị trí của một phần tử trong danh sách, bắt đầu từ 0.</td>
+                            </tr>
+                            <tr>
+                                <td>Cắt lát (Slicing) <code>[start:stop:step]</code></td>
+                                <td>Lấy một phần của danh sách.</td>
+                            </tr>
+                            <tr>
+                                <td><code>list.append(item)</code></td>
+                                <td>Thêm <code>item</code> vào cuối danh sách.</td>
+                            </tr>
+                            <tr>
+                                <td><code>list.insert(index, item)</code></td>
+                                <td>Chèn <code>item</code> vào vị trí <code>index</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>list.remove(item)</code></td>
+                                <td>Xóa <code>item</code> đầu tiên tìm thấy.</td>
+                            </tr>
+                            <tr>
+                                <td><code>list.pop(index)</code></td>
+                                <td>Xóa và trả về phần tử tại <code>index</code> (mặc định là cuối cùng).</td>
+                            </tr>
+                            <tr>
+                                <td><code>len(list)</code></td>
+                                <td>Trả về số lượng phần tử trong danh sách.</td>
+                            </tr>
+                            <tr>
+                                <td><code>list.sort()</code> / <code>list.sort(reverse=True)</code></td>
+                                <td>Sắp xếp danh sách (tại chỗ).</td>
+                            </tr>
+                            <tr>
+                                <td><code>list.reverse()</code></td>
+                                <td>Đảo ngược danh sách (tại chỗ).</td>
+                            </tr>
+                            <tr>
+                                <td><code>item in list</code></td>
+                                <td>Kiểm tra <code>item</code> có trong <code>list</code> hay không (trả về Boolean).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>list(range(...))</code></td>
+                                <td>Tạo danh sách từ đối tượng <code>range</code>.</td>
+                            </tr>
+                            <tr>
+                                <td>List Comprehension <code>[expr for item in iterable if cond]</code></td>
+                                <td>Cách tạo danh sách ngắn gọn.</td>
+                            </tr>
+                            <tr>
+                                <td><code>map(function, iterable)</code></td>
+                                <td>Áp dụng hàm cho từng phần tử của iterable.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="lesson-8-content" class="lesson-content hidden">
+                    <h2>Bài 8: Ôn tập Tổng hợp (Bài 1 - Bài 7)</h2>
+                    <p>Bài học này là cơ hội để hệ thống hóa lại toàn bộ kiến thức đã học và áp dụng vào việc giải quyết
+                        các bài toán đa dạng, từ cơ bản đến nâng cao.</p>
+                    <h3>Mục tiêu Bài học:</h3>
+                    <ul>
+                        <li>Hệ thống hóa lại các kiến thức cốt lõi đã học từ Bài 1 đến Bài 7.</li>
+                        <li>Hiểu rõ mối liên hệ và cách kết hợp các khái niệm khác nhau (biến, kiểu dữ liệu, nhập/xuất,
+                            câu lệnh điều kiện, vòng lặp, danh sách) để giải quyết các vấn đề lập trình.</li>
+                        <li>Luyện tập thông qua một loạt các bài tập đa dạng, từ cơ bản đến nâng cao, giúp củng cố kỹ
+                            năng và tư duy lập trình.</li>
+                    </ul>
+                    <h3>Giới thiệu:</h3>
+                    <p>Qua 7 bài học đầu tiên, chúng ta đã cùng nhau khám phá những viên gạch nền tảng của ngôn ngữ lập
+                        trình Python. Từ những lệnh <code>print()</code> đơn giản, cách sử dụng biến, các kiểu dữ liệu,
+                        cho đến việc điều khiển luồng chương trình bằng câu lệnh điều kiện, vòng lặp và xử lý các tập
+                        hợp dữ liệu với danh sách.</p>
+                    <p>Bài học này là cơ hội để chúng ta nhìn lại toàn bộ hành trình, củng cố kiến thức và quan trọng
+                        hơn là áp dụng những gì đã học vào việc giải quyết các bài toán thực tế hơn. Lập trình không chỉ
+                        là học thuộc lòng cú pháp, mà là rèn luyện tư duy giải quyết vấn đề bằng công cụ là ngôn ngữ lập
+                        trình.</p>
+
+                    <h3>I. Tổng kết kiến thức trọng tâm</h3>
+                    <h4>1. Bài 1: Làm quen lập trình Python</h4>
+                    <ul>
+                        <li><strong>Lập trình:</strong> "Ra lệnh" cho máy tính. Python là một ngôn ngữ lập trình.</li>
+                        <li><strong>Lệnh <code>print()</code>:</strong> Hiển thị thông tin.</li>
+                        <li><strong>Phép toán số học cơ bản:</strong> <code>+</code>, <code>-</code>, <code>*</code>,
+                            <code>/</code>.</li>
+                    </ul>
+                    <h4>2. Bài 2: Biến, Kiểu dữ liệu, và Phép toán cơ bản</h4>
+                    <ul>
+                        <li><strong>Biến (Variable):</strong> Tên gọi của một giá trị được lưu trữ
+                            (<code>tuoi = 10</code>).</li>
+                        <li><strong>Kiểu dữ liệu:</strong> <code>int</code>, <code>float</code>, <code>str</code>,
+                            <code>bool</code>.</li>
+                        <li><strong>Nối chuỗi:</strong> Dùng dấu <code>+</code>.</li>
+                    </ul>
+                    <h4>3. Bài 3: Sử dụng trình soạn thảo, Chú thích, và Hàm Toán học</h4>
+                    <ul>
+                        <li><strong>Chú thích (Comment):</strong> <code>#</code>, <code>"""..."""</code>.</li>
+                        <li><strong>Thư viện <code>math</code>:</strong> <code>import math</code>
+                            (<code>math.sqrt()</code>, <code>math.pi</code>, etc.).</li>
+                        <li><strong>Hàm tích hợp:</strong> <code>abs()</code>, <code>round()</code>.</li>
+                    </ul>
+                    <h4>4. Bài 4: Nhập dữ liệu, Chuyển đổi kiểu và Xuất dữ liệu</h4>
+                    <ul>
+                        <li><strong>Nhập dữ liệu:</strong> <code>input()</code> (luôn trả về <code>str</code>).</li>
+                        <li><strong>Chuyển đổi kiểu:</strong> <code>int()</code>, <code>float()</code>,
+                            <code>str()</code>.</li>
+                        <li><strong>f-strings:</strong> <code>f"Value: {variable:.2f}"</code>.</li>
+                        <li><strong>Nhập nhiều giá trị:</strong> <code>split()</code>, <code>map()</code>, list
+                            comprehension.</li>
+                    </ul>
+                    <h4>5. Bài 5: Ra Quyết Định</h4>
+                    <ul>
+                        <li><strong>Phép toán so sánh:</strong> <code>==</code>, <code>!=</code>, <code>&gt;</code>,
+                            <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>.</li>
+                        <li><strong>Câu lệnh:</strong> <code>if</code>, <code>else</code>, <code>elif</code>.</li>
+                        <li><strong>Phép toán logic:</strong> <code>and</code>, <code>or</code>, <code>not</code>.</li>
+                    </ul>
+                    <h4>6. Bài 6: Vòng Lặp</h4>
+                    <ul>
+                        <li><strong>Vòng lặp <code>for</code>:</strong> <code>for item in iterable:</code>. Dùng với
+                            <code>range()</code>.</li>
+                        <li><strong>Vòng lặp <code>while</code>:</strong> <code>while condition:</code>. Cần cập nhật
+                            biến điều kiện.</li>
+                        <li><strong>Điều khiển vòng lặp:</strong> <code>break</code>, <code>continue</code>.</li>
+                    </ul>
+                    <h4>7. Bài 7: Mảng (Khái niệm), Danh sách (Lists) và <code>range</code></h4>
+                    <ul>
+                        <li><strong>Danh sách (List):</strong> <code>my_list = []</code>. Có thứ tự, khả biến.</li>
+                        <li><strong>Thao tác:</strong> Indexing, slicing, <code>append()</code>, <code>remove()</code>,
+                            <code>sort()</code>, etc.</li>
+                        <li><strong>Tạo list từ range:</strong> <code>list(range(n))</code>.</li>
+                    </ul>
+
+                    <h3>II. Bài tập Ôn tập Tổng hợp</h3>
+                    <p>Dưới đây là danh sách 30 bài tập được sắp xếp theo độ khó tăng dần, kết hợp kiến thức từ các bài
+                        đã học.</p>
+                    <h4>Nhóm 1: Cơ bản (Bài 1-3)</h4>
+                    <ol>
+                        <li><strong>Lời chào:</strong> In "Chào mừng bạn đến với Python!".</li>
+                        <li><strong>Thông tin cá nhân:</strong> In tên, tuổi, lớp trên 3 dòng.</li>
+                        <li><strong>Tính tổng hai số:</strong> Gán 2 số, tính và in tổng.</li>
+                        <li><strong>Diện tích hình chữ nhật:</strong> Gán chiều dài, rộng. Tính và in diện tích.</li>
+                        <li><strong>Phép chia:</strong> Gán x, y. Tính <code>x / y</code> và <code>x // y</code>. Giải
+                            thích.</li>
+                        <li><strong>Nhiệt độ:</strong> Cho độ C, tính và in độ F ($F = C \times \cfrac{9}{5} + 32$).
+                        </li>
+                        <li><strong>Sử dụng <code>math.pi</code>:</strong> Tính chu vi hình tròn bán kính 5, làm tròn 2
+                            chữ số thập phân.</li>
+                    </ol>
+                    <h4>Nhóm 2: Nhập/Xuất và Điều kiện (Bài 4-5)</h4>
+                    <ol start="8">
+                        <li><strong>Chào hỏi theo tên:</strong> Nhập tên, in "Xin chào, [tên]!".</li>
+                        <li><strong>Tuổi tác:</strong> Nhập năm sinh, tính tuổi (năm hiện tại 2024), in ra.</li>
+                        <li><strong>Kiểm tra số chẵn/lẻ:</strong> Nhập số nguyên, in chẵn/lẻ.</li>
+                        <li><strong>So sánh hai số:</strong> Nhập a, b. In số lớn hơn hoặc bằng nhau.</li>
+                        <li><strong>Đủ tuổi bầu cử:</strong> Nhập tuổi. Nếu >= 18, in "Đủ tuổi". Ngược lại, "Chưa đủ
+                            tuổi".</li>
+                        <li><strong>Điểm và xếp loại đơn giản:</strong> Nhập điểm. Nếu >= 5, in "Đạt". Ngược lại, "Không
+                            đạt".</li>
+                        <li><strong>Kiểm tra mật khẩu đơn giản:</strong> Mật khẩu cố định. Nhập. Nếu đúng, "Đăng nhập
+                            thành công". Sai, "Sai mật khẩu".</li>
+                    </ol>
+                    <h4>Nhóm 3: Vòng lặp (Bài 6)</h4>
+                    <ol start="15">
+                        <li><strong>In số từ 1 đến N:</strong> Nhập N. In từ 1 đến N.</li>
+                        <li><strong>Bảng cửu chương:</strong> Nhập k (1-9). In bảng cửu chương của k.</li>
+                        <li><strong>Tính tổng S = 1 + 2 +... + N:</strong> Nhập N. Tính S.</li>
+                        <li><strong>Đếm ngược:</strong> Nhập N. Đếm ngược từ N về 1.</li>
+                        <li><strong>Tìm số chia hết cho 3 và 5:</strong> In các số từ 1-50 chia hết cho cả 3 và 5.</li>
+                        <li><strong>Nhập số dương (dùng <code>while</code>):</strong> Yêu cầu nhập đến khi là số dương.
+                        </li>
+                    </ol>
+                    <h4>Nhóm 4: Danh sách và Kết hợp (Bài 7 và Tổng hợp)</h4>
+                    <ol start="21">
+                        <li><strong>Tạo và In Danh sách:</strong> Tạo list 5 trái cây. In list. In mỗi trái cây 1 dòng.
+                        </li>
+                        <li><strong>Thao tác với Danh sách:</strong> Cho <code>numbers = [1, 5, 2, 8, 3]</code>. Thêm
+                            10. Xóa 2. Sắp xếp tăng dần. In sau mỗi bước.</li>
+                        <li><strong>Nhập danh sách điểm và tính trung bình:</strong> Nhập 5 điểm. Lưu vào list. Tính
+                            trung bình.</li>
+                        <li><strong>Tìm phần tử lớn nhất trong danh sách:</strong> Nhập dãy số. Tìm max (không dùng hàm
+                            <code>max()</code>).</li>
+                        <li><strong>Lọc các số chẵn từ danh sách:</strong> Nhập dãy số. Tạo list mới chỉ chứa số chẵn.
+                        </li>
+                        <li><strong>Đếm số lần xuất hiện:</strong> Cho <code>data = [1, 2, 2, 3, 2, 4, 2]</code>. Nhập
+                            x. Đếm x trong data.</li>
+                        <li><strong>Kiểm tra Palindrome (Chuỗi đối xứng):</strong> Nhập chuỗi. Kiểm tra có đối xứng
+                            không.</li>
+                        <li><strong>Trò chơi đoán số (hoàn chỉnh hơn):</strong> Máy tính nghĩ số 1-100. Người dùng có 7
+                            lần đoán. Gợi ý lớn/nhỏ.</li>
+                        <li><strong>Quản lý điểm sinh viên đơn giản:</strong> Dùng list lưu tên, list lưu điểm. Cho phép
+                            nhập, tìm điểm theo tên, hiển thị SV có điểm > 5.0.</li>
+                        <li><strong>Ma trận đơn giản (Danh sách của Danh sách):</strong> Tạo ma trận 3x3. In dạng bảng.
+                            Tính tổng đường chéo chính ($1+5+9$).</li>
+                    </ol>
+                    <p>Chúc các bạn học sinh ôn tập hiệu quả và giải quyết thành công các bài tập này! Hãy nhớ rằng,
+                        thực hành thường xuyên là chìa khóa để trở nên thành thạo trong lập trình.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const lessonContents = document.querySelectorAll('.lesson-content');
+            const codeBlocks = document.querySelectorAll('pre');
+
+            // Function to switch lessons
+            function switchLesson(lessonId) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.lesson === lessonId) {
+                        link.classList.add('active');
+                    }
+                });
+                lessonContents.forEach(content => {
+                    content.classList.remove('active-content');
+                    content.classList.add('hidden');
+                    if (content.id === lessonId) {
+                        content.classList.remove('hidden');
+                        content.classList.add('active-content');
+                        content.scrollTop = 0; // Scroll to top of new content
+                        document.querySelector('main').scrollTop = 0; // Scroll main area to top
+                        if (typeof MathJax !== 'undefined' && typeof MathJax.typeset === 'function') {
+                            MathJax.typesetPromise([content]).catch(function (err) {
+                                console.error('MathJax typeset error: ' + err.message);
+                            });
+                        }
+                    }
+                });
+            }
+
+            // Event listeners for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const lessonId = this.dataset.lesson;
+                    switchLesson(lessonId);
+                });
+            });
+
+            // Add copy buttons to code blocks
+            codeBlocks.forEach(block => {
+                const codeElement = block.querySelector('code');
+                if (codeElement) {
+                    const copyButton = document.createElement('button');
+                    copyButton.textContent = 'Copy';
+                    copyButton.classList.add('copy-button');
+
+                    copyButton.addEventListener('click', () => {
+                        const codeToCopy = codeElement.innerText;
+                        const tempTextArea = document.createElement('textarea');
+                        tempTextArea.value = codeToCopy;
+                        document.body.appendChild(tempTextArea);
+                        tempTextArea.select();
+                        try {
+                            document.execCommand('copy');
+                            copyButton.textContent = 'Copied!';
+                            setTimeout(() => {
+                                copyButton.textContent = 'Copy';
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy: ', err);
+                            copyButton.textContent = 'Error';
+                            setTimeout(() => {
+                                copyButton.textContent = 'Copy';
+                            }, 2000);
+                        }
+                        document.body.removeChild(tempTextArea);
+                    });
+                    block.appendChild(copyButton);
+                }
+            });
+
+            // Activate the first lesson by default and typeset MathJax
+            if (navLinks.length > 0) {
+                switchLesson(navLinks[0].dataset.lesson);
+            }
+        });
+    </script>
+</body>
+
+</html>

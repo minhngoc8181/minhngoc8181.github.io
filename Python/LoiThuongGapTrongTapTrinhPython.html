@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các Lỗi Thường Gặp Khi Lập Trình Python</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* gray-100 */
+            color: #1f2937; /* gray-800 */
+        }
+       .container {
+            max-width: 900px; /* Increased width for more content */
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700;
+            color: #1d4ed8; /* blue-700 */
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        h2 { /* Category Titles */
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 600;
+            color: #1e40af; /* blue-800 */
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #3b82f6; /* blue-500 */
+            padding-bottom: 0.75rem;
+        }
+        h3 { /* Specific Error Titles */
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600;
+            color: #1e3a8a; /* blue-900 */
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #93c5fd; /* blue-300 */
+            padding-bottom: 0.5rem;
+        }
+         h4 { /* Sub-sections like "Ví dụ", "Giải thích" */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600;
+            color: #111827; /* gray-900 */
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        p, li {
+            line-height: 1.75;
+            margin-bottom: 0.75rem;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        pre {
+            background-color: #1f2937; /* gray-800 */
+            color: #f3f4f6; /* gray-100 */
+            padding: 1rem;
+            border-radius: 0.375rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        code.inline-code {
+            background-color: #e5e7eb; /* gray-200 */
+            color: #be123c; /* rose-700 */
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+       .error-message-box {
+            background-color: #fee2e2; /* red-100 */
+            color: #b91c1c; /* red-700 */
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            border-left: 4px solid #ef4444; /* red-500 */
+            margin-bottom: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+       .solution-box {
+            background-color: #dcfce7; /* green-100 */
+            border-left: 4px solid #22c55e; /* green-500 */
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+        }
+       .tip-box {
+            background-color: #fef9c3; /* yellow-100 */
+            border-left: 4px solid #f59e0b; /* amber-500 */
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+        }
+       .logic-error-box {
+            background-color: #e0e7ff; /* indigo-100 */
+            border-left: 4px solid #6366f1; /* indigo-500 */
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin-top: 1.5rem;
+        }
+        /* Placeholder comment for Tailwind JIT */
+       .placeholder-comment { display: none!important; }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sổ Tay "Bắt Bệnh" Code Python</h1>
+        <p class="text-center text-lg mb-8">Chào mừng các bạn nhỏ đến với "bệnh viện" của code! Gặp lỗi khi lập trình là chuyện rất bình thường, ngay cả các lập trình viên giỏi nhất cũng gặp lỗi mỗi ngày. Điều quan trọng là chúng ta học cách "bắt bệnh" và "chữa bệnh" cho code của mình. Trang này sẽ giúp các bạn nhận biết một số lỗi thường gặp, hiểu tại sao chúng xảy ra và làm thế nào để sửa chúng nhé!</p>
+
+        <section id="compile-syntax-errors">
+            <h2>I. Lỗi Biên Dịch / Cú Pháp / Từ Khóa</h2>
+            <p>Đây là những lỗi mà Python phát hiện ra ngay khi bạn cố gắng chạy chương trình (hoặc đôi khi ngay cả khi bạn đang gõ code, nếu trình soạn thảo của bạn thông minh). Chúng giống như lỗi "chính tả" hoặc "ngữ pháp" trong tiếng Việt vậy.</p>
+
+            <h3 id="syntax-error">1. SyntaxError</h3>
+            <h4>Tên lỗi: <code class="inline-code">SyntaxError</code></h4>
+            <p><strong>Khi nào xảy ra?</strong> Khi bạn viết code không đúng theo quy tắc (cú pháp) của ngôn ngữ Python.</p>
+            
+            <h4>Các trường hợp phổ biến và Ví dụ:</h4>
+            <ol class="list-decimal space-y-4">
+                <li>
+                    <p><strong>Thiếu dấu ngoặc đóng (Missing closing parenthesis/bracket/brace):</strong></p>
+                    <pre><code class="language-python">print("Chào bạn" # Thiếu dấu ) ở cuối</code></pre>
+                    <div class="error-message-box">SyntaxError: unexpected EOF while parsing <br>(Đôi khi có thể là: SyntaxError: '(' was never closed)</div>
+                    <p><strong>Giải thích:</strong> Bạn đã mở một dấu ngoặc <code class="inline-code">(</code>, <code class="inline-code">
+print(danh_sach) # Chỉ số hợp lệ là 0, 1, 2</code></pre>
+            <h4>Thông báo lỗi thường gặp:</h4>
+            <div class="error-message-box">IndexError: list index out of range</div>
+            <h4>Giải thích:</h4>
+            <p>Danh sách trên chỉ có 3 phần tử (chỉ số từ 0 đến 2). Không có phần tử nào ở chỉ số 3.</p>
+            <h4>Cách khắc phục:</h4>
+            <div class="solution-box">
+                <p>Đảm bảo chỉ số nằm trong khoảng từ <code class="inline-code">0</code> đến <code class="inline-code">len(danh_sach) - 1</code>.</p>
+            </div>
+            <h4>Cách phòng tránh:</h4>
+            <div class="tip-box">
+                <p>Kiểm tra độ dài của danh sách/chuỗi trước khi truy cập bằng chỉ số, đặc biệt trong vòng lặp hoặc khi chỉ số được tính toán.</p>
+            </div>
+
+            <h3 id="zero-division-error">5. ZeroDivisionError</h3>
+            <h4>Tên lỗi: <code class="inline-code">ZeroDivisionError</code></h4>
+            <p><strong>Khi nào xảy ra?</strong> Khi bạn cố gắng thực hiện phép chia một số cho 0.</p>
+            <h4>Ví dụ gây lỗi:</h4>
+            <pre><code class="language-python">ket_qua = 100 / 0</code></pre>
+            <h4>Thông báo lỗi thường gặp:</h4>
+            <div class="error-message-box">ZeroDivisionError: division by zero</div>
+            <h4>Giải thích:</h4>
+            <p>Trong toán học, phép chia cho 0 là không xác định. Python cũng không cho phép điều này.</p>
+            <h4>Cách khắc phục:</h4>
+            <div class="solution-box">
+                <p>Trước khi thực hiện phép chia, hãy kiểm tra xem số chia (mẫu số) có bằng 0 hay không. Nếu bằng 0, bạn cần xử lý tình huống đó (ví dụ: thông báo lỗi, hoặc gán một giá trị mặc định cho kết quả).</p>
+                <pre><code class="language-python">so_chia = 0
+so_bi_chia = 100
+if so_chia!= 0:
+    ket_qua = so_bi_chia / so_chia
+    print(ket_qua)
+else:
+    print("Lỗi: Không thể chia cho 0!")</code></pre>
+            </div>
+            <h4>Cách phòng tránh:</h4>
+            <div class="tip-box">
+                <p>Luôn kiểm tra giá trị của biến sẽ được dùng làm số chia, đặc biệt nếu giá trị đó đến từ người dùng nhập hoặc từ một phép tính khác có thể cho kết quả là 0.</p>
+            </div>
+
+            <h3 id="module-not-found-error">6. ModuleNotFoundError / ImportError</h3>
+            <h4>Tên lỗi: <code class="inline-code">ModuleNotFoundError</code> (trong Python 3.6+) hoặc <code class="inline-code">ImportError</code> (các phiên bản cũ hơn hoặc cho các lỗi import khác)</h4>
+            <p><strong>Khi nào xảy ra?</strong> Khi Python không thể tìm thấy module (thư viện) mà bạn đang cố gắng import.</p>
+            <h4>Ví dụ gây lỗi:</h4>
+            <pre><code class="language-python">import toan_hoc # Gõ sai tên module 'math'</code></pre>
+            <pre><code class="language-python">import thu_vien_cua_toi # Nếu module này không tồn tại hoặc không nằm trong đường dẫn Python có thể tìm thấy</code></pre>
+            <h4>Thông báo lỗi thường gặp:</h4>
+            <div class="error-message-box">ModuleNotFoundError: No module named 'toan_hoc'</div>
+            <h4>Giải thích:</h4>
+            <p>Python tìm kiếm module trong một danh sách các thư mục cụ thể. Nếu tên module bị gõ sai, hoặc module đó chưa được cài đặt (đối với các thư viện bên thứ ba), hoặc không nằm trong đường dẫn tìm kiếm, lỗi này sẽ xảy ra.</p>
+            <h4>Cách khắc phục:</h4>
+            <div class="solution-box">
+                <ul>
+                    <li>Kiểm tra kỹ chính tả của tên module (ví dụ: <code class="inline-code">math</code> chứ không phải <code class="inline-code">maths</code> hay <code class="inline-code">toan_hoc</code>).</li>
+                    <li>Nếu đó là một thư viện bên thứ ba (không phải thư viện chuẩn của Python), hãy đảm bảo bạn đã cài đặt nó (thường dùng <code class="inline-code">pip install ten_thu_vien</code>).</li>
+                    <li>Nếu đó là module bạn tự viết, đảm bảo tệp <code class="inline-code">.py</code> đó nằm trong cùng thư mục với tệp đang chạy, hoặc nằm trong một thư mục mà Python có thể tìm thấy (ví dụ, thông qua biến môi trường <code class="inline-code">PYTHONPATH</code>).</li>
+                </ul>
+            </div>
+            <h4>Cách phòng tránh:</h4>
+            <div class="tip-box">
+                <p>Luôn kiểm tra tài liệu để biết tên chính xác của module cần import. Khi làm việc với các thư viện ngoài, hãy đọc hướng dẫn cài đặt cẩn thận.</p>
+            </div>
+        </section>
+
+        <section id="logic-errors">
+            <h2>III. Một Loại Lỗi Khác: Lỗi Logic (Logic Errors)</h2>
+            <div class="logic-error-box">
+                <p>Đôi khi, chương trình Python của bạn chạy mà không báo lỗi nào từ Python cả, nhưng kết quả lại không đúng như bạn mong đợi. Đây được gọi là <strong>lỗi logic</strong>.</p>
+                <p>Python không thể tự phát hiện lỗi logic vì về mặt cú pháp và quy tắc, code của bạn vẫn đúng. Lỗi nằm ở cách bạn suy nghĩ và thiết kế giải pháp cho vấn đề, tức là "logic" của chương trình bị sai.</p>
+                
+                <h4>Ví dụ về lỗi logic:</h4>
+                <ul>
+                    <li><strong>Sai công thức toán học:</strong> Ví dụ, tính diện tích hình chữ nhật bằng <code class="inline-code">chieu_dai + chieu_rong</code> thay vì <code class="inline-code">chieu_dai * chieu_rong</code>.</li>
+                    <li><strong>Điều kiện logic bị nhầm lẫn:</strong> Ví dụ, muốn kiểm tra một người có đủ tuổi (>=18) hay không, nhưng lại viết điều kiện là <code class="inline-code">if tuoi < 18:</code> rồi thực hiện hành động cho người đủ tuổi.</li>
+                    <li><strong>Vòng lặp chạy sai số lần:</strong> Ví dụ, muốn lặp 5 lần từ 1 đến 5 nhưng lại dùng <code class="inline-code">range(5)</code> (chỉ chạy từ 0 đến 4), đúng ra phải là <code class="inline-code">range(1, 6)</code>.</li>
+                    <li><strong>Thứ tự thực hiện các bước sai:</strong> Ví dụ, cần tính tổng trước rồi mới tính trung bình, nhưng lại làm ngược lại.</li>
+                </ul>
+
+                <h4>Cách tìm và sửa lỗi logic:</h4>
+                <ul>
+                    <li>Lỗi logic thường khó tìm hơn lỗi cú pháp hay lỗi thực thi.</li>
+                    <li><strong>Sử dụng lệnh <code class="inline-code">print()</code>:</strong> Đây là công cụ gỡ lỗi đơn giản nhưng rất hiệu quả. Hãy chèn các lệnh <code class="inline-code">print()</code> vào nhiều vị trí trong code để in ra giá trị của các biến quan trọng. Điều này giúp bạn theo dõi xem chương trình đang làm gì và giá trị các biến thay đổi như thế nào.</li>
+                    <li><strong>Kiểm tra lại cẩn thận từng bước:</strong> Đọc lại code của bạn từng dòng một, cố gắng "chạy tay" chương trình với một vài giá trị đầu vào đơn giản để xem nó hoạt động có đúng như bạn nghĩ không.</li>
+                    <li><strong>Thử với các bộ dữ liệu đầu vào khác nhau:</strong> Kiểm tra chương trình với các trường hợp biên (ví dụ: số 0, số âm, danh sách rỗng) để xem nó có xử lý đúng không.</li>
+                    <li><strong>Chia nhỏ vấn đề:</strong> Nếu chương trình phức tạp, hãy thử chia nó thành các phần nhỏ hơn và kiểm tra từng phần một.</li>
+                    <li><strong>Nhờ người khác xem code:</strong> Đôi khi một cặp mắt khác có thể dễ dàng phát hiện ra lỗi mà bạn đã bỏ qua.</li>
+                </ul>
+                <p><strong>Lưu ý quan trọng:</strong> Trang này chủ yếu tập trung vào các lỗi mà Python sẽ báo cho bạn biết (SyntaxError, RuntimeError). Lỗi logic đòi hỏi bạn phải tự mình "điều tra" và sử dụng các kỹ năng gỡ lỗi của mình!</p>
+            </div>
+        </section>
+
+         <section id="general-tips-final">
+            <h2>Lời khuyên chung khi "Bắt Bệnh" Code</h2>
+            <div class="tip-box">
+                <ul>
+                    <li><strong>Đọc kỹ thông báo lỗi:</strong> Đây là manh mối quan trọng nhất. Python thường cho bạn biết loại lỗi và dòng nào gây ra lỗi.</li>
+                    <li><strong>Kiểm tra dòng bị lỗi và các dòng xung quanh:</strong> Lỗi có thể không nằm chính xác ở dòng được chỉ ra mà ở dòng ngay trước đó.</li>
+                    <li><strong>Google thông báo lỗi:</strong> Sao chép và dán thông báo lỗi (phần tiếng Anh) lên Google. Rất có thể ai đó đã gặp lỗi tương tự và có giải pháp trên các diễn đàn như Stack Overflow.</li>
+                    <li><strong>Thử nghiệm từng phần nhỏ (Divide and Conquer):</strong> Nếu không chắc lỗi ở đâu trong một đoạn code dài, hãy thử "chú thích hóa" (comment out) bớt các phần code và chạy từng phần nhỏ để xem phần nào gây lỗi.</li>
+                    <li><strong>Đơn giản hóa vấn đề:</strong> Tạo một ví dụ nhỏ hơn, đơn giản hơn mà vẫn tái hiện được lỗi. Điều này giúp bạn tập trung vào nguyên nhân cốt lõi.</li>
+                    <li><strong>Nghỉ ngơi một chút:</strong> Nếu bạn đã nhìn vào code quá lâu mà không tìm ra lỗi, hãy thử nghỉ ngơi, đi dạo một chút rồi quay lại. Một cái đầu tỉnh táo thường dễ phát hiện vấn đề hơn.</li>
+                    <li><strong>Học từ lỗi:</strong> Mỗi lỗi là một cơ hội để học hỏi. Khi bạn sửa được một lỗi, bạn sẽ hiểu rõ hơn về cách Python hoạt động và tránh được lỗi tương tự trong tương lai. Đừng sợ lỗi!</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
