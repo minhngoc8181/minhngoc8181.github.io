@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar Proposal: LLMs in Higher Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            @apply text-2xl font-semibold text-blue-700 mb-4 mt-8;
+        }
+        .content-card {
+            @apply bg-white p-6 rounded-lg shadow-md mb-6;
+        }
+        .nav-link {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-blue-100 hover:text-blue-700;
+        }
+        .nav-link.active {
+            @apply bg-blue-600 text-white;
+        }
+        .accordion-button {
+            @apply w-full text-left px-4 py-3 bg-slate-100 hover:bg-slate-200 rounded-md font-medium text-slate-700 flex justify-between items-center transition-colors duration-150;
+        }
+        .accordion-content {
+            @apply px-4 py-3 border border-t-0 border-slate-200 rounded-b-md bg-white;
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-blue-700">LLM Seminar</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#introduction" class="nav-link">Introduction</a>
+                        <a href="#objectives" class="nav-link">Objectives</a>
+                        <a href="#content-areas" class="nav-link">Content Areas</a>
+                        <a href="#call-to-action" class="nav-link">Call to Action</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#introduction" class="block nav-link">Introduction</a>
+                <a href="#objectives" class="block nav-link">Objectives</a>
+                <a href="#content-areas" class="block nav-link">Content Areas</a>
+                <a href="#call-to-action" class="block nav-link">Call to Action</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 sm:py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl font-bold sm:text-5xl">Seminar Proposal</h1>
+            <p class="mt-4 text-xl sm:text-2xl">Navigating the Future of Higher Education: The Role of Large Language Models (LLMs)</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <section id="introduction" class="content-card pt-8">
+            <h2 class="section-title">1. Introduction</h2>
+            <p class="mb-3 text-slate-700 leading-relaxed">
+                Large Language Models (LLMs) are rapidly transforming various sectors, and higher education is no exception. These advanced AI systems present unprecedented opportunities to innovate teaching, learning, research, and administrative practices. For our university, and specifically the School of Computing, proactively understanding and strategically integrating LLMs is crucial to maintaining academic leadership and preparing our students for a future where AI is ubiquitous.
+            </p>
+            <p class="text-slate-700 leading-relaxed">
+                This seminar, titled "Navigating the Future of Higher Education: The Role of Large Language Models (LLMs)," aims to bring together key stakeholders—university leadership, faculty, industry representatives, and students. The purpose is to foster a shared understanding of LLM capabilities, discuss their implications for our institution, and collaboratively develop strategies for their effective and ethical integration into our academic environment.
+            </p>
+        </section>
+
+        <section id="objectives" class="content-card pt-8">
+            <h2 class="section-title">2. Seminar Objectives</h2>
+            <p class="mb-4 text-slate-700 leading-relaxed">The primary goals of this seminar are to:</p>
+            <ul class="list-disc list-inside space-y-2 text-slate-700 leading-relaxed">
+                <li><strong>Enhance LLM Literacy:</strong> Equip participants with a foundational understanding of LLMs, including their history, current capabilities (e.g., prompt engineering), and limitations.</li>
+                <li><strong>Identify Pedagogical Shifts & Curricular Adjustments:</strong> Explore and identify potential changes in teaching methodologies and curriculum design across disciplines to leverage LLMs effectively and address new skill demands.</li>
+                <li><strong>Showcase Practical LLM Applications:</strong> Present concrete case studies and demonstrations of LLM use in higher education, such as personalized learning, content creation, assessment, and research support.</li>
+                <li><strong>Propose Actionable Strategies for Immediate Use:</strong> Develop a set of practical, immediately applicable strategies for faculty and students to utilize LLMs productively and ethically.</li>
+                <li><strong>Foster University-Industry Collaboration:</strong> Create a dialogue with industry partners to understand real-world LLM applications, future workforce needs, and potential research collaborations.</li>
+                <li><strong>Promote Ethical & Responsible LLM Integration:</strong> Address the ethical dimensions of LLM use, including bias, privacy, academic integrity, and the development of institutional guidelines for responsible AI governance.</li>
+            </ul>
+        </section>
+
+        <section id="content-areas" class="pt-8">
+            <div class="content-card">
+                <h2 class="section-title">3. Proposed Key Content Areas</h2>
+                <p class="mb-6 text-slate-700 leading-relaxed">The seminar will cover the following key themes, incorporating your initial ideas. Click on each theme to expand and see more details:</p>
+                <div class="space-y-3" id="accordion-container">
+                    </div>
+            </div>
+        </section>
+
+        <section id="call-to-action" class="content-card pt-8">
+            <h2 class="section-title">4. Call to Action</h2>
+            <p class="mb-3 text-slate-700 leading-relaxed">
+                This seminar will serve as a crucial first step. We aim to stimulate ongoing dialogue, encourage cross-disciplinary collaboration, and lay the groundwork for a university-wide strategy. We anticipate the formation of a dedicated task force or working group to carry forward the insights and recommendations generated.
+            </p>
+            <p class="text-slate-700 leading-relaxed">
+                We urge all stakeholders to participate actively in this important initiative to collectively shape the future of our university in the age of AI.
+            </p>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 text-slate-500 text-sm">
+        <p>&copy; 2025 Your University. All rights reserved.</p>
+        <p>Interactive Seminar Proposal</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.querySelectorAll('svg').forEach(svg => svg.classList.toggle('hidden'));
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelectorAll('svg').forEach(svg => {
+                    if (svg.innerHTML.includes('M4 6h16')) svg.classList.remove('hidden'); // Show burger
+                    else svg.classList.add('hidden'); // Hide close
+                });
+            });
+        });
+
+        // Accordion data for "Proposed Key Content Areas"
+        const accordionData = [
+            {
+                title: "Understanding LLMs: History, Capabilities, and Future",
+                content: [
+                    "An overview of the evolution of LLMs (e.g., from early models to GPT-3.5/4, agents).",
+                    "Core concepts: How LLMs work, prompt engineering, reasoning (e.g., Chain-of-Thought), and their strengths and weaknesses.",
+                    "Current state-of-the-art and future trends in LLM development."
+                ]
+            },
+            {
+                title: "Essential Skills in the LLM Era",
+                content: [
+                    "Comparison of critical skills before and after the advent of LLMs.",
+                    "New and evolved skills: \"Understanding LLMs\" (LLM literacy), advanced critical thinking and evaluation of AI outputs, abstract thinking in AI contexts, and prompt engineering."
+                ]
+            },
+            {
+                title: "Transforming Pedagogy and Curriculum",
+                content: [
+                    "The imperative for change in teaching methods and curriculum content in response to LLMs.",
+                    "Leveraging LLMs for personalized learning experiences and adaptive education.",
+                    "Strategies to foster critical thinking and deep learning with LLMs, while mitigating risks of over-reliance and superficial engagement."
+                ]
+            },
+            {
+                title: "Practical Applications & Case Studies",
+                content: [
+                    "<strong>New Assessment Methods:</strong> Designing assessments that promote appropriate LLM use and evaluate higher-order thinking (e.g., oral exams, project-based assessments where LLMs are tools).",
+                    "<strong>LLM-Assisted Course Material Creation:</strong> Faculty experiences in using LLMs for developing lectures, assignments, and other educational resources.",
+                    "<strong>Developing LLM-Powered Educational Tools:</strong> Showcasing tools for personalized assignment generation, feedback systems, and intelligent tutoring, potentially integrating faculty knowledge.",
+                    "<strong>LLMs in Research:</strong> Using LLMs for literature reviews, hypothesis generation, and research idea validation."
+                ]
+            },
+            {
+                title: "Industry Perspectives & Future of Work",
+                content: [
+                    "Real-world LLM deployment in various industries and its impact on operations and innovation.",
+                    "Evolving job roles and skill requirements for graduates in an LLM-integrated workforce."
+                ]
+            },
+            {
+                title: "Ethical Considerations & Responsible AI Governance",
+                content: [
+                    "Addressing challenges such as bias in LLMs, data privacy, misinformation, and academic integrity.",
+                    "Developing institutional strategies, policies, and guidelines for the ethical and responsible use of LLMs in teaching, learning, and research."
+                ]
+            }
+        ];
+
+        const accordionContainer = document.getElementById('accordion-container');
+
+        accordionData.forEach((item, index) => {
+            const accordionItem = document.createElement('div');
+            
+            const button = document.createElement('button');
+            button.className = 'accordion-button';
+            button.setAttribute('aria-expanded', 'false');
+            button.innerHTML = `
+                <span>${item.title}</span>
+                <svg class="w-5 h-5 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            `;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'accordion-content hidden';
+            const ul = document.createElement('ul');
+            ul.className = 'list-disc list-inside space-y-1 text-slate-600';
+            item.content.forEach(point => {
+                const li = document.createElement('li');
+                li.innerHTML = point; // Use innerHTML to render bold tags
+                ul.appendChild(li);
+            });
+            contentDiv.appendChild(ul);
+            
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', !isExpanded);
+                contentDiv.classList.toggle('hidden');
+                button.querySelector('svg').classList.toggle('rotate-180');
+            });
+            
+            accordionItem.appendChild(button);
+            accordionItem.appendChild(contentDiv);
+            accordionContainer.appendChild(accordionItem);
+        });
+
+        // Active navigation link highlighting based on scroll position
+        const sections = document.querySelectorAll('main section[id]');
+        const navLinks = document.querySelectorAll('nav a.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 80) { // 80px offset for sticky nav height
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+             // Fallback for top of page if no section is 'current'
+            if (!current && pageYOffset < sections[0].offsetTop - 80) {
+                 // No specific section is active, perhaps highlight 'Introduction' or none
+            }
+        });
+
+
+    </script>
+</body>
+</html>
