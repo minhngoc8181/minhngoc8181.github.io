@@ -1,282 +1,684 @@
 <div id="lesson-5-content" class="lesson-content active-content">
     <h2>Bài 5: Ra Quyết Định (Making Decisions)</h2>
-    <p>Bài học này giới thiệu cách chương trình Python có thể "ra quyết định" dựa trên các điều kiện,
-        giúp chương trình trở nên thông minh và linh hoạt hơn.</p>
-    <h3>Mục tiêu Bài học:</h3>
-    <ul>
-        <li>Hiểu khái niệm về giá trị Chân lý (Boolean): <code>True</code> (Đúng) và <code>False</code>
-            (Sai).</li>
-        <li>Sử dụng các phép toán so sánh (<code>==</code>, <code>!=</code>, <code>&gt;</code>,
-            <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>) để tạo ra các biểu thức điều
-            kiện.
-        </li>
-        <li>Học và sử dụng câu lệnh <code>if</code> để thực thi mã dựa trên một điều kiện.</li>
-        <li>Sử dụng câu lệnh <code>else</code> để cung cấp một hành động thay thế khi điều kiện
-            <code>if</code> không đúng.
-        </li>
-        <li>Sử dụng câu lệnh <code>elif</code> (else if) để kiểm tra nhiều điều kiện một cách tuần tự.
-        </li>
-        <li>Sử dụng các phép toán logic (<code>and</code>, <code>or</code>, <code>not</code>) để kết hợp
-            nhiều điều kiện.</li>
-        <li>Hiểu và viết các câu lệnh <code>if</code> lồng nhau (nested <code>if</code>).</li>
-        <li>Áp dụng kiến thức để giải các bài toán yêu cầu ra quyết định.</li>
-    </ul>
-    <h3>Giới thiệu:</h3>
-    <p>Trong cuộc sống hàng ngày, chúng ta liên tục phải đưa ra quyết định. Ví dụ: "Nếu trời mưa, tôi sẽ
-        mang ô. Ngược lại, nếu trời nắng, tôi sẽ đội mũ." Máy tính cũng cần khả năng "ra quyết định"
-        tương tự để thực hiện các công việc một cách thông minh và linh hoạt.</p>
-    <p>Trong Python, chúng ta sử dụng các <strong>câu lệnh điều kiện</strong> (conditional statements)
-        để cho phép chương trình lựa chọn thực hiện những khối lệnh khác nhau dựa trên việc một điều
-        kiện nào đó là Đúng (<code>True</code>) hay Sai (<code>False</code>). Bài học này sẽ hướng dẫn
-        cách sử dụng các câu lệnh này.</p>
 
-    <h3>1. Giá trị Chân lý (Boolean Values) và Biểu thức Điều kiện</h3>
-    <h4>a. Giá trị Chân lý: <code>True</code> và <code>False</code></h4>
-    <p>Như đã giới thiệu ở Bài 2, kiểu dữ liệu Boolean chỉ có hai giá trị:</p>
-    <ul>
-        <li><code>True</code>: Đại diện cho sự thật, điều đúng đắn.</li>
-        <li><code>False</code>: Đại diện cho sự giả dối, điều sai trái.</li>
-    </ul>
-    <p>(Lưu ý: <code>True</code> và <code>False</code> trong Python phải viết hoa chữ cái đầu).</p>
+    <div class="problem-description">
+        <h4 class="!mt-0">Mục tiêu Bài học:</h4>
+        <ul>
+            <li>Hiểu khái niệm về giá trị Chân lý (Boolean): <code class="inline-code">True</code> (Đúng) và <code
+                    class="inline-code">False</code> (Sai).</li>
+            <li>Sử dụng các phép toán so sánh (<code class="inline-code">==</code>, <code class="inline-code">!=</code>,
+                <code class="inline-code">&gt;</code>, <code class="inline-code">&lt;</code>, <code
+                    class="inline-code">&gt;=</code>, <code class="inline-code">&lt;=</code>) để tạo ra các biểu thức
+                điều kiện.
+            </li>
+            <li>Học và sử dụng câu lệnh <code class="inline-code">if</code> để thực thi mã dựa trên một điều kiện.</li>
+            <li>Sử dụng câu lệnh <code class="inline-code">else</code> để cung cấp một hành động thay thế khi điều kiện
+                <code class="inline-code">if</code> không đúng.
+            </li>
+            <li>Sử dụng câu lệnh <code class="inline-code">elif</code> (else if) để kiểm tra nhiều điều kiện một cách
+                tuần tự.</li>
+            <li>Sử dụng các phép toán logic (<code class="inline-code">and</code>, <code class="inline-code">or</code>,
+                <code class="inline-code">not</code>) để kết hợp nhiều điều kiện.
+            </li>
+            <li>Hiểu và viết các câu lệnh <code class="inline-code">if</code> lồng nhau (nested <code
+                    class="inline-code">if</code>).</li>
+            <li>Áp dụng kiến thức để giải các bài toán yêu cầu ra quyết định.</li>
+        </ul>
+    </div>
 
-    <h4>b. Phép toán So sánh (Comparison Operators)</h4>
-    <p>Các phép toán so sánh được sử dụng để so sánh hai giá trị và kết quả của phép so sánh luôn là một
-        giá trị Boolean (<code>True</code> hoặc <code>False</code>).</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Phép toán</th>
-                <th>Ý nghĩa</th>
-                <th>Ví dụ (Giả sử <code>a = 5</code>, <code>b = 10</code>)</th>
-                <th>Kết quả</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>==</code></td>
-                <td>Bằng nhau</td>
-                <td><code>a == 5</code><br><code>a == b</code></td>
-                <td><code>True</code><br><code>False</code></td>
-            </tr>
-            <tr>
-                <td><code>!=</code></td>
-                <td>Không bằng nhau (khác)</td>
-                <td><code>a != 10</code><br><code>a != 5</code></td>
-                <td><code>True</code><br><code>False</code></td>
-            </tr>
-            <tr>
-                <td><code>&gt;</code></td>
-                <td>Lớn hơn</td>
-                <td><code>b &gt; a</code><br><code>a &gt; b</code></td>
-                <td><code>True</code><br><code>False</code></td>
-            </tr>
-            <tr>
-                <td><code>&lt;</code></td>
-                <td>Nhỏ hơn</td>
-                <td><code>a &lt; b</code><br><code>b &lt; 5</code></td>
-                <td><code>True</code><br><code>False</code></td>
-            </tr>
-            <tr>
-                <td><code>&gt;=</code></td>
-                <td>Lớn hơn hoặc bằng</td>
-                <td><code>a &gt;= 5</code><br><code>b &gt;= 10</code><br><code>a &gt;= b</code></td>
-                <td><code>True</code><br><code>True</code><br><code>False</code></td>
-            </tr>
-            <tr>
-                <td><code>&lt;=</code></td>
-                <td>Nhỏ hơn hoặc bằng</td>
-                <td><code>b &lt;= 10</code><br><code>a &lt;= 10</code><br><code>b &lt;= a</code></td>
-                <td><code>True</code><br><code>True</code><br><code>False</code></td>
-            </tr>
-        </tbody>
-    </table>
-    <p><strong>Ví dụ sử dụng phép toán so sánh:</strong></p>
-    <pre><code class="language-python">x = 10
-y = 20
+    <h3>Giới thiệu: Khám phá qua Ví dụ</h3>
+    <p>Trong cuộc sống, chúng ta luôn phải đưa ra lựa chọn. Ví dụ, khi đi xem phim, rạp chiếu phim có quy định về độ
+        tuổi cho từng loại phim. Máy tính cũng cần "học" cách đưa ra quyết định như vậy!</p>
 
-ket_qua_1 = (x == 10)       # x có bằng 10 không?
-ket_qua_2 = (y < x)         # y có nhỏ hơn x không?
-ket_qua_3 = (x != y)        # x có khác y không?
+    <h4>Ví dụ 1: Kiểm tra tuổi để xem phim (Phim 13)</h4>
+    <p>Hãy tưởng tượng bạn muốn viết một chương trình nhỏ để kiểm tra xem một người có đủ tuổi xem một bộ phim được phân
+        loại là 13 (dành cho người từ 13 tuổi trở lên) hay không.</p>
+    <p class="code-example-title">Xem đoạn code Python sau:</p>
+    <pre><code class="language-python"># Ví dụ 1: Kiểm tra tuổi xem phim 13
+tuoi_nguoi_xem = int(input("Bạn bao nhiêu tuổi? "))
 
-print(f"x == 10 là: {ket_qua_1}")   # Kết quả: True
-print(f"y < x là: {ket_qua_2}")     # Kết quả: False
-print(f"x != y là: {ket_qua_3}")   # Kết quả: True</code></pre>
-    <p>Những biểu thức như <code>x == 10</code> hay <code>y < x</code> được gọi là <strong>biểu thức
-            điều kiện</strong> vì chúng trả về một giá trị <code>True</code> hoặc <code>False</code>
-        dùng để kiểm soát luồng của chương trình.</p>
-
-    <h3>2. Câu lệnh <code>if</code> (The <code>if</code> Statement)</h3>
-    <p>Câu lệnh <code>if</code> cho phép thực thi một khối lệnh nếu một điều kiện cụ thể là
-        <code>True</code>.
-    </p>
-    <p><strong>Cú pháp:</strong></p>
-    <pre><code class="language-python">if dieu_kien:
-    # Khối lệnh sẽ được thực thi nếu dieu_kien là True
-    # Các lệnh trong khối này phải được thụt vào đầu dòng (indentation)
-    lenh_1
-    lenh_2
-    ...
-# Các lệnh bên ngoài khối if (không thụt vào) sẽ luôn được thực thi
-lenh_tiep_theo</code></pre>
-    <ul>
-        <li><code>dieu_kien</code>: Là một biểu thức trả về <code>True</code> hoặc <code>False</code>.
-        </li>
-        <li>Dấu hai chấm (<code>:</code>) là bắt buộc sau <code>dieu_kien</code>.</li>
-        <li><strong>Thụt lề (Indentation):</strong> Các dòng lệnh thuộc khối <code>if</code> phải được
-            thụt vào so với dòng <code>if</code> (thường là 4 dấu cách hoặc một phím Tab). Đây là cách
-            Python xác định khối lệnh nào thuộc về <code>if</code>.</li>
-    </ul>
-    <p><strong>Luồng hoạt động:</strong></p>
-    <ol>
-        <li>Python kiểm tra <code>dieu_kien</code>.</li>
-        <li>Nếu <code>dieu_kien</code> là <code>True</code>, các lệnh bên trong khối <code>if</code> (đã
-            thụt lề) sẽ được thực thi.</li>
-        <li>Nếu <code>dieu_kien</code> là <code>False</code>, các lệnh bên trong khối <code>if</code> sẽ
-            bị bỏ qua, và chương trình sẽ tiếp tục với <code>lenh_tiep_theo</code> (nếu có).</li>
-    </ol>
-    <p><strong>Ví dụ 1: Kiểm tra tuổi để xem phim</strong></p>
-    <pre><code class="language-python">tuoi = int(input("Nhập tuổi của bạn: "))
-
-if tuoi >= 18:
+if tuoi_nguoi_xem >= 13:
     print("Bạn đủ tuổi để xem phim này.")
     print("Chúc bạn xem phim vui vẻ!")
 
-print("Cảm ơn bạn đã sử dụng dịch vụ.") # Lệnh này luôn được thực thi</code></pre>
+print("Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.")</code></pre>
+    <ul>
+        <li>Hãy thử chạy đoạn code trên với các giá trị tuổi khác nhau (ví dụ: 15, 12, 13).</li>
+        <li>Bạn nhận thấy điều gì xảy ra khi nhập tuổi là 15? Khi nhập tuổi là 12?</li>
+        <li>Dòng lệnh <code class="inline-code">if tuoi_nguoi_xem >= 13:</code> có ý nghĩa gì?</li>
+        <li>Tại sao có những dòng lệnh được thụt vào (lùi vào trong)?</li>
+    </ul>
+    <p>Từ ví dụ trên, chúng ta thấy lệnh <code class="inline-code">if</code> giúp chương trình kiểm tra một điều kiện
+        (<code class="inline-code">tuoi_nguoi_xem >= 13</code>). Nếu điều kiện đó <strong>Đúng (True)</strong>, các dòng
+        lệnh được thụt vào bên dưới <code class="inline-code">if</code> sẽ được thực hiện. Nếu điều kiện <strong>Sai
+            (False)</strong>, các dòng lệnh đó sẽ bị bỏ qua.</p>
 
-    <h3>3. Câu lệnh <code>else</code> (The <code>else</code> Statement)</h3>
-    <p>Câu lệnh <code>else</code> được sử dụng cùng với <code>if</code> để cung cấp một khối lệnh thay
-        thế sẽ được thực thi nếu điều kiện của <code>if</code> là <code>False</code>.</p>
-    <p><strong>Cú pháp:</strong></p>
-    <pre><code class="language-python">if dieu_kien:
-    # Khối lệnh thực thi nếu dieu_kien là True
-    lenh_A1
-    lenh_A2
-else:
-    # Khối lệnh thực thi nếu dieu_kien là False
-    lenh_B1
-    lenh_B2
-# Các lệnh tiếp theo</code></pre>
-    <p><strong>Luồng hoạt động:</strong></p>
-    <ol>
-        <li>Python kiểm tra <code>dieu_kien</code> của <code>if</code>.</li>
-        <li>Nếu <code>dieu_kien</code> là <code>True</code>, khối lệnh của <code>if</code> được thực
-            thi, và khối lệnh của <code>else</code> bị bỏ qua.</li>
-        <li>Nếu <code>dieu_kien</code> là <code>False</code>, khối lệnh của <code>if</code> bị bỏ qua,
-            và khối lệnh của <code>else</code> được thực thi.</li>
-    </ol>
-    <p><strong>Ví dụ 2: Kiểm tra số chẵn lẻ</strong></p>
-    <pre><code class="language-python">so = int(input("Nhập một số nguyên: "))
+    <div class="problem-description">
+        <p><strong>Vấn đề đặt ra:</strong> Vậy nếu người xem chưa đủ 13 tuổi, chương trình của chúng ta hiện tại chỉ im
+            lặng (ngoài dòng cảm ơn cuối cùng). Làm thế nào để chương trình có thể thông báo cho người xem biết rằng họ
+            chưa đủ tuổi? Đây là lúc chúng ta cần một cách để xử lý trường hợp "ngược lại".</p>
+    </div>
 
-if so % 2 == 0:  # Nếu số dư khi chia cho 2 là 0
+    <h3>1. Xử lý trường hợp "Ngược lại" với <code class="inline-code">else</code></h3>
+    <p>Khi điều kiện của <code class="inline-code">if</code> không đúng (Sai - <code class="inline-code">False</code>),
+        chúng ta có thể muốn chương trình thực hiện một hành động khác. Lệnh <code class="inline-code">else</code> giúp
+        chúng ta làm điều này.</p>
+    <h4>Ví dụ 1 (Cải tiến): Kiểm tra tuổi xem phim với thông báo cho người chưa đủ tuổi</h4>
+    <pre><code class="language-python"># Ví dụ 1 (Cải tiến): Kiểm tra tuổi xem phim 13 với else
+tuoi_nguoi_xem = int(input("Bạn bao nhiêu tuổi? "))
+
+if tuoi_nguoi_xem >= 13:
+    print("Bạn đủ tuổi để xem phim này.")
+    print("Chúc bạn xem phim vui vẻ!")
+else: # Ngược lại, nếu tuoi_nguoi_xem < 13
+    print("Rất tiếc, bạn chưa đủ 13 tuổi để xem phim này.")
+    print("Vui lòng chọn một bộ phim khác phù hợp hơn.")
+
+print("Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.")</code></pre>
+    <ul>
+        <li>Bây giờ, hãy thử lại với tuổi 20 và 12. Bạn thấy sự khác biệt chứ?</li>
+        <li>Lệnh <code class="inline-code">else:</code> sẽ thực thi khối lệnh bên dưới nó khi điều kiện <code
+                class="inline-code">if tuoi_nguoi_xem >= 13:</code> là <code class="inline-code">False</code>.</li>
+    </ul>
+
+    <h3>2. Kiểm tra nhiều điều kiện với <code class="inline-code">elif</code></h3>
+    <p>Đôi khi, chúng ta có nhiều hơn hai trường hợp cần xử lý.</p>
+    <h4>Ví dụ 2: Kiểm tra số chẵn lẻ (và trường hợp số 0)</h4>
+    <p>Một số là số chẵn nếu nó chia hết cho 2. Nếu không, nó là số lẻ. Nhưng số 0 thì sao? Chúng ta có thể coi nó là
+        một trường hợp đặc biệt.</p>
+    <pre><code class="language-python"># Ví dụ 2: Kiểm tra số chẵn, lẻ, hoặc là số 0
+so = int(input("Nhập một số nguyên: "))
+
+if so == 0:
+    print(f"Số {so} là số không.")
+elif so % 2 == 0: # elif là viết tắt của "else if"
     print(f"Số {so} là số chẵn.")
-else:
+else: # Nếu không phải là 0 và cũng không phải chẵn
     print(f"Số {so} là số lẻ.")</code></pre>
+    <ul>
+        <li><code class="inline-code">elif</code> cho phép chúng ta kiểm tra một điều kiện mới nếu điều kiện <code
+                class="inline-code">if</code> (hoặc <code class="inline-code">elif</code> trước đó) là <code
+                class="inline-code">False</code>.</li>
+        <li>Chương trình sẽ thực thi khối lệnh của <code class="inline-code">if</code> hoặc <code
+                class="inline-code">elif</code> đầu tiên mà có điều kiện là <code class="inline-code">True</code>, và bỏ
+            qua các <code class="inline-code">elif</code> và <code class="inline-code">else</code> còn lại.</li>
+    </ul>
 
-    <h3>4. Câu lệnh <code>elif</code> (The <code>elif</code> Statement)</h3>
-    <p><code>elif</code> là viết tắt của "else if". Nó cho phép kiểm tra nhiều điều kiện một cách tuần
-        tự. Nếu điều kiện <code>if</code> đầu tiên sai, Python sẽ kiểm tra điều kiện của
-        <code>elif</code> tiếp theo, và cứ thế.
-    </p>
-    <p><strong>Cú pháp:</strong></p>
-    <pre><code class="language-python">if dieu_kien_1:
-    # Khối lệnh cho dieu_kien_1
-    ...
-elif dieu_kien_2:
-    # Khối lệnh cho dieu_kien_2 (chỉ thực thi nếu dieu_kien_1 False và dieu_kien_2 True)
-    ...
-elif dieu_kien_3:
-    # Khối lệnh cho dieu_kien_3 (chỉ thực thi nếu dieu_kien_1, dieu_kien_2 False và dieu_kien_3 True)
-    ...
-else: # Tùy chọn, có thể có hoặc không
-    # Khối lệnh thực thi nếu tất cả các điều kiện trên đều False
-    ...</code></pre>
-    <p><strong>Ví dụ 3: Xếp loại học lực dựa trên điểm số</strong></p>
-    <pre><code class="language-python">diem_trung_binh = float(input("Nhập điểm trung bình của bạn: "))
+    <h4>Ví dụ 3: Xếp loại học lực dựa trên điểm số</h4>
+    <p>Giả sử chúng ta có quy tắc xếp loại học lực như sau:</p>
+    <ul>
+        <li>Điểm >= 8.0: Giỏi</li>
+        <li>Điểm >= 6.5 và < 8.0: Khá</li>
+        <li>Điểm >= 5.0 và < 6.5: Trung bình</li>
+        <li>Điểm < 5.0: Yếu</li>
+    </ul>
+    <pre><code class="language-python"># Ví dụ 3: Xếp loại học lực
+diem_trung_binh = float(input("Nhập điểm trung bình của bạn: "))
 
 if diem_trung_binh >= 8.0:
     print("Xếp loại: Giỏi")
-elif diem_trung_binh >= 6.5:
+elif diem_trung_binh >= 6.5: # Tự động hiểu là diem_trung_binh < 8.0 rồi
     print("Xếp loại: Khá")
-elif diem_trung_binh >= 5.0:
+elif diem_trung_binh >= 5.0: # Tự động hiểu là diem_trung_binh < 6.5 rồi
     print("Xếp loại: Trung bình")
-else:
+else: # Nếu tất cả các điều kiện trên đều sai (tức là diem_trung_binh < 5.0)
     print("Xếp loại: Yếu")</code></pre>
-
-    <h3>5. Phép toán Logic (<code>and</code>, <code>or</code>, <code>not</code>)</h3>
-    <p>Các phép toán logic được sử dụng để kết hợp nhiều biểu thức điều kiện lại với nhau.</p>
-    <h4>a. <code>and</code> (Và)</h4>
-    <p>Trả về <code>True</code> nếu <strong>cả hai</strong> biểu thức đều <code>True</code>.</p>
-    <p><strong>Ví dụ 4: Kiểm tra điều kiện đi học</strong></p>
-    <pre><code class="language-python">khoe_manh = True
-lam_bai_tap = False
-
-if khoe_manh and lam_bai_tap:
-    print("Bạn đủ điều kiện đi học.")
-else:
-    print("Bạn chưa đủ điều kiện đi học.")</code></pre>
-
-    <h4>b. <code>or</code> (Hoặc)</h4>
-    <p>Trả về <code>True</code> nếu <strong>ít nhất một trong hai</strong> biểu thức là
-        <code>True</code>.
-    </p>
-    <p><strong>Ví dụ 5: Kiểm tra điều kiện giảm giá</strong></p>
-    <pre><code class="language-python">la_cuoi_tuan = False
-co_the_thanh_vien = True
-
-if la_cuoi_tuan or co_the_thanh_vien:
-    print("Bạn được giảm giá!")
-else:
-    print("Bạn không được giảm giá.")</code></pre>
-
-    <h4>c. <code>not</code> (Phủ định)</h4>
-    <p>Đảo ngược giá trị Boolean của một biểu thức.</p>
-    <p><strong>Ví dụ 6: Kiểm tra nếu không phải cuối tuần</strong></p>
-    <pre><code class="language-python">la_cuoi_tuan = False
-
-if not la_cuoi_tuan:
-    print("Hôm nay là ngày thường, đi làm thôi!")
-else:
-    print("Hôm nay là cuối tuần, nghỉ ngơi nào!")</code></pre>
-
-    <h3>6. Câu lệnh <code>if</code> lồng nhau (Nested <code>if</code> Statements)</h3>
-    <p>Một câu lệnh <code>if</code> có thể chứa một câu lệnh <code>if</code> khác bên trong nó.</p>
-    <p><strong>Ví dụ 7: Kiểm tra đăng nhập và quyền truy cập</strong></p>
-    <pre><code class="language-python">ten_dang_nhap = input("Nhập tên đăng nhập: ")
-mat_khau = input("Nhập mật khẩu: ")
-
-if ten_dang_nhap == "admin":
-    if mat_khau == "12345":
-        print("Đăng nhập thành công với quyền quản trị!")
-    else:
-        print("Sai mật khẩu.")
-elif ten_dang_nhap == "user":
-    if mat_khau == "user123":
-        print("Đăng nhập thành công với quyền người dùng.")
-    else:
-        print("Sai mật khẩu.")
-else:
-    print("Tên đăng nhập không tồn tại.")</code></pre>
-
-    <h3>7. Bài tập</h3>
-    <ol>
-        <li><strong>Kiểm tra số dương, số âm, hay số không:</strong> Nhập số nguyên, in ra là dương, âm
-            hay không.</li>
-        <li><strong>Giải phương trình bậc nhất $ax + b = 0$:</strong> Nhập a, b. Biện luận và giải
-            (nghiệm $x = -b/a$).</li>
-        <li><strong>Tính tiền điện:</strong> Nhập số kWh. Tính tiền theo bậc thang.</li>
-        <li><strong>Kiểm tra năm nhuận:</strong> Nhập năm. Kiểm tra có phải năm nhuận không.</li>
-        <li><strong>Đoán số (đơn giản):</strong> Đặt số bí mật. Người dùng đoán. So sánh và thông báo.
+    <ul>
+        <li>Hãy thử nhập các điểm số khác nhau như 9.0, 7.2, 5.5, 4.0 để xem kết quả.</li>
+        <li>Bạn có nhận thấy thứ tự của các lệnh <code class="inline-code">if</code> và <code
+                class="inline-code">elif</code> quan trọng không? Nếu chúng ta đặt <code
+                class="inline-code">elif diem_trung_binh >= 5.0:</code> lên trước <code
+                class="inline-code">elif diem_trung_binh >= 6.5:</code>, điều gì sẽ xảy ra với một học sinh có điểm 7.0?
         </li>
-        <li><strong>Phân loại tam giác:</strong> Nhập 3 cạnh a, b, c. Phân loại đều, cân, vuông ($a^2 +
-            b^2 = c^2$), thường.</li>
-        <li><strong>Kiểm tra điều kiện tham gia câu lạc bộ:</strong> Dựa trên tuổi và điểm năng khiếu.
+    </ul>
+
+    <h3>3. Kết hợp nhiều điều kiện: <code class="inline-code">and</code>, <code class="inline-code">or</code>, <code
+            class="inline-code">not</code></h3>
+    <p>Đôi khi, một quyết định phụ thuộc vào nhiều yếu tố cùng một lúc.</p>
+    <h4>Ví dụ 4: Kiểm tra một số có nằm trong khoảng cho trước không?</h4>
+    <p>Giả sử chúng ta muốn kiểm tra xem một số <code class="inline-code">n</code> có nằm trong khoảng từ 10 đến 20 (bao
+        gồm cả 10 và 20) hay không. Điều này có nghĩa là <code class="inline-code">n</code> phải lớn hơn hoặc bằng 10
+        <strong>VÀ</strong> <code class="inline-code">n</code> phải nhỏ hơn hoặc bằng 20.
+    </p>
+    <pre><code class="language-python"># Ví dụ 4: Kiểm tra số trong khoảng 
+n = int(input("Nhập một số nguyên n: "))
+
+if n >= 10 and n <= 20: # Cả hai điều kiện phải cùng đúng
+    print(f"Số {n} nằm trong khoảng từ 10 đến 20.")
+else:
+    print(f"Số {n} không nằm trong khoảng từ 10 đến 20.")</code></pre>
+    <p>Toán tử <code class="inline-code">and</code>: Yêu cầu tất cả các điều kiện được kết nối bởi <code
+            class="inline-code">and</code> phải là <code class="inline-code">True</code> thì toàn bộ biểu thức mới là
+        <code class="inline-code">True</code>.
+    </p>
+
+    <h4>Ví dụ 5: Kiểm tra một số có chia hết cho 2 HOẶC 3 không?</h4>
+    <pre><code class="language-python"># Ví dụ 5: Kiểm tra số chia hết cho 2 hoặc 3
+m = int(input("Nhập một số nguyên m: "))
+
+if m % 2 == 0 or m % 3 == 0: # Chỉ cần một trong hai điều kiện đúng
+    print(f"Số {m} chia hết cho 2 hoặc chia hết cho 3 (hoặc cả hai).")
+else:
+    print(f"Số {m} không chia hết cho 2 và cũng không chia hết cho 3.")</code></pre>
+    <p>Toán tử <code class="inline-code">or</code>: Chỉ cần ít nhất một trong các điều kiện được kết nối bởi <code
+            class="inline-code">or</code> là <code class="inline-code">True</code> thì toàn bộ biểu thức sẽ là <code
+            class="inline-code">True</code>.</p>
+
+    <h4>Ví dụ 6: Kiểm tra một số KHÔNG nằm trong khoảng (sử dụng <code class="inline-code">not</code>)</h4>
+    <p>Giả sử chúng ta muốn kiểm tra xem một số <code class="inline-code">k</code> có nằm ngoài khoảng (0, 100) hay
+        không (tức là $k \le 0$ hoặc $k \ge 100$). Chúng ta có thể viết là <code
+            class="inline-code">if k <= 0 or k >= 100:</code>. Hoặc, chúng ta có thể kiểm tra xem nó có nằm TRONG khoảng
+        (0, 100) không, rồi PHỦ ĐỊNH kết quả đó.</p>
+    <pre><code class="language-python"># Ví dụ 6: Kiểm tra số không nằm trong khoảng (0, 100)
+k = int(input("Nhập một số nguyên k: "))
+
+# Cách 1: Dùng or
+# if k <= 0 or k >= 100:
+#     print(f"Số {k} nằm ngoài khoảng (0, 100).")
+# else:
+#     print(f"Số {k} nằm trong khoảng (0, 100).")
+
+# Cách 2: Dùng not
+dieu_kien_trong_khoang = (k > 0 and k < 100) # k nằm trong (0,100)
+if not dieu_kien_trong_khoang: # Nếu KHÔNG nằm trong khoảng
+    print(f"Số {k} nằm ngoài khoảng (0, 100).")
+else:
+    print(f"Số {k} nằm trong khoảng (0, 100).")</code></pre>
+    <p>Toán tử <code class="inline-code">not</code>: Đảo ngược giá trị chân lý của một biểu thức ( <code
+            class="inline-code">not True</code> thành <code class="inline-code">False</code>, <code
+            class="inline-code">not False</code> thành <code class="inline-code">True</code>).</p>
+
+    <h3>4. Quyết định lồng nhau: <code class="inline-code">if</code> bên trong <code class="inline-code">if</code></h3>
+    <p>Đôi khi, sau khi đưa ra một quyết định, chúng ta lại cần đưa ra một quyết định khác dựa trên kết quả của quyết
+        định trước đó.</p>
+    <h4>Ví dụ 7: Phân loại phim và kiểm tra độ tuổi cụ thể</h4>
+    <p>Dựa trên hệ thống phân loại phim ở Việt Nam:</p>
+    <ul>
+        <li>P: Mọi độ tuổi.</li>
+        <li>K: Dưới 13 tuổi phải có người bảo hộ. (Để đơn giản, ví dụ này sẽ coi K tương tự P nếu có người lớn đi kèm,
+            hoặc yêu cầu 13 nếu không)</li>
+        <li>T13 (C13): Từ đủ 13 tuổi trở lên.</li>
+        <li>T16 (C16): Từ đủ 16 tuổi trở lên.</li>
+        <li>T18 (C18): Từ đủ 18 tuổi trở lên.</li>
+    </ul>
+    <p>Giả sử chúng ta muốn kiểm tra một người có được xem phim T16 không, và nếu họ đúng 16 hoặc 17 tuổi, thì có một ưu
+        đãi đặc biệt.</p>
+    <pre><code class="language-python"># Ví dụ 7: if lồng nhau - Kiểm tra xem phim T16 và ưu đãi
+tuoi = int(input("Nhập tuổi của bạn: "))
+
+if tuoi >= 16: # Điều kiện ngoài: đủ tuổi xem phim T16
+    print("Bạn đủ tuổi xem phim T16.")
+    if tuoi == 16 or tuoi == 17: # Điều kiện trong: kiểm tra ưu đãi
+        print("Bạn nhận được một phần bắp rang bơ miễn phí!")
+    else: # Nếu tuổi >= 18
+        print("Chúc bạn xem phim vui vẻ.")
+else: # Nếu không đủ 16 tuổi
+    print("Rất tiếc, bạn chưa đủ 16 tuổi để xem phim này.")</code></pre>
+    <p>Ở đây, khối lệnh <code class="inline-code">if tuoi == 16 or tuoi == 17:</code> chỉ được xem xét nếu điều kiện
+        <code class="inline-code">tuoi >= 16</code> là <code class="inline-code">True</code>.
+    </p>
+
+    <h3>5. Hệ thống hóa kiến thức</h3>
+    <p>Sau khi khám phá qua các ví dụ, chúng ta hãy cùng hệ thống lại các khái niệm chính:</p>
+
+    <h4>a. Giá trị Chân lý (Boolean Values)</h4>
+    <ul>
+        <li><strong>Khái niệm:</strong> Đại diện cho sự thật (<code class="inline-code">True</code>) hoặc giả dối (<code
+                class="inline-code">False</code>). Đây là nền tảng của việc ra quyết định.</li>
+        <li><strong>Giá trị:</strong> <code class="inline-code">True</code>, <code class="inline-code">False</code> (Lưu
+            ý chữ cái đầu viết hoa).</li>
+        <li><strong>Ví dụ:</strong>
+            <pre><code class="language-python">troi_mua = True
+co_bai_tap_ve_nha = False
+print(f"Trời có mưa không? {troi_mua}")</code></pre>
+        </li>
+    </ul>
+
+    <h4>b. Phép toán So sánh (Comparison Operators)</h4>
+    <ul>
+        <li><strong>Khái niệm:</strong> Dùng để so sánh hai giá trị, kết quả luôn là <code
+                class="inline-code">True</code> hoặc <code class="inline-code">False</code>.</li>
+        <li><strong>Cú pháp và Các phép toán:</strong>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phép toán</th>
+                        <th>Ý nghĩa</th>
+                        <th>Ví dụ (a=5, b=10)</th>
+                        <th>Kết quả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="inline-code">==</code></td>
+                        <td>Bằng nhau</td>
+                        <td><code class="inline-code">a == 5</code></td>
+                        <td><code class="inline-code">True</code></td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">!=</code></td>
+                        <td>Không bằng nhau (khác)</td>
+                        <td><code class="inline-code">a != b</code></td>
+                        <td><code class="inline-code">True</code></td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&gt;</code></td>
+                        <td>Lớn hơn</td>
+                        <td><code class="inline-code">b &gt; a</code></td>
+                        <td><code class="inline-code">True</code></td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;</code></td>
+                        <td>Nhỏ hơn</td>
+                        <td><code class="inline-code">a &lt; b</code></td>
+                        <td><code class="inline-code">True</code></td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&gt;=</code></td>
+                        <td>Lớn hơn hoặc bằng</td>
+                        <td><code class="inline-code">a >= 5</code></td>
+                        <td><code class="inline-code">True</code></td>
+                    </tr>
+                    <tr>
+                        <td><code class="inline-code">&lt;=</code></td>
+                        <td>Nhỏ hơn hoặc bằng</td>
+                        <td><code class="inline-code">b <= 10</code></td>
+                        <td><code class="inline-code">True</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li><strong>Ví dụ:</strong>
+            <pre><code class="language-python">x = 7
+y = 7
+print(f"x có bằng y không? {x == y}") # True
+print(f"x có nhỏ hơn 10 không? {x < 10}") # True</code></pre>
+        </li>
+    </ul>
+
+    <h4>c. Các loại câu lệnh <code class="inline-code">if</code></h4>
+    <ul>
+        <li>
+            <p><strong>Câu lệnh <code class="inline-code">if</code> đơn:</strong></p>
+            <ul>
+                <li><strong>Cú pháp:</strong>
+                    <pre><code class="language-python">if dieu_kien:
+    # Khối lệnh thực thi nếu dieu_kien là True
+    hanh_dong_1
+    hanh_dong_2</code></pre>
+                </li>
+                <li><strong>Ví dụ:</strong>
+                    <pre><code class="language-python">nhiet_do = 30
+if nhiet_do > 28:
+    print("Trời nóng, nên bật quạt!")</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Câu lệnh <code class="inline-code">if-else</code>:</strong></p>
+            <ul>
+                <li><strong>Cú pháp:</strong>
+                    <pre><code class="language-python">if dieu_kien:
+    # Khối lệnh thực thi nếu dieu_kien là True
+    hanh_dong_khi_dung
+else:
+    # Khối lệnh thực thi nếu dieu_kien là False
+    hanh_dong_khi_sai</code></pre>
+                </li>
+                <li><strong>Ví dụ:</strong>
+                    <pre><code class="language-python">diem = 4
+if diem >= 5:
+    print("Bạn đã qua môn!")
+else:
+    print("Bạn cần cố gắng hơn ở lần sau.")</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Câu lệnh <code class="inline-code">if-elif-else</code>:</strong></p>
+            <ul>
+                <li><strong>Cú pháp:</strong>
+                    <pre><code class="language-python">if dieu_kien_1:
+    # Khối lệnh cho dieu_kien_1
+    hanh_dong_1
+elif dieu_kien_2:
+    # Khối lệnh cho dieu_kien_2
+    hanh_dong_2
+#... (có thể có nhiều elif khác)...
+else: # Tùy chọn
+    # Khối lệnh nếu tất cả các điều kiện trên đều False
+    hanh_dong_mac_dinh</code></pre>
+                </li>
+                <li><strong>Ví dụ:</strong>
+                    <pre><code class="language-python">lua_chon = input("Chọn 'A', 'B', hoặc 'C': ")
+if lua_chon == 'A':
+    print("Bạn đã chọn A.")
+elif lua_chon == 'B':
+    print("Bạn đã chọn B.")
+elif lua_chon == 'C':
+    print("Bạn đã chọn C.")
+else:
+    print("Lựa chọn không hợp lệ.")</code></pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>d. Phép toán Logic (Logical Operators)</h4>
+    <ul>
+        <li><strong>Khái niệm:</strong> Dùng để kết hợp nhiều biểu thức điều kiện.</li>
+        <li>
+            <p><strong>Toán tử <code class="inline-code">and</code> (Và):</strong></p>
+            <ul>
+                <li><strong>Cú pháp:</strong> <code class="inline-code">dieu_kien_1 and dieu_kien_2</code></li>
+                <li><strong>Ý nghĩa:</strong> Trả về <code class="inline-code">True</code> CHỈ KHI cả <code
+                        class="inline-code">dieu_kien_1</code> VÀ <code class="inline-code">dieu_kien_2</code> đều <code
+                        class="inline-code">True</code>.</li>
+                <li><strong>Ví dụ:</strong>
+                    <pre><code class="language-python">tuoi = 15
+co_ve = True
+if tuoi >= 13 and co_ve: # Phải đủ tuổi VÀ có vé
+    print("Mời bạn vào xem phim T13.")</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Toán tử <code class="inline-code">or</code> (Hoặc):</strong></p>
+            <ul>
+                <li><strong>Cú pháp:</strong> <code class="inline-code">dieu_kien_1 or dieu_kien_2</code></li>
+                <li><strong>Ý nghĩa:</strong> Trả về <code class="inline-code">True</code> NẾU ÍT NHẤT một trong hai
+                    (<code class="inline-code">dieu_kien_1</code> HOẶC <code class="inline-code">dieu_kien_2</code>) là
+                    <code class="inline-code">True</code>.
+                </li>
+                <li><strong>Ví dụ:</strong>
+                    <pre><code class="language-python">cuoi_tuan = False
+ngay_le = True
+if cuoi_tuan or ngay_le: # Chỉ cần là cuối tuần HOẶC ngày lễ
+    print("Hôm nay được nghỉ!")</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Toán tử <code class="inline-code">not</code> (Phủ định):</strong></p>
+            <ul>
+                <li><strong>Cú pháp:</strong> <code class="inline-code">not dieu_kien</code></li>
+                <li><strong>Ý nghĩa:</strong> Đảo ngược giá trị chân lý của <code class="inline-code">dieu_kien</code>.
+                    <code class="inline-code">not True</code> thành <code class="inline-code">False</code>, <code
+                        class="inline-code">not False</code> thành <code class="inline-code">True</code>.
+                </li>
+                <li><strong>Ví dụ:</strong>
+                    <pre><code class="language-python">da_an_toi = False
+if not da_an_toi: # Nếu CHƯA ăn tối
+    print("Hãy đi ăn tối thôi!")</code></pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>e. Thụt lề (Indentation)</h4>
+    <ul>
+        <li><strong>Khái niệm:</strong> Python sử dụng thụt lề (thường là 4 dấu cách) để xác định các khối lệnh thuộc về
+            <code class="inline-code">if</code>, <code class="inline-code">elif</code>, <code
+                class="inline-code">else</code> (cũng như <code class="inline-code">for</code>, <code
+                class="inline-code">while</code>, <code class="inline-code">def</code>, <code
+                class="inline-code">class</code> sau này).
+        </li>
+        <li><strong>Quy tắc:</strong> Tất cả các câu lệnh trong cùng một khối phải có cùng mức thụt lề.</li>
+        <li><strong>Lỗi:</strong> Việc thụt lề sai sẽ gây ra lỗi <code class="inline-code">IndentationError</code>.</li>
+        <li><strong>Ví dụ:</strong>
+            <pre><code class="language-python"># Đúng
+x = 10
+if x > 5:
+    print("x lớn hơn 5") # Thụt vào 4 dấu cách
+    print("Đây là một phần của khối if") # Cùng mức thụt lề
+
+# Sai (sẽ gây IndentationError)
+# if x > 0:
+# print("x dương") # Lỗi: thiếu thụt lề
+
+# if x > 0:
+#     print("x dương")
+#   print("Dòng này thụt lề không nhất quán") # Lỗi: thụt lề không nhất quán
+</code></pre>
+        </li>
+    </ul>
+
+    <h3>6. Bài tập</h3>
+    <ol>
+        <li>
+            <p><strong>Kiểm tra số dương, âm, hay là 0:</strong></p>
+            <ul>
+                <li><strong>Input:</strong> Một số nguyên <code class="inline-code">n</code> được nhập từ bàn phím.</li>
+                <li><strong>Output:</strong> In ra màn hình "n là số dương", "n là số âm", hoặc "n là số không".</li>
+                <li><strong>Code mẫu:</strong>
+                    <pre><code class="language-python">n = int(input("Nhập một số nguyên n: "))
+
+if n > 0:
+    print(f"Số {n} là số dương.")
+elif n < 0:
+    print(f"Số {n} là số âm.")
+else: # Trường hợp còn lại là n == 0
+    print(f"Số {n} là số không.")</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Kiểm tra một số có chia hết cho 2 VÀ 3 không?</strong></p>
+            <ul>
+                <li><strong>Input:</strong> Một số nguyên <code class="inline-code">x</code>.</li>
+                <li><strong>Output:</strong> In ra "{x} chia hết cho cả 2 và 3" hoặc "{x} không chia hết đồng thời cho 2
+                    và 3".</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Kiểm tra một số có chia hết cho một trong các số 2, 3, 5 không?</strong></p>
+            <ul>
+                <li><strong>Input:</strong> Một số nguyên <code class="inline-code">y</code>.</li>
+                <li><strong>Output:</strong> In ra "{y} chia hết cho ít nhất một trong các số 2, 3, 5" hoặc "{y} không
+                    chia hết cho số nào trong 2, 3, 5".</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Xếp loại BMI cho người châu Á:</strong></p>
+            <ul>
+                <li>Công thức tính BMI: $BMI = \cfrac{cân\_nặng (kg)}{chiều\_cao (m)^2}$</li>
+                <li>Yêu cầu người dùng nhập cân nặng (kg) và chiều cao (m).</li>
+                <li>Dựa trên thang phân loại IDI & WPRO cho người châu Á:
+                    <ul>
+                        <li>Dưới 18.5: Cân nặng thấp/gầy</li>
+                        <li>Từ 18.5 đến 22.9: Bình thường</li>
+                        <li>Từ 23 đến 24.9: Tiền béo phì</li>
+                        <li>Từ 25 đến 29.9: Béo phì độ I</li>
+                        <li>Từ 30 trở lên: Béo phì độ II</li>
+                    </ul>
+                </li>
+                <li><strong>Output:</strong> In ra chỉ số BMI (làm tròn 1 chữ số thập phân) và phân loại tương ứng.</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Bài toán trả tiền thừa - Ưu tiên tiền chẵn (phiên bản đơn giản):</strong></p>
+            <ul>
+                <li>Giả sử bạn cần trả lại một số tiền <code class="inline-code">tien_thua</code> (ví dụ: 78000 đồng).
+                </li>
+                <li>Chỉ sử dụng các mệnh giá tiền giấy Việt Nam thường dùng: 500.000, 200.000, 100.000, 50.000, 20.000,
+                    10.000, 5.000, 2.000, 1.000.</li>
+                <li><strong>Input:</strong> Số tiền thừa <code class="inline-code">tien_thua</code> (là một số nguyên
+                    dương, giả sử luôn chia hết cho 1000).</li>
+                <li><strong>Output:</strong> In ra số lượng tờ tiền của mỗi mệnh giá cần để trả, ưu tiên các tờ tiền có
+                    mệnh giá lớn trước.</li>
+                <li><strong>Code mẫu (Gợi ý cách tiếp cận cho một mệnh giá):</strong>
+                    <pre><code class="language-python">tien_thua = int(input("Nhập số tiền thừa cần trả (chia hết cho 1000): "))
+
+so_to_500k = 0
+#... (khai báo các biến đếm số tờ cho các mệnh giá khác)...
+so_to_1k = 0
+
+print(f"Để trả {tien_thua} đồng, bạn cần:")
+
+# Xử lý tờ 500.000
+if tien_thua >= 500000:
+    so_to_500k = tien_thua // 500000 
+    tien_thua = tien_thua % 500000   
+    print(f"- {so_to_500k} tờ 500.000 đồng")
+
+# Xử lý tờ 200.000
+if tien_thua >= 200000:
+    so_to_200k = tien_thua // 200000
+    tien_thua = tien_thua % 200000
+    if so_to_200k > 0: # Chỉ in nếu có tờ tiền này
+         print(f"- {so_to_200k} tờ 200.000 đồng")
+
+#... (Tiếp tục tương tự cho các mệnh giá còn lại, nhớ kiểm tra > 0 trước khi in)...
+
+if tien_thua >= 1000: # Mệnh giá cuối cùng
+    so_to_1k = tien_thua // 1000
+    if so_to_1k > 0:
+        print(f"- {so_to_1k} tờ 1.000 đồng")</code></pre>
+                </li>
+                <li><strong>Lưu ý:</strong> Học sinh cần hoàn thiện code cho tất cả các mệnh giá và chỉ in ra thông tin
+                    nếu số tờ tiền của mệnh giá đó lớn hơn 0.</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Kiểm tra điều kiện trúng tuyển đại học:</strong></p>
+            <ul>
+                <li>Điều kiện: Tổng điểm 3 môn >= 24.0 VÀ không có môn nào dưới 5.0.</li>
+                <li><strong>Input:</strong> Điểm 3 môn Toán, Lý, Hóa (số thực, nhập trên cùng một dòng).</li>
+                <li><strong>Output:</strong> "Trúng tuyển" hoặc "Không trúng tuyển".</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Kiểm tra năm nhuận:</strong></p>
+            <ul>
+                <li><strong>Quy tắc năm nhuận:</strong>
+                    <ul>
+                        <li>Năm chia hết cho 400: Là năm nhuận (ví dụ: 2000, 2400)</li>
+                        <li>Năm chia hết cho 100 nhưng không chia hết cho 400: Không phải năm nhuận (ví dụ: 1700, 1800,
+                            1900)</li>
+                        <li>Năm chia hết cho 4 nhưng không chia hết cho 100: Là năm nhuận (ví dụ: 2004, 2008, 2012)</li>
+                        <li>Năm không chia hết cho 4: Không phải năm nhuận (ví dụ: 2001, 2002, 2003)</li>
+                    </ul>
+                </li>
+                <li><strong>Input:</strong> Một năm (số nguyên dương).</li>
+                <li><strong>Output:</strong> "{năm} là năm nhuận" hoặc "{năm} không phải là năm nhuận".</li>
+                <li><strong>Code mẫu - Cách 1 (Kiểm tra theo thứ tự ưu tiên):</strong>
+                    <pre><code class="language-python">nam = int(input("Nhập một năm: "))
+
+if nam % 400 == 0:
+    print(f"{nam} là năm nhuận.")
+elif nam % 100 == 0:
+    print(f"{nam} không phải là năm nhuận.")
+elif nam % 4 == 0:
+    print(f"{nam} là năm nhuận.")
+else:
+    print(f"{nam} không phải là năm nhuận.")</code></pre>
+                </li>
+                <li><strong>Code mẫu - Cách 2 (Sử dụng phép toán logic):</strong>
+                    <pre><code class="language-python">nam = int(input("Nhập một năm: "))
+
+if (nam % 400 == 0) or (nam % 4 == 0 and nam % 100 != 0):
+    print(f"{nam} là năm nhuận.")
+else:
+    print(f"{nam} không phải là năm nhuận.")</code></pre>
+                </li>
+                <li><strong>Code mẫu - Cách 3 (If lồng nhau):</strong>
+                    <pre><code class="language-python">nam = int(input("Nhập một năm: "))
+
+if nam % 4 == 0:  # Bước 1: Kiểm tra chia hết cho 4
+    if nam % 100 == 0:  # Bước 2: Nếu chia hết cho 4, kiểm tra chia hết cho 100
+        if nam % 400 == 0:  # Bước 3: Nếu chia hết cho 100, kiểm tra chia hết cho 400
+            print(f"{nam} là năm nhuận.")  # Chia hết cho 400
+        else:
+            print(f"{nam} không phải là năm nhuận.")  # Chia hết cho 100 nhưng không chia hết cho 400
+    else:
+        print(f"{nam} là năm nhuận.")  # Chia hết cho 4 nhưng không chia hết cho 100
+else:
+    print(f"{nam} không phải là năm nhuận.")  # Không chia hết cho 4</code></pre>
+                </li>
+                <li><strong>Gợi ý:</strong> Hãy thử test với các năm: 2000, 1900, 2004, 2001 để kiểm tra tính đúng đắn
+                    của code.</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Tính cước taxi:</strong></p>
+            <ul>
+                <li>Giá mở cửa (cho km đầu tiên, tối đa 1km): 15.000 đồng.</li>
+                <li>Từ km tiếp theo đến km thứ 10 (tức là 9km tiếp theo): 12.000 đồng/km.</li>
+                <li>Từ km thứ 11 trở đi: 10.000 đồng/km.</li>
+                <li><strong>Input:</strong> Số km đã đi (số thực, ví dụ: 0.5, 5, 12.5).</li>
+                <li><strong>Output:</strong> Tổng số tiền cước phải trả.</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Kiểm tra một năm có phải là thế kỷ tròn không?</strong></p>
+            <ul>
+                <li>Một năm là thế kỷ tròn nếu nó chia hết cho 100 (ví dụ: 1900, 2000, 2100).</li>
+                <li><strong>Input:</strong> Một năm (số nguyên).</li>
+                <li><strong>Output:</strong> "{năm} là một thế kỷ tròn" hoặc "{năm} không phải là một thế kỷ tròn".</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Phân loại vé xem phim dựa trên độ tuổi và loại phim (đơn giản):</strong></p>
+            <ul>
+                <li>Quy định:
+                    <ul>
+                        <li>Phim P (Mọi lứa tuổi): Ai cũng được xem.</li>
+                        <li>Phim T13 (Từ 13 tuổi): Người từ 13 tuổi trở lên được xem.</li>
+                        <li>Phim T18 (Từ 18 tuổi): Người từ 18 tuổi trở lên được xem.</li>
+                    </ul>
+                </li>
+                <li><strong>Input:</strong> Tuổi người xem (số nguyên), loại phim (chuỗi, ví dụ: "P", "T13", "T18", nhập
+                    chữ hoa).</li>
+                <li><strong>Output:</strong> "Được phép xem" hoặc "Không được phép xem".</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>Tính tiền điện sinh hoạt theo giá bậc thang của EVN (cập nhật 2025 - giả định):</strong></p>
+            <ul>
+                <li><strong>Input:</strong> Số kWh điện tiêu thụ trong tháng (số nguyên).</li>
+                <li><strong>Biểu giá bán lẻ điện sinh hoạt (chưa VAT, giá mỗi kWh):</strong>
+                    <ul>
+                        <li>Bậc 1: Cho kWh từ 0 - 50: 1.984 đồng</li>
+                        <li>Bậc 2: Cho kWh từ 51 - 100: 2.050 đồng</li>
+                        <li>Bậc 3: Cho kWh từ 101 - 200: 2.380 đồng</li>
+                        <li>Bậc 4: Cho kWh từ 201 - 300: 2.998 đồng</li>
+                        <li>Bậc 5: Cho kWh từ 301 - 400: 3.350 đồng</li>
+                        <li>Bậc 6: Cho kWh từ 401 trở lên: 3.460 đồng</li>
+                    </ul>
+                </li>
+                <li><strong>Output:</strong> Tổng số tiền điện phải trả (chưa bao gồm thuế VAT), làm tròn đến hàng đồng.
+                </li>
+                <li><strong>Gợi ý:</strong> Cần tính tiền cho từng bậc. Ví dụ, nếu dùng 120 kWh:
+                    <ul>
+                        <li>Tiền bậc 1 = $50 \times 1984$</li>
+                        <li>Tiền bậc 2 = $(100-50) \times 2050$</li>
+                        <li>Tiền bậc 3 = $(120-100) \times 2380$</li>
+                        <li>Tổng tiền = Tiền bậc 1 + Tiền bậc 2 + Tiền bậc 3.</li>
+                    </ul>
+                    Cần sử dụng <code class="inline-code">if-elif-else</code> để xác định số kWh rơi vào bậc nào và tính
+                    toán tương ứng.
+                </li>
+            </ul>
         </li>
     </ol>
 
-    <h3>8. Tóm tắt Bài 5 và Từ khóa</h3>
-    <p>Bài học này đã giới thiệu cách để chương trình Python đưa ra quyết định dựa trên các điều kiện.
-    </p>
-    <h4>Bảng 5: Thuật ngữ và Câu lệnh mới Bài 5</h4>
+    <h3>7. Tóm tắt Bài 5 và Từ khóa</h3>
+    <p>Bài học này đã giới thiệu cách để chương trình Python đưa ra quyết định dựa trên các điều kiện:</p>
+    <ul>
+        <li><strong>Giá trị Boolean:</strong> <code class="inline-code">True</code> và <code
+                class="inline-code">False</code> là nền tảng của việc ra quyết định.</li>
+        <li><strong>Phép toán so sánh:</strong> Tạo ra các biểu thức điều kiện.</li>
+        <li><strong><code class="inline-code">if</code>:</strong> Thực thi mã nếu điều kiện đúng.</li>
+        <li><strong><code class="inline-code">else</code>:</strong> Cung cấp lựa chọn thay thế nếu điều kiện <code
+                class="inline-code">if</code> sai.</li>
+        <li><strong><code class="inline-code">elif</code>:</strong> Kiểm tra nhiều điều kiện một cách tuần tự.</li>
+        <li><strong>Phép toán logic (<code class="inline-code">and</code>, <code class="inline-code">or</code>, <code
+                    class="inline-code">not</code>):</strong> Kết hợp các điều kiện phức tạp.</li>
+        <li><strong><code class="inline-code">if</code> lồng nhau:</strong> Đặt các cấu trúc điều kiện bên trong nhau.
+        </li>
+    </ul>
+
+    <h5>Bảng 5: Thuật ngữ và Câu lệnh mới Bài 5</h5>
     <table>
         <thead>
             <tr>
@@ -286,45 +688,43 @@ else:
         </thead>
         <tbody>
             <tr>
-                <td><code>True</code>, <code>False</code></td>
+                <td><code class="inline-code">True</code>, <code class="inline-code">False</code></td>
                 <td>Các giá trị Chân lý (Boolean).</td>
             </tr>
             <tr>
-                <td>Phép toán so sánh (<code>==</code>, <code>!=</code>, <code>&gt;</code>,
-                    <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>)
-                </td>
-                <td>Dùng để so sánh hai giá trị, trả về <code>True</code> hoặc <code>False</code>.</td>
+                <td>Phép toán so sánh (<code class="inline-code">==</code>, <code class="inline-code">!=</code>, <code
+                        class="inline-code">&gt;</code>, <code class="inline-code">&lt;</code>, <code
+                        class="inline-code">&gt;=</code>, <code class="inline-code">&lt;=</code>)</td>
+                <td>Dùng để so sánh hai giá trị, trả về <code class="inline-code">True</code> hoặc <code
+                        class="inline-code">False</code>.</td>
             </tr>
             <tr>
-                <td><code>if dieu_kien:</code></td>
-                <td>Bắt đầu một khối lệnh điều kiện, thực thi nếu <code>dieu_kien</code> là
-                    <code>True</code>.
-                </td>
+                <td><code class="inline-code">if dieu_kien:</code></td>
+                <td>Bắt đầu một khối lệnh điều kiện, thực thi nếu <code class="inline-code">dieu_kien</code> là <code
+                        class="inline-code">True</code>.</td>
             </tr>
             <tr>
-                <td><code>else:</code></td>
-                <td>Bắt đầu một khối lệnh thực thi nếu điều kiện <code>if</code> (hoặc <code>elif</code>
-                    trước đó) là <code>False</code>.</td>
+                <td><code class="inline-code">else:</code></td>
+                <td>Bắt đầu một khối lệnh thực thi nếu điều kiện <code class="inline-code">if</code> (hoặc <code
+                        class="inline-code">elif</code> trước đó) là <code class="inline-code">False</code>.</td>
             </tr>
             <tr>
-                <td><code>elif dieu_kien:</code></td>
-                <td>"Else if", kiểm tra một điều kiện mới nếu các điều kiện
-                    <code>if</code>/<code>elif</code> trước đó là <code>False</code>.
-                </td>
+                <td><code class="inline-code">elif dieu_kien:</code></td>
+                <td>"Else if", kiểm tra một điều kiện mới nếu các điều kiện <code class="inline-code">if</code>/<code
+                        class="inline-code">elif</code> trước đó là <code class="inline-code">False</code>.</td>
             </tr>
             <tr>
-                <td><code>and</code></td>
-                <td>Phép toán logic "VÀ". Trả về <code>True</code> nếu cả hai vế đều <code>True</code>.
-                </td>
+                <td><code class="inline-code">and</code></td>
+                <td>Phép toán logic "VÀ". Trả về <code class="inline-code">True</code> nếu cả hai vế đều <code
+                        class="inline-code">True</code>.</td>
             </tr>
             <tr>
-                <td><code>or</code></td>
-                <td>Phép toán logic "HOẶC". Trả về <code>True</code> nếu ít nhất một vế là
-                    <code>True</code>.
-                </td>
+                <td><code class="inline-code">or</code></td>
+                <td>Phép toán logic "HOẶC". Trả về <code class="inline-code">True</code> nếu ít nhất một vế là <code
+                        class="inline-code">True</code>.</td>
             </tr>
             <tr>
-                <td><code>not</code></td>
+                <td><code class="inline-code">not</code></td>
                 <td>Phép toán logic "PHỦ ĐỊNH". Đảo ngược giá trị Boolean.</td>
             </tr>
             <tr>
@@ -333,4 +733,5 @@ else:
             </tr>
         </tbody>
     </table>
+    <hr class="my-8">
 </div>

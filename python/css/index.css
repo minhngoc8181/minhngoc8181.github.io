@@ -165,3 +165,43 @@ body {
   padding: 0;
   color: inherit;
 }
+
+@media print {
+  nav,
+  .nav-link,
+  .bg-sky-700,
+  .md\:w-64 {
+    display: none !important;
+  }
+
+  body,
+  html {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  main,
+  .lesson-content,
+  #lesson-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .copy-button {
+    display: none !important;
+  }
+
+  pre,
+  code {
+    background: #f8f9fa !important;
+    color: #212529 !important;
+    border: 1px solid #e9ecef !important;
+  }
+
+  a {
+    color: #0369a1 !important;
+    text-decoration: underline !important;
+  }
+}

@@ -251,7 +251,8 @@ print(max(numbers))      # Kết quả: 23</code></pre>
     </ul>
 
     <h3>4. Thử nghiệm</h3>
-    <p>Bây giờ, hãy sử dụng trình soạn thảo trực tuyến (ví dụ: <a href="https://www.online-python.com/" target="_blank" class="text-sky-600 hover:underline">Online Python</a>) để
+    <p>Bây giờ, hãy sử dụng trình soạn thảo trực tuyến (ví dụ: <a href="https://www.online-python.com/" target="_blank"
+            class="text-sky-600 hover:underline">Online Python</a>) để
         viết một chương trình hoàn chỉnh.</p>
     <p><strong>Ví dụ:</strong> Viết chương trình tính diện tích và chu vi của hình tròn khi biết bán
         kính.</p>
@@ -287,9 +288,9 @@ print("Chu vi (làm tròn):", round(chu_vi, 2))</code></pre>
 
     <h4>Phần A: Bài tập Toán học cơ bản</h4>
     <ol>
-        <li><strong>Làm tròn số:</strong> Cho <code>x = 123.456789</code>. Làm tròn đến số nguyên, 1 chữ
-            số thập phân, 3 chữ số thập phân.</li>
-        <li><strong>Tính toán với số lớn:</strong> Tính $17^5$.</li>
+        <li><strong>Làm tròn số:</strong> Cho <code>x = 123.456789</code>. Làm tròn đến số nguyên. Làm tròn 1 chữ
+            số thập phân. Làm tròn 3 chữ số thập phân. Làm tròn hàng chục. Làm tròn hàng trăm.</li>
+        <li><strong>Tính lũy thừa với số lớn:</strong> Tính $17^5 = 17\times 17\times 17\times 17\times 17$ và in ra kết quả với định dạng số được phân cách bằng dấu phẩy.</li>
         <li><strong>Chuyển đổi đơn vị nhiệt độ:</strong> Chuyển độ F sang độ C. Công thức: $C = (F - 32)
             \times \cfrac{5}{9}$.</li>
         <li><strong>Tính cạnh huyền tam giác vuông:</strong> Cho hai cạnh góc vuông <code>a</code> và
@@ -403,14 +404,17 @@ print("└" + "─" * 6 + "┘")</code></pre>
             <code>""" """</code> (hoặc <code>''' '''</code>) cho chú thích nhiều dòng để giải thích mã.
         </li>
         <li><strong>Các thành phần cơ bản:</strong> Ôn lại về câu lệnh, biến, phép toán, phép gán.</li>
-        <li><strong>Phép toán số học:</strong> <code>+</code> (cộng), <code>-</code> (trừ), <code>*</code> (nhân), <code>/</code> (chia), <code>//</code> (chia lấy phần nguyên), <code>%</code> (chia lấy số dư), <code>**</code> (lũy thừa).</li>
+        <li><strong>Phép toán số học:</strong> <code>+</code> (cộng), <code>-</code> (trừ), <code>*</code> (nhân),
+            <code>/</code> (chia), <code>//</code> (chia lấy phần nguyên), <code>%</code> (chia lấy số dư),
+            <code>**</code> (lũy thừa).</li>
         <li><strong>Phép toán chuỗi:</strong> Sử dụng <code>+</code> để nối chuỗi, <code>*</code> để lặp lại chuỗi - rất
             hữu ích cho việc tạo ASCII Art.</li>
         <li><strong>Thư viện <code>math</code>:</strong> Cách <code>import math</code> và sử dụng các
             hàm toán học như <code>math.sqrt()</code>, <code>math.pow()</code>, <code>math.pi</code>,
             <code>math.floor()</code>, <code>math.ceil()</code>.
         </li>
-        <li><strong>Hàm tích hợp:</strong> <code>abs()</code>, <code>round()</code>, <code>pow()</code>, <code>sum()</code>, <code>min()</code>, <code>max()</code>.</li>
+        <li><strong>Hàm tích hợp:</strong> <code>abs()</code>, <code>round()</code>, <code>pow()</code>,
+            <code>sum()</code>, <code>min()</code>, <code>max()</code>.</li>
     </ul>
     <h4>Bảng 3: Thuật ngữ và Hàm mới Bài 3</h4>
     <table>
@@ -423,69 +427,116 @@ print("└" + "─" * 6 + "┘")</code></pre>
         <tbody>
             <tr>
                 <td>Trình soạn thảo (Editor) / IDE</td>
-                <td>Công cụ dùng để viết và chạy mã chương trình.</td>
+                <td>
+                    Công cụ dùng để viết và chạy mã chương trình.
+                    <br><code>print("Hello World")  # Kết quả: Hello World</code>
+                </td>
             </tr>
             <tr>
                 <td>Chú thích (Comment)</td>
-                <td>Văn bản trong mã bị Python bỏ qua, dùng để giải thích hoặc ghi chú. Ký hiệu:
-                    <code>#</code>, <code>""" """</code>.
+                <td>
+                    Văn bản trong mã bị Python bỏ qua, dùng để giải thích hoặc ghi chú. Ký hiệu: <code>#</code>,
+                    <code>""" """</code>.
+                    <br><code># Đây là chú thích  # Kết quả: Không có đầu ra</code>
                 </td>
             </tr>
             <tr>
                 <td><code>import math</code></td>
-                <td>Câu lệnh để nạp thư viện <code>math</code> vào chương trình.</td>
+                <td>
+                    Câu lệnh để nạp thư viện <code>math</code> vào chương trình.
+                    <br><code>import math  # Kết quả: Không có đầu ra</code>
+                </td>
             </tr>
             <tr>
                 <td><code>math.sqrt(x)</code></td>
-                <td>Tính căn bậc hai của <code>x</code>.</td>
+                <td>
+                    Tính căn bậc hai của <code>x</code>.
+                    <br><code>print(math.sqrt(16))  # Kết quả: 4.0</code>
+                </td>
             </tr>
             <tr>
                 <td><code>math.pow(x, y)</code></td>
-                <td>Tính $x$ lũy thừa $y$.</td>
+                <td>
+                    Tính x lũy thừa y.
+                    <br><code>print(math.pow(3, 4))  # Kết quả: 81.0</code>
+                </td>
             </tr>
             <tr>
                 <td><code>math.pi</code></td>
-                <td>Hằng số Pi ($\pi$).</td>
+                <td>
+                    Hằng số Pi (π).
+                    <br><code>print(math.pi)  # Kết quả: 3.141592653589793</code>
+                </td>
             </tr>
             <tr>
                 <td><code>math.floor(x)</code></td>
-                <td>Làm tròn <code>x</code> xuống số nguyên gần nhất.</td>
+                <td>
+                    Làm tròn xuống số nguyên gần nhất của <code>x</code>.
+                    <br><code>print(math.floor(5.7))  # Kết quả: 5</code>
+                </td>
             </tr>
             <tr>
                 <td><code>math.ceil(x)</code></td>
-                <td>Làm tròn <code>x</code> lên số nguyên gần nhất.</td>
+                <td>
+                    Làm tròn lên số nguyên gần nhất của <code>x</code>.
+                    <br><code>print(math.ceil(5.1))  # Kết quả: 6</code>
+                </td>
             </tr>
             <tr>
                 <td><code>abs(x)</code></td>
-                <td>Tính giá trị tuyệt đối của <code>x</code> (hàm tích hợp).</td>
+                <td>
+                    Tính giá trị tuyệt đối của <code>x</code> (hàm tích hợp).
+                    <br><code>print(abs(-10))  # Kết quả: 10</code>
+                </td>
             </tr>
             <tr>
                 <td><code>round(x, n)</code></td>
-                <td>Làm tròn <code>x</code> đến <code>n</code> chữ số thập phân (hàm tích hợp).</td>
+                <td>
+                    Làm tròn <code>x</code> đến <code>n</code> chữ số thập phân (hàm tích hợp).
+                    <br><code>print(round(3.14159, 2))  # Kết quả: 3.14</code>
+                </td>
             </tr>
             <tr>
                 <td><code>pow(x, y)</code></td>
-                <td>Tính lũy thừa $x^y$ (hàm tích hợp, không cần import).</td>
+                <td>
+                    Tính lũy thừa <code>x^y</code> (hàm tích hợp, không cần import).
+                    <br><code>print(pow(2, 3))  # Kết quả: 8</code>
+                </td>
             </tr>
             <tr>
                 <td><code>sum(iterable)</code></td>
-                <td>Tính tổng các phần tử trong danh sách hoặc tuple (hàm tích hợp).</td>
+                <td>
+                    Tính tổng các phần tử trong danh sách hoặc tuple (hàm tích hợp).
+                    <br><code>print(sum([1, 2, 3]))  # Kết quả: 6</code>
+                </td>
             </tr>
             <tr>
                 <td><code>min()</code></td>
-                <td>Tìm giá trị nhỏ nhất trong các số hoặc danh sách (hàm tích hợp).</td>
+                <td>
+                    Tìm giá trị nhỏ nhất trong các số hoặc danh sách (hàm tích hợp).
+                    <br><code>print(min(10, 5, 8))  # Kết quả: 5</code>
+                </td>
             </tr>
             <tr>
                 <td><code>max()</code></td>
-                <td>Tìm giá trị lớn nhất trong các số hoặc danh sách (hàm tích hợp).</td>
+                <td>
+                    Tìm giá trị lớn nhất trong các số hoặc danh sách (hàm tích hợp).
+                    <br><code>print(max(10, 5, 8))  # Kết quả: 10</code>
+                </td>
             </tr>
             <tr>
                 <td><code>+</code> (string concatenation)</td>
-                <td>Nối hai chuỗi.</td>
+                <td>
+                    Nối hai chuỗi.
+                    <br><code>"Hello, " + "World!"  # Kết quả: Hello, World!</code>
+                </td>
             </tr>
             <tr>
                 <td><code>*</code> (string multiplication)</td>
-                <td>Nhân chuỗi để lặp lại.</td>
+                <td>
+                    Nhân chuỗi để lặp lại.
+                    <br><code>"ha" * 3  # Kết quả: hahaha</code>
+                </td>
             </tr>
         </tbody>
     </table>

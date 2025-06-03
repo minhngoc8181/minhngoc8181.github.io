@@ -1,0 +1,5 @@
+# .htaccess file to restrict access to lesson-5 and above
+<FilesMatch "^lesson-(5|[6-9]|[1-9][0-9]+)-content\\.html$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

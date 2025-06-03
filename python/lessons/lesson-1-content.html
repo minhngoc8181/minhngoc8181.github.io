@@ -87,12 +87,11 @@ print(10 / 2)  # Ví dụ phép chia cho ra số thập phân 5.0</code></pre>
 5.0</code></pre>
 
     <h3>Thử nghiệm và giải thích các trường hợp sau</h3>
-    <p>Khi mới học lập trình, việc gõ sai là điều thường gặp. Máy tính rất 'nghiêm khắc' và sẽ báo lỗi
-        nếu viết không đúng 'ngữ pháp' của nó. Những thông báo lỗi này giúp việc học tốt hơn. Dưới đây
-        là một vài trường hợp cố ý gõ sai hoặc gõ khác đi một chút để xem Python phản ứng thế nào và học
-        cách 'đọc' lỗi. Việc chủ động giới thiệu các lỗi thường gặp và giải thích chúng giúp không cảm
-        thấy sợ hãi hay thất vọng khi gặp lỗi. Thay vào đó, lỗi trở thành một phần tự nhiên của quá
-        trình học.</p>
+    <p>Khi học lập trình, ai cũng sẽ có lúc gõ sai hoặc gặp lỗi. Điều này rất bình thường, giống như khi mình học viết
+        chữ hay làm toán cũng có lúc nhầm lẫn. Khi gặp lỗi, đừng lo lắng hay sợ hãi nhé! Hãy bình tĩnh, đọc kỹ thông báo
+        mà máy tính đưa ra để hiểu xem mình sai ở đâu. Ngoài ra, khi học điều mới, em nên thử nhiều cách khác nhau, kể
+        cả cố ý làm sai hoặc thay đổi một chút, để xem điều gì sẽ xảy ra. Nhờ vậy, em sẽ hiểu bài sâu hơn và ngày càng
+        giỏi lập trình hơn!</p>
     <p>Thử gõ từng dòng sau, quan sát lỗi (nếu có) ở khung bên phải, sau đó xem phần giải thích:</p>
     <ol>
         <li>
@@ -175,11 +174,50 @@ print(10 / 2)  # Ví dụ phép chia cho ra số thập phân 5.0</code></pre>
                 </li>
             </ul>
         </li>
+        <li>
+            <pre><code class="language-python">print("Tôi sinh năm " + 2015)</code></pre>
+            <ul>
+                <li><strong>Lỗi có thể gặp:</strong>
+                    <code>TypeError: can only concatenate str (not "int") to str</code>
+                </li>
+                <li><strong>Giải thích:</strong> Python không cho phép
+                    nối trực tiếp chuỗi với số. Muốn nối được, cần chuyển số thành chuỗi bằng <code>str(2015)</code>.
+                </li>
+                <li><strong>Cách sửa:</strong>
+                    <pre><code class="language-python">print("Tôi sinh năm " + str(2015))</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print("Dòng này có thể lỗi" * 3)</code></pre>
+            <ul>
+                <li><strong>Kết quả:</strong> "Dòng này có thể lỗiDòng này có thể lỗiDòng này có thể lỗi"</li>
+                <li><strong>Giải thích:</strong> Toán tử <code>*</code> khi sử dụng giữa một chuỗi và một số nguyên, sẽ
+                    nhân bản chuỗi đó theo số lần chỉ định. Vì vậy, lệnh này lặp lại chuỗi "Dòng này có thể lỗi" 3 lần
+                    mà không gây lỗi cú pháp.</li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print("Minh" > "Nam")</code></pre>
+            <ul>
+                <li><strong>Kết quả:</strong> <code>False</code></li>
+                <li><strong>Giải thích:</strong> Python có thể so sánh hai chuỗi với nhau theo thứ tự bảng chữ cái. Ở
+                    đây, "Minh" không lớn hơn "Nam" nên kết quả là <code>False</code> (sai).</li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print(10 > 5)</code></pre>
+            <ul>
+                <li><strong>Kết quả:</strong> <code>True</code></li>
+                <li><strong>Giải thích:</strong> Python kiểm tra xem 10 có lớn hơn 5 không. Vì đúng nên kết quả là
+                    <code>True</code> (đúng).</li>
+            </ul>
+        </li>
     </ol>
-    <p><strong>~Lưu ý quan trọng~</strong>: Qua những thử nghiệm này, có thể thấy việc mắc lỗi khi lập
-        trình, nhất là khi mới bắt đầu, là điều hết sức tự nhiên. Điều quan trọng là không sợ sai, mà
-        hãy đọc kỹ thông báo lỗi. Thông báo lỗi chính là gợi ý của máy tính để giúp tìm ra lỗi ở đâu và
-        sửa nó như thế nào.</p>
+    <p><strong>Lưu ý quan trọng</strong>: Lập trình cũng giống như chơi trò chơi giải đố vậy. Đôi khi mình sẽ gặp thử
+        thách hoặc lỗi, nhưng mỗi lần như vậy là một cơ hội để học thêm điều mới. Hãy luôn bình tĩnh, đọc kỹ thông báo
+        lỗi và thử lại nhiều cách khác nhau. Càng thử nghiệm nhiều, em sẽ càng hiểu rõ và tiến bộ nhanh trong lập trình!
+    </p>
 
     <h3>Tóm tắt Bài 1 và Từ khóa</h3>
     <p>Trong bài học đầu tiên, những điều cơ bản nhất của lập trình đã được khám phá:</p>
@@ -276,7 +314,8 @@ print(10 / 2)  # Ví dụ phép chia cho ra số thập phân 5.0</code></pre>
                 <li>In ra câu: "Tôi năm nay 10 tuổi." (thay 10 bằng số tuổi thật của bạn, nhưng vẫn in
                     dưới dạng chuỗi).</li>
                 <li>In ra kết quả của phép tính <code>5 * 5</code> kèm theo lời giải thích, sử dụng nối chuỗi và hàm
-                    <code>str()</code>: <code>print("5 nhân 5 bằng: " + str(5 * 5))</code></li>
+                    <code>str()</code>: <code>print("5 nhân 5 bằng: " + str(5 * 5))</code>
+                </li>
             </ul>
         </li>
         <li><strong>Thử nghiệm với lỗi (tự sửa):</strong>
