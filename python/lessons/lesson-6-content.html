@@ -1,0 +1,239 @@
+<div id="lesson-6-content" class="lesson-content active-content">
+    <h2>Bài 6: Vòng Lặp (Loops)</h2>
+    <p>Bài học này sẽ giới thiệu về vòng lặp, một công cụ mạnh mẽ cho phép thực hiện các công việc lặp
+        đi lặp lại một cách tự động và hiệu quả.</p>
+    <h3>Mục tiêu Bài học:</h3>
+    <ul>
+        <li>Hiểu tại sao cần vòng lặp trong lập trình: để thực hiện các công việc lặp đi lặp lại một
+            cách hiệu quả.</li>
+        <li>Học và sử dụng vòng lặp <code>for</code> để duyệt qua các phần tử trong một dãy (ví dụ: dãy
+            số tạo bởi <code>range()</code>, chuỗi ký tự, danh sách).</li>
+        <li>Sử dụng hàm <code>range()</code> với các tham số khác nhau (<code>stop</code>,
+            <code>start, stop</code>, <code>start, stop, step</code>).
+        </li>
+        <li>Học và sử dụng vòng lặp <code>while</code> để thực hiện lặp khi một điều kiện còn đúng.</li>
+        <li>Hiểu tầm quan trọng của việc cập nhật biến điều kiện trong vòng lặp <code>while</code> để
+            tránh vòng lặp vô tận.</li>
+        <li>Làm quen với các câu lệnh điều khiển vòng lặp: <code>break</code> (thoát vòng lặp) và
+            <code>continue</code> (bỏ qua lần lặp hiện tại).
+        </li>
+        <li>Áp dụng vòng lặp để giải quyết các bài toán thực tế.</li>
+    </ul>
+    <h3>Giới thiệu:</h3>
+    <p>Trong các bài tập trước (ví dụ, Bài 2 yêu cầu in ra 10 dòng "Số thứ 1", "Số thứ 2",...), bạn có
+        thể đã cảm thấy việc gõ đi gõ lại các lệnh tương tự nhau khá nhàm chán và tốn thời gian. Nếu cần
+        in ra 1000 dòng thì sao? Rõ ràng, chúng ta cần một cách tốt hơn.</p>
+    <p><strong>Vòng lặp</strong> chính là giải pháp. Vòng lặp cho phép chúng ta thực thi một khối lệnh
+        nhiều lần mà không cần phải viết lại khối lệnh đó. Python cung cấp hai loại vòng lặp chính:
+        <code>for</code> và <code>while</code>.
+    </p>
+
+    <h3>1. Vòng lặp <code>for</code> (The <code>for</code> Loop)</h3>
+    <p>Vòng lặp <code>for</code> được sử dụng để duyệt qua các phần tử của một <strong>dãy lặp được
+            (iterable)</strong> như chuỗi ký tự, danh sách (list), hoặc một dãy số được tạo bởi hàm
+        <code>range()</code>.
+    </p>
+    <p><strong>Cú pháp cơ bản:</strong></p>
+    <pre><code class="language-python">for bien_lap in day_lap_duoc:
+    # Khối lệnh sẽ được thực thi cho mỗi phần tử trong day_lap_duoc
+    # bien_lap sẽ nhận giá trị của từng phần tử trong mỗi lần lặp
+    lenh_1
+    lenh_2
+    ...
+# Lệnh tiếp theo sau khi vòng lặp kết thúc</code></pre>
+
+    <h4>a. Sử dụng <code>range()</code> với vòng lặp <code>for</code></h4>
+    <ul>
+        <li><strong><code>range(stop)</code>:</strong> Tạo một dãy số từ <code>0</code> đến
+            <code>stop - 1</code>.
+            <p><strong>Ví dụ 1: In các số từ 0 đến 4</strong></p>
+            <pre><code class="language-python">print("Các số từ 0 đến 4:")
+for i in range(5):  # range(5) tạo ra dãy 0, 1, 2, 3, 4
+    print(i)</code></pre>
+        </li>
+        <li><strong><code>range(start, stop)</code>:</strong> Tạo một dãy số từ <code>start</code> đến
+            <code>stop - 1</code>.
+            <p><strong>Ví dụ 2: In các số từ 1 đến 5</strong></p>
+            <pre><code class="language-python">print("Các số từ 1 đến 5:")
+for num in range(1, 6): # range(1, 6) tạo ra dãy 1, 2, 3, 4, 5
+    print(num)</code></pre>
+            <p>Giải quyết bài toán in "Số thứ 1" đến "Số thứ 10":</p>
+            <pre><code class="language-python">for i in range(1, 11):
+    print(f"Số thứ {i}")</code></pre>
+        </li>
+        <li><strong><code>range(start, stop, step)</code>:</strong> Tạo một dãy số từ <code>start</code>
+            đến <code>stop - 1</code>, với mỗi bước nhảy là <code>step</code>.
+            <p><strong>Ví dụ 3: In các số chẵn từ 2 đến 10</strong></p>
+            <pre><code class="language-python">print("Các số chẵn từ 2 đến 10:")
+for k in range(2, 11, 2): # Dãy: 2, 4, 6, 8, 10
+    print(k)</code></pre>
+            <p><strong>Ví dụ 4: Đếm ngược từ 5 về 1</strong></p>
+            <pre><code class="language-python">print("Đếm ngược từ 5 về 1:")
+for count in range(5, 0, -1): # Dãy: 5, 4, 3, 2, 1
+    print(count)</code></pre>
+        </li>
+    </ul>
+
+    <h4>b. Duyệt qua chuỗi ký tự</h4>
+    <p><strong>Ví dụ 5: In từng ký tự của một chuỗi</strong></p>
+    <pre><code class="language-python">ten = "Python"
+print(f"Các ký tự trong chuỗi '{ten}':")
+for ky_tu in ten:
+    print(ky_tu)</code></pre>
+
+    <h4>c. Duyệt qua danh sách (List)</h4>
+    <p><strong>Ví dụ 6: Duyệt qua một danh sách các số</strong></p>
+    <pre><code class="language-python">danh_sach_diem = [7, 8, 5, 9, 10]
+tong_diem = 0
+print("Các điểm số:")
+for diem in danh_sach_diem:
+    print(diem)
+    tong_diem = tong_diem + diem # Hoặc tong_diem += diem
+
+print(f"Tổng các điểm số là: {tong_diem}")</code></pre>
+
+    <h3>2. Vòng lặp <code>while</code> (The <code>while</code> Loop)</h3>
+    <p>Vòng lặp <code>while</code> thực thi một khối lệnh lặp đi lặp lại chừng nào một <strong>điều
+            kiện</strong> cho trước còn là <code>True</code>.</p>
+    <p><strong>Cú pháp cơ bản:</strong></p>
+    <pre><code class="language-python">while dieu_kien:
+    # Khối lệnh sẽ được thực thi lặp đi lặp lại
+    # chừng nào dieu_kien còn là True
+    lenh_1
+    lenh_2
+    ...
+    # Quan trọng: Cần có sự thay đổi nào đó trong khối lệnh
+    # để dieu_kien cuối cùng trở thành False, nếu không sẽ gây ra vòng lặp vô tận.
+# Lệnh tiếp theo sau khi vòng lặp kết thúc (khi dieu_kien trở thành False)</code></pre>
+    <p><strong>Quan trọng: Tránh vòng lặp vô tận (Infinite Loops)</strong></p>
+    <p><strong>Ví dụ 7: Sử dụng <code>while</code> để đếm từ 1 đến 5</strong></p>
+    <pre><code class="language-python">dem = 1 # 1. Khởi tạo biến điều kiện
+print("Đếm từ 1 đến 5 dùng while:")
+while dem <= 5: # 2. Điều kiện lặp
+    print(dem)
+    dem = dem + 1 # 3. Cập nhật biến điều kiện (rất quan trọng!)
+
+print("Kết thúc đếm.")</code></pre>
+    <p><strong>Ví dụ 8: Yêu cầu người dùng nhập số dương</strong></p>
+    <pre><code class="language-python">so_nhap = -1
+while so_nhap <= 0:
+    so_nhap_str = input("Vui lòng nhập một số dương: ")
+    if so_nhap_str.isdigit():
+        so_nhap = int(so_nhap_str)
+        if so_nhap <= 0:
+            print("Số bạn nhập không phải là số dương. Vui lòng thử lại.")
+    else:
+        print("Dữ liệu nhập không hợp lệ. Vui lòng nhập một số.")
+
+print(f"Bạn đã nhập số dương: {so_nhap}")</code></pre>
+
+    <h3>3. Câu lệnh điều khiển vòng lặp: <code>break</code> và <code>continue</code></h3>
+    <h4>a. <code>break</code> (Thoát vòng lặp)</h4>
+    <p>Thoát ngay lập tức khỏi vòng lặp hiện tại.</p>
+    <p><strong>Ví dụ 9: Tìm số đầu tiên chia hết cho 7 trong một khoảng</strong></p>
+    <pre><code class="language-python">print("Tìm số đầu tiên chia hết cho 7 từ 1 đến 20:")
+for i in range(1, 21):
+    print(f"Đang kiểm tra số: {i}")
+    if i % 7 == 0:
+        print(f"Tìm thấy! Số {i} chia hết cho 7.")
+        break 
+print("Kết thúc tìm kiếm.")</code></pre>
+
+    <h4>b. <code>continue</code> (Bỏ qua lần lặp hiện tại)</h4>
+    <p>Bỏ qua phần còn lại của khối lệnh trong lần lặp hiện tại và chuyển ngay sang lần lặp tiếp theo.
+    </p>
+    <p><strong>Ví dụ 10: In các số từ 1 đến 10, bỏ qua số 5</strong></p>
+    <pre><code class="language-python">print("In các số từ 1 đến 10, bỏ qua số 5:")
+for i in range(1, 11):
+    if i == 5:
+        continue 
+    print(i)
+print("Hoàn thành.")</code></pre>
+
+    <h3>4. Khi nào dùng <code>for</code>, khi nào dùng <code>while</code>?</h3>
+    <ul>
+        <li><strong>Dùng <code>for</code> khi:</strong> Biết trước số lần lặp hoặc muốn duyệt qua từng
+            phần tử của một dãy.</li>
+        <li><strong>Dùng <code>while</code> khi:</strong> Muốn lặp dựa trên một điều kiện mà không biết
+            trước số lần lặp.</li>
+    </ul>
+
+    <h3>5. Vòng lặp lồng nhau (Nested Loops) - Giới thiệu</h3>
+    <p>Một vòng lặp có thể chứa một vòng lặp khác bên trong nó.</p>
+    <p><strong>Ví dụ 11: In bảng cửu chương nhỏ (từ 1 đến 3)</strong></p>
+    <pre><code class="language-python">print("Bảng cửu chương (1-3):")
+for i in range(1, 4):
+    print(f"--- Bảng cửu chương {i} ---")
+    for j in range(1, 11):
+        print(f"{i} x {j} = {i*j}")
+    print("-" * 20)</code></pre>
+
+    <h3>6. Bài tập</h3>
+    <ol>
+        <li><strong>Tổng các số:</strong> Tính tổng các số từ 1 đến 100.</li>
+        <li><strong>Giai thừa:</strong> Nhập <code>n</code>, tính $n!$ (với $0! = 1$).</li>
+        <li><strong>Đếm số chẵn và lẻ:</strong> Nhập <code>N</code>. Đếm số chẵn, lẻ từ 1 đến
+            <code>N</code>.
+        </li>
+        <li><strong>Đoán số (cải tiến):</strong> Máy tính nghĩ số. Người dùng đoán đến khi đúng, có gợi
+            ý.</li>
+        <li><strong>In các số chia hết cho 3 nhưng không chia hết cho 5:</strong> Từ 1 đến 50.</li>
+        <li><strong>Nhập mật khẩu:</strong> Đặt mật khẩu. Yêu cầu nhập đến khi đúng.</li>
+        <li><strong>Vẽ hình chữ nhật bằng dấu <code>*</code>:</strong> Nhập chiều cao <code>h</code>,
+            rộng <code>w</code>. Vẽ hình.</li>
+        <li><strong>Tìm ước số chung lớn nhất (ƯCLN) đơn giản:</strong> Nhập <code>a</code>,
+            <code>b</code>. Tìm ƯCLN.
+        </li>
+    </ol>
+
+    <h3>7. Tóm tắt Bài 6 và Từ khóa</h3>
+    <p>Vòng lặp là một công cụ cực kỳ mạnh mẽ trong lập trình, giúp tự động hóa các tác vụ lặp đi lặp
+        lại.</p>
+    <h4>Bảng 6: Thuật ngữ và Câu lệnh mới Bài 6</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Thuật ngữ/Câu lệnh (Term/Statement)</th>
+                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vòng lặp (Loop)</td>
+                <td>Cấu trúc cho phép thực thi một khối lệnh nhiều lần.</td>
+            </tr>
+            <tr>
+                <td><code>for bien in day_lap_duoc:</code></td>
+                <td>Vòng lặp duyệt qua từng phần tử của <code>day_lap_duoc</code>.</td>
+            </tr>
+            <tr>
+                <td><code>range(stop)</code> / <code>range(start, stop)</code> /
+                    <code>range(start, stop, step)</code>
+                </td>
+                <td>Hàm tạo ra một dãy số.</td>
+            </tr>
+            <tr>
+                <td><code>while dieu_kien:</code></td>
+                <td>Vòng lặp thực thi khối lệnh chừng nào <code>dieu_kien</code> còn <code>True</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Vòng lặp vô tận (Infinite Loop)</td>
+                <td>Vòng lặp không bao giờ kết thúc do điều kiện luôn đúng.</td>
+            </tr>
+            <tr>
+                <td><code>break</code></td>
+                <td>Câu lệnh thoát ngay lập tức khỏi vòng lặp hiện tại.</td>
+            </tr>
+            <tr>
+                <td><code>continue</code></td>
+                <td>Câu lệnh bỏ qua phần còn lại của lần lặp hiện tại và chuyển sang lần lặp tiếp theo.
+                </td>
+            </tr>
+            <tr>
+                <td>Vòng lặp lồng nhau (Nested Loops)</td>
+                <td>Một vòng lặp nằm bên trong một vòng lặp khác.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

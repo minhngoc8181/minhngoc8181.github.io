@@ -1,0 +1,384 @@
+<div id="lesson-4-content" class="lesson-content active-content">
+    <h2>Bài 4: Nhập dữ liệu, Chuyển đổi kiểu và Xuất dữ liệu</h2>
+    <p>Bài học này tập trung vào cách chương trình Python tương tác với người dùng: nhận dữ liệu đầu
+        vào, xử lý (bao gồm chuyển đổi kiểu), và hiển thị kết quả đầu ra.</p>
+    <h3>Mục tiêu Bài học:</h3>
+    <ul>
+        <li>Biết cách sử dụng lệnh <code>input()</code> để nhận dữ liệu từ người dùng.</li>
+        <li>Hiểu rằng dữ liệu nhập từ <code>input()</code> mặc định là kiểu chuỗi (string).</li>
+        <li>Biết cách chuyển đổi dữ liệu nhập vào sang kiểu số nguyên (<code>int</code>) và số thực
+            (<code>float</code>).</li>
+        <li>Ôn tập và sử dụng lệnh <code>print()</code> để xuất dữ liệu ra màn hình.</li>
+        <li>Học cách định dạng chuỗi xuất bằng f-strings để hiển thị thông tin một cách rõ ràng và đẹp
+            mắt.</li>
+        <li>Làm quen với việc nhập nhiều giá trị trên cùng một dòng và xử lý chúng bằng các phương pháp
+            khác nhau, bao gồm <code>split()</code>, <code>map()</code>, và list comprehension.</li>
+    </ul>
+    <h3>Giới thiệu:</h3>
+    <p>Trong các bài học trước, chúng ta đã gán giá trị trực tiếp cho các biến trong mã chương trình (ví
+        dụ: <code>ban_kinh = 5.0</code>). Tuy nhiên, trong thực tế, nhiều chương trình cần tương tác với
+        người dùng, nhận dữ liệu từ họ để xử lý.</p>
+    <p>Sau khi xử lý, chương trình cũng cần hiển thị kết quả hoặc thông tin cho người dùng. Bài học này
+        sẽ tập trung vào hai quá trình quan trọng này: <strong>nhập dữ liệu (input)</strong> và
+        <strong>xuất dữ liệu (output)</strong>, cùng với việc chuyển đổi kiểu dữ liệu đầu vào cho phù
+        hợp và các kỹ thuật nhập dữ liệu nâng cao.
+    </p>
+
+    <h3>1. Nhập dữ liệu từ người dùng (Inputting Data from the User)</h3>
+    <h4>a. Lệnh <code>input()</code> cơ bản</h4>
+    <p>Để chương trình Python có thể nhận dữ liệu do người dùng gõ từ bàn phím, chúng ta sử dụng hàm
+        tích hợp sẵn <code>input()</code>.</p>
+    <p>Khi lệnh <code>input()</code> được thực thi, chương trình sẽ tạm dừng và đợi người dùng nhập một
+        dòng văn bản rồi nhấn phím Enter. Sau khi người dùng nhấn Enter, toàn bộ những gì họ đã gõ sẽ
+        được trả về dưới dạng một <strong>chuỗi ký tự (string)</strong>.</p>
+    <p><strong>Ví dụ 1: Nhập tên và chào hỏi</strong></p>
+    <pre><code class="language-python">print("Chào bạn, mình là máy tính.")
+ten_nguoi_dung = input() # Chương trình dừng ở đây, đợi người dùng nhập
+print("Rất vui được làm quen với bạn,", ten_nguoi_dung, "!")</code></pre>
+
+    <h4>b. Lời nhắc (Prompt) trong <code>input()</code></h4>
+    <p>Để người dùng biết chương trình đang mong đợi họ nhập gì, chúng ta có thể cung cấp một "lời nhắc"
+        (prompt message) bên trong dấu ngoặc của hàm <code>input()</code>.</p>
+    <p><strong>Ví dụ 2: Sử dụng lời nhắc</strong></p>
+    <pre><code class="language-python">ten = input("Bạn tên là gì? ")
+nam_sinh_str = input("Bạn sinh năm bao nhiêu? ")
+
+print("Xin chào", ten)
+print("Bạn sinh năm", nam_sinh_str)</code></pre>
+    <p><strong>Quan trọng:</strong> Hàm <code>input()</code> <strong>luôn luôn</strong> trả về một chuỗi
+        ký tự (string).</p>
+
+    <h3>2. Chuyển đổi kiểu dữ liệu đầu vào (Converting Input Data Types)</h3>
+    <h4>a. Tại sao cần chuyển đổi?</h4>
+    <p>Vì <code>input()</code> trả về chuỗi, nếu cố gắng thực hiện các phép toán số học trực tiếp trên
+        kết quả của <code>input()</code> (khi người dùng nhập số), sẽ gặp lỗi hoặc kết quả không như
+        mong đợi.</p>
+    <p><strong>Ví dụ về vấn đề:</strong></p>
+    <pre><code class="language-python">so_thu_nhat_str = input("Nhập số thứ nhất: ") # Người dùng nhập "10"
+so_thu_hai_str = input("Nhập số thứ hai: ")   # Người dùng nhập "5"
+
+tong_str = so_thu_nhat_str + so_thu_hai_str
+print("Tổng (dưới dạng chuỗi):", tong_str) # Kết quả sẽ là "105"</code></pre>
+
+    <h4>b. Chuyển đổi sang số nguyên: <code>int()</code></h4>
+    <p>Hàm <code>int()</code> được sử dụng để chuyển đổi một chuỗi thành một số nguyên.</p>
+    <p><strong>Ví dụ 3: Nhập tuổi và tính tuổi trong tương lai</strong></p>
+    <pre><code class="language-python">ten = input("Bạn tên là gì? ")
+tuoi_hien_tai_str = input("Năm nay bạn bao nhiêu tuổi? ")
+
+tuoi_hien_tai_int = int(tuoi_hien_tai_str)
+tuoi_sau_5_nam = tuoi_hien_tai_int + 5
+
+print("Chào", ten)
+print("Năm nay bạn", tuoi_hien_tai_int, "tuổi.")
+print("Sau 5 năm nữa, bạn sẽ", tuoi_sau_5_nam, "tuổi.")</code></pre>
+
+    <h4>c. Chuyển đổi sang số thực: <code>float()</code></h4>
+    <p>Hàm <code>float()</code> được sử dụng để chuyển đổi một chuỗi thành một số thực.</p>
+    <p><strong>Ví dụ 4: Nhập chiều cao và cân nặng</strong></p>
+    <pre><code class="language-python">chieu_cao_str = input("Nhập chiều cao của bạn (mét, ví dụ: 1.65): ")
+can_nang_str = input("Nhập cân nặng của bạn (kg, ví dụ: 50.5): ")
+
+chieu_cao_float = float(chieu_cao_str)
+can_nang_float = float(can_nang_str)
+
+print("Chiều cao của bạn là:", chieu_cao_float, "m")
+print("Cân nặng của bạn là:", can_nang_float, "kg")</code></pre>
+    <p>Nếu người dùng nhập giá trị không hợp lệ cho <code>int()</code> hoặc <code>float()</code>, chương
+        trình sẽ báo lỗi <code>ValueError</code>.</p>
+
+    <h3>3. Xuất dữ liệu ra màn hình (Outputting Data to the Screen) - Ôn tập và Mở rộng</h3>
+    <h4>a. Lệnh <code>print()</code> với nhiều đối số</h4>
+    <p>Hàm <code>print()</code> có thể nhận nhiều đối số, cách nhau bởi dấu phẩy. Các đối số sẽ được in
+        ra trên cùng một dòng, cách nhau bởi một khoảng trắng mặc định.</p>
+    <p><strong>Ví dụ 5:</strong></p>
+    <pre><code class="language-python">ten = "An"
+tuoi = 10
+lop = "5A"
+print("Học sinh:", ten, "- Tuổi:", tuoi, "- Lớp:", lop)</code></pre>
+
+    <h4>b. Nối chuỗi để xuất dữ liệu (String concatenation)</h4>
+    <p>Có thể tạo một chuỗi lớn bằng cách nối các chuỗi nhỏ hơn (và các biến đã được chuyển thành chuỗi)
+        bằng toán tử <code>+</code>.</p>
+    <p><strong>Ví dụ 6:</strong></p>
+    <pre><code class="language-python">ten = "Bình"
+diem = 8.5
+thong_bao = "Bạn " + ten + " đạt được " + str(diem) + " điểm."
+print(thong_bao)</code></pre>
+
+    <h3>4. Định dạng chuỗi xuất (Formatted String Output)</h3>
+    <h4>a. f-strings (Formatted String Literals)</h4>
+    <p>f-strings cho phép nhúng trực tiếp các biểu thức vào bên trong một chuỗi bằng cách đặt chữ
+        <code>f</code> hoặc <code>F</code> ngay trước dấu ngoặc kép mở đầu của chuỗi, và đặt các biểu
+        thức cần nhúng vào trong cặp dấu ngoặc nhọn <code>{}</code>.
+    </p>
+    <p><strong>Ví dụ 7: Sử dụng f-strings</strong></p>
+    <pre><code class="language-python">ten = "Mai"
+tuoi = 9
+mon_hoc = "Toán"
+diem_so = 10
+
+print(f"Học sinh {ten}, {tuoi} tuổi, đã đạt {diem_so} điểm môn {mon_hoc}.")
+
+a = 5
+b = 7
+print(f"Tổng của {a} và {b} là {a + b}.")</code></pre>
+    <p><strong>Định dạng số trong f-strings:</strong> Cú pháp:
+        <code>{ten_bien:.<so_chu_so_thap_phan>f}</code>
+    </p>
+    <p><strong>Ví dụ 8: Định dạng số thập phân</strong></p>
+    <pre><code class="language-python">import math
+
+gia_tri_pi = math.pi
+print(f"Số Pi là: {gia_tri_pi}")
+print(f"Số Pi làm tròn đến 2 chữ số thập phân: {gia_tri_pi:.2f}")
+print(f"Số Pi làm tròn đến 4 chữ số thập phân: {gia_tri_pi:.4f}")</code></pre>
+
+    <h4>b. Phương thức <code>str.format()</code> (Giới thiệu ngắn gọn)</h4>
+    <p>Cú pháp: <code>"Nội dung chuỗi {}...".format(gia_tri_1, gia_tri_2,...)</code></p>
+    <p><strong>Ví dụ 9:</strong></p>
+    <pre><code class="language-python">ten = "Lam"
+tuoi = 11
+print("Xin chào {}, bạn năm nay {} tuổi.".format(ten, tuoi))</code></pre>
+
+    <h3>5. Nhập nhiều giá trị cùng lúc và Chuyển đổi kiểu Nâng cao</h3>
+    <p>Đôi khi, chúng ta muốn người dùng nhập nhiều mẩu thông tin trên cùng một dòng, thường được cách
+        nhau bởi khoảng trắng.</p>
+    <h4>a. Sử dụng <code>split()</code> và gán vào các biến</h4>
+    <p>Hàm <code>input()</code> đọc toàn bộ dòng thành một chuỗi. Phương thức <code>split()</code> của
+        chuỗi tách chuỗi này thành một danh sách các chuỗi con.</p>
+    <p><strong>Ví dụ 10: Nhập 2 số (cách cơ bản sau khi split)</strong></p>
+    <pre><code class="language-python">print("Nhập vào hai số nguyên a và b, cách nhau bởi một khoảng trắng:")
+du_lieu_nhap_str = input() # Ví dụ người dùng nhập: "15 25"
+danh_sach_chuoi_so = du_lieu_nhap_str.split() # Kết quả: ['15', '25']
+
+so_a_str = danh_sach_chuoi_so[0]
+so_b_str = danh_sach_chuoi_so[1]
+
+so_a_int = int(so_a_str)
+so_b_int = int(so_b_str)
+
+print(f"Số thứ nhất là: {so_a_int}, Số thứ hai là: {so_b_int}")
+print(f"Tổng của hai số là: {so_a_int + so_b_int}")</code></pre>
+    <p><strong>Cách viết gọn hơn để gán trực tiếp (unpacking):</strong></p>
+    <pre><code class="language-python">print("Nhập vào hai chuỗi str1 và str2, cách nhau bởi một khoảng trắng:")
+# Ví dụ người dùng nhập: "hello world"
+str1, str2 = input().split()
+print(f"Chuỗi 1: {str1}, Chuỗi 2: {str2}")
+
+# Sau đó, nếu cần, chuyển đổi kiểu cho từng biến:
+# diem_toan_str, diem_van_str = input("Nhập điểm Toán và Văn: ").split()
+# diem_toan = float(diem_toan_str)
+# diem_van = float(diem_van_str)</code></pre>
+
+    <h4>b. Sử dụng <code>map()</code> để chuyển đổi kiểu hàng loạt</h4>
+    <p>Hàm <code>map(ham_chuyen_doi, danh_sach_can_chuyen)</code> sẽ áp dụng <code>ham_chuyen_doi</code>
+        (ví dụ <code>int</code> hoặc <code>float</code>) lên từng phần tử của
+        <code>danh_sach_can_chuyen</code>.
+    </p>
+    <p><strong>Ví dụ 11: Nhập 2 số nguyên dùng <code>map()</code></strong></p>
+    <pre><code class="language-python">print("Nhập vào hai số nguyên a và b, cách nhau bởi một khoảng trắng:")
+# Ví dụ người dùng nhập: "100 200"
+a, b = map(int, input().split())
+
+print(f"Số a = {a}, số b = {b}")
+print(f"Tổng a + b = {a + b}")</code></pre>
+
+    <h4>c. Sử dụng List Comprehension để chuyển đổi kiểu</h4>
+    <p><strong>Nhập và chuyển đổi thành các biến riêng lẻ:</strong></p>
+    <p><strong>Ví dụ 12: Nhập 2 số thực dùng List Comprehension</strong></p>
+    <pre><code class="language-python">print("Nhập vào hai số thực x và y, cách nhau bởi một khoảng trắng:")
+# Ví dụ người dùng nhập: "3.5 7.2"
+x, y = [float(giatri_str) for giatri_str in input().split()]
+
+print(f"Số x = {x}, số y = {y}")
+print(f"Tích x * y = {x * y:.2f}")</code></pre>
+
+    <h4>d. Ôn tập các hàm với list: <code>len()</code>, <code>max()</code>, <code>min()</code>, <code>sum()</code></h4>
+    <p>Sau khi có một danh sách các số (ví dụ, từ quá trình nhập liệu và chuyển đổi kiểu), chúng ta có thể sử dụng các
+        hàm tích hợp sẵn của Python để thực hiện các thao tác phổ biến trên danh sách đó:</p>
+    <ul>
+        <li><code>len(danh_sach)</code>: Trả về số lượng phần tử trong danh sách.</li>
+        <li><code>sum(danh_sach)</code>: Tính tổng các phần tử trong danh sách (chỉ áp dụng cho danh sách chứa các số).
+        </li>
+        <li><code>max(danh_sach)</code>: Tìm giá trị lớn nhất trong danh sách (chỉ áp dụng cho danh sách chứa các số).
+        </li>
+        <li><code>min(danh_sach)</code>: Tìm giá trị nhỏ nhất trong danh sách (chỉ áp dụng cho danh sách chứa các số).
+        </li>
+    </ul>
+    <p>Những hàm này rất hữu ích khi xử lý dữ liệu số được nhập vào dưới dạng danh sách.</p>
+
+    <p><strong>Nhập và lưu vào một danh sách các số:</strong></p>
+    <p><strong>Ví dụ 13: Nhập một danh sách các số nguyên</strong></p>
+    <pre><code class="language-python">print("Nhập vào một dãy các số nguyên, cách nhau bởi khoảng trắng (ví dụ: 1 2 3 4 5):")
+# Ví dụ người dùng nhập: "10 20 30 5 15"
+danh_sach_so_nguyen = [int(so_str) for so_str in input().split()]
+
+print("Danh sách các số bạn đã nhập là:", danh_sach_so_nguyen)
+
+tong_danh_sach = sum(danh_sach_so_nguyen)
+print(f"Tổng các số trong danh sách là: {tong_danh_sach}")</code></pre>
+
+    <h3>6. Bài tập</h3>
+    <ol>
+        <li>
+            <strong>Thông tin cá nhân</strong>: Viết chương trình yêu cầu người dùng nhập tên và năm sinh. Tính tuổi
+            (giả sử năm hiện tại là 2024) và in ra thông điệp chào mừng.
+            <br><em>Gợi ý:</em>
+            <pre><code class="language-python">ten = input("Nhập tên của bạn: ")
+nam_sinh = int(input("Nhập năm sinh của bạn: "))
+tuoi = 2024 - nam_sinh
+print(f"Xin chào {ten}, bạn {tuoi} tuổi.")</code></pre>
+        </li>
+        <li>
+            <strong>Máy tính đơn giản</strong>: Nhập 2 số thực trên cùng một dòng, tính tổng, hiệu, tích, thương (thương
+            làm tròn 2 chữ số thập phân).
+            <!-- <br><em>Gợi ý:</em>
+            <pre><code class="language-python">a, b = map(float, input("Nhập hai số thực, cách nhau bởi dấu cách: ").split())
+print(f"Tổng: {a + b}")
+print(f"Hiệu: {a - b}")
+print(f"Tích: {a * b}")
+print(f"Thương: {a / b:.2f}")</code></pre> -->
+        </li>
+        <li>
+            <strong>Tính diện tích hình chữ nhật</strong>: Nhập chiều dài và chiều rộng (cùng dòng), tính diện tích và
+            chu vi hình chữ nhật.
+            <!-- <br><em>Gợi ý:</em>
+            <pre><code class="language-python">dai, rong = map(float, input("Nhập chiều dài và chiều rộng: ").split())
+dien_tich = dai * rong
+chu_vi = 2 * (dai + rong)
+print(f"Diện tích: {dien_tich}")
+print(f"Chu vi: {chu_vi}")</code></pre> -->
+        </li>
+        <li>
+            <strong>Tính điểm trung bình 3 môn</strong>: Nhập điểm Toán, Văn, Anh (cùng dòng), tính điểm trung bình (1
+            chữ số thập phân).
+            <br><em>Gợi ý:</em>
+            <pre><code class="language-python">toan, van, anh = map(float, input("Nhập điểm Toán, Văn, Anh: ").split())
+dtb = (toan + van + anh) / 3
+print(f"Điểm trung bình: {dtb:.1f}")</code></pre>
+        </li>
+        <li>
+            <strong>Đổi tiền USD sang VND</strong>: Nhập số USD, đổi sang VND (1 USD = 26000 VND), định dạng VND có dấu
+            phẩy hàng nghìn.
+            <br><em>Gợi ý:</em>
+            <pre><code class="language-python">usd = float(input("Nhập số USD: "))
+vnd = usd * 26000
+print(f"Số tiền VND: {vnd:,.0f} VND")</code></pre>
+        </li>
+        <li>
+            <strong>Đổi tiền VND sang USD</strong>: Nhập số VND, đổi sang USD (1 USD = 26000 VND), làm tròn đến hàng đơn
+            vị.
+            <br><em>Gợi ý:</em>
+            <pre><code class="language-python">vnd = float(input("Nhập số VND: "))
+usd = round(vnd / 26000)
+print(f"Số tiền USD: {usd} USD")</code></pre>
+        </li>
+        <li>
+            <strong>Điểm cao nhất và thấp nhất</strong>: Nhập tất cả điểm (cùng dòng), in ra điểm lớn nhất, điểm nhỏ
+            nhất.
+        </li>
+        <li>
+            <strong>Tính điểm trung bình nhiều môn</strong>: Nhập tất cả điểm (cùng dòng), tính điểm trung bình
+            <br><em>Gợi ý:</em>
+            <pre><code class="language-python">diem_list = [float(x) for x in input("Nhập các điểm, cách nhau bởi dấu cách: ").split()]
+
+print(f"Điểm trung bình: {sum(diem_list)/len(diem_list):.2f}")</code></pre>
+        </li>
+
+        <li>
+            <strong>Vẽ hình chữ nhật rỗng 6×n</strong>: Nhập chiều rộng <code>n</code> (&ge;3), in ra hình chữ nhật rỗng
+            cao 6 hàng, n cột.<br><em>Ví dụ hình chữ nhật 6*8:</em>
+            <pre><code>┌──────┐
+│      │
+│      │
+│      │
+│      │
+└──────┘</code></pre>
+        </li>
+        <li>
+            <strong>Vẽ tam giác cân rỗng 5 hàng, đáy rộng n</strong>: Nhập n hợp lệ, in ra tam giác cân rỗng cao 5 hàng,
+            đáy rộng n.<br><em>Ví dụ hình tam giác rộng n=9</em>
+            <pre><code>    *
+   * *
+  *   *
+ *     *
+*********</code></pre>
+        </li>
+        <li>
+            <strong>Vẽ lưới 3×n</strong>: Nhập n (&ge;2), in ra lưới 3 cột n hàng.
+            <br><em>Ví dụ lưới 3*3</em>
+            <pre><code>┌───┬───┬───┐
+│   │   │   │
+├───┼───┼───┤
+│   │   │   │
+├───┼───┼───┤
+│   │   │   │
+└───┴───┴───┘</code></pre>
+        </li>
+    </ol>
+
+    <h3>7. Tóm tắt Bài 4 và Từ khóa</h3>
+    <p>Bài học này đã trang bị các công cụ để chương trình giao tiếp với người dùng:</p>
+    <ul>
+        <li><strong>Nhập dữ liệu:</strong> <code>input()</code> để lấy thông tin.</li>
+        <li><strong>Chuyển đổi kiểu:</strong> <code>int()</code>, <code>float()</code> để biến chuỗi
+            thành số.</li>
+        <li><strong>Xuất dữ liệu:</strong> <code>print()</code> và <strong>f-strings</strong> để hiển
+            thị linh hoạt.</li>
+        <li><strong>Xử lý nhiều đầu vào:</strong> <code>input().split()</code>, <code>map()</code>, và
+            <strong>list comprehension</strong> <code>[type(x) for x in input().split()]</code> để nhận
+            và xử lý nhiều giá trị trên một dòng.
+        </li>
+    </ul>
+    <h4>Bảng 4: Thuật ngữ và Hàm mới Bài 4</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Thuật ngữ/Hàm (Term/Function)</th>
+                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>input("Lời nhắc: ")</code></td>
+                <td>Nhận một dòng văn bản (chuỗi) từ người dùng, có hiển thị lời nhắc.</td>
+            </tr>
+            <tr>
+                <td><code>int(chuoi)</code></td>
+                <td>Chuyển đổi chuỗi thành số nguyên.</td>
+            </tr>
+            <tr>
+                <td><code>float(chuoi)</code></td>
+                <td>Chuyển đổi chuỗi thành số thực.</td>
+            </tr>
+            <tr>
+                <td><code>str(so)</code></td>
+                <td>Chuyển đổi số thành chuỗi.</td>
+            </tr>
+            <tr>
+                <td>f-string (ví dụ: <code>f"{bien}"</code>)</td>
+                <td>Cách định dạng chuỗi, cho phép nhúng biến/biểu thức vào chuỗi.</td>
+            </tr>
+            <tr>
+                <td><code>{bien:.Nf}</code> (trong f-string)</td>
+                <td>Định dạng biến <code>bien</code> thành số thực với <code>N</code> chữ số thập phân.
+                </td>
+            </tr>
+            <tr>
+                <td><code>chuoi.split()</code></td>
+                <td>Tách chuỗi thành danh sách các chuỗi con.</td>
+            </tr>
+            <tr>
+                <td><code>map(ham, iterable)</code></td>
+                <td>Áp dụng <code>ham</code> cho từng phần tử của <code>iterable</code>. Ví dụ:
+                    <code>map(int, input().split())</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>List Comprehension (ví dụ: <code>[int(x) for x in input().split()]</code>)</td>
+                <td>Cách tạo danh sách mới một cách ngắn gọn từ một iterable.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

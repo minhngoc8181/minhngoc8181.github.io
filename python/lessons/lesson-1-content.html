@@ -1,0 +1,306 @@
+<div id="lesson-1-content" class="lesson-content active-content">
+    <h2>Bài 1: Làm quen lập trình Python</h2>
+    <p>Bài học này giúp bạn làm quen với những khái niệm đầu tiên về lập trình và ngôn ngữ Python, cũng
+        như thực hiện các lệnh cơ bản nhất.</p>
+    <h3>Mục tiêu Bài học:</h3>
+    <ul>
+        <li>Hiểu khái niệm "lập trình" là "ra lệnh" cho máy tính.</li>
+        <li>Biết Python là một "ngôn ngữ lập trình".</li>
+        <li>Làm quen với môi trường lập trình trực tuyến Trinket.io.</li>
+        <li>Thực hiện được lệnh <code>print()</code> để hiển thị chữ và số.</li>
+        <li>Thực hiện được các phép tính cơ bản.</li>
+        <li>Bắt đầu làm quen với việc đọc và hiểu thông báo lỗi đơn giản.</li>
+    </ul>
+    <h3>Giới thiệu:</h3>
+    <p>Lập trình là cách "ra lệnh" cho máy tính làm một việc gì đó mong muốn, ví dụ như hiển thị một lời
+        chào, làm một phép toán, hay thậm chí là vẽ một bức tranh. Để "nói chuyện" và "ra lệnh" cho máy
+        tính, cần một ngôn ngữ chung mà cả người và máy tính đều hiểu. Ngôn ngữ đó được gọi là "ngôn ngữ
+        lập trình". Trong khóa học này, chúng ta sẽ khám phá Python, một ngôn ngữ lập trình rất phổ
+        biến, mạnh mẽ nhưng cũng rất dễ học, đặc biệt cho những người mới bắt đầu.</p>
+
+    <h3>Bắt đầu</h3>
+    <p>Để bắt đầu viết những dòng lệnh Python đầu tiên, sẽ sử dụng một công cụ trực tuyến rất tiện lợi
+        tên là Trinket. Không cần cài đặt gì cả, chỉ cần một trình duyệt web. Việc sử dụng một môi
+        trường trực tuyến như Trinket.io giúp loại bỏ rào cản cài đặt phần mềm, cho phép truy cập và bắt
+        đầu lập trình ngay lập tức từ bất kỳ máy tính nào có kết nối internet.</p>
+    <ol>
+        <li><strong>Mở Web Browser và truy cập:</strong> <a href="https://trinket.io/console" target="_blank"
+                class="text-sky-600 hover:underline">https://trinket.io/console</a>
+            <ul>
+                <li>Khung bên trái là nơi gõ lệnh, khung bên phải sẽ hiển thị kết quả.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h4>Làm quen với lệnh <code>print()</code></h4>
+    <p>Lệnh đầu tiên và quan trọng là lệnh <code>print()</code>. Lệnh này dùng để yêu cầu máy tính hiển
+        thị một cái gì đó ra màn hình.</p>
+
+    <p><strong>Hoạt động Thực hành 1: Lời chào đầu tiên!</strong></p>
+    <p>Gõ dòng lệnh sau vào khung bên trái, sau đó nhấn nút Run (hình tam giác) để xem kết quả:</p>
+    <pre><code class="language-python">print("Hello")
+print('Hello Quang') # Có thể thay "Quang" bằng tên của mình</code></pre>
+    <p><strong>Giải thích:</strong></p>
+    <ul>
+        <li>Dòng chữ <code>Hello</code> và <code>Hello Quang</code> sẽ xuất hiện ở khung bên phải.</li>
+        <li>Khi muốn máy tính in ra một dòng chữ (còn gọi là 'chuỗi' ký tự), dòng chữ đó được đặt bên
+            trong cặp dấu ngoặc kép <code>""</code> hoặc cặp dấu ngoặc đơn <code>''</code>. Dùng loại
+            nào cũng được, nhưng phải nhất quán.</li>
+    </ul>
+    <p><strong>Kết quả mong đợi:</strong></p>
+    <pre><code>Hello
+Hello Quang</code></pre>
+
+    <p><strong>In ra số và Tính toán (Printing Numbers and Calculating)</strong></p>
+    <p>Python không chỉ hiển thị chữ mà còn rất giỏi làm toán. Lệnh <code>print()</code> có thể dùng để
+        hiển thị các con số và kết quả của các phép tính.</p>
+    <p><strong>Hoạt động Thực hành 2: Python làm Toán!</strong></p>
+    <p>Gõ lần lượt các lệnh sau:</p>
+    <pre><code class="language-python">print(10)
+print(100)
+print(10 + 2)
+print(10 - 3)
+print(10 * 4)
+print(10 / 80) # Kết quả sẽ là số thập phân, ví dụ: 0.125
+print(10 / 2)  # Ví dụ phép chia cho ra số thập phân 5.0</code></pre>
+    <p><strong>Giải thích:</strong></p>
+    <ul>
+        <li>Khi muốn in ra một con số, không cần đặt nó trong dấu <code>""</code> hay <code>''</code>.
+        </li>
+        <li>Các 'phép toán' trong Python: <code>+</code> là cộng, <code>-</code> là trừ, <code>*</code>
+            là nhân, và <code>/</code> là chia.</li>
+        <li>Thảo luận về kết quả:
+            <ul>
+                <li><code>10 / 80</code> cho ra <code>0.125</code>. Đây là một số thập phân.</li>
+                <li><code>10 / 2</code> cho ra <code>5.0</code>. Mặc dù 10 chia hết cho 2, Python coi
+                    phép chia <code>/</code> luôn tạo ra kết quả là số thập phân.</li>
+            </ul>
+        </li>
+    </ul>
+    <p><strong>Kết quả mong đợi:</strong></p>
+    <pre><code>10
+100
+12
+7
+40
+0.125
+5.0</code></pre>
+
+    <h3>Thử nghiệm và giải thích các trường hợp sau</h3>
+    <p>Khi mới học lập trình, việc gõ sai là điều thường gặp. Máy tính rất 'nghiêm khắc' và sẽ báo lỗi
+        nếu viết không đúng 'ngữ pháp' của nó. Những thông báo lỗi này giúp việc học tốt hơn. Dưới đây
+        là một vài trường hợp cố ý gõ sai hoặc gõ khác đi một chút để xem Python phản ứng thế nào và học
+        cách 'đọc' lỗi. Việc chủ động giới thiệu các lỗi thường gặp và giải thích chúng giúp không cảm
+        thấy sợ hãi hay thất vọng khi gặp lỗi. Thay vào đó, lỗi trở thành một phần tự nhiên của quá
+        trình học.</p>
+    <p>Thử gõ từng dòng sau, quan sát lỗi (nếu có) ở khung bên phải, sau đó xem phần giải thích:</p>
+    <ol>
+        <li>
+            <pre><code class="language-python">Print("Hello")</code></pre>
+            <ul>
+                <li><strong>Lỗi có thể gặp:</strong>
+                    <code>NameError: name 'Print' is not defined</code>.
+                </li>
+                <li><strong>Giải thích:</strong> Lỗi này báo rằng Python không tìm thấy lệnh nào tên là
+                    <code>Print</code>. Đó là vì Python phân biệt chữ hoa và chữ thường. Lệnh đúng phải
+                    là <code>print</code> với chữ 'p' viết thường.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print("Hello Quang"</code></pre>
+            <ul>
+                <li><strong>Lỗi có thể gặp:</strong>
+                    <code>SyntaxError: unexpected EOF while parsing</code> (hoặc một lỗi tương tự báo
+                    thiếu dấu đóng). EOF là viết tắt của "End Of File" - kết thúc tệp.
+                </li>
+                <li><strong>Giải thích:</strong> Lỗi cú pháp! Đã mở một dấu ngoặc kép <code>"</code>
+                    (hoặc dấu ngoặc đơn <code>'</code>) hoặc dấu ngoặc tròn <code>(</code> nhưng lại
+                    quên đóng nó lại ở cuối.</li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print("Hello Quang')</code></pre>
+            <ul>
+                <li><strong>Lỗi có thể gặp:</strong>
+                    <code>SyntaxError: EOL while scanning string literal</code>. EOL là viết tắt của
+                    "End Of Line" - kết thúc dòng.
+                </li>
+                <li><strong>Giải thích:</strong> Lỗi cú pháp! Lần này là do mở đầu chuỗi bằng dấu ngoặc
+                    kép <code>"</code> nhưng lại kết thúc bằng dấu ngoặc đơn <code>'</code>. Phải dùng
+                    cùng một loại dấu ngoặc để mở và đóng một chuỗi.</li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print("Hello" + "Quang")</code></pre>
+            <ul>
+                <li><strong>Kết quả:</strong> <code>HelloQuang</code></li>
+                <li><strong>Giải thích:</strong> Không có lỗi! Dấu <code>+</code> khi dùng với hai chuỗi
+                    ký tự sẽ có tác dụng 'nối' chúng lại với nhau. Chữ 'Hello' và 'Quang' bị dính liền
+                    vào nhau vì chưa có khoảng trắng vào giữa.</li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print("Hello " + 'Quang')</code></pre>
+            <ul>
+                <li><strong>Kết quả:</strong> <code>Hello Quang</code></li>
+                <li><strong>Giải thích:</strong> Lần này thì đẹp hơn. Đã thêm một khoảng trắng vào cuối
+                    chuỗi 'Hello ' nên khi nối lại, hai từ đã được tách ra rõ ràng.</li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">10*10 + 10/2</code></pre>
+            <ul>
+                <li><strong>Kết quả:</strong> (Không có gì được in ra màn hình)</li>
+                <li><strong>Giải thích:</strong> Không có gì xuất hiện ở khung kết quả. Mặc dù Python đã
+                    thực hiện phép tính này ($100 + 5.0 = 105.0$), nhưng đã không 'ra lệnh' cho nó
+                    <code>print()</code> kết quả ra màn hình.
+                </li>
+                <li>Sửa lại bằng cách thêm lệnh <code>print()</code>:
+                    <pre><code class="language-python">print(10*10 + 10/2)</code></pre>
+                </li>
+                <li><strong>Kết quả sau khi sửa:</strong> <code>105.0</code></li>
+            </ul>
+        </li>
+        <li>
+            <pre><code class="language-python">print(2 + " Quang")</code></pre>
+            <ul>
+                <li><strong>Lỗi có thể gặp:</strong>
+                    <code>TypeError: unsupported operand type(s) for +: 'int' and 'str'</code>.
+                </li>
+                <li><strong>Giải thích:</strong> Lỗi này có tên là <code>TypeError</code> (Lỗi kiểu dữ
+                    liệu). Nó báo rằng Python không thể thực hiện phép cộng <code>+</code> giữa một số
+                    nguyên (<code>int</code> - số <code>2</code>) và một chuỗi ký tự (<code>str</code> -
+                    <code>' Quang'</code>). Chúng là hai 'kiểu' dữ liệu khác nhau.
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <p><strong>~Lưu ý quan trọng~</strong>: Qua những thử nghiệm này, có thể thấy việc mắc lỗi khi lập
+        trình, nhất là khi mới bắt đầu, là điều hết sức tự nhiên. Điều quan trọng là không sợ sai, mà
+        hãy đọc kỹ thông báo lỗi. Thông báo lỗi chính là gợi ý của máy tính để giúp tìm ra lỗi ở đâu và
+        sửa nó như thế nào.</p>
+
+    <h3>Tóm tắt Bài 1 và Từ khóa</h3>
+    <p>Trong bài học đầu tiên, những điều cơ bản nhất của lập trình đã được khám phá:</p>
+    <ul>
+        <li>Lập trình là cách 'ra lệnh' cho máy tính.</li>
+        <li>Python là một ngôn ngữ lập trình giúp 'nói chuyện' với máy tính.</li>
+        <li>Trinket.io được sử dụng để thực hành viết code.</li>
+        <li>Lệnh <code>print()</code> là công cụ để yêu cầu máy tính hiển thị thông tin.</li>
+        <li>Đã biết cách in ra chữ (chuỗi ký tự) và số.</li>
+        <li>Đã thực hiện các phép toán cơ bản: cộng <code>+</code>, trừ <code>-</code>, nhân
+            <code>*</code>, chia <code>/</code>.
+        </li>
+        <li>Lỗi sai là một phần của việc học lập trình, và chúng ta học được nhiều điều từ việc sửa lỗi.
+        </li>
+    </ul>
+    <h4>Bảng 1: Thuật ngữ và Lệnh Cơ bản Bài 1</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Thuật ngữ/Lệnh (Term/Command)</th>
+                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lập trình (Programming)</td>
+                <td>Việc viết ra các chỉ dẫn (lệnh) để máy tính thực hiện một công việc.</td>
+            </tr>
+            <tr>
+                <td>Ngôn ngữ lập trình (Programming Language)</td>
+                <td>Một ngôn ngữ đặc biệt dùng để viết các chương trình máy tính (ví dụ: Python).</td>
+            </tr>
+            <tr>
+                <td>Python</td>
+                <td>Tên của một ngôn ngữ lập trình phổ biến, dễ học.</td>
+            </tr>
+            <tr>
+                <td><code>print()</code></td>
+                <td>Lệnh trong Python dùng để hiển thị thông tin (chữ, số, kết quả tính toán) ra màn
+                    hình.</td>
+            </tr>
+            <tr>
+                <td>Chuỗi (String)</td>
+                <td>Một dãy các ký tự (văn bản), thường được đặt trong dấu <code>""</code> hoặc
+                    <code>''</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Số (Number)</td>
+                <td>Các giá trị số học (ví dụ: <code>10</code>, <code>3.14</code>).</td>
+            </tr>
+            <tr>
+                <td>Phép toán (Arithmetic Operators)</td>
+                <td>Các ký hiệu dùng để thực hiện tính toán (ví dụ: <code>+</code>, <code>-</code>,
+                    <code>*</code>, <code>/</code>).
+                </td>
+            </tr>
+            <tr>
+                <td>Lỗi (Error)</td>
+                <td>Một vấn đề trong chương trình khiến nó không chạy đúng hoặc dừng lại.</td>
+            </tr>
+            <tr>
+                <td>Thông báo lỗi (Error Message)</td>
+                <td>Thông tin do Python cung cấp để giải thích lỗi là gì và ở đâu.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Bài tập luyện tập thêm cho Bài 1</h3>
+    <ol>
+        <li><strong>In thông tin cá nhân:</strong>
+            <ul>
+                <li>In ra tên đầy đủ của bạn.</li>
+                <li>In ra tên lớp học của bạn.</li>
+                <li>In ra tên trường của bạn.</li>
+            </ul>
+        </li>
+        <li><strong>Tính toán đơn giản:</strong>
+            <ul>
+                <li>Tính và in ra kết quả của: <code>25 + 75</code></li>
+                <li>Tính và in ra kết quả của: <code>100 - 33</code></li>
+                <li>Tính và in ra kết quả của: <code>12 * 6</code></li>
+                <li>Tính và in ra kết quả của: <code>200 / 8</code></li>
+            </ul>
+        </li>
+        <li><strong>Kết hợp phép tính:</strong>
+            <ul>
+                <li>Tính và in ra kết quả của: <code>(15 + 5) * 3</code></li>
+                <li>Tính và in ra kết quả của: <code>100 / (10 - 5)</code></li>
+            </ul>
+        </li>
+        <li><strong>In chuỗi và số:</strong>
+            <ul>
+                <li>In ra câu: "Tôi năm nay 10 tuổi." (thay 10 bằng số tuổi thật của bạn, nhưng vẫn in
+                    dưới dạng chuỗi).</li>
+                <li>In ra kết quả của phép tính <code>5 * 5</code> kèm theo lời giải thích, sử dụng nối chuỗi và hàm
+                    <code>str()</code>: <code>print("5 nhân 5 bằng: " + str(5 * 5))</code></li>
+            </ul>
+        </li>
+        <li><strong>Thử nghiệm với lỗi (tự sửa):</strong>
+            <ul>
+                <li>Thử gõ <code>print(Hello)</code> (không có dấu ngoặc kép cho "Hello") và xem lỗi.
+                    Sửa lại cho đúng.</li>
+                <li>Thử gõ <code>print("Kết quả là: " + 10)</code> và xem lỗi. (Lỗi này sẽ được giải
+                    thích kỹ hơn ở bài sau, nhưng hãy thử quan sát).</li>
+            </ul>
+        </li>
+        <li><strong>In nhiều dòng:</strong>
+            <ul>
+                <li>Sử dụng nhiều lệnh <code>print()</code> để in ra một bài thơ ngắn yêu thích (2-3
+                    dòng).</li>
+            </ul>
+        </li>
+        <!-- <li><strong>Vẽ hình đơn giản bằng ký tự:</strong>
+            <ul>
+                <li>Sử dụng lệnh <code>print()</code> để in ra một hình mặt cười đơn giản, ví dụ:
+                    <pre><code class="language-python">print("  ^_^  ")
+print(" (o o) ")
+print("-------")</code></pre>
+                </li>
+            </ul>
+        </li> -->
+    </ol>
+</div>

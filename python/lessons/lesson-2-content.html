@@ -1,0 +1,468 @@
+<div id="lesson-2-content" class="lesson-content active-content">
+    <h2>Bài 2: Biến, kiểu dữ liệu, và phép toán cơ bản</h2>
+    <p>Bài học này giới thiệu về biến - một khái niệm cốt lõi trong lập trình, các kiểu dữ liệu cơ bản
+        mà Python hỗ trợ, và cách sử dụng chúng trong các phép toán.</p>
+    <h3>Mục tiêu Bài học:</h3>
+    <ul>
+        <li>Hiểu khái niệm "biến" (variable) là gì và tại sao cần sử dụng biến trong lập trình.</li>
+        <li>Có thể tạo (khai báo) và sử dụng biến để lưu trữ các giá trị số và chuỗi ký tự.</li>
+        <li>Có thể sử dụng biến trong các phép tính toán học và để nối các chuỗi ký tự.</li>
+        <li>Được giới thiệu và phân biệt được các kiểu dữ liệu cơ bản: số nguyên (integer), số thực
+            (float), chuỗi (string). Kiểu logic (Boolean) sẽ được nhắc đến một cách nhẹ nhàng.</li>
+        <li>Thực hành giải các bài toán đơn giản có sử dụng biến và các phép toán.</li>
+    </ul>
+
+    <h3>1. Giới thiệu về Biến (Introducing Variables)</h3>
+    <h4>Tại sao cần Biến? (Why Use Variables?)</h4>
+    <p>Ở bài trước, chúng ta đã biết cách dùng Python để tính toán. Bây giờ, hãy xem xét một vài ví dụ
+        sau:</p>
+    <pre><code class="language-python"># Ví dụ 1: Tính giá trị biểu thức: $4x^3 + 3x^2 + 2x + 1$ với $x = 10$
+print(4*10*10*10 + 3*10*10 + 2*10 + 1)
+
+# Ví dụ 2: Tính $10^5$ và $10^6$
+print(10*10*10*10*10)
+print(10*10*10*10*10*10)</code></pre>
+    <p><strong>Nhận xét:</strong> Số <code>10</code> xuất hiện lặp đi lặp lại rất nhiều lần trong các
+        phép tính trên. Nếu muốn thay đổi giá trị này, ví dụ, muốn tính với <code>x = 5</code> thay vì
+        <code>x = 10</code>, sẽ phải tìm và sửa lại tất cả những chỗ có số <code>10</code> đó. Nếu phép
+        tính phức tạp và dài hơn, việc này sẽ rất mất thời gian và dễ gây ra sai sót.
+    </p>
+    <p><strong>Giải pháp:</strong> Trong lập trình, để giải quyết vấn đề này, có một công cụ rất hữu
+        ích. Có thể đặt một 'tên' cho một giá trị nào đó (ví dụ, số <code>10</code>) và sau đó, mỗi khi
+        cần dùng đến giá trị đó, chỉ cần gọi cái 'tên' đã đặt. Cái 'tên' đó được gọi là
+        <strong>biến</strong> (variable).
+    </p>
+
+    <h4>Biến là gì? (What is a Variable?)</h4>
+    <p><strong>Biến</strong> có thể hình dung giống như một cái hộp có dán nhãn tên. Bên trong hộp đó,
+        có thể cất giữ một giá trị, ví dụ như một con số (như <code>10</code>), một dòng chữ (như
+        <code>'Xin chào'</code>). Sau này, khi cần dùng đến giá trị đó, chỉ cần gọi tên cái nhãn dán
+        trên hộp là có thể lấy được giá trị bên trong để sử dụng.
+    </p>
+    <p>Sử dụng biến có nhiều lợi ích:</p>
+    <ul>
+        <li><strong>Chương trình dễ đọc hơn:</strong> Thay vì nhìn thấy các con số trơ trọi, chúng ta
+            thấy những cái tên có ý nghĩa.</li>
+        <li><strong>Chương trình dễ thay đổi hơn:</strong> Khi muốn thay đổi một giá trị, chỉ cần thay
+            đổi ở nơi 'cất' giá trị đó vào 'hộp' (tức là nơi gán giá trị cho biến), tất cả những chỗ
+            khác dùng 'tên hộp' đó sẽ tự động được cập nhật.</li>
+        <li><strong>Sử dụng lại giá trị:</strong> Một giá trị có thể được dùng đi dùng lại nhiều lần
+            thông qua tên biến.</li>
+    </ul>
+
+    <h3>2. Sử dụng Biến (Using Variables)</h3>
+    <h4>Hoạt động Thực hành 3: Dùng biến cho số</h4>
+    <p>Các ví dụ ở trên có thể được viết lại bằng cách sử dụng biến.</p>
+    <pre><code class="language-python"># Đặt tên 'n' cho giá trị 10. Dấu = ở đây gọi là phép "gán".
+n = 10 
+print("Giá trị của n là: " + str(n))
+
+# Sử dụng biến n trong biểu thức
+# Biểu thức: $4n^3 + 3n^2 + 2n + 1$
+ket_qua_bieu_thuc = 4*n*n*n + 3*n*n + 2*n + 1
+print("Với n = " + str(n) + " thì $4n^3 + 3n^2 + 2n + 1$ = " + str(ket_qua_bieu_thuc))
+
+# Đặt tên 'p' cho kết quả của n*n*n*n (tức là $n^4$)
+p = n*n*n*n 
+print("$n^4$ (p) = " + str(p))
+print("p nhân n (tức là $n^5$) = " + str(p * n))
+print("p nhân p (tức là $n^8$) = " + str(p * p))</code></pre>
+    <p><strong>Giải thích:</strong></p>
+    <ul>
+        <li>Dòng lệnh <code>n = 10</code> có nghĩa là: 'Lấy giá trị <code>10</code> và cất vào chiếc hộp
+            có nhãn tên là <code>n</code>'. Dấu <code>=</code> trong lập trình Python được gọi là
+            <strong>phép gán</strong>. Nó không giống dấu bằng trong toán học thông thường. Nó có nghĩa
+            là 'gán giá trị bên phải cho biến ở bên trái'.
+        </li>
+        <li>Sau khi đã gán <code>n = 10</code>, thì ở bất cứ đâu trong chương trình mà Python thấy chữ
+            <code>n</code> (không nằm trong dấu nháy kép hay nháy đơn), nó sẽ hiểu đó chính là số
+            <code>10</code>.
+        </li>
+        <li>Tương tự, <code>p = n*n*n*n</code> nghĩa là: tính giá trị của <code>n*n*n*n</code> rồi gán
+            kết quả đó cho biến <code>p</code>.</li>
+    </ul>
+    <p><strong>Thử nghiệm thay đổi:</strong> Nếu thay đổi giá trị của <code>n</code> ở dòng đầu tiên, ví
+        dụ <code>n = 5</code>, rồi chạy lại toàn bộ đoạn code, tất cả các kết quả đều thay đổi theo giá
+        trị mới của <code>n</code> mà chỉ cần sửa đúng một chỗ.</p>
+    <p>Như vậy, <em>n, p</em> trong ví dụ trên được gọi là <strong>biến</strong>. Biến là một tên gọi mà
+        chúng ta đặt cho một giá trị để có thể tham chiếu hoặc sử dụng lại giá trị đó trong chương
+        trình.</p>
+
+    <h4>Biến và Chuỗi (Variables and Strings)</h4>
+    <p>Biến không chỉ dùng để lưu trữ số mà còn có thể dùng để lưu trữ cả các chuỗi ký tự.</p>
+    <p><strong>Vấn đề:</strong> Xét trường hợp cần in ra lời chào đến nhiều bạn trong lớp:</p>
+    <pre><code class="language-python"># print("Welcome Quang to the programming class")
+# print("Welcome Minh to the programming class")
+#... (và nhiều bạn khác)</code></pre>
+    <p>Nếu chỉ có vài bạn thì không sao, nhưng nếu lớp có 30 bạn thì việc gõ đi gõ lại cả câu chào sẽ
+        rất nhàm chán và dễ sai sót. Phím mũi tên lên/xuống trong Trinket để gọi lại lệnh cũ có thể giúp
+        một chút, nhưng vẫn chưa phải là cách hay nhất.</p>
+    <p><strong>Hoạt động Thực hành 4: Lời chào thân thiện với Biến!</strong></p>
+    <p>Có thể dùng biến để lưu các phần lặp lại của câu chào:</p>
+    <pre><code class="language-python">loi_chao_dau = "Welcome " 
+loi_chao_cuoi = " to the programming class"
+
+ten_ban1 = "Quang"
+print(loi_chao_dau + ten_ban1 + loi_chao_cuoi)
+
+ten_ban2 = "Minh"
+print(loi_chao_dau + ten_ban2 + loi_chao_cuoi)
+
+ten_ban_khoi = "Khôi"
+print(loi_chao_dau + ten_ban_khoi + loi_chao_cuoi)
+
+# Có thể tự thêm tên các bạn khác và in ra lời chào tương tự
+ten_ban_tien = "Tiến"
+print(loi_chao_dau + ten_ban_tien + loi_chao_cuoi)
+
+ten_ban_hung = "Hùng"
+print(loi_chao_dau + ten_ban_hung + loi_chao_cuoi)</code></pre>
+    <p><strong>Giải thích:</strong></p>
+    <ul>
+        <li>Ở đây, biến <code>loi_chao_dau</code> lưu giữ phần đầu của câu chào, biến
+            <code>loi_chao_cuoi</code> lưu giữ phần cuối. Biến <code>ten_ban1</code>,
+            <code>ten_ban2</code>... lưu tên của từng bạn.
+        </li>
+        <li>Dấu <code>+</code> lại được sử dụng để 'nối' các chuỗi này lại với nhau thành một câu chào
+            hoàn chỉnh.</li>
+    </ul>
+
+    <h3>3. Tìm hiểu về Kiểu dữ liệu (Exploring Data Types)</h3>
+    <p>Trong các ví dụ vừa rồi, chúng ta đã làm việc với số (như <code>10</code>, <code>5</code>) và chữ
+        (như <code>'Welcome '</code>). Máy tính Python cần biết nó đang làm việc với loại dữ liệu gì để
+        xử lý cho đúng. Ví dụ, nó biết rằng có thể cộng hai số với nhau, nhưng không thể cộng một số với
+        một dòng chữ (như lỗi <code>TypeError</code> đã thấy ở Bài 1). Mỗi loại dữ liệu này được gọi là
+        một <strong>kiểu dữ liệu</strong> (data type).</p>
+    <p>Dưới đây là một số kiểu dữ liệu cơ bản và quan trọng trong Python:</p>
+    <ol>
+        <li><strong>Số nguyên (Integer - viết tắt là <code>int</code>):</strong>
+            <ul>
+                <li>Là các số đếm thông thường, không có phần thập phân.</li>
+                <li>Ví dụ: <code>0</code>, <code>1</code>, <code>2</code>, <code>100</code>,
+                    <code>-5</code>.
+                </li>
+                <li>Khi viết <code>tuoi = 10</code>, thì biến <code>tuoi</code> đang lưu một giá trị có
+                    kiểu số nguyên.</li>
+            </ul>
+        </li>
+        <li><strong>Số thực (Float - nghĩa là số "dấu phẩy động"):</strong>
+            <ul>
+                <li>Là các số có phần thập phân (dùng dấu chấm <code>.</code> để ngăn cách phần nguyên
+                    và phần thập phân).</li>
+                <li>Ví dụ: <code>1.23</code>, <code>4.56</code>, <code>0.5</code>, <code>-2.7</code>.
+                </li>
+                <li>Khi viết <code>chieu_cao = 1.35</code>, thì biến <code>chieu_cao</code> đang lưu một
+                    giá trị có kiểu số thực.</li>
+                <li><strong>Lưu ý:</strong> Kết quả của phép chia <code>/</code> trong Python thường là
+                    một số thực, ngay cả khi phép chia đó là chia hết. Ví dụ, <code>10 / 4</code> sẽ cho
+                    kết quả là <code>2.5</code>, và <code>10 / 2</code> sẽ cho kết quả là
+                    <code>5.0</code>.
+                </li>
+            </ul>
+        </li>
+        <li><strong>Chuỗi ký tự (String - viết tắt là <code>str</code>):</strong>
+            <ul>
+                <li>Là một dãy các ký tự, dùng để biểu diễn văn bản.</li>
+                <li>Chuỗi phải được đặt trong cặp dấu ngoặc kép <code>""</code> hoặc cặp dấu ngoặc đơn
+                    <code>''</code>.
+                </li>
+                <li>Ví dụ: <code>'Welcome'</code>, <code>"Hello Quang"</code>, <code>"123"</code>.</li>
+                <li><strong>Lưu ý quan trọng:</strong> Ngay cả khi một chuỗi chứa toàn chữ số (như
+                    <code>"123"</code>), nếu nó được đặt trong dấu nháy, Python vẫn coi đó là một chuỗi
+                    ký tự chứ không phải là số. Không thể dùng chuỗi <code>"123"</code> để tính toán
+                    trực tiếp như số <code>123</code>.
+                </li>
+                <li>Khi viết <code>ten = "Python"</code>, biến <code>ten</code> đang lưu một giá trị có
+                    kiểu chuỗi.</li>
+            </ul>
+        </li>
+        <li><strong>Kiểu Logic (Boolean):</strong>
+            <ul>
+                <li>Đây là một kiểu dữ liệu đặc biệt, chỉ có thể nhận một trong hai giá trị:
+                    <code>True</code> (có nghĩa là Đúng) hoặc <code>False</code> (có nghĩa là Sai). (Lưu
+                    ý: <code>True</code> và <code>False</code> trong Python phải viết hoa chữ cái đầu).
+                </li>
+                <li>Ví dụ, có thể có một biến <code>troi_dep = True</code> hoặc
+                    <code>da_an_toi = False</code>.
+                </li>
+                <li>Kiểu dữ liệu Boolean này rất quan trọng khi muốn máy tính đưa ra quyết định. Sẽ tìm
+                    hiểu kỹ hơn về Boolean trong các bài học sau.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>4. Bài tập</h3>
+    <p>Dưới đây là các bài tập để luyện tập kiến thức về biến, các phép toán và các kiểu dữ liệu vừa
+        học. Với mỗi bài, hãy:</p>
+    <ul>
+        <li>Xác định các giá trị cho trước và đặt tên biến cho chúng.</li>
+        <li>Viết biểu thức Python để tính toán theo yêu cầu.</li>
+        <li>Dùng lệnh <code>print()</code> để hiển thị kết quả một cách rõ ràng.</li>
+    </ul>
+
+    <ol>
+        <li>Khai báo biến cho độ dài cạnh của một hình vuông, sau đó tính và in ra chu vi và diện tích của hình vuông
+            đó.
+            <pre><code class="language-python">canh_hinh_vuong = 5 # Ví dụ cạnh là 5
+chu_vi_hinh_vuong = canh_hinh_vuong * 4
+dien_tich_hinh_vuong = canh_hinh_vuong * canh_hinh_vuong
+print("Hình vuông cạnh " + str(canh_hinh_vuong))
+print("Chu vi: " + str(chu_vi_hinh_vuong))
+print("Diện tích: " + str(dien_tich_hinh_vuong))</code></pre>
+        </li>
+        <li>Khai báo các biến cho chiều dài và chiều rộng của một hình chữ nhật. Tính và in ra chu vi và diện tích của
+            hình chữ nhật.
+            <pre><code class="language-python">chieu_dai = 8
+chieu_rong = 3
+chu_vi_hcn = (chieu_dai + chieu_rong) * 2
+dien_tich_hcn = chieu_dai * chieu_rong
+print("Hình chữ nhật chiều dài " + str(chieu_dai) + " chiều rộng " + str(chieu_rong))
+print("Chu vi: " + str(chu_vi_hcn))
+print("Diện tích: " + str(dien_tich_hcn))</code></pre>
+        </li>
+        <li>Khai báo ba biến số. Tính và in ra giá trị trung bình của ba số đó.
+            <pre><code class="language-python">so_1 = 10
+so_2 = 20
+so_3 = 30
+trung_binh_cong = (so_1 + so_2 + so_3) / 3
+print("Giá trị trung bình của " + str(so_1) + ", " + str(so_2) + ", và " + str(so_3) + " là: " + str(trung_binh_cong))</code></pre>
+        </li>
+        <li>Khai báo biến lưu năm sinh của một người và biến lưu năm hiện tại. Tính và in ra tuổi của người đó.
+            <pre><code class="language-python">nam_sinh = 2010
+nam_hien_tai = 2023 # Giả sử năm hiện tại là 2023
+tuoi = nam_hien_tai - nam_sinh
+print("Bạn sinh năm " + str(nam_sinh) + " năm nay " + str(tuoi) + " tuổi.")</code></pre>
+        </li>
+        <li>Khai báo biến cho độ dài đáy và chiều cao của một tam giác. Tính và in ra diện tích của tam giác đó (Diện
+            tích = 1/2 * đáy * chiều cao).
+            <pre><code class="language-python">day_tam_giac = 6
+chieu_cao_tam_giac = 4
+dien_tich_tam_giac = (1/2) * day_tam_giac * chieu_cao_tam_giac
+# Hoặc: dien_tich_tam_giac = 0.5 * day_tam_giac * chieu_cao_tam_giac
+print("Tam giác có đáy " + str(day_tam_giac) + " và chiều cao " + str(chieu_cao_tam_giac))
+print("Diện tích là: " + str(dien_tich_tam_giac))</code></pre>
+        </li>
+        <li>Khai báo biến lưu tỉ giá giữa USD và VND (ví dụ: 1 USD = 26000 VND). Khai báo một biến khác lưu số tiền USD
+            cần đổi. Tính và in ra số tiền VND tương ứng.
+            <pre><code class="language-python">ti_gia_usd_vnd = 26000 
+so_tien_usd = 100 # Số USD muốn đổi
+so_tien_vnd = so_tien_usd * ti_gia_usd_vnd
+print(str(so_tien_usd) + " USD đổi được " + str(so_tien_vnd) + " VND (với tỉ giá 1 USD = " + str(ti_gia_usd_vnd) + " VND)")</code></pre>
+        </li>
+
+        <li>Tính giá trị của biểu thức $P(x) = (x-5)(x-4)(x-3)(x-2)(x-1)x$ với
+            hai trường hợp: a) $x = 10$; b) $x = 12$.
+            <pre><code class="language-python"># Trường hợp a: x = 10
+x = 10
+ket_qua_P_x = (x-5)*(x-4)*(x-3)*(x-2)*(x-1)*x
+print("Với x = " + str(x) + " thì P(x) = " + str(ket_qua_P_x)) 
+
+# Trường hợp b: x = 12 (Tự làm tương tự)
+x = 12
+ket_qua_P_x = (x-5)*(x-4)*(x-3)*(x-2)*(x-1)*x
+print("Với x = " + str(x) + " thì P(x) = " + str(ket_qua_P_x))</code></pre>
+        </li>
+        <li>Tính giá trị của biểu thức $Q(x) = \cfrac{5x - 4}{3x - 2}$ với các
+            trường hợp: a) $x = 5$; b) $x = 6.1$; c) $x = 7.2$.
+            <pre><code class="language-python"># Trường hợp a: x = 5
+x = 5
+ket_qua_Q_x = (5*x - 4) / (3*x - 2)
+print("Với x = " + str(x) + " thì Q(x) = " + str(ket_qua_Q_x))
+# ... (Tự làm cho các trường hợp còn lại)</code></pre>
+        </li>
+        <li>Một cửa hàng bán kẹo, mỗi cái kẹo giá <code>gia_mot_keo</code> đồng.
+            Gán <code>gia_mot_keo = 500</code>. a) Viết chương trình tính xem mua 10 cái kẹo hết bao
+            nhiêu tiền. Lưu số lượng kẹo mua vào biến <code>so_luong_keo</code>. b) Nếu bạn An có
+            <code>so_tien_An</code> đồng (ví dụ, <code>so_tien_An = 20000</code>), bạn An mua được tối
+            đa bao nhiêu cái kẹo? (Sử dụng phép chia lấy phần nguyên <code>//</code>).
+            <pre><code class="language-python">gia_mot_keo = 500
+# Câu a
+so_luong_keo = 10
+tong_tien = gia_mot_keo * so_luong_keo
+print("Mua " + str(so_luong_keo) + " cái kẹo hết: " + str(tong_tien) + " đồng")
+# Câu b
+so_tien_An = 20000
+so_keo_toi_da = so_tien_An // gia_mot_keo
+print("Với " + str(so_tien_An) + " đồng, An mua được tối đa: " + str(so_keo_toi_da) + " cái kẹo")</code></pre>
+        </li>
+        <li>Một hình chữ nhật có chiều dài là <code>a</code> và chiều rộng là
+            <code>b</code>. Cho <code>a = 15</code> (cm) và <code>b = 7</code> (cm). Viết chương trình
+            Python để tính và in ra chu vi và diện tích của hình chữ nhật đó.
+            <pre><code class="language-python">a = 15
+b = 7
+chu_vi = (a + b) * 2
+dien_tich = a * b
+print("Hình chữ nhật có chiều dài " + str(a) + " cm và chiều rộng " + str(b) + " cm thì:")
+print("Chu vi là: " + str(chu_vi) + " cm")
+print("Diện tích là: " + str(dien_tich) + " cm²")</code></pre>
+        </li>
+        <li>Tính giá trị của biểu thức $R(a,b) = \cfrac{a^2 + ab + b^2}{a+b}$
+            với các cặp giá trị: a) $a = 5, b = 6$; b) $a = 4.5, b = 3.5$.
+            <pre><code class="language-python"># Trường hợp a: a = 5, b = 6
+a1 = 5
+b1 = 6
+ket_qua_R_ab1 = (a1*a1 + a1*b1 + b1*b1) / (a1 + b1)
+print("Với a = " + str(a1) + " và b = " + str(b1) + " thì R(a,b) = " + str(ket_qua_R_ab1))
+# ... (Tự làm cho trường hợp còn lại)</code></pre>
+        </li>
+        <li>Bạn Bình đọc một quyển truyện. Ngày đầu Bình đọc được
+            <code>d1</code> trang. Ngày thứ hai Bình đọc được <code>d2</code> trang. Cho
+            <code>d1 = 25</code> trang, <code>d2 = 30</code> trang. a) Hỏi sau hai ngày Bình đọc được
+            tổng cộng bao nhiêu trang? b) Nếu quyển truyện đó dày <code>tong_trang_truyen</code> trang
+            (ví dụ, <code>tong_trang_truyen = 100</code>), sau hai ngày Bình còn phải đọc bao nhiêu
+            trang nữa thì hết truyện?
+            <pre><code class="language-python">d1 = 25
+d2 = 30
+# Câu a
+tong_so_trang_da_doc = d1 + d2
+print("Sau hai ngày, Bình đọc được tổng cộng: " + str(tong_so_trang_da_doc) + " trang")
+# Câu b
+tong_trang_truyen = 100
+so_trang_con_lai = tong_trang_truyen - tong_so_trang_da_doc
+print("Bình còn phải đọc: " + str(so_trang_con_lai) + " trang nữa thì hết truyện")</code></pre>
+        </li>
+        <li>Tính giá trị của biểu thức phức tạp sau: $S(a,b,c) = \cfrac{ab + bc
+            - ca}{a+b-c} + \cfrac{bc + ca - ab}{b+c-a} + \cfrac{ca + ab - bc}{c+a-b}$ với $a=2, b=3.4,
+            c=5.67$.
+            <pre><code class="language-python">a = 2
+b = 3.4
+c = 5.67
+tu_so_1 = a*b + b*c - c*a
+mau_so_1 = a + b - c
+phan_so_1 = tu_so_1 / mau_so_1
+tu_so_2 = b*c + c*a - a*b
+mau_so_2 = b + c - a
+phan_so_2 = tu_so_2 / mau_so_2
+tu_so_3 = c*a + a*b - b*c
+mau_so_3 = c + a - b
+phan_so_3 = tu_so_3 / mau_so_3
+ket_qua_S_abc = phan_so_1 + phan_so_2 + phan_so_3
+print("Với a = " + str(a) + ", b = " + str(b) + ", c = " + str(c) + " thì S(a,b,c) = " + str(ket_qua_S_abc))</code></pre>
+        </li>
+        <li>Chuyển đổi nhiệt độ. Cho nhiệt độ ở đơn vị Celsius (độ C). Hãy tính
+            và in ra nhiệt độ tương ứng ở đơn vị Fahrenheit (độ F) theo công thức: $F = C \times
+            \cfrac{9}{5} + 32$. Thử với các giá trị: $C = 0^\circ C$, $C = 25^\circ C$, $C = 37^\circ
+            C$.
+            <pre><code class="language-python"># Với C = 0
+C1 = 0
+F1 = C1 * (9/5) + 32
+print(C1, "độ C tương ứng với", F1, "độ F")
+# ... (Tự làm cho các trường hợp còn lại)</code></pre>
+        </li>
+        <li>Viết chương trình Python để xuất ra 10 dòng, mỗi dòng hiển thị một
+            số theo thứ tự từ 1 đến 10.
+            <pre><code class="language-python">print(1)
+print(2)
+#... (tiếp tục đến 10)...
+print(10)</code></pre>
+        </li>
+        <li>Viết chương trình Python để xuất ra 10 dòng chữ, theo mẫu sau: "Số
+            thứ 1", "Số thứ 2", ..., "Số thứ 10".
+            <pre><code class="language-python">print("Số thứ 1")
+print("Số thứ 2")
+#... (tiếp tục đến "Số thứ 10")...
+print("Số thứ 10")</code></pre>
+        </li>
+    </ol>
+
+    <!-- <h3>Bài tập luyện tập thêm cho Bài 2</h3>
+    <ol start="11">
+        <li><strong>Thông tin thú cưng:</strong> Tạo biến <code>ten_thu_cung</code>,
+            <code>loai_thu_cung</code>, <code>tuoi_thu_cung</code>. In ra một câu giới thiệu về thú
+            cưng.
+        </li>
+        <li><strong>Tính điểm trung bình:</strong> Cho điểm 3 môn, tính điểm trung bình.</li>
+        <li><strong>Công thức nấu ăn đơn giản:</strong> Tính lượng nguyên liệu cần cho 3 cái bánh.</li>
+        <li><strong>Quản lý chi tiêu nhỏ:</strong> Tính số tiền còn lại sau khi mua sắm.</li>
+        <li><strong>Chuỗi và thông điệp:</strong> Nối hai lời nhắn thành một thông điệp hoàn chỉnh.</li>
+        <li><strong>Tính tuổi chính xác hơn:</strong> Tính tuổi hiện tại và tuổi vào một năm trong tương
+            lai.</li>
+        <li><strong>Đổi đơn vị tiền tệ đơn giản:</strong> Đổi USD sang VND.</li>
+        <li><strong>Tính diện tích hình tam giác:</strong> (đáy * chiều cao) / 2.</li>
+    </ol> -->
+
+    <h3>5. Tóm tắt Bài 2 và Từ khóa</h3>
+    <p>Bài học này giới thiệu khái niệm <strong>biến</strong>, một công cụ quan trọng trong lập trình
+        giúp đặt tên cho các giá trị để sử dụng lại một cách linh hoạt và làm cho chương trình dễ hiểu
+        hơn. Các <strong>kiểu dữ liệu</strong> khác nhau mà Python sử dụng, như số nguyên, số thực và
+        chuỗi ký tự, cũng đã được tìm hiểu. Quan trọng nhất, những kiến thức này đã được áp dụng vào
+        việc giải quyết nhiều bài tập tính toán.</p>
+    <h4>Bảng 2: Khái niệm, Kiểu dữ liệu và Phép toán Bài 2</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Thuật ngữ/Khái niệm (Term/Concept)</th>
+                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Biến (Variable)</td>
+                <td>Một tên gọi được đặt cho một giá trị (được lưu trữ trong bộ nhớ máy tính) để có thể
+                    sử dụng lại giá trị đó trong chương trình.</td>
+            </tr>
+            <tr>
+                <td>Phép gán (Assignment <code>=</code>)</td>
+                <td>Ký hiệu <code>=</code> dùng để đưa một giá trị vào một biến. Ví dụ:
+                    <code>tuoi = 10</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Số nguyên (Integer / <code>int</code>)</td>
+                <td>Kiểu dữ liệu cho các số nguyên (không có phần thập phân), ví dụ: <code>0</code>,
+                    <code>25</code>, <code>-100</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Số thực (Float)</td>
+                <td>Kiểu dữ liệu cho các số có phần thập phân, ví dụ: <code>3.14</code>,
+                    <code>0.5</code>, <code>-2.75</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Chuỗi (String / <code>str</code>)</td>
+                <td>Kiểu dữ liệu cho một dãy các ký tự (văn bản), được đặt trong <code>""</code> hoặc
+                    <code>''</code>. Ví dụ: <code>"Xin chào"</code>, <code>'Python'</code>.
+                </td>
+            </tr>
+            <tr>
+                <td>Kiểu Logic (Boolean / <code>bool</code>)</td>
+                <td>Kiểu dữ liệu chỉ có hai giá trị: <code>True</code> (Đúng) hoặc <code>False</code>
+                    (Sai).</td>
+            </tr>
+            <tr>
+                <td>Nối chuỗi (String Concatenation <code>+</code>)</td>
+                <td>Phép toán <code>+</code> khi dùng với hai chuỗi sẽ ghép chúng lại thành một chuỗi
+                    dài hơn.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>6. Thử thách sáng tạo (Creative End-of-Lesson Challenge)</h3>
+    <p>Thử thách cuối bài: Tạo một chương trình Python để 'Giới thiệu bản thân'.</p>
+    <ol>
+        <li>Tạo các biến để lưu trữ các thông tin sau: Tên, Tuổi, Tên lớp, Tên trường, Một sở thích.
+        </li>
+        <li>Sử dụng lệnh <code>print()</code> và các biến này để in ra một đoạn văn giới thiệu bản thân.
+        </li>
+    </ol>
+    <p><em>Ví dụ về kết quả mong muốn:</em></p>
+    <pre><code>Xin chào các bạn,
+Tớ tên là Nguyễn Văn An.
+Năm nay tớ 10 tuổi.
+Tớ học lớp 5A, trường Tiểu học Kim Đồng.
+Sở thích của tớ là đá bóng.
+Rất vui được làm quen với tất cả các bạn!</code></pre>
+    <p><em>Gợi ý cách in kết hợp chuỗi và số:</em></p>
+    <pre><code class="language-python">ten_cua_em = "Nguyễn Văn An"
+tuoi_cua_em = 10 # Đây là một số
+
+# Cách 1: Dùng dấu phẩy trong lệnh print, Python sẽ tự thêm khoảng trắng
+print("Tớ tên là", ten_cua_em, "và tớ", tuoi_cua_em, "tuổi.")
+
+# Cách 2 (Nâng cao hơn một chút): Chuyển số thành chuỗi để nối bằng dấu +
+# Dùng str(tuoi_cua_em) để biến số tuổi thành chữ "10"
+print("Tớ tên là " + ten_cua_em + " và tớ " + str(tuoi_cua_em) + " tuổi.")</code></pre>
+    <p>Cách thứ hai sử dụng <code>str()</code> để 'biến' một số thành một chuỗi. Điều này là cần thiết
+        vì Python không thể dùng dấu <code>+</code> để cộng trực tiếp một số với một chuỗi.</p>
+</div>

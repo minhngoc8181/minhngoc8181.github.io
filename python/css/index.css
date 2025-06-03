@@ -1,0 +1,167 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f5f5f4;
+  /* stone-100 */
+  color: #292524;
+  /* stone-800 */
+}
+
+.nav-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  color: white;
+}
+
+.nav-link:hover {
+  background-color: #0284c7;
+  /* sky-600 */
+}
+
+.nav-link.active {
+  background-color: #0369a1;
+  /* sky-800 */
+  font-weight: 600;
+}
+
+.lesson-content h2 {
+  font-size: 1.875rem;
+  /* text-3xl */
+  font-weight: 700;
+  color: #0369a1;
+  /* sky-700 */
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  border-bottom: 2px solid #0ea5e9;
+  /* sky-500 */
+  padding-bottom: 0.5rem;
+}
+
+.lesson-content h3 {
+  font-size: 1.5rem;
+  /* text-2xl */
+  font-weight: 600;
+  color: #075985;
+  /* sky-800 */
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.lesson-content h4 {
+  font-size: 1.25rem;
+  /* text-xl */
+  font-weight: 600;
+  color: #075985;
+  /* sky-800 */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-content p,
+.lesson-content li {
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.lesson-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.lesson-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.lesson-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.lesson-content th,
+.lesson-content td {
+  border: 1px solid #d4d4d8;
+  /* stone-300 */
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.lesson-content th {
+  background-color: #e7e5e4;
+  /* stone-200 */
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #0ea5e9;
+  /* sky-500 */
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.lesson-content pre:hover .copy-button {
+  opacity: 1;
+}
+
+.copy-button:hover {
+  background-color: #0284c7;
+  /* sky-600 */
+}
+
+.hidden {
+  display: none;
+}
+
+.active-content {
+  display: block;
+}
+
+.placeholder-comment {
+  display: none !important;
+}
+
+.lesson-content pre {
+  background-color: #f8f9fa;
+  /* light gray background */
+  color: #212529;
+  /* dark text */
+  padding: 1rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  position: relative;
+  border: 1px solid #e9ecef;
+  /* light border */
+}
+
+.lesson-content pre code {
+  font-size: 1em;
+}
+
+.lesson-content code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2em;
+  background-color: #f1f3f4;
+  /* light background for inline code */
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  color: #d63384;
+  /* purple-pink color for inline code */
+}
+
+/* Ensure code inside pre blocks don't have the inline styling */
+.lesson-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}

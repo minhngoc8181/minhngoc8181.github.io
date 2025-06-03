@@ -1,0 +1,492 @@
+<div id="lesson-3-content" class="lesson-content active-content">
+    <h2>Bài 3: Sử dụng trình soạn thảo Python (Editor), và Hàm Toán học</h2>
+    <p>Bài học này sẽ hướng dẫn bạn cách sử dụng trình soạn thảo mã nguồn, viết chú thích để giải thích
+        code, và làm quen với các hàm toán học có sẵn trong Python.</p>
+    <h3>Mục tiêu Bài học:</h3>
+    <ul>
+        <li>Làm quen và sử dụng một trình soạn thảo Python trực tuyến (Online IDE).</li>
+        <li>Hiểu và biết cách viết chú thích (comments) trong chương trình Python.</li>
+        <li>Ôn lại và hiểu rõ hơn về các thành phần cơ bản của một chương trình: câu lệnh, biến, phép
+            toán, phép gán.</li>
+        <li>Bước đầu làm quen và sử dụng một số hàm toán học cơ bản từ thư viện <code>math</code>.</li>
+        <li>Thực hành viết các chương trình nhỏ trong trình soạn thảo.</li>
+    </ul>
+    <h3>Giới thiệu:</h3>
+    <p>Ở các bài trước, chúng ta đã thử nghiệm các lệnh Python đơn lẻ trên Trinket.io. Khi viết các
+        chương trình lớn hơn, gồm nhiều dòng lệnh, chúng ta cần một công cụ mạnh mẽ hơn gọi là
+        <strong>trình soạn thảo mã nguồn (code editor)</strong> hoặc <strong>Môi trường Phát triển Tích
+            hợp (Integrated Development Environment - IDE)</strong>. Các công cụ này giúp chúng ta viết,
+        lưu trữ, quản lý và chạy các chương trình Python một cách dễ dàng.
+    </p>
+    <p>Khi viết code, việc giải thích các đoạn mã cho người khác (hoặc cho chính mình trong tương lai)
+        hiểu là rất quan trọng. Đó là lúc <strong>chú thích (comment)</strong> phát huy tác dụng. Ngoài
+        ra, Python còn cung cấp nhiều hàm toán học có sẵn giúp chúng ta thực hiện các phép tính phức tạp
+        một cách nhanh chóng.</p>
+    <p>Trong bài này, chúng ta sẽ sử dụng một trình soạn thảo trực tuyến và khám phá cách viết chú thích
+        cũng như sử dụng một số hàm toán học.</p>
+
+    <h3>1. Sử dụng Trình soạn thảo Python Trực tuyến (Online Python IDE)</h3>
+
+    <p>Có nhiều trình soạn thảo Python có thể cài đặt trên máy tính, nhưng để bắt đầu một cách nhanh, hãy thử các công
+        cụ trực tuyến dưới đây:</p>
+    <p>
+        <a href="https://www.online-python.com/" target="_blank" class="text-sky-600 hover:underline">Online Python</a>
+        |
+        <a href="https://www.tutorialspoint.com/compilers/online-python-compiler.htm" target="_blank"
+            class="text-sky-600 hover:underline">Tutorials Point Online Python Compiler</a>|
+        <a href="https://www.onlineide.pro/playground/python" target="_blank"
+            class="text-sky-600 hover:underline">Python Playground - Online IDE Pro</a>
+    </p>
+
+
+    <p><strong>Cách hoạt động cơ bản của một Online IDE:</strong></p>
+    <ol>
+        <li><strong>Cửa sổ soạn thảo (Editor Pane):</strong> Đây là nơi bạn sẽ gõ (viết) các dòng lệnh
+            Python của mình. Nó giống như một trang giấy trắng để bạn viết chương trình.</li>
+        <li><strong>Nút Thực thi/Chạy (Run/Execute Button):</strong> Sau khi viết xong chương trình, bạn
+            nhấn nút này (thường có biểu tượng hình tam giác ▶️ hoặc chữ "Run").</li>
+        <li><strong>Cửa sổ Kết quả/Đầu ra (Output/Console Pane):</strong> Kết quả của chương trình (ví
+            dụ, những gì lệnh <code>print()</code> hiển thị) sẽ xuất hiện ở đây. Nếu chương trình có
+            lỗi, thông báo lỗi cũng sẽ được hiển thị tại đây.</li>
+    </ol>
+    <p><strong>Quy trình làm việc:</strong></p>
+    <ul>
+        <li><strong>Viết mã (Write Code):</strong> Gõ các lệnh Python vào cửa sổ soạn thảo.</li>
+        <li><strong>Chạy mã (Run Code):</strong> Nhấn nút "Run". Trình duyệt sẽ gửi mã của bạn đến một
+            máy chủ, máy chủ này sẽ "thông dịch" (interpret) và thực thi mã Python đó.</li>
+        <li><strong>Xem kết quả (View Output):</strong> Quan sát kết quả hoặc thông báo lỗi trong cửa sổ
+            đầu ra.</li>
+        <li><strong>Sửa lỗi (Debug) và Cải thiện (Refine):</strong> Nếu có lỗi, đọc thông báo lỗi, quay
+            lại cửa sổ soạn thảo để sửa mã, rồi chạy lại. Lặp lại quá trình này cho đến khi chương trình
+            hoạt động đúng như mong muốn.</li>
+    </ul>
+    <p><strong>Lưu ý:</strong> Khi sử dụng các IDE trực tuyến, hãy tìm hiểu xem có tùy chọn để lưu lại
+        mã của bạn (ví dụ: tạo tài khoản, tải xuống tệp <code>.py</code>) hoặc đơn giản là sao chép mã
+        của bạn vào một tệp văn bản trên máy tính để lưu trữ.</p>
+
+    <h3>2. Các thành phần cơ bản của một chương trình Python</h3>
+    <h4>a. Chú thích (Comments)</h4>
+    <p>Chú thích là những dòng văn bản trong chương trình mà Python sẽ bỏ qua khi chạy. Chúng không ảnh
+        hưởng đến hoạt động của chương trình.</p>
+    <p><strong>Tại sao cần chú thích?</strong></p>
+    <ul>
+        <li><strong>Giải thích mã:</strong> Giúp người đọc (bao gồm cả bạn sau này) hiểu rõ hơn về mục
+            đích hoặc cách hoạt động của một đoạn mã phức tạp.</li>
+        <li><strong>Ghi chú:</strong> Để lại lời nhắc, ý tưởng hoặc những việc cần làm.</li>
+        <li><strong>Tạm thời vô hiệu hóa mã:</strong> Thay vì xóa một đoạn mã, bạn có thể "chú thích
+            hóa" nó để Python không chạy đoạn đó khi thử nghiệm.</li>
+    </ul>
+    <p><strong>Cách viết chú thích:</strong></p>
+    <ul>
+        <li><strong>Chú thích một dòng (Single-line comment):</strong> Bắt đầu bằng dấu thăng
+            <code>#</code>. Tất cả nội dung từ dấu <code>#</code> đến cuối dòng đó sẽ được coi là chú
+            thích.
+            <pre><code class="language-python"># Đây là một chú thích một dòng
+x = 10  # Đây cũng là một chú thích, giải thích cho biến x</code></pre>
+        </li>
+        <li><strong>Chú thích nhiều dòng (Multi-line comment):</strong>
+            <ul>
+                <li><strong>Cách 1: Dùng nhiều dấu <code>#</code>:</strong> Mỗi dòng chú thích bắt đầu
+                    bằng một dấu <code>#</code>.
+                    <pre><code class="language-python"># Đây là dòng chú thích thứ nhất
+# Đây là dòng chú thích thứ hai
+# Và đây là dòng thứ ba</code></pre>
+                </li>
+                <li><strong>Cách 2: Dùng cặp ba dấu nháy kép <code>""" """</code> hoặc ba dấu nháy đơn
+                        <code>''' '''</code>:</strong>
+                    Mặc dù thường được dùng cho "docstrings" (chuỗi tài liệu cho hàm/lớp), chúng cũng có
+                    thể được sử dụng cho chú thích nhiều dòng.
+                    <pre><code class="language-python">"""
+Đây là một khối chú thích
+bao gồm nhiều dòng.
+Python sẽ bỏ qua khối này.
+"""
+y = 20 
+'''
+Một khối chú thích khác
+sử dụng dấu nháy đơn.
+'''
+print(y)</code></pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>b. Câu lệnh (Statements)</h4>
+    <p>Một <strong>câu lệnh</strong> là một đơn vị chỉ dẫn mà trình thông dịch Python có thể thực thi.
+        Một chương trình Python thường bao gồm nhiều câu lệnh.</p>
+    <p>Ví dụ về các câu lệnh đã học:</p>
+    <pre><code class="language-python">print("Hello")       # Một câu lệnh print
+tuoi = 10            # Một câu lệnh gán
+ket_qua = 5 + 3      # Một câu lệnh gán với biểu thức tính toán</code></pre>
+    <p>Thông thường, mỗi câu lệnh được viết trên một dòng riêng biệt.</p>
+
+    <h4>c. Biến (Variables) - Ôn tập</h4>
+    <p>Như đã học ở Bài 2, <strong>biến</strong> là tên gọi được đặt cho một vùng nhớ trong máy tính,
+        dùng để lưu trữ một giá trị (số, chuỗi ký tự, v.v.). Chúng ta có thể thay đổi giá trị của biến
+        trong quá trình chạy chương trình.</p>
+    <pre><code class="language-python">ten_sach = "Lập trình Python" # Biến ten_sach lưu trữ một chuỗi
+so_luong = 5                 # Biến so_luong lưu trữ một số nguyên
+gia_ban = 75.5               # Biến gia_ban lưu trữ một số thực</code></pre>
+
+    <h4>d. Phép toán (Operators) - Ôn tập</h4>
+    <p>Python hỗ trợ nhiều loại phép toán:</p>
+    <ul>
+        <li><strong>Phép toán số học:</strong> <code>+</code> (cộng), <code>-</code> (trừ),
+            <code>*</code> (nhân), <code>/</code> (chia), <code>//</code> (chia lấy phần nguyên),
+            <code>%</code> (chia lấy số dư), <code>**</code> (lũy thừa).
+            <pre><code class="language-python">tong = 10 + 5
+hieu = 10 - 5
+tich = 10 * 5
+thuong = 10 / 5         # Kết quả là 2.0 (số thực)
+thuong_nguyen = 10 // 3 # Kết quả là 3
+so_du = 10 % 3          # Kết quả là 1
+luy_thua = 2 ** 3       # Kết quả là 8 (2 mũ 3)</code></pre>
+        </li>
+        <li><strong>Phép toán chuỗi (String operations):</strong>
+            <pre><code class="language-python"># Phép nối chuỗi
+s1 = "Hello, " + "world!"
+# Phép nhân chuỗi (lặp lại)
+s2 = "ha" * 3  # Kết quả: "hahaha"
+# Phép trừ và chia không áp dụng cho chuỗi
+</code></pre>
+        </li>
+        <li><strong>Phép toán so sánh:</strong> <code>==</code>, <code>!=</code>, <code>&gt;</code>,
+            <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code> (sẽ tìm hiểu kỹ hơn ở Bài 5).
+        </li>
+        <li><strong>Phép toán logic:</strong> <code>and</code>, <code>or</code>, <code>not</code> (sẽ
+            tìm hiểu kỹ hơn ở Bài 5).</li>
+    </ul>
+
+    <h4>e. Phép gán (Assignment) - Ôn tập</h4>
+    <p>Dấu <code>=</code> được sử dụng làm <strong>phép gán</strong>. Nó gán giá trị của biểu thức bên
+        phải cho biến ở bên trái.</p>
+    <pre><code class="language-python">x = 100
+y = x / 2  # y sẽ được gán giá trị 50.0
+ten = "An"</code></pre>
+
+    <h3>3. Hàm Toán học (Math functions)</h3>
+    <p>Python có một thư viện (module) tích hợp sẵn tên là <code>math</code> cung cấp nhiều hàm toán học
+        hữu ích. Để sử dụng các hàm này, trước tiên chúng ta cần "nhập" (import) thư viện
+        <code>math</code> vào chương trình.
+    </p>
+    <p><strong>Cách nhập thư viện <code>math</code>:</strong></p>
+    <pre><code class="language-python">import math</code></pre>
+    <p>Câu lệnh này nên được đặt ở đầu chương trình.</p>
+    <p><strong>Một số hàm toán học phổ biến trong thư viện <code>math</code>:</strong></p>
+    <ul>
+        <li><code>math.sqrt(x)</code>: Tính căn bậc hai của <code>x</code>. <code>x</code> phải là số
+            không âm.
+            <pre><code class="language-python">import math
+can_bac_hai_cua_16 = math.sqrt(16)  # Kết quả: 4.0
+print(can_bac_hai_cua_16)</code></pre>
+        </li>
+        <li><code>math.pow(x, y)</code>: Tính $x^y$. Tương tự như toán tử <code>**</code>.
+            <pre><code class="language-python">import math
+luy_thua = math.pow(3, 4)  # Kết quả: 81.0 (3 mũ 4)
+print(luy_thua)</code></pre>
+        </li>
+        <li><code>math.pi</code>: Hằng số Pi ($\pi \approx 3.14159...$)
+            <pre><code class="language-python">import math
+so_pi = math.pi
+print(so_pi)  # Kết quả: 3.141592653589793</code></pre>
+        </li>
+        <li><code>math.floor(x)</code>: Làm tròn xuống số nguyên gần nhất của <code>x</code>.
+            <pre><code class="language-python">import math
+lam_tron_xuong = math.floor(5.7)  # Kết quả: 5
+print(lam_tron_xuong)</code></pre>
+        </li>
+        <li><code>math.ceil(x)</code>: Làm tròn lên số nguyên gần nhất của <code>x</code>.
+            <pre><code class="language-python">import math
+lam_tron_len = math.ceil(5.1)  # Kết quả: 6
+print(lam_tron_len)</code></pre>
+        </li>
+        <li><code>math.fabs(x)</code>: Tính giá trị tuyệt đối của <code>x</code> (kết quả luôn là số
+            dương). Tương tự hàm <code>abs()</code> có sẵn.
+            <pre><code class="language-python">import math
+gia_tri_tuyet_doi = math.fabs(-10) # Kết quả: 10.0
+print(gia_tri_tuyet_doi)</code></pre>
+        </li>
+    </ul>
+    <p><strong>Lưu ý:</strong> Ngoài thư viện <code>math</code>, Python cũng có một số hàm toán học tích
+        hợp sẵn không cần <code>import</code>, ví dụ:</p>
+    <ul>
+        <li><code>abs(x)</code>: Tính giá trị tuyệt đối của <code>x</code>.
+            <pre><code class="language-python">print(abs(-5)) # Kết quả: 5</code></pre>
+        </li>
+        <li><code>round(x)</code>: Làm tròn số <code>x</code> đến số nguyên gần nhất.</li>
+        <li><code>round(x, n)</code>: Làm tròn số <code>x</code> đến <code>n</code> chữ số thập phân.
+            <pre><code class="language-python">print(round(5.7))    # Kết quả: 6
+print(round(5.3))    # Kết quả: 5
+print(round(3.14159, 2)) # Kết quả: 3.14</code></pre>
+        </li>
+        <li><code>pow(x, y)</code>: Tính lũy thừa x^y, tương tự như <code>math.pow()</code> nhưng không cần import math.
+            <pre><code class="language-python">print(pow(2, 3))     # Kết quả: 8
+print(pow(5, 2))     # Kết quả: 25</code></pre>
+        </li>
+        <li><code>sum(iterable)</code>: Tính tổng các phần tử trong một danh sách (list) hoặc tuple.
+            <pre><code class="language-python">numbers = [1, 2, 3, 4, 5]
+total = sum(numbers)
+print(total)         # Kết quả: 15
+
+# Có thể tính tổng trực tiếp
+print(sum([10, 20, 30]))  # Kết quả: 60</code></pre>
+        </li>
+        <li><code>min()</code>: Tìm giá trị nhỏ nhất trong các số hoặc danh sách.
+            <pre><code class="language-python"># Tìm min của nhiều số
+print(min(10, 5, 8, 3))  # Kết quả: 3
+
+# Tìm min trong danh sách
+numbers = [15, 7, 23, 4, 11]
+print(min(numbers))      # Kết quả: 4</code></pre>
+        </li>
+        <li><code>max()</code>: Tìm giá trị lớn nhất trong các số hoặc danh sách.
+            <pre><code class="language-python"># Tìm max của nhiều số
+print(max(10, 5, 8, 3))  # Kết quả: 10
+
+# Tìm max trong danh sách
+numbers = [15, 7, 23, 4, 11]
+print(max(numbers))      # Kết quả: 23</code></pre>
+        </li>
+    </ul>
+
+    <h3>4. Thử nghiệm</h3>
+    <p>Bây giờ, hãy sử dụng trình soạn thảo trực tuyến (ví dụ: <a href="https://www.online-python.com/" target="_blank" class="text-sky-600 hover:underline">Online Python</a>) để
+        viết một chương trình hoàn chỉnh.</p>
+    <p><strong>Ví dụ:</strong> Viết chương trình tính diện tích và chu vi của hình tròn khi biết bán
+        kính.</p>
+    <pre><code class="language-python"># Nhập thư viện math để sử dụng hằng số pi
+import math
+
+# Gán giá trị cho bán kính
+ban_kinh = 5.0  # Có thể thay đổi giá trị này
+
+# Tính diện tích hình tròn
+# Công thức: dien_tich = pi * ban_kinh^2
+dien_tich = math.pi * math.pow(ban_kinh, 2)
+# Hoặc có thể viết: dien_tich = math.pi * (ban_kinh ** 2)
+
+# Tính chu vi hình tròn
+# Công thức: chu_vi = 2 * pi * ban_kinh
+chu_vi = 2 * math.pi * ban_kinh
+
+# In kết quả ra màn hình
+print("Bán kính hình tròn là:", ban_kinh)
+print("Diện tích hình tròn là:", dien_tich)
+print("Chu vi hình tròn là:", chu_vi)
+
+# Thử làm tròn kết quả đến 2 chữ số thập phân
+print("Diện tích (làm tròn):", round(dien_tich, 2))
+print("Chu vi (làm tròn):", round(chu_vi, 2))</code></pre>
+    <p>Hãy sao chép đoạn mã trên vào trình soạn thảo trực tuyến, chạy thử và xem kết quả. Thử thay đổi
+        giá trị của <code>ban_kinh</code> và chạy lại.</p>
+
+    <h3>5. Bài tập</h3>
+    <p>Sử dụng trình soạn thảo Python trực tuyến để hoàn thành các bài tập sau. Hãy nhớ sử dụng chú
+        thích để giải thích các phần quan trọng trong mã của bạn.</p>
+
+    <h4>Phần A: Bài tập Toán học cơ bản</h4>
+    <ol>
+        <li><strong>Làm tròn số:</strong> Cho <code>x = 123.456789</code>. Làm tròn đến số nguyên, 1 chữ
+            số thập phân, 3 chữ số thập phân.</li>
+        <li><strong>Tính toán với số lớn:</strong> Tính $17^5$.</li>
+        <li><strong>Chuyển đổi đơn vị nhiệt độ:</strong> Chuyển độ F sang độ C. Công thức: $C = (F - 32)
+            \times \cfrac{5}{9}$.</li>
+        <li><strong>Tính cạnh huyền tam giác vuông:</strong> Cho hai cạnh góc vuông <code>a</code> và
+            <code>b</code>. Tính độ dài cạnh huyền <code>c</code> theo định lý Pythagoras ($c^2 = a^2 +
+            b^2$).
+        </li>
+    </ol>
+
+    <h4>Phần B: Bài tập Vẽ ASCII Art (Sử dụng phép toán chuỗi)</h4>
+    <p>Những bài tập này giúp bạn luyện tập sử dụng phép toán <code>+</code> (nối chuỗi) và <code>*</code> (lặp lại
+        chuỗi) để tạo ra các hình vẽ bằng ký tự ASCII.</p>
+
+    <ol start="5">
+        <li><strong>Vẽ hình chữ nhật rỗng:</strong>
+            <p>Tạo một hình chữ nhật rỗng kích thước 8×6 (8 cột, 6 hàng) sử dụng các ký tự đặc biệt:</p>
+            <pre><code>┌──────┐
+│      │
+│      │
+│      │
+│      │
+└──────┘</code></pre>
+            <p><em>Gợi ý:</em> Sử dụng các ký tự: <code>┌</code>, <code>─</code>, <code>┐</code>, <code>│</code>,
+                <code> </code> (dấu cách), <code>└</code>, <code>┘</code>
+            </p>
+            <p><strong>Code gợi ý:</strong></p>
+            <pre><code class="language-python"># Vẽ hình chữ nhật rỗng 8x6
+# Hàng trên cùng
+print("┌" + "─" * 6 + "┐")
+
+# Các hàng giữa (4 hàng)
+hang_giua = "│" + " " * 6 + "│"
+print(hang_giua)
+print(hang_giua)
+print(hang_giua)
+print(hang_giua)
+
+# Hàng dưới cùng
+print("└" + "─" * 6 + "┘")</code></pre>
+        </li>
+
+        <li><strong>Vẽ tam giác cân rỗng:</strong>
+            <p>Tạo một tam giác cân rỗng với chiều cao 5 hàng:</p>
+            <pre><code>    *
+   * *
+  *   *
+ *     *
+*********</code></pre>
+            <p><em>Gợi ý:</em> Mỗi hàng cần số lượng dấu cách khác nhau ở đầu. Hàng cuối cùng được lấp đầy bằng dấu
+                <code>*</code>.
+            </p>
+        </li>
+
+        <li><strong>Vẽ lưới tic-tac-toe:</strong>
+            <p>Tạo một lưới 3×3 trống sử dụng box drawing characters:</p>
+            <pre><code>┌───┬───┬───┐
+│   │   │   │
+├───┼───┼───┤
+│   │   │   │
+├───┼───┼───┤
+│   │   │   │
+└───┴───┴───┘</code></pre>
+            <p><em>Gợi ý:</em> Chia thành 3 phần: hàng đầu, các hàng giữa (có phân cách), hàng cuối.</p>
+        </li>
+
+        <li><strong>Vẽ robot đơn giản:</strong>
+            <p>Tạo hình robot nhỏ sử dụng các ký tự ASCII:</p>
+            <pre><code> _____
+|  o  |
+| --- |
+|_____|
+  | |
+  |_|</code></pre>
+            <p><em>Gợi ý:</em> Robot gồm đầu (hình chữ nhật với mắt và miệng), thân và chân.</p>
+        </li>
+
+        <li><strong>Vẽ ngôi nhà:</strong>
+            <p>Tạo hình ngôi nhà đơn giản với mái và cửa:</p>
+            <pre><code>   /\
+  /  \
+ /____\
+|  []  |
+|______|</code></pre>
+            <p><em>Gợi ý:</em> Ngôi nhà gồm mái tam giác và thân hình chữ nhật có cửa sổ.</p>
+        </li>
+
+        <li><strong>Vẽ xe hơi (Nâng cao):</strong>
+            <p>Tạo hình xe hơi đơn giản nhìn từ bên:</p>
+            <pre><code>  ______
+ /|_||_\`.__
+(   _    _ _\
+=`-(_)--(_)-'</code></pre>
+            <p><em>Gợi ý:</em> Cần chú ý đến vị trí các ký tự đặc biệt và dấu nháy.</p>
+        </li>
+    </ol>
+    <p><strong>Lưu ý quan trọng:</strong></p>
+    <ul>
+        <li>Các ký tự đặc biệt có thể hiển thị khác nhau tùy theo font chữ của trình soạn thảo.</li>
+        <li>Nếu không hiển thị đúng, bạn có thể thay thế bằng các ký tự ASCII cơ bản như <code>+</code>, <code>-</code>,
+            <code>|</code>, <code>*</code>.
+        </li>
+        <li>Hãy thử nghiệm với việc sử dụng <code>*</code> để lặp lại chuỗi và <code>+</code> để nối các phần với nhau.
+        </li>
+        <li>Sử dụng chú thích để ghi rõ từng phần của hình vẽ.</li>
+    </ul>
+
+    <h3>6. Tóm tắt Bài 3 và Từ khóa</h3>
+    <ul>
+        <li><strong>Trình soạn thảo Python trực tuyến (Online IDE):</strong> Công cụ để viết, chạy và
+            kiểm tra các chương trình Python.</li>
+        <li><strong>Chú thích (Comments):</strong> Dùng <code>#</code> cho chú thích một dòng hoặc
+            <code>""" """</code> (hoặc <code>''' '''</code>) cho chú thích nhiều dòng để giải thích mã.
+        </li>
+        <li><strong>Các thành phần cơ bản:</strong> Ôn lại về câu lệnh, biến, phép toán, phép gán.</li>
+        <li><strong>Phép toán số học:</strong> <code>+</code> (cộng), <code>-</code> (trừ), <code>*</code> (nhân), <code>/</code> (chia), <code>//</code> (chia lấy phần nguyên), <code>%</code> (chia lấy số dư), <code>**</code> (lũy thừa).</li>
+        <li><strong>Phép toán chuỗi:</strong> Sử dụng <code>+</code> để nối chuỗi, <code>*</code> để lặp lại chuỗi - rất
+            hữu ích cho việc tạo ASCII Art.</li>
+        <li><strong>Thư viện <code>math</code>:</strong> Cách <code>import math</code> và sử dụng các
+            hàm toán học như <code>math.sqrt()</code>, <code>math.pow()</code>, <code>math.pi</code>,
+            <code>math.floor()</code>, <code>math.ceil()</code>.
+        </li>
+        <li><strong>Hàm tích hợp:</strong> <code>abs()</code>, <code>round()</code>, <code>pow()</code>, <code>sum()</code>, <code>min()</code>, <code>max()</code>.</li>
+    </ul>
+    <h4>Bảng 3: Thuật ngữ và Hàm mới Bài 3</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Thuật ngữ/Hàm (Term/Function)</th>
+                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Trình soạn thảo (Editor) / IDE</td>
+                <td>Công cụ dùng để viết và chạy mã chương trình.</td>
+            </tr>
+            <tr>
+                <td>Chú thích (Comment)</td>
+                <td>Văn bản trong mã bị Python bỏ qua, dùng để giải thích hoặc ghi chú. Ký hiệu:
+                    <code>#</code>, <code>""" """</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>import math</code></td>
+                <td>Câu lệnh để nạp thư viện <code>math</code> vào chương trình.</td>
+            </tr>
+            <tr>
+                <td><code>math.sqrt(x)</code></td>
+                <td>Tính căn bậc hai của <code>x</code>.</td>
+            </tr>
+            <tr>
+                <td><code>math.pow(x, y)</code></td>
+                <td>Tính $x$ lũy thừa $y$.</td>
+            </tr>
+            <tr>
+                <td><code>math.pi</code></td>
+                <td>Hằng số Pi ($\pi$).</td>
+            </tr>
+            <tr>
+                <td><code>math.floor(x)</code></td>
+                <td>Làm tròn <code>x</code> xuống số nguyên gần nhất.</td>
+            </tr>
+            <tr>
+                <td><code>math.ceil(x)</code></td>
+                <td>Làm tròn <code>x</code> lên số nguyên gần nhất.</td>
+            </tr>
+            <tr>
+                <td><code>abs(x)</code></td>
+                <td>Tính giá trị tuyệt đối của <code>x</code> (hàm tích hợp).</td>
+            </tr>
+            <tr>
+                <td><code>round(x, n)</code></td>
+                <td>Làm tròn <code>x</code> đến <code>n</code> chữ số thập phân (hàm tích hợp).</td>
+            </tr>
+            <tr>
+                <td><code>pow(x, y)</code></td>
+                <td>Tính lũy thừa $x^y$ (hàm tích hợp, không cần import).</td>
+            </tr>
+            <tr>
+                <td><code>sum(iterable)</code></td>
+                <td>Tính tổng các phần tử trong danh sách hoặc tuple (hàm tích hợp).</td>
+            </tr>
+            <tr>
+                <td><code>min()</code></td>
+                <td>Tìm giá trị nhỏ nhất trong các số hoặc danh sách (hàm tích hợp).</td>
+            </tr>
+            <tr>
+                <td><code>max()</code></td>
+                <td>Tìm giá trị lớn nhất trong các số hoặc danh sách (hàm tích hợp).</td>
+            </tr>
+            <tr>
+                <td><code>+</code> (string concatenation)</td>
+                <td>Nối hai chuỗi.</td>
+            </tr>
+            <tr>
+                <td><code>*</code> (string multiplication)</td>
+                <td>Nhân chuỗi để lặp lại.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

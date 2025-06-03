@@ -1,0 +1,281 @@
+<div id="lesson-7-content" class="lesson-content active-content">
+    <h2>Bài 7: Mảng (Khái niệm), Danh sách (Lists) và <code>range</code></h2>
+    <p>Bài học này sẽ đi sâu vào Danh sách (List) - một cấu trúc dữ liệu cực kỳ quan trọng trong Python,
+        cùng với việc ôn lại và mở rộng kiến thức về `range`.</p>
+    <h3>Mục tiêu Bài học:</h3>
+    <ul>
+        <li>Hiểu khái niệm cơ bản về cấu trúc dữ liệu để lưu trữ nhiều mục.</li>
+        <li>Học chi tiết về <strong>Danh sách (List)</strong> trong Python: cách tạo, truy cập phần tử,
+            thay đổi, và các thao tác phổ biến.</li>
+        <li>Ôn lại và hiểu sâu hơn về đối tượng <code>range</code> và cách chuyển đổi nó thành danh
+            sách.</li>
+        <li>Kết hợp danh sách với vòng lặp (<code>for</code>, <code>while</code>) và câu lệnh điều kiện
+            (<code>if-elif-else</code>) để xử lý dữ liệu.</li>
+        <li>Sử dụng các kỹ thuật nhập và xuất dữ liệu liên quan đến danh sách.</li>
+        <li>Làm quen với khái niệm "Mảng" (Array) và sự khác biệt/tương đồng với Danh sách trong Python.
+        </li>
+        <li>Áp dụng kiến thức tổng hợp để giải các bài toán lập trình.</li>
+    </ul>
+    <h3>Giới thiệu:</h3>
+    <p>Đến nay, chúng ta chủ yếu làm việc với các biến lưu trữ một giá trị duy nhất (ví dụ:
+        <code>tuoi = 10</code>, <code>ten = "An"</code>). Nhưng nếu chúng ta muốn lưu trữ tên của tất cả
+        học sinh trong một lớp, hoặc điểm số của nhiều môn học, việc tạo ra hàng chục biến riêng lẻ sẽ
+        rất bất tiện.
+    </p>
+    <p>Đây là lúc các <strong>cấu trúc dữ liệu</strong> phát huy tác dụng. Chúng cho phép chúng ta tổ
+        chức và lưu trữ một tập hợp các mục dữ liệu một cách có trật tự. Trong Python, <strong>Danh sách
+            (List)</strong> là một cấu trúc dữ liệu cực kỳ linh hoạt và được sử dụng rộng rãi. "Mảng"
+        (Array) là một khái niệm tương tự trong nhiều ngôn ngữ khác, và chúng ta cũng sẽ tìm hiểu sơ qua
+        về nó.</p>
+
+    <h3>1. Danh sách (Lists) trong Python</h3>
+    <h4>a. Danh sách là gì?</h4>
+    <p>Một <strong>Danh sách (List)</strong> trong Python là một tập hợp các mục được sắp xếp theo một
+        thứ tự nhất định.</p>
+    <ul>
+        <li><strong>Có thứ tự (Ordered):</strong> Các mục được lưu trữ theo một trình tự cụ thể.</li>
+        <li><strong>Có thể chứa các kiểu dữ liệu khác nhau.</strong></li>
+        <li><strong>Khả biến (Mutable):</strong> Bạn có thể thay đổi nội dung của danh sách sau khi nó
+            được tạo.</li>
+        <li>Được bao quanh bởi dấu ngoặc vuông <code>[]</code>, và các mục được phân tách bởi dấu phẩy
+            <code>,</code>.
+        </li>
+    </ul>
+
+    <h4>b. Tạo Danh sách</h4>
+    <ul>
+        <li><strong>Tạo danh sách rỗng:</strong>
+            <pre><code class="language-python">danh_sach_rong_1 = []
+danh_sach_rong_2 = list()
+print(f"Danh sách rỗng 1: {danh_sach_rong_1}")
+print(f"Danh sách rỗng 2: {danh_sach_rong_2}")</code></pre>
+        </li>
+        <li><strong>Tạo danh sách với các giá trị ban đầu:</strong>
+            <pre><code class="language-python">so_nguyen = [1, 2, 3, 4, 5]
+ten_hoc_sinh = ["An", "Bình", "Cúc"]
+hon_hop = [1, "Hai", 3.0, True]
+
+print(f"Danh sách số nguyên: {so_nguyen}")
+print(f"Danh sách tên học sinh: {ten_hoc_sinh}")
+print(f"Danh sách hỗn hợp: {hon_hop}")</code></pre>
+        </li>
+    </ul>
+
+    <h4>c. Truy cập các phần tử trong Danh sách (Indexing)</h4>
+    <p>Mỗi mục trong danh sách có một vị trí (chỉ số - index) duy nhất, bắt đầu từ <code>0</code>.</p>
+    <ul>
+        <li><strong>Chỉ số dương:</strong>
+            <pre><code class="language-python">trai_cay = ["táo", "chuối", "cam", "xoài"]
+#             0        1       2       3
+phan_tu_dau_tien = trai_cay[0] # "táo"
+phan_tu_thu_ba = trai_cay[2]   # "cam"
+print(f"Phần tử đầu tiên: {phan_tu_dau_tien}")
+print(f"Phần tử thứ ba: {phan_tu_thu_ba}")</code></pre>
+        </li>
+        <li><strong>Chỉ số âm:</strong> <code>-1</code> là phần tử cuối cùng.
+            <pre><code class="language-python">trai_cay = ["táo", "chuối", "cam", "xoài"]
+#            -4       -3      -2      -1
+phan_tu_cuoi_cung = trai_cay[-1] # "xoài"
+phan_tu_ke_cuoi = trai_cay[-2]  # "cam"
+print(f"Phần tử cuối cùng: {phan_tu_cuoi_cung}")
+print(f"Phần tử kế cuối: {phan_tu_ke_cuoi}")</code></pre>
+        </li>
+    </ul>
+
+    <h4>d. Cắt lát Danh sách (Slicing)</h4>
+    <p>Cú pháp: <code>ten_danh_sach[start:stop:step]</code></p>
+    <pre><code class="language-python">numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(f"Từ index 2 đến 4: {numbers[2:5]}") # [2, 3, 4]
+print(f"Từ đầu đến index 3: {numbers[:4]}")  # [0, 1, 2, 3]
+print(f"Từ index 5 đến cuối: {numbers[5:]}") # [5, 6, 7, 8, 9]
+print(f"Đảo ngược danh sách: {numbers[::-1]}")</code></pre>
+
+    <h4>e. Thay đổi phần tử trong Danh sách</h4>
+    <pre><code class="language-python">mau_sac = ["đỏ", "xanh", "vàng"]
+print(f"Danh sách ban đầu: {mau_sac}")
+mau_sac[1] = "tím" # Thay đổi "xanh" thành "tím"
+print(f"Danh sách sau khi thay đổi: {mau_sac}")</code></pre>
+
+    <h4>f. Các thao tác và phương thức phổ biến của Danh sách</h4>
+    <ul>
+        <li><strong>Lấy độ dài:</strong> <code>len(danh_sach)</code></li>
+        <li><strong>Thêm phần tử:</strong> <code>append(item)</code>, <code>insert(index, item)</code>
+        </li>
+        <li><strong>Xóa phần tử:</strong> <code>remove(item)</code>, <code>pop()</code>,
+            <code>pop(index)</code>, <code>del danh_sach[index]</code>, <code>clear()</code>
+        </li>
+        <li><strong>Tìm kiếm và đếm:</strong> <code>index(item)</code>, <code>count(item)</code></li>
+        <li><strong>Sắp xếp và Đảo ngược:</strong> <code>sort()</code>, <code>sort(reverse=True)</code>,
+            <code>reverse()</code>, <code>sorted(danh_sach)</code>
+        </li>
+        <li><strong>Nối danh sách:</strong> <code>+</code></li>
+        <li><strong>Lặp lại danh sách:</strong> <code>*</code></li>
+        <li><strong>Kiểm tra sự tồn tại:</strong> <code>in</code>, <code>not in</code></li>
+    </ul>
+    <p><em>(Xem chi tiết các ví dụ về phương thức trong phần "Source Report" gốc của Bài 7)</em></p>
+
+    <h3>2. Ôn tập về <code>range</code> và Danh sách</h3>
+    <p><code>range()</code> tạo ra một đối tượng dãy số, cần dùng <code>list()</code> để chuyển thành
+        danh sách.</p>
+    <pre><code class="language-python">danh_sach_tu_range = list(range(5)) # [0, 1, 2, 3, 4]
+print(f"Danh sách từ range: {danh_sach_tu_range}")
+danh_sach_le = list(range(1, 10, 2)) # [1, 3, 5, 7, 9]
+print(f"Danh sách các số lẻ: {danh_sach_le}")</code></pre>
+
+    <h3>3. Kết hợp Danh sách với Vòng lặp và Câu lệnh Điều kiện</h3>
+    <h4>a. Duyệt qua Danh sách bằng vòng lặp <code>for</code></h4>
+    <pre><code class="language-python">hoc_sinh = ["An", "Bình", "Cúc"]
+print("Danh sách học sinh:")
+for ten in hoc_sinh:
+    print(f"- {ten}")
+
+print("\nHọc sinh và số thứ tự:")
+for i in range(len(hoc_sinh)):
+    print(f"{i+1}. {hoc_sinh[i]}")</code></pre>
+
+    <h4>b. Xây dựng Danh sách bằng Vòng lặp</h4>
+    <p><strong>Ví dụ: Tạo danh sách các số bình phương từ 1 đến 5</strong></p>
+    <pre><code class="language-python">danh_sach_binh_phuong = []
+for i in range(1, 6):
+    binh_phuong = i * i
+    danh_sach_binh_phuong.append(binh_phuong)
+print(f"Danh sách các số bình phương: {danh_sach_binh_phuong}")
+
+# List Comprehension
+binh_phuong_comprehension = [x**2 for x in range(1, 6)]
+print(f"Bình phương (list comprehension): {binh_phuong_comprehension}")</code></pre>
+
+    <h4>c. Xử lý các phần tử trong Danh sách với Câu lệnh Điều kiện</h4>
+    <p><strong>Ví dụ: Đếm số chẵn trong một danh sách</strong></p>
+    <pre><code class="language-python">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+so_luong_chan = 0
+danh_sach_chan = []
+for num in numbers:
+    if num % 2 == 0:
+        so_luong_chan += 1
+        danh_sach_chan.append(num)
+print(f"Trong danh sách {numbers}:")
+print(f"- Có {so_luong_chan} số chẵn.")
+print(f"- Các số chẵn là: {danh_sach_chan}")</code></pre>
+
+    <h3>4. Khái niệm "Mảng" (Array) - Một lưu ý nhỏ</h3>
+    <p>Trong nhiều ngôn ngữ khác, "Mảng" có kích thước cố định và thường chứa các phần tử cùng kiểu.
+        Danh sách (List) của Python linh hoạt hơn. Python có module <code>array</code> và thư viện
+        <code>NumPy</code> cho các mảng hiệu suất cao, nhưng List là đủ cho khóa học này.
+    </p>
+
+    <h3>5. Nhập và Xuất dữ liệu với Danh sách</h3>
+    <h4>a. Nhập một danh sách các mục từ người dùng</h4>
+    <pre><code class="language-python"># Nhập một dòng các số và chuyển thành danh sách số nguyên:
+# danh_sach_so_lc = [int(x) for x in input("Nhập các số (LC): ").split()]
+# print(f"Danh sách số (LC): {danh_sach_so_lc}")
+
+# Nhập một số lượng cố định các mục, mỗi mục trên một dòng:
+# so_luong_sv = int(input("Nhập số lượng sinh viên: "))
+# danh_sach_ten_sv = []
+# for i in range(so_luong_sv):
+#     ten = input(f"Nhập tên sinh viên thứ {i+1}: ")
+#     danh_sach_ten_sv.append(ten)
+# print(f"Danh sách tên sinh viên: {danh_sach_ten_sv}")</code></pre>
+
+    <h4>b. Xuất Danh sách</h4>
+    <pre><code class="language-python">ten_hoc_sinh = ["An", "Bình", "Cúc"]
+print(ten_hoc_sinh) # ['An', 'Bình', 'Cúc']
+
+print("Danh sách tên (mỗi tên một dòng):")
+for ten in ten_hoc_sinh:
+    print(ten)
+
+# In các phần tử có định dạng (cách nhau bởi dấu phẩy và cách):
+# so_nguyen = [1, 2, 3, 4, 5]
+# danh_sach_so_str = [str(x) for x in so_nguyen]
+# chuoi_ket_qua = ", ".join(danh_sach_so_str)
+# print(f"Các số cách nhau bởi dấu phẩy: {chuoi_ket_qua}")</code></pre>
+
+    <h3>6. Bài tập</h3>
+    <ol>
+        <li><strong>Quản lý danh sách công việc (To-Do List):</strong> Cho phép thêm, xem, đánh dấu hoàn
+            thành (xóa), thoát.</li>
+        <li><strong>Nhập và Tính toán trên Danh sách Số:</strong> Nhập dãy số. Tính tổng, trung bình,
+            min/max (tự viết logic min/max).</li>
+        <li><strong>Lọc Danh sách:</strong> Cho danh sách số, tạo danh sách mới chỉ chứa số dương.</li>
+        <li><strong>Đảo ngược Chuỗi bằng Danh sách:</strong> Nhập chuỗi, chuyển thành list, đảo ngược
+            list, nối lại thành chuỗi.</li>
+        <li><strong>Tìm các phần tử chung:</strong> Cho 2 danh sách, tìm các phần tử chung.</li>
+        <li><strong>Loại bỏ các phần tử trùng lặp:</strong> Cho danh sách, tạo danh sách mới không có
+            phần tử trùng.</li>
+        <li><strong>Mật độ dân số:</strong> Cho danh sách tên thành phố, diện tích, dân số. Tính mật độ,
+            in ra.</li>
+    </ol>
+
+    <h3>7. Tóm tắt Bài 7 và Từ khóa</h3>
+    <p>Danh sách là một trong những cấu trúc dữ liệu mạnh mẽ và linh hoạt nhất trong Python.</p>
+    <h4>Bảng 7: Thuật ngữ và Thao tác mới/ôn tập với Danh sách Bài 7</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Thuật ngữ/Thao tác (Term/Operation)</th>
+                <th>Giải thích ngắn gọn (Brief Explanation)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Danh sách (List) <code>[]</code></td>
+                <td>Cấu trúc dữ liệu lưu trữ tập hợp các mục có thứ tự, khả biến.</td>
+            </tr>
+            <tr>
+                <td>Chỉ số (Index)</td>
+                <td>Vị trí của một phần tử trong danh sách, bắt đầu từ 0.</td>
+            </tr>
+            <tr>
+                <td>Cắt lát (Slicing) <code>[start:stop:step]</code></td>
+                <td>Lấy một phần của danh sách.</td>
+            </tr>
+            <tr>
+                <td><code>list.append(item)</code></td>
+                <td>Thêm <code>item</code> vào cuối danh sách.</td>
+            </tr>
+            <tr>
+                <td><code>list.insert(index, item)</code></td>
+                <td>Chèn <code>item</code> vào vị trí <code>index</code>.</td>
+            </tr>
+            <tr>
+                <td><code>list.remove(item)</code></td>
+                <td>Xóa <code>item</code> đầu tiên tìm thấy.</td>
+            </tr>
+            <tr>
+                <td><code>list.pop(index)</code></td>
+                <td>Xóa và trả về phần tử tại <code>index</code> (mặc định là cuối cùng).</td>
+            </tr>
+            <tr>
+                <td><code>len(list)</code></td>
+                <td>Trả về số lượng phần tử trong danh sách.</td>
+            </tr>
+            <tr>
+                <td><code>list.sort()</code> / <code>list.sort(reverse=True)</code></td>
+                <td>Sắp xếp danh sách (tại chỗ).</td>
+            </tr>
+            <tr>
+                <td><code>list.reverse()</code></td>
+                <td>Đảo ngược danh sách (tại chỗ).</td>
+            </tr>
+            <tr>
+                <td><code>item in list</code></td>
+                <td>Kiểm tra <code>item</code> có trong <code>list</code> hay không (trả về Boolean).
+                </td>
+            </tr>
+            <tr>
+                <td><code>list(range(...))</code></td>
+                <td>Tạo danh sách từ đối tượng <code>range</code>.</td>
+            </tr>
+            <tr>
+                <td>List Comprehension <code>[expr for item in iterable if cond]</code></td>
+                <td>Cách tạo danh sách ngắn gọn.</td>
+            </tr>
+            <tr>
+                <td><code>map(function, iterable)</code></td>
+                <td>Áp dụng hàm cho từng phần tử của iterable.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
