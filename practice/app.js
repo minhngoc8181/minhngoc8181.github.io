@@ -269,7 +269,7 @@ class PythonLab {
         document.getElementById('problemDetails').classList.remove('hidden');
 
         // Update problem description in new format
-        document.getElementById('problemTitle').innerHTML = `<i class="fas fa-info-circle"></i> Mô tả bài tập:`;
+        document.getElementById('problemTitle').innerHTML = `<i class="fas fa-info-circle"></i> ${problem.title}`;
         document.getElementById('problemDescription').innerHTML = problem.description;
 
         // Update difficulty badge
