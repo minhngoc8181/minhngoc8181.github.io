@@ -189,7 +189,8 @@ body {
     width: 100% !important;
   }
 
-  .copy-button {
+  .copy-button,
+  .translate-button {
     display: none !important;
   }
 
@@ -203,5 +204,89 @@ body {
   a {
     color: #0369a1 !important;
     text-decoration: underline !important;
+  }
+}
+
+/* Translation button styling */
+.translate-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #0ea5e9;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  z-index: 1000;
+}
+
+.translate-button:hover {
+  background-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.translate-button:active {
+  transform: translateY(0);
+}
+
+/* Hidden class */
+.hidden {
+  display: none !important;
+}
+
+/* Hide Google Translate elements from user view but keep them functional */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-menu-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Style the Google Translate element to be hidden but functional */
+#google_translate_element {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  visibility: visible !important;
+  opacity: 0 !important;
+}
+
+/* Ensure the combo box is accessible to our script */
+#google_translate_element .goog-te-combo {
+  visibility: visible !important;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: fixed !important;
+  left: -999999px !important;
+  top: -999999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .translate-button {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
   }
 }

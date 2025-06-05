@@ -10,8 +10,8 @@
     <script>
         MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+                inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+                displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']]
             },
             svg: {
                 fontCache: 'global'
@@ -20,6 +20,64 @@
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        // Google Translate initialization callback function
+        // This function MUST be defined globally before the Google Translate script is loaded.
+        function googleTranslateElementInit() {
+            console.log('Google Translate initializing...');
+            const gtElement = document.getElementById('google_translate_element');
+
+            if (gtElement) {
+                // Temporarily show the widget for initialization
+                gtElement.style.position = 'static';
+                gtElement.style.top = '';
+                gtElement.style.left = '';
+                gtElement.style.height = '';
+                gtElement.style.width = '';
+                gtElement.style.overflow = '';
+                gtElement.style.visibility = 'visible';
+                console.log('Google Translate element temporarily visible for initialization.');
+
+                try {
+                    new google.translate.TranslateElement({
+                        pageLanguage: 'vi',
+                        includedLanguages: 'en,vi',
+                        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                        autoDisplay: false
+                    }, 'google_translate_element');
+                    console.log('Google Translate initialized successfully (constructor called).');
+
+                    // Hide the widget again after 2 seconds
+                    setTimeout(() => {
+                        gtElement.style.position = 'absolute';
+                        gtElement.style.top = '-9999px';
+                        gtElement.style.left = '-9999px';
+                        gtElement.style.height = '1px';
+                        gtElement.style.width = '1px';
+                        gtElement.style.overflow = 'hidden';
+                        gtElement.style.visibility = 'visible';
+                        console.log('Google Translate element hidden after initialization.');
+                    }, 2000);
+
+                    // Diagnostic: Check if the container gets populated by Google's script
+                    setTimeout(() => {
+                        if (gtElement.innerHTML.trim() === '') {
+                            console.warn('DIAGNOSTIC: google_translate_element is EMPTY 1s after TranslateElement constructor. Widget may not have rendered its content.');
+                        } else {
+                            console.log('DIAGNOSTIC: google_translate_element has content. InnerHTML (first 200 chars):', gtElement.innerHTML.substring(0, 200));
+                        }
+                    }, 1000); // Check after 1 second
+
+                } catch (error) {
+                    console.error('Google Translate initialization constructor FAILED:', error);
+                }
+            } else {
+                console.error('Google Translate container element (google_translate_element) not found in DOM.');
+            }
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <link rel="stylesheet" href="css/index.css">
     <meta name="description"
@@ -39,7 +97,16 @@
     <meta name="twitter:image" content="https://mathbook.vn/python/assets/python-og-image.png">
 </head>
 
-<body class="bg-stone-100 text-stone-800">
+<body class="bg-stone-100 text-stone-800"> <!-- Google Translate Element (hidden) -->
+    <div id="google_translate_element"
+        style="position:absolute; top:-9999px; left:-9999px; height:1px; width:1px; overflow:hidden; visibility:visible;">
+    </div>
+
+    <!-- Translate Button -->
+    <button id="translate-btn" class="translate-button">
+        <span class="btn-text">English</span>
+    </button>
+
     <div class="flex flex-col md:flex-row min-h-screen">
         <nav
             class="md:w-64 bg-sky-700 text-white p-4 space-y-2 md:sticky md:top-0 md:self-start md:h-screen overflow-y-auto">
@@ -52,6 +119,7 @@
             <a href="#" data-lesson="lesson-6-content" class="nav-link">Bài 6: Vòng Lặp</a>
             <a href="#" data-lesson="lesson-7-content" class="nav-link">Bài 7: Danh sách & Range</a>
             <a href="#" data-lesson="lesson-8-content" class="nav-link">Bài 8: Ôn tập</a>
+            <a href="#" data-lesson="lien-he" class="nav-link">Liên hệ</a>
         </nav>
 
         <main class="flex-1 p-6 md:p-10 overflow-y-auto">
@@ -62,10 +130,90 @@
             </div>
         </main>
     </div>
-    <script>
+    <script>        // Translation functionality
+        let isTranslated = false;
+        let translationTimeout = null;
+        // Google Translate initialization
+        // MOVED to <head> to ensure it's defined before Google's script callback
+
+        // Toggle translation function with better error handling
+        function toggleTranslation() {
+            console.log('Toggle translation clicked, isTranslated:', isTranslated);
+
+            if (translationTimeout) {
+                clearTimeout(translationTimeout);
+            }
+
+            const attemptTranslation = (attempts = 0) => {
+                const selectElement = document.querySelector('.goog-te-combo');
+                console.log('Attempt', attempts + 1, 'Select element found:', !!selectElement);
+
+                if (selectElement) {
+                    try {
+                        if (isTranslated) {
+                            console.log('Switching to Vietnamese');
+                            selectElement.value = 'vi';
+                            selectElement.dispatchEvent(new Event('change'));
+                            isTranslated = false;
+                            document.getElementById('translate-btn').innerHTML = '<span class="btn-text">English</span>';
+                            localStorage.setItem('preferredLanguage', 'vi');
+                        } else {
+                            console.log('Switching to English');
+                            selectElement.value = 'en';
+                            selectElement.dispatchEvent(new Event('change'));
+                            isTranslated = true;
+                            document.getElementById('translate-btn').innerHTML = '<span class="btn-text">Tiếng Việt</span>';
+                            localStorage.setItem('preferredLanguage', 'en');
+                        }
+                        console.log('Translation triggered successfully');
+                    } catch (error) {
+                        console.error('Error during translation:', error);
+                    }
+                } else if (attempts < 30) { // Increased attempts from 10 to 30
+                    console.log('Google Translate not ready yet, retrying in 1 second...');
+                    translationTimeout = setTimeout(() => attemptTranslation(attempts + 1), 1000);
+                } else {
+                    console.error('Google Translate failed to load after 30 attempts. The .goog-te-combo element was not found.'); // Updated error message
+                    alert('Translation service is not available. Please check your internet connection or try refreshing the page.');
+                }
+            };
+
+            attemptTranslation();
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOM Content Loaded');
             const navLinks = document.querySelectorAll('.nav-link');
             const contentContainer = document.getElementById('lesson-content');
+            const translateBtn = document.getElementById('translate-btn');
+
+            console.log('Translate button found:', translateBtn);
+
+            // Add translate button event listener
+            if (translateBtn) {
+                translateBtn.addEventListener('click', function () {
+                    console.log('Translate button clicked!');
+                    toggleTranslation();
+                });
+                console.log('Event listener added to translate button');
+            } else {
+                console.error('Translate button not found!');
+            }
+
+            // Load saved preference on page load
+            setTimeout(() => {
+                const savedLang = localStorage.getItem('preferredLanguage');
+                console.log('Saved language preference:', savedLang);
+                if (savedLang === 'en') {
+                    console.log('Auto-loading English translation');
+                    // The toggleTranslation function has its own retry mechanism for the select element.
+                    // This timeout gives the Google Translate widget some time to initialize
+                    // after googleTranslateElementInit is called.
+                    setTimeout(() => {
+                        toggleTranslation();
+                    }, 1500); // Wait a bit for widget to potentially render after init
+                }
+            }, 1500); // Initial delay after DOM content loaded
 
             function addCopyButtons() {
                 // Remove existing copy buttons to avoid duplicates
@@ -109,9 +257,7 @@
                 // Fallback for older browsers
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
-                textArea.style.position = 'fixed';
-                textArea.style.left = '-999999px';
-                textArea.style.top = '-999999px';
+                textArea.className = 'sr-only';
                 document.body.appendChild(textArea);
                 textArea.focus();
                 textArea.select();
@@ -139,6 +285,15 @@
 
                     // Add copy buttons after content is loaded
                     setTimeout(addCopyButtons, 100);
+
+                    // Auto-translate new content if user preferred English
+                    const savedLang = localStorage.getItem('preferredLanguage');
+                    if (savedLang === 'en' && !isTranslated) {
+                        setTimeout(() => {
+                            console.log('Auto-translating new content');
+                            toggleTranslation();
+                        }, 500);
+                    }
 
                     if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
                         MathJax.typesetPromise([contentContainer]).catch(err => console.error(err));
