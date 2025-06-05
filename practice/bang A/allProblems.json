@@ -1,0 +1,738 @@
+{
+    "https://tinhoctre.vn/problem/25_19_5_a1": {
+        "title": "Hội chợ xuân",
+        "url": "https://tinhoctre.vn/problem/25_19_5_a1",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 4 bảng A",
+        "index": 1,
+        "html": "<p>Một nhóm học sinh có ~A~ bạn rủ nhau đi chơi. Giá vé vào cổng là 5000 đồng. </p>\n\n<p>May mắn là khi họ mua 5 vé sẽ được tặng thêm 1 vé nữa. Hỏi nhóm học sinh đó mất bao nhiêu tiền để mọi người có thể vào cổng được. </p>\n\n<p><strong>Yêu cầu:</strong> Hãy tính số tiền nhóm học sinh cần phải trả.</p>\n\n<h6>Input</h6>\n\n<ul>\n<li>Một dòng chứa duy nhất số tự nhiên ~A~ ~(1 \\le A \\le 1000)~.</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>Một số duy nhất là kết quả của bài toán.</li>\n</ul>\n\n<h6>Examples</h6>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>32\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>135000\n</code></pre>\n\n<h6>Explanation</h6>\n\n<p>Số vé cần mua cho 32 học sinh là 27 vé. </p>\n\n<p>Tổng số tiền là ~27 \\times 5000 = 135000~</p>\n",
+        "tags": [
+            "Toán học",
+            "Logic"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Tính số tiền mua vé với quy tắc 5 tặng 1 cho nhóm học sinh"
+    },
+    "https://tinhoctre.vn/problem/25_19_5_a2": {
+        "title": "Chia hết",
+        "url": "https://tinhoctre.vn/problem/25_19_5_a2",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 4 bảng A",
+        "index": 2,
+        "html": "<p>Cho trước ~3~ số tự nhiên ~a, b~ và ~c~ ~(0 \\le a, b, c, 9)~.</p>\n\n<p>Gọi số ~T~ là số có ~3~ chữ số được ghép từ ~3~ số ~a~, ~b~, ~c~ đã cho. Lưu ý: số ~0~ ở vị trí đầu tiên không có nghĩa. </p>\n\n<p><strong>Ví dụ:</strong> Với ~3~ số ~a = 2, b = 0, c = 7~ ta có thể ghép thành các số ~T~ như sau: ~207, 270, 702, 720~. Các số ~027, 072~ không được tính là số có ~3~ chữ số vì số ~0~ ở đầu. </p>\n\n<p><strong>Yêu cầu:</strong> Hãy kiểm tra xem trong các số ~T~ được ghép từ ~3~ số ~a, b, c~ có tồn tại một số ~T~ chia hết cho ~5~ hay không. </p>\n\n<h6>Input</h6>\n\n<ul>\n<li>Dòng đầu tiên chứa số tự nhiên ~a~ ~(0 \\leq a \\leq 9)~.</li>\n<li>Dòng thứ hai chứa số tự nhiên ~b~ ~(0 \\leq b \\leq 9)~.</li>\n<li>Dòng thứ ba chứa số tự nhiên ~c~ ~(0 \\leq c \\leq 9)~.</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>In ra <code>YES</code> nếu tồn tại một số ~T~ chia hết cho ~5~ ngược lại in ra <code>NO</code>. </li>\n</ul>\n\n<h6>Examples</h6>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>2\n0\n7\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>YES\n</code></pre>\n\n<h6>Explanation</h6>\n\n<p>Với ~3~ số ~a = 2, b = 0, c = 7~ có thể ghép thành nhiều số ~T~ khác nhau nhưng trong đó có số ~270~ là chia hết cho ~5~.</p>\n",
+        "tags": [
+            "Số học",
+            "Logic"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Kiểm tra khả năng tạo số 3 chữ số chia hết cho 5 từ 3 chữ số cho trước"
+    },
+    "https://tinhoctre.vn/problem/25_19_5_a3": {
+        "title": "Tổng các chữ số",
+        "url": "https://tinhoctre.vn/problem/25_19_5_a3",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 4 bảng A",
+        "index": 3,
+        "html": "<p>Cho trước bốn số tự nhiên ~a, b, k~ và ~p~.</p>\n\n<p>Xét dãy số có dạng: ~n + k, n + k + k, n +  k + k + k, n + k + k + k + k, \\ldots~</p>\n\n<p>Biết rằng ~n~ là số nhỏ nhất chia hết cho cả ~a~ và ~b~.  </p>\n\n<p><strong>Yêu cầu:</strong> Em hãy tính tổng các chữ số của số hạng thứ ~p~ trong dãy số trên. </p>\n\n<h6>Input</h6>\n\n<ul>\n<li>Dòng đầu tiên chứa số tự nhiên ~a~ ~(1 \\leq a \\leq 10^8)~.</li>\n<li>Dòng thứ hai chứa số tự nhiên ~b~ ~(1 \\leq b \\leq 10^8)~.</li>\n<li>Dòng thứ ba chứa số tự nhiên ~k~ ~(1 \\leq k \\leq 10)~.</li>\n<li>Dòng thứ tư chứa số tự nhiên ~p~ ~(1 \\leq p \\leq 10^7)~.</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>Một số duy nhất là kết quả của bài toán.</li>\n</ul>\n\n<h6>Examples</h6>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>2\n3\n4\n5\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>8\n</code></pre>\n\n<h6>Explanation</h6>\n\n<p>Số ~6~ là số nhỏ nhất chia hết cho cả ~2~ và ~3~, nên ta có dãy số: ~10, 14, 18, 22, 26, 30, \\ldots~</p>\n\n<p>Số ở vị trí thứ ~5~ của dãy số là ~26~. Vậy kết quả là: ~2 + 6 = 8~.</p>\n",
+        "tags": [
+            "Dãy số",
+            "Số học"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Tính tổng chữ số của số hạng thứ p trong dãy số đặc biệt"
+    },
+    "https://tinhoctre.vn/problem/25_19_5_a4": {
+        "title": "Bậc thang số",
+        "url": "https://tinhoctre.vn/problem/25_19_5_a4",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 4 bảng A",
+        "index": 4,
+        "html": "<p>Cho bậc thang số, tính từ trên xuống dưới là các hàng, trên mỗi hàng tính từ trái qua phải là các ô. Mỗi ô của bậc thang số ghi một số tự nhiên theo quy luật như hình dưới.</p>\n\n<p><img alt=\"\" src=\"/martor/4bca0422-1ec3-4a6d-b6a9-f18113f9e5f8.png\"></p>\n\n<p><strong>Yêu cầu:</strong> Cho ba số tự nhiên ~A, R~ và ~C~. Em hãy viết chương trình cho biết:</p>\n\n<ul>\n<li>Số ~A~ nằm ở hàng nào, ô thứ mấy của hàng đó.</li>\n<li>Ở hàng thứ ~R~, ô thứ ~C~ ghi số tự nhiên nào. </li>\n</ul>\n\n<h6>Input</h6>\n\n<ul>\n<li>Dòng đầu tiên chứa số tự nhiên ~A~ ~(1 \\leq A \\leq 10^{12})~.</li>\n<li>Dòng thứ hai chứa hai số tự nhiên ~R~ và ~C~ ~(l \\leq C \\leq R \\leq 10^{8})~ cách nhau một khoảng trắng.</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>Dòng đầu tiên: Hai số cách nhau bởi một khoảng trắng lần lượt là số hàng, số ô của số ~A~. </li>\n<li>Dòng thứ hai: Số tự nhiên ở hàng thứ ~R~, ô thứ ~C~ của bậc thang số. </li>\n</ul>\n\n<h6>Examples</h6>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>19\n5 4\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>6 3\n14\n</code></pre>\n\n<h6>Explanation</h6>\n\n<p><img alt=\"\" src=\"/martor/db7c1baa-5783-4b68-afab-a5d41f9f3e53.png\"></p>\n\n<p>Số ~19~ ở vị trí hàng số ~6~, ô thứ ~3~.</p>\n",
+        "tags": [
+            "Hình học",
+            "Quy luật"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Xác định vị trí và giá trị số trên cấu trúc bậc thang hình học"
+    },
+    "https://tinhoctre.vn/problem/25_19_5_a5": {
+        "title": "Cặp số đặc biệt",
+        "url": "https://tinhoctre.vn/problem/25_19_5_a5",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 4 bảng A",
+        "index": 5,
+        "html": "<p>Hai số ~a~ và ~b~ được gọi là cặp số đặc biệt nếu phần nguyên của phép chia ~a~ cho ~b~ bằng phần dư của phép chia ~a~ cho ~b~. </p>\n\n<p><strong>Ví dụ:</strong> ~a = 3, b = 2~ là một cặp số đặc biệt.</p>\n\n<p><strong>Yêu cầu:</strong> Hãy đếm số cặp số đặc biệt ~(a; b)~ với ~(1 \\le a, b \\le n)~.</p>\n\n<h6>Input</h6>\n\n<ul>\n<li>Một dòng chứa duy nhất số tự nhiên ~n~ ~(1 \\le n \\le 10^{10})~</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>In ra số cặp số đặc biệt ~(a; b)~ thỏa mãn yêu cầu đề. </li>\n</ul>\n\n<h6>Examples</h6>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>3\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>1\n</code></pre>\n\n<h6>Explanation</h6>\n\n<p>Với ~n = 3~ ta có các cặp số: ~(1; 1), (1; 2), (1; 3), (2; 1), (2; 2), (2; 3), (3; 1), (3, 2), (3; 3)~ nhưng chỉ có cặp số ~(3; 2)~ là thỏa mãn yêu cầu đề.</p>\n",
+        "tags": [
+            "Toán học",
+            "Logic"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Đếm cặp số thỏa mãn điều kiện đặc biệt về phép chia"
+    },
+    "https://tinhoctre.vn/problem/24tht066a1": {
+        "title": "Chạy thi",
+        "url": "https://tinhoctre.vn/problem/24tht066a1",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 2 bảng A",
+        "index": 1,
+        "pdf": "https://drive.google.com/file/d/1v818XadqLmqiX3JN-UKeXvqU-By3FyrE/preview",
+        "tags": [
+            "Toán ứng dụng"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Giải bài toán tính thời gian và khoảng cách trong thi chạy"
+    },
+    "https://tinhoctre.vn/problem/24tht066a2": {
+        "title": "Thời gian",
+        "url": "https://tinhoctre.vn/problem/24tht066a2",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 2 bảng A",
+        "index": 2,
+        "pdf": "https://drive.google.com/file/d/1nhSLqflro4eXuXosowHAu0DDhe7-ZRUn/preview",
+        "tags": [
+            "Xử lý thời gian"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Chuyển đổi đơn vị thời gian giữa giờ-phút-giây"
+    },
+    "https://tinhoctre.vn/problem/24tht066a3": {
+        "title": "Dãy số chẵn lẻ",
+        "url": "https://tinhoctre.vn/problem/24tht066a3",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 2 bảng A",
+        "index": 3,
+        "pdf": "https://drive.google.com/file/d/144YCgwAiXb29Tff2ijFg225cRYyE5a6p/preview",
+        "tags": [
+            "Dãy số",
+            "Logic"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Phân tích quy luật dãy số xen kẽ chẵn-lẻ"
+    },
+    "https://tinhoctre.vn/problem/24tht066a4": {
+        "title": "Mật khẩu Wifi",
+        "url": "https://tinhoctre.vn/problem/24tht066a4",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 2 bảng A",
+        "index": 4,
+        "pdf": "https://drive.google.com/file/d/1UTBKqnLF_nEsCKTyd_XCfVbluI_YXmGa/preview",
+        "tags": [
+            "Chuỗi ký tự",
+            "Logic"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Tạo mật khẩu từ chuỗi ký tự theo quy tắc đặc biệt"
+    },
+    "https://tinhoctre.vn/problem/24tht255a1": {
+        "title": "Tách lẻ",
+        "url": "https://tinhoctre.vn/problem/24tht255a1",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 2 - Thi thử - Bảng A",
+        "index": 1,
+        "pdf": "https://drive.google.com/file/d/1_1MrB_8nBegE0vASicv9PX62QRvG0oN2/preview",
+        "tags": [
+            "Xử lý số"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Tách số thành các thành phần chẵn/lẻ theo vị trí chữ số"
+    },
+    "https://tinhoctre.vn/problem/24tht255a2": {
+        "title": "Rút thẻ",
+        "url": "https://tinhoctre.vn/problem/24tht255a2",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 2 - Thi thử - Bảng A",
+        "index": 2,
+        "pdf": "https://drive.google.com/file/d/1IlADBsTYHmiVJEZtP_mn0SQjYKKAyzcE/preview",
+        "tags": [
+            "Xác suất",
+            "Logic"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Tính toán xác suất rút thẻ theo điều kiện cho trước"
+    },
+    "https://tinhoctre.vn/problem/24tht255a3": {
+        "title": "Vòng số",
+        "url": "https://tinhoctre.vn/problem/24tht255a3",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 2 - Thi thử - Bảng A",
+        "index": 3,
+        "pdf": "https://drive.google.com/file/d/1CfIXde2F_6VgIylM6Ii-YsAKL7jD1nia/preview",
+        "tags": [
+            "Số học",
+            "Quy luật"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Khám phá quy luật vòng tròn số và thao tác xoay"
+    },
+    "https://tinhoctre.vn/problem/24tht255a4": {
+        "title": "Số X2",
+        "url": "https://tinhoctre.vn/problem/24tht255a4",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 2 - Thi thử - Bảng A",
+        "index": 4,
+        "pdf": "https://drive.google.com/file/d/1NSxbivkh4D7D_xLfd7vLHRS7fWXdE1hV/preview",
+        "tags": [
+            "Số học",
+            "Tối ưu"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Tìm số thỏa mãn điều kiện đặc biệt về phép nhân đôi"
+    },
+    "https://tinhoctre.vn/problem/bbg2024_a1": {
+        "title": "Điền phép tính",
+        "url": "https://tinhoctre.vn/problem/bbg2024_a1",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 1 bảng A",
+        "index": 1,
+        "pdf": "https://drive.google.com/file/d/1G5NFbw9J5ix3D2fcQNF7Rb25xyP6Qlc7/preview",
+        "tags": [
+            "Toán học",
+            "Logic"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Điền các phép toán cộng/trừ/nhân/chia vào biểu thức để được kết quả đúng"
+    },
+    "https://tinhoctre.vn/problem/bbg2024_a2": {
+        "title": "Thứ mấy?",
+        "url": "https://tinhoctre.vn/problem/bbg2024_a2",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 1 bảng A",
+        "index": 2,
+        "pdf": "https://drive.google.com/file/d/1rjgYOEqsaDUJp4XoopLkXcyxn5X6B29C/preview",
+        "tags": [
+            "Xử lý thời gian"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Xác định thứ trong tuần dựa trên ngày tháng cho trước"
+    },
+    "https://tinhoctre.vn/problem/bbg2024_a3": {
+        "title": "Tổng dãy số",
+        "url": "https://tinhoctre.vn/problem/bbg2024_a3",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 1 bảng A",
+        "index": 3,
+        "pdf": "https://drive.google.com/file/d/1rIrXTMMPh7_VaM02FaHAe5wxH3g3cG3M/preview",
+        "tags": [
+            "Dãy số",
+            "Số học"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Tính tổng các số trong dãy số hình học theo quy luật đặc biệt"
+    },
+    "https://tinhoctre.vn/problem/bbg2024_a4": {
+        "title": "Biến đổi số",
+        "url": "https://tinhoctre.vn/problem/bbg2024_a4",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 1 bảng A",
+        "index": 4,
+        "pdf": "https://drive.google.com/file/d/1-KjfHsrM_-7f2JyEiYMGEg84ZecUSEyZ/preview",
+        "tags": [
+            "Số học",
+            "Logic"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Thực hiện các phép biến đổi số theo quy tắc đệ quy phức tạp"
+    },
+    "https://tinhoctre.vn/problem/24bntdtsa1": {
+        "title": "Năm số tự nhiên",
+        "url": "https://tinhoctre.vn/problem/24bntdtsa1",
+        "contest": "Thi thử Tin học trẻ cấp Huyện Lần 1 bảng A",
+        "index": 1,
+        "html": "<p>Cho ~5~ số tự nhiên có giá trị là ~1~ hoặc ~2~. Bạn hãy cho biết giá trị nào có số lần xuất hiện nhiều hơn?</p>\n\n<h5>Input</h5>\n\n<ul>\n<li>Dòng thứ nhất chứa một số tự nhiên ~a~ ~(1 \\le a \\le 2)~.</li>\n<li>Dòng thứ hai chứa một số tự nhiên ~b~ ~(1 \\le b \\le 2)~.</li>\n<li>Dòng thứ ba chứa một số tự nhiên ~c~ ~(1 \\le c \\le 2)~.</li>\n<li>Dòng thứ tư chứa một số tự nhiên ~d~ ~(1 \\le d \\le 2)~.</li>\n<li>Dòng thứ năm chứa một số tự nhiên ~e~ ~(1 \\le e \\le 2)~.</li>\n</ul>\n\n<h5>Output</h5>\n\n<ul>\n<li>Đưa ra số có số lần xuất hiện nhiều hơn.</li>\n</ul>\n\n<h5>Example</h5>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>1\n1\n2\n1\n2\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>1\n</code></pre>\n",
+        "tags": [
+            "Thống kê"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Xác định số xuất hiện nhiều nhất trong 5 số"
+    },
+    "https://tinhoctre.vn/problem/24bntdtsa2": {
+        "title": "Số khác biệt",
+        "url": "https://tinhoctre.vn/problem/24bntdtsa2",
+        "contest": "Thi thử Tin học trẻ cấp Huyện Lần 1 bảng A",
+        "index": 2,
+        "html": "<p>Cho ba số tự nhiên ~a, b, c~. Trong đó có một số có giá trị khác hai số còn lại. Tìm số đó.</p>\n\n<h5>Input</h5>\n\n<ul>\n<li>Dòng thứ nhất chứa một số tự nhiên ~a~ ~(1 \\le a \\le 10^6)~.</li>\n<li>Dòng thứ hai chứa một số tự nhiên ~b~ ~(1 \\le b \\le 10^6)~.</li>\n<li>Dòng thứ ba chứa một số tự nhiên ~c~ ~(1 \\le c \\le 10^6)~.</li>\n</ul>\n\n<h5>Output</h5>\n\n<ul>\n<li>Đưa ra số khác trong ba số.</li>\n</ul>\n\n<h5>Example</h5>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>1\n2\n1\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>2\n</code></pre>\n",
+        "tags": [
+            "Logic"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Tìm số duy nhất khác biệt trong ba số"
+    },
+    "https://tinhoctre.vn/problem/24bntdtsa3": {
+        "title": "Vận tốc",
+        "url": "https://tinhoctre.vn/problem/24bntdtsa3",
+        "contest": "Thi thử Tin học trẻ cấp Huyện Lần 1 bảng A",
+        "index": 3,
+        "html": "<p>Đất nước nơi Tí và Tèo sống là một trục đường thẳng gồm ~10^9 + 1~ thành phố, được đánh số lần lượt từ trái sang phải từ ~0~ tới ~10^9~, hai thành phố kề nhau cách nhau ~1~ km.</p>\n\n<p>Tí đang ở thành phố thứ ~x~, Tèo đang ở thành phố ~y~. Biết rằng Tí đang di chuyển với tốc độ ~n~ km/h về phía Tèo, hỏi sau bao lâu Tí gặp Tèo?</p>\n\n<h5>Input</h5>\n\n<ul>\n<li>Dòng thứ nhất chứa số tự nhiên ~x~ ~(0 \\leq x \\leq 10^9)~.</li>\n<li>Dòng thứ hai chứa số tự nhiên ~y~ ~(0 \\leq y \\leq 10^9)~.</li>\n<li>Dòng thứ ba chứa số tự nhiên ~n~ ~(1 \\leq n \\leq 10^9)~.</li>\n</ul>\n\n<h5>Output</h5>\n\n<ul>\n<li>Một số nguyên là thời gian tính theo số giờ để Tí gặp Tèo.</li>\n</ul>\n\n<h5>Example</h5>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>5\n6\n1\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>1\n</code></pre>\n\n<p><strong>Note</strong></p>\n\n<p>Tí mất ~1~ giờ để di chuyển quãng đường là ~1~ km.</p>\n",
+        "tags": [
+            "Toán ứng dụng"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Tính thời gian gặp nhau dựa trên vận tốc và khoảng cách"
+    },
+    "https://tinhoctre.vn/problem/24bntdtsa4": {
+        "title": "Dãy số",
+        "url": "https://tinhoctre.vn/problem/24bntdtsa4",
+        "contest": "Thi thử Tin học trẻ cấp Huyện Lần 1 bảng A",
+        "index": 4,
+        "html": "<p>Cho một dãy số sau: ~1, 3, 6, 10, 15, 21, \\ldots~. Hãy đếm số lượng số chia hết cho ~6~ trong ~n~ số đầu tiên của dãy số.</p>\n\n<h5>Input</h5>\n\n<ul>\n<li>Gồm một dòng duy nhất chứa số tự nhiên ~n~ ~(1 \\leq n \\leq 10^{15})~</li>\n</ul>\n\n<h5>Output</h5>\n\n<ul>\n<li>In ra một số tự nhiên duy nhất là kết quả của bài toán.</li>\n</ul>\n\n<h5>Scoring</h5>\n\n<ul>\n<li>Subtask ~1~ (~60\\%~ số điểm): ~0 \\leq n \\leq 10^{5}~.</li>\n<li>Subtask ~2~ (~40\\%~ số điểm): không có rằng buộc gì thêm.</li>\n</ul>\n\n<h5>Example</h5>\n\n<p><strong>Sample input</strong></p>\n\n<pre><code>10\n</code></pre>\n\n<p><strong>Sample output</strong></p>\n\n<pre><code>2\n</code></pre>\n\n<p><strong>Note</strong></p>\n\n<p>~10~ số đầu tiên là ~1, 3, 6, 10, 15, 21, 28, 36, 45, 55~. Trong đó có ~2~ số chia hết cho ~6~ là ~6~ và ~36~.</p>\n",
+        "tags": [
+            "Dãy số",
+            "Số học"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Đếm số lượng số chia hết cho 6 trong dãy số tam giác"
+    },
+    "https://tinhoctre.vn/problem/tht2023_sk_ankeo": {
+        "title": "Ăn kẹo",
+        "url": "https://tinhoctre.vn/problem/tht2023_sk_ankeo",
+        "contest": "TIN HỌC TRẺ 2024 - ĐỀ MINH HỌA BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn//pdf/f93e9317-15d0-44d8-a145-725e340ad535.pdf",
+        "tags": [
+            "Toán học",
+            "Logic"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Giải bài toán phân phối kẹo theo điều kiện"
+    },
+    "https://tinhoctre.vn/problem/tht2023_sk_daysodacbiet": {
+        "title": "Dãy số đặc biệt",
+        "url": "https://tinhoctre.vn/problem/tht2023_sk_daysodacbiet",
+        "contest": "TIN HỌC TRẺ 2024 - ĐỀ MINH HỌA BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn//pdf/fe638e16-33b8-419f-aacf-d224d8a8d489.pdf",
+        "tags": [
+            "Dãy số",
+            "Logic"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Phân tích quy luật dãy số tăng giảm đặc biệt"
+    },
+    "https://tinhoctre.vn/problem/tht2023_sk_kimtuthap": {
+        "title": "Kim tự tháp",
+        "url": "https://tinhoctre.vn/problem/tht2023_sk_kimtuthap",
+        "contest": "TIN HỌC TRẺ 2024 - ĐỀ MINH HỌA BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn//pdf/f7da7fe9-cb3e-4b7f-b66d-544bde59c1db.pdf",
+        "tags": [
+            "Hình học",
+            "Quy luật"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Xử lý bài toán xây dựng kim tự tháp số"
+    },
+    "https://tinhoctre.vn/problem/tht2023a_mt_doimauovuong": {
+        "title": "Đổi màu ô vuông",
+        "url": "https://tinhoctre.vn/problem/tht2023a_mt_doimauovuong",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN TRUNG - BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn//pdf/8290a14d-dc12-488e-b925-04e56d9722cb.pdf",
+        "tags": [
+            "Hình học",
+            "Thuật toán"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Thực hiện thao tác đổi màu ô vuông theo quy tắc"
+    },
+    "https://tinhoctre.vn/problem/tht2023a_mt_caikeo": {
+        "title": "Cái kẹo",
+        "url": "https://tinhoctre.vn/problem/tht2023a_mt_caikeo",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN TRUNG - BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn//pdf/d762b144-432a-449a-9215-2b84f6d625e4.pdf",
+        "tags": [
+            "Toán học",
+            "Tối ưu"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Giải bài toán tối ưu hóa phân phối kẹo"
+    },
+    "https://tinhoctre.vn/problem/tht2023a_mt_demchuso": {
+        "title": "Đếm chữ số",
+        "url": "https://tinhoctre.vn/problem/tht2023a_mt_demchuso",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN TRUNG - BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn//pdf/34ed10b2-b190-46fa-9744-d529bd94715f.pdf",
+        "tags": [
+            "Xử lý số"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Đếm số lần xuất hiện của các chữ số trong dãy số"
+    },
+    "https://tinhoctre.vn/problem/tht2023a_mt_nhanban": {
+        "title": "Nhân bản",
+        "url": "https://tinhoctre.vn/problem/tht2023a_mt_nhanban",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN TRUNG - BẢNG A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn//pdf/08703172-18f7-4a06-992b-e67a60cb58fe.pdf",
+        "tags": [
+            "Thuật toán",
+            "Logic"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Thực hiện thao tác nhân bản phần tử theo quy tắc"
+    },
+    "https://tinhoctre.vn/problem/tht2023_kv_xaythap": {
+        "title": "Xây tháp",
+        "url": "https://tinhoctre.vn/problem/tht2023_kv_xaythap",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN BẮC & MIỀN NAM - BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/a4b5f1ff-552d-423f-b160-83df1dc01f6d.pdf",
+        "tags": [
+            "Hình học",
+            "Tối ưu"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Tính toán chi phí xây dựng tháp theo yêu cầu"
+    },
+    "https://tinhoctre.vn/problem/tht2023_kv_vienbi": {
+        "title": "Viên bi",
+        "url": "https://tinhoctre.vn/problem/tht2023_kv_vienbi",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN BẮC & MIỀN NAM - BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/bf079077-6781-44b9-b537-b7aebc8f4ab0.pdf",
+        "tags": [
+            "Logic",
+            "Toán học"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Giải bài toán di chuyển viên bi trên lưới"
+    },
+    "https://tinhoctre.vn/problem/tht2023_kv_cs0tc": {
+        "title": "Chữ số 0 tận cùng",
+        "url": "https://tinhoctre.vn/problem/tht2023_kv_cs0tc",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN BẮC & MIỀN NAM - BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/2a7fc048-47a1-40ca-9e9c-0cf0bd5a0bff.pdf",
+        "tags": [
+            "Số học"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Đếm số chữ số 0 tận cùng trong giai thừa"
+    },
+    "https://tinhoctre.vn/problem/tht2023_kv_sdxdn": {
+        "title": "Số đối xứng dạng nón",
+        "url": "https://tinhoctre.vn/problem/tht2023_kv_sdxdn",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG KHU VỰC MIỀN BẮC & MIỀN NAM - BẢNG A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/c5ab5441-5583-4149-93c7-866426543d91.pdf",
+        "tags": [
+            "Số học",
+            "Logic"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Kiểm tra tính chất đối xứng đặc biệt của số"
+    },
+    "https://tinhoctre.vn/problem/thithu2023a1": {
+        "title": "Hình lập phương",
+        "url": "https://tinhoctre.vn/problem/thithu2023a1",
+        "contest": "THI THỬ TIN HỌC TRẺ 2023 - BẢNG A",
+        "index": 1,
+        "html": "<p>Vẽ hình mô tả tháp lập phương như bên dưới.</p>\n\n<p>Hãy viết chương trình cho phép nhập vào số tự nhiên ~d~ ~(1 \\leq d \\leq 10)~ là bậc của tháp hình lập phương, độ dài của tháp hình lập phương lớn nhất có thể. </p>\n\n<p><img alt=\"enter image description here\" src=\"local-imgs/23on5a1.png\"></p>\n\n<p><strong>Chú ý</strong>: </p>\n\n<ul>\n<li>Có thể sử dụng màu khác;</li>\n<li>Không sử dụng nhân vật giống hình vẽ.</li>\n</ul>\n\n<p><strong>Chấm điểm</strong>:</p>\n\n<ul>\n<li>Bài vẽ hình: hệ thống sẽ lưu bài nộp cuối cùng và sẽ chấm điểm sau khi kì thi kết thúc.</li>\n<li>Vẽ được hình với ~d = 3~ sẽ được ~45~ điểm.</li>\n<li>Vẽ được hình đúng với ~d~ nhập từ bàn phím sẽ được ~45~ điểm.</li>\n<li>Canh hình vào tâm sân khấu sẽ được ~10~ điểm.</li>\n<li>Không tô màu được trừ ~30\\%~ số điểm tương ứng.</li>\n</ul>\n",
+        "tags": [
+            "Hình học",
+            "Thuật toán"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Vẽ hình khối lập phương 3D với kích thước cho trước"
+    },
+    "https://tinhoctre.vn/problem/thithu2023a2": {
+        "title": "Mật mã Caesar",
+        "url": "https://tinhoctre.vn/problem/thithu2023a2",
+        "contest": "THI THỬ TIN HỌC TRẺ 2023 - BẢNG A",
+        "index": 2,
+        "html": "<p>Trong mật mã học, Mật mã Caesar (hay còn được gọi là Mật mã của Caesar, Mật mã chuyển vị, Mã của Caesar hay Chuyển vị Caesar) là một trong những kỹ thuật mã hóa đơn giản và phổ biến nhất. Đây là một dạng mật mã thay thế, trong đó mỗi ký tự trên văn bản thô sẽ được thay bằng một ký tự khác, có vị trí cách nó một khoảng xác định trong bảng chữ cái. Ví dụ, nếu dịch chuyển sang trái 3 bước, ~D~ sẽ trở thành ~A~, ~E~ sẽ trở thành ~B~, v.v..</p>\n\n<p>Để mã hóa, người ta sẽ chọn ra một khóa ~k~: chính là số bước dịch chuyển sang phải. VD với ~k = 4~ thì ta có bảng chuyển đổi sau</p>\n\n<p><img alt=\"Bảng chữ cái gốc &amp; Caesar\" src=\"local-imgs/DJWJGbx.png\"></p>\n\n<p>Để mã hóa, ta thay chữ cái ở dòng trên bằng chữ cái ở vị trí tương ứng ở dòng dưới. </p>\n\n<p><strong>Yêu cầu:</strong> Cho trước khóa ~k~ và xâu tin nhắn, hãy mã hóa theo quy luật trên.</p>\n\n<h6>Input</h6>\n\n<ul>\n<li>Dòng đầu chứa số nguyên ~k (0 \\le k \\le 10^6)~</li>\n<li>Dòng tiếp theo chứa xâu ~S (1 \\le |S| \\le 1000)~ (chỉ gồm dấu cách hoặc các kí tự Latin in hoa)</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>Một dòng duy nhất chứa xâu đã mã hóa</li>\n</ul>\n\n<h6>Scoring</h6>\n\n<ul>\n<li>Subtask ~1~ (~50\\%~ số điểm): ~k &lt; 10~</li>\n<li>Subtask ~2~ (~50\\%~ số điểm): ~k \\le 10^6~</li>\n</ul>\n\n<h6>Example</h6>\n\n<p><strong>Sample input 1</strong></p>\n\n<pre><code>2\nACCEPTED\n</code></pre>\n\n<p><strong>Sample output 1</strong></p>\n\n<pre><code>CEEGRVGF\n</code></pre>\n\n<p><em>Chú thích:</em> một số hình minh họa khác:\n<img alt=\"enter image description here\" src=\"https://cscx.org/caesar3.svg\">\nVòng bên ngoài là kí tự gốc, vòng bên trong là kí tự đã được mã hóa, còn số ghi ở giữa chính là khoảng cách dịch chuyển.</p>\n\n<p><strong>Lưu ý</strong>\nVới dấu cách, ta giữ nguyên chứ không mã hóa nó.</p>\n",
+        "tags": [
+            "Mật mã học",
+            "Chuỗi ký tự"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Thực hiện mã hóa văn bản theo thuật toán dịch chuyển ký tự"
+    },
+    "https://tinhoctre.vn/problem/thithu2023a3": {
+        "title": "Số tròn thứ N",
+        "url": "https://tinhoctre.vn/problem/thithu2023a3",
+        "contest": "THI THỬ TIN HỌC TRẺ 2023 - BẢNG A",
+        "index": 3,
+        "html": "<p>Một số tự nhiên được gọi là số tròn nếu như tổng các chữ số (trong hệ thập phân) của nó chia hết cho ~10~.</p>\n\n<p><strong>Yêu cầu:</strong> nhập từ bàn phím số tự nhiên ~N~.</p>\n\n<p><strong>Kết quả:</strong> xuất ra số tròn thứ ~N~.</p>\n\n<h6>Input</h6>\n\n<ul>\n<li>Nhập số tự nhiên ~N~ với ~1 \\le N \\le 10^{15}~.</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>Xuất ra số tròn thứ ~N~.</li>\n</ul>\n\n<h6>Example</h6>\n\n<p><strong>Sample input 1</strong></p>\n\n<pre><code>2\n</code></pre>\n\n<p><strong>Sample output 1</strong></p>\n\n<pre><code>19\n</code></pre>\n\n<p><strong>Sample input 2</strong></p>\n\n<pre><code>3\n</code></pre>\n\n<p><strong>Sample output 2</strong></p>\n\n<pre><code>28\n</code></pre>\n",
+        "tags": [
+            "Số học",
+            "Logic"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Tìm số có tổng chữ số chia hết cho 10 ở vị trí thứ N trong dãy"
+    },
+    "https://tinhoctre.vn/problem/thithu2023a4": {
+        "title": "Dãy số A",
+        "url": "https://tinhoctre.vn/problem/thithu2023a4",
+        "contest": "THI THỬ TIN HỌC TRẺ 2023 - BẢNG A",
+        "index": 4,
+        "html": "<p>Cho dãy số như sau: 10, 3, 6, 10, 6, 12, 10, 9, 18, 19, 21, 15, 19, 24, 21, 19, 27, 27, 28, 30, . . .\nSố thứ ~i~ của dãy số bằng tổng các chữ số của số thứ ~i-1~ cộng thêm vị trí ~i~ rồi lấy hai số cuối của tổng này. Ví dụ số thứ ~2~ là bằng ~1+0+2=3~ hay số thứ ~10~ là bằng ~1+8+10=19~.</p>\n\n<p><strong>Yêu cầu:</strong> Nhập từ bàn phím số tự nhiên ~N~. Hãy in ra số hạng thứ ~N~ của dãy số và tổng của ~N~ số hạng đầu tiên của dãy.</p>\n\n<h6>Input</h6>\n\n<ul>\n<li>Nhập số tự nhiên ~N~ với ~1 \\le N \\le 10^{14}~.</li>\n</ul>\n\n<h6>Output</h6>\n\n<ul>\n<li>Xuất ra số hạng thứ ~N~ của dãy số.</li>\n<li>Tổng của ~N~ số hạng đầu tiên của dãy số.</li>\n</ul>\n\n<h6>Scoring</h6>\n\n<ul>\n<li>Subtask ~1~ (~50\\%~ số điểm): ~n &lt; 10^{5}~.</li>\n<li>Subtask ~2~ (~50\\%~ số điểm): ~n &lt; 10^{14}~.</li>\n</ul>\n\n<h6>Example</h6>\n\n<p><strong>Sample input 1</strong></p>\n\n<pre><code>10\n</code></pre>\n\n<p><strong>Sample output 1</strong></p>\n\n<pre><code>19\n103\n</code></pre>\n\n<p><strong>Sample input 2</strong></p>\n\n<pre><code>20\n</code></pre>\n\n<p><strong>Sample output 2</strong></p>\n\n<pre><code>30\n334\n</code></pre>\n",
+        "tags": [
+            "Dãy số",
+            "Quy luật"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Phân tích quy luật tạo dãy số từ tổng chữ số và vị trí"
+    },
+    "https://tinhoctre.vn/problem/thtgb2023a_vehinhvuong": {
+        "title": "Vẽ hình vuông",
+        "url": "https://tinhoctre.vn/problem/thtgb2023a_vehinhvuong",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG TỈNH ĐỢT 1 - BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/0dc279f0-1e50-49eb-a816-586b26a51d0b.pdf",
+        "tags": [
+            "Hình học",
+            "Thuật toán"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Vẽ hình vuông với kích thước và mẫu trang trí cho trước"
+    },
+    "https://tinhoctre.vn/problem/thtgb2023a_sotronchuc": {
+        "title": "Số tròn chục",
+        "url": "https://tinhoctre.vn/problem/thtgb2023a_sotronchuc",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG TỈNH ĐỢT 1 - BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/b8a0b950-c65f-4bc4-a696-ad3290ca4c50.pdf",
+        "tags": [
+            "Số học",
+            "Logic"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Kiểm tra tính chất số tròn chục theo điều kiện đặc biệt"
+    },
+    "https://tinhoctre.vn/problem/thtgb2023a_muadochoi": {
+        "title": "Mua đồ chơi",
+        "url": "https://tinhoctre.vn/problem/thtgb2023a_muadochoi",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG TỈNH ĐỢT 1 - BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/96e5075e-7fca-42ae-ac54-47260b8bdd02.pdf"
+    },
+    "https://tinhoctre.vn/problem/thtgb2023a_dayso": {
+        "title": "Dãy số",
+        "url": "https://tinhoctre.vn/problem/thtgb2023a_dayso",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG TỈNH ĐỢT 1 - BẢNG A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/6782ab36-99e3-4232-947d-67396ec75710.pdf"
+    },
+    "https://tinhoctre.vn/problem/thtgb2023a_giainenso": {
+        "title": "Giải nén số",
+        "url": "https://tinhoctre.vn/problem/thtgb2023a_giainenso",
+        "contest": "TIN HỌC TRẺ 2023 - VÒNG TỈNH ĐỢT 1 - BẢNG A",
+        "index": 5,
+        "pdf": "https://tinhoctre.vn/pdf/f0bef4af-b71f-4403-ae25-8cbf63e9db71.pdf",
+        "tags": [
+            "Xử lý số"
+        ],
+        "difficulty": "Rất khó",
+        "shortDescription": "Giải mã số từ chuỗi bit nhị phân"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mn_banvekhuvucthidau": {
+        "title": "BẢN VẼ KHU VỰC THI ĐẤU",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mn_banvekhuvucthidau",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN NAM – BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/d3a21b14-0b85-4c6d-bcf6-f14ef22a6ac1.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mn_chiakeo": {
+        "title": "CHIA KẸO",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mn_chiakeo",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN NAM – BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/ad65b250-0c88-4351-a962-f29e1143137c.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mn_somayman": {
+        "title": "SỐ MAY MẮN",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mn_somayman",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN NAM – BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/92b5d1a8-e42a-4769-abc1-4f09ac8cf3b2.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mn_chusocuoicung": {
+        "title": "CHỮ SỐ CUỐI CÙNG",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mn_chusocuoicung",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN NAM – BẢNG A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/df63cdb6-8955-49a3-884e-6f55cafc1b73.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mt_vehinhvuong": {
+        "title": "VẼ HÌNH VUÔNG",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mt_vehinhvuong",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN TRUNG – BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/1d798a15-827b-4854-8f0f-ccd6870a4d96.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mt_chiabanh": {
+        "title": "CHIA BÁNH",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mt_chiabanh",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN TRUNG – BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/841aa9aa-5dd3-4120-ad49-612cca716b12.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mt_xephang": {
+        "title": "XẾP HÀNG",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mt_xephang",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN TRUNG – BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/7c791226-5946-482e-96b6-bc722968da00.pdf",
+        "tags": [
+            "Xếp hàng",
+            "Logic"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Tính toán vị trí xếp hàng dựa trên quy tắc cho trước"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mt_sodep": {
+        "title": "SỐ ĐẸP",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mt_sodep",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN TRUNG – BẢNG A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/f97502d9-db47-4a63-b1e0-a826555543fe.pdf",
+        "tags": [
+            "Số học",
+            "Logic"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Kiểm tra số đẹp theo điều kiện đặc biệt"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mb_vehinhvuong": {
+        "title": "VẼ HÌNH VUÔNG",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mb_vehinhvuong",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN BẮC – BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/60191060-bb11-4677-a5b7-0187015c9223.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mb_canhhinhchunhat": {
+        "title": "CẠNH HÌNH CHỮ NHẬT",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mb_canhhinhchunhat",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN BẮC – BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/23fb237a-32a1-43a5-805d-f981db674fc4.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mb_tomvajerry": {
+        "title": "TOM VÀ JERRY",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mb_tomvajerry",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN BẮC – BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/1f5a3958-3935-495e-805e-5c41d5cbffe9.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_mb_doichochuso": {
+        "title": "ĐỔI CHỖ CHỮ SỐ",
+        "url": "https://tinhoctre.vn/problem/tht2022a_mb_doichochuso",
+        "contest": "[TIN HỌC TRẺ] VÒNG KHU VỰC – MIỀN BẮC – BẢNG A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/999adb13-074f-4a06-9aa0-3123e8e4c0f1.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_vebanhsinhnhat": {
+        "title": "VẼ BÁNH SINH NHẬT",
+        "url": "https://tinhoctre.vn/problem/tht2022a_vebanhsinhnhat",
+        "contest": "Tin học trẻ - Vòng sơ khảo - Bảng A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/1ac89a8d-7f75-4c96-b6ef-3c51214fe345.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_phansonhonhat": {
+        "title": "PHÂN SỐ NHỎ NHẤT",
+        "url": "https://tinhoctre.vn/problem/tht2022a_phansonhonhat",
+        "contest": "Tin học trẻ - Vòng sơ khảo - Bảng A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/77043fbd-d7f0-417a-bf39-9a48ee07f403.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_tinhtongdayso": {
+        "title": "TÍNH TỔNG DÃY SỐ",
+        "url": "https://tinhoctre.vn/problem/tht2022a_tinhtongdayso",
+        "contest": "Tin học trẻ - Vòng sơ khảo - Bảng A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/9acf09bc-8c48-43e1-8503-995f3d98a49b.pdf"
+    },
+    "https://tinhoctre.vn/problem/tht2022a_thaydoichuso": {
+        "title": "THAY ĐỔI CHỮ SỐ",
+        "url": "https://tinhoctre.vn/problem/tht2022a_thaydoichuso",
+        "contest": "Tin học trẻ - Vòng sơ khảo - Bảng A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/84ac222e-7626-40b7-b943-c7ebf9048c00.pdf"
+    },
+    "https://tinhoctre.vn/problem/vehinhvuong": {
+        "title": "VẼ HÌNH VUÔNG",
+        "url": "https://tinhoctre.vn/problem/vehinhvuong",
+        "contest": "ĐỀ LUYỆN TẬP TIN HỌC TRẺ - BẢNG A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/c72bfdd7-4fee-46a7-94b8-cda02e147ebe.pdf"
+    },
+    "https://tinhoctre.vn/problem/tinhtich": {
+        "title": "TÍNH TÍCH",
+        "url": "https://tinhoctre.vn/problem/tinhtich",
+        "contest": "ĐỀ LUYỆN TẬP TIN HỌC TRẺ - BẢNG A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/b776f2de-383b-4963-b38c-38db02f2a5b7.pdf"
+    },
+    "https://tinhoctre.vn/problem/tinhtong": {
+        "title": "TÍNH TỔNG",
+        "url": "https://tinhoctre.vn/problem/tinhtong",
+        "contest": "ĐỀ LUYỆN TẬP TIN HỌC TRẺ - BẢNG A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/6a426674-c1e8-4d4b-966c-d8fbb8a6e8d2.pdf"
+    },
+    "https://tinhoctre.vn/problem/ghepso": {
+        "title": "GHÉP SỐ",
+        "url": "https://tinhoctre.vn/problem/ghepso",
+        "contest": "ĐỀ LUYỆN TẬP TIN HỌC TRẺ - BẢNG A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/6e18c052-c067-4ee1-8bae-65d10a3195f3.pdf",
+        "tags": [
+            "Xử lý số"
+        ],
+        "difficulty": "Khó",
+        "shortDescription": "Tạo số mới từ các chữ số cho trước theo quy tắc cụ thể"
+    },
+    "https://tinhoctre.vn/problem/24tht185a1": {
+        "title": "Chia kẹo 2",
+        "url": "https://tinhoctre.vn/problem/24tht185a1",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 3 bảng A",
+        "index": 1,
+        "pdf": "https://drive.google.com/file/d/1j7ZV6Wua0h8_xwsyipxHkhj-QNS2AipH/preview"
+    },
+    "https://tinhoctre.vn/problem/24tht185a2": {
+        "title": "Tổng chẵn lẻ",
+        "url": "https://tinhoctre.vn/problem/24tht185a2",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 3 bảng A",
+        "index": 2,
+        "pdf": "https://drive.google.com/file/d/1wUwDzRYfwdZ4lLNci_VfnpUUzaDma6tR/preview"
+    },
+    "https://tinhoctre.vn/problem/24tht185a3": {
+        "title": "Thời điểm đẹp",
+        "url": "https://tinhoctre.vn/problem/24tht185a3",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 3 bảng A",
+        "index": 3,
+        "pdf": "https://drive.google.com/file/d/1Hf24980aE1hWNtQnjXlMsBetWbxiecc1/preview"
+    },
+    "https://tinhoctre.vn/problem/24tht185a4": {
+        "title": "Số chẵn tròn",
+        "url": "https://tinhoctre.vn/problem/24tht185a4",
+        "contest": "Thi thử Tin học trẻ cấp Tỉnh Lần 3 bảng A",
+        "index": 4,
+        "pdf": "https://drive.google.com/file/d/1kxxlc70s6lyu0cJcxnDhvuBQ22JTprBs/preview",
+        "tags": [
+            "Số học",
+            "Logic"
+        ],
+        "difficulty": "Trung bình",
+        "shortDescription": "Xác định số chẵn có chữ số 0 ở cuối"
+    },
+    "https://tinhoctre.vn/problem/24tht106a1": {
+        "title": "Xem giờ",
+        "url": "https://tinhoctre.vn/problem/24tht106a1",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 3 - Thi thử - Bảng A",
+        "index": 1,
+        "pdf": "https://tinhoctre.vn/pdf/b744dd13-52f6-4fb0-8280-6c822a84cf43.pdf"
+    },
+    "https://tinhoctre.vn/problem/24tht106a2": {
+        "title": "Đếm ngày",
+        "url": "https://tinhoctre.vn/problem/24tht106a2",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 3 - Thi thử - Bảng A",
+        "index": 2,
+        "pdf": "https://tinhoctre.vn/pdf/532d810b-b15b-4f22-b274-1ad5a37cb30b.pdf"
+    },
+    "https://tinhoctre.vn/problem/24tht106a3": {
+        "title": "Dãy tháng",
+        "url": "https://tinhoctre.vn/problem/24tht106a3",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 3 - Thi thử - Bảng A",
+        "index": 3,
+        "pdf": "https://tinhoctre.vn/pdf/bd2dd1ec-2cf1-472c-b09d-9952f10256c0.pdf"
+    },
+    "https://tinhoctre.vn/problem/24tht106a4": {
+        "title": "Số năm",
+        "url": "https://tinhoctre.vn/problem/24tht106a4",
+        "contest": "Tin học trẻ 2025 - Vòng loại quốc gia đợt 3 - Thi thử - Bảng A",
+        "index": 4,
+        "pdf": "https://tinhoctre.vn/pdf/f3bf7cb6-7e4f-47f3-b9d3-59ddb27fd07e.pdf",
+        "tags": [
+            "Toán học",
+            "Logic"
+        ],
+        "difficulty": "Dễ",
+        "shortDescription": "Xác định năm nhuận từ số năm cho trước"
+    }
+}
