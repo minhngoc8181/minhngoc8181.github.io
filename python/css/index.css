@@ -142,6 +142,10 @@ body {
   position: relative;
   border: 1px solid #e9ecef;
   /* light border */
+  /* Allow word wrapping for long code lines */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .lesson-content pre code {
