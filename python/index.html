@@ -80,6 +80,7 @@
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <link rel="stylesheet" href="css/index.css">
+    <!-- Lesson-specific CSS will be loaded dynamically -->
     <meta name="description"
         content="Học Python để giải quyết vấn đề khoa học và rèn luyện tư duy có hệ thống. Chuẩn bị thi tin học trẻ THCS và khám phá định hướng công nghệ tương lai.">
     <meta name="keywords"
@@ -277,9 +278,7 @@
                 }
 
                 document.body.removeChild(textArea);
-            }
-
-            function loadLesson(lessonId) {
+            }            function loadLesson(lessonId) {
                 fetch(`lessons/${lessonId}.html`).then(res => res.text()).then(html => {
                     contentContainer.innerHTML = html;
 

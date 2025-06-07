@@ -1,0 +1,42 @@
+/* ASCII Art Styling for Advanced Drawing Exercises (6-15) in Lesson 1 */
+/* This CSS file is specifically for lesson-1-content.html */
+
+/* Default styling for pre elements in lesson 1 */
+#lesson-1-content pre {
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  position: relative;
+  border: 1px solid #e9ecef;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/* Specific styling for ASCII art exercises */
+/* This class will be added by JavaScript to ASCII art pre elements */
+#lesson-1-content pre.ascii-art {
+  line-height: 1 !important;
+  font-family: "Courier New", Courier, monospace !important;
+  letter-spacing: 0 !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  font-size: 0.85em !important;
+  padding: 1rem !important;
+  background-color: #f8f9fa !important;
+  border: 1px solid #e9ecef !important;
+  border-radius: 0.375rem !important;
+  overflow-x: auto !important;
+}
+
+/* Ensure copy buttons still work properly */
+#lesson-1-content pre:hover .copy-button {
+  opacity: 1;
+}
